@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigationModel
+  ns = "http://schemas.android.com?import=com.android.tools.idea.editors.navigation.model.*">
+  <locations  
+    class = "java.util.ArrayList">
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.bogueratcreations.eaftoolkit.MatCalc"/>
+      <point      
+        x = "2368"      
+        y = "1528"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.bogueratcreations.eaftoolkit.MatCalc"/>
+      <point      
+        x = "3636"      
+        y = "1528"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.bogueratcreations.eaftoolkit.Inspections"/>
+      <point      
+        x = "500"      
+        y = "1480"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.bogueratcreations.eaftoolkit.Inspections"/>
+      <point      
+        x = "1768"      
+        y = "1480"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.bogueratcreations.eaftoolkit.Main"/>
+      <point      
+        x = "512"      
+        y = "2860"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.bogueratcreations.eaftoolkit.Main"/>
+      <point      
+        x = "1780"      
+        y = "2860"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.bogueratcreations.eaftoolkit.Julian"/>
+      <point      
+        x = "2432"      
+        y = "2984"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.bogueratcreations.eaftoolkit.Julian"/>
+      <point      
+        x = "3700"      
+        y = "2984"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.bogueratcreations.eaftoolkit.Slope"/>
+      <point      
+        x = "452"      
+        y = "4460"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.bogueratcreations.eaftoolkit.Slope"/>
+      <point      
+        x = "1720"      
+        y = "4460"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.bogueratcreations.eaftoolkit.TaskListActivity"/>
+      <point      
+        x = "2272"      
+        y = "4608"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.bogueratcreations.eaftoolkit.TaskDetailActivity"/>
+      <point      
+        x = "2376"      
+        y = "4656"/>
+    </statePointEntry>
+  </locations>
+</navigationModel>
