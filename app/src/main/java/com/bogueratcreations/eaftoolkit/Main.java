@@ -1,7 +1,7 @@
 package com.bogueratcreations.eaftoolkit;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,24 +18,10 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class Main extends ActionBarActivity {
-
-    // Array of strings storing country names
-    String[] countries = new String[] {
-            "Matting Calculator",
-            "Slope Converter",
-            "Julian Dater",
-            "FLOLS H/E",
-            "Bangladesh",
-            "Nepal",
-            "Afghanistan",
-            "North Korea",
-            "South Korea",
-            "Japan"
-    };
+public class Main extends AppCompatActivity {
 
     // Array of integers points to images stored in /res/drawable-ldpi/
-    int[] flags = new int[]{
+    int[] listIcons = new int[]{
             R.drawable.forks,
             R.drawable.slope,
             R.drawable.icon,
@@ -48,18 +34,32 @@ public class Main extends ActionBarActivity {
             R.drawable.icon
     };
 
+    // Array of strings storing country names
+    String[] listTitles = new String[] {
+            "Matting Calculator",
+            "Slope Converter",
+            "Julian Dater",
+            "FLOLS H/E",
+            "CGRI/FAI",
+            "CSEC",
+            "NAMP Codes",
+            "DCP (TBD)",
+            "Images",
+            "About"
+    };
+
     // Array of strings to store currencies
-    String[] currency = new String[]{
-            "Indian Rupee",
-            "Pakistani Rupee",
-            "Sri Lankan Rupee",
-            "Renminbi",
-            "Bangladeshi Taka",
-            "Nepalese Rupee",
-            "Afghani",
-            "North Korean Won",
-            "South Korean Won",
-            "Japanese Yen"
+    String[] listDesc = new String[]{
+            "Calculate Matting Requirements",
+            "Get the Slope in Percent or Degrees",
+            "Convert to/from Julain and Gregorian Calendars",
+            "Calculate Roll Angle and Pole Height",
+            "Inspection checklist from HQMC website",
+            "NAMP Computerized Self Examination Checklists",
+            "Maintenance Codes",
+            "CBR Calculator in the works",
+            "Random EAF Pictures",
+            "About the EAF Toolkit"
     };
 
     @Override
@@ -68,21 +68,21 @@ public class Main extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         // Each row in the list stores country name, currency and flag
-        List<HashMap<String,String>> aList = new ArrayList<HashMap<String,String>>();
+        List<HashMap<String,String>> aList = new ArrayList<>();
 
         for(int i=0;i<10;i++){
-            HashMap<String, String> hm = new HashMap<String,String>();
-            hm.put("txt", countries[i]);
-            hm.put("cur", currency[i]);
-            hm.put("flag", Integer.toString(flags[i]) );
+            HashMap<String, String> hm = new HashMap<>();
+            hm.put("listTitles", listTitles[i]);
+            hm.put("listDesc", listDesc[i]);
+            hm.put("listIcons", Integer.toString(listIcons[i]) );
             aList.add(hm);
         }
 
         // Keys used in Hashmap
-        String[] from = { "flag","txt","cur" };
+        String[] from = { "listIcons","listTitles","listDesc" };
 
         // Ids of views in listview_layout
-        int[] to = { R.id.flag,R.id.txt,R.id.cur};
+        int[] to = { R.id.listIcons,R.id.listTitles,R.id.listDesc};
 
         // Instantiating an adapter to store each items
         // R.layout.listview_layout defines the layout of each item
@@ -104,9 +104,26 @@ public class Main extends ActionBarActivity {
                 LinearLayout linearLayoutChild = (LinearLayout ) linearLayoutParent.getChildAt(1);
                 // Getting the Country TextView
                 TextView tvCountry = (TextView) linearLayoutChild.getChildAt(0);
-                Toast.makeText(getBaseContext(), tvCountry.getText().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), position + ": " + tvCountry.getText().toString(), Toast.LENGTH_SHORT).show();
+
+                switch (position) {
+                    case 0:
+                        //do
+                        startActivity(new Intent(Main.this, MatCalc.class));
+                        break;
+                    case 1:
+                        startActivity(new Intent(Main.this, Slope.class));
+                        break;
+                    case 2:
+                        startActivity(new Intent(Main.this, Julian.class));
+                        break;
+                    case 3:
+                        startActivity(new Intent(Main.this, Inspections.class));
+                        break;
+                }
             }
         };
+
 
         // Setting the item click listener for the listview
         listView.setOnItemClickListener(itemClickListener);
