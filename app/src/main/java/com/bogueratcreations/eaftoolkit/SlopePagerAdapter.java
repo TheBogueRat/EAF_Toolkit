@@ -12,7 +12,7 @@ public class SlopePagerAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 3;
     // Tab Titles
-    private String tabtitles[] = new String[] { "Dist / Elev", "Dist / Elev Diff", "Convert" };
+    private String tabtitles[] = new String[] { "Elev / Dist", "Elev Diff / Dist", "Convert % <-> \u00b0" };
     Context context;
 
     public SlopePagerAdapter(FragmentManager fm) {

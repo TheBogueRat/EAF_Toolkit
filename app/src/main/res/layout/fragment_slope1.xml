@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bogueratcreations.eaftoolkit.SlopeFragment1">
-
+    >
+    <!--tools:context="com.bogueratcreations.eaftoolkit.SlopeFragment1"-->
 
     <TextView
         android:layout_width="wrap_content"
@@ -12,12 +12,13 @@
         android:id="@+id/tvHead1"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="20dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
+        android:gravity="center"
         android:ems="10"
         android:id="@+id/etSlope1Elev"
         android:layout_below="@+id/lblSlope1Elev"
@@ -31,12 +32,13 @@
         android:id="@+id/lblSlope1Elev"
         android:layout_below="@+id/tvHead1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="24dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
+        android:gravity="center"
         android:ems="10"
         android:id="@+id/etSlope1Dist"
         android:layout_below="@+id/lblSlope1Dist"
@@ -50,7 +52,7 @@
         android:id="@+id/lblSlope1Dist"
         android:layout_below="@+id/etSlope1Elev"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="24dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -60,7 +62,7 @@
         android:id="@+id/lblSlope1Result"
         android:layout_below="@+id/etSlope1Dist"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="24dp" />
 
     <TextView
         android:layout_width="wrap_content"

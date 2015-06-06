@@ -11,7 +11,7 @@
         android:id="@+id/tvHead2"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,7 +19,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Elevation 1"
         android:id="@+id/tv2Elev1"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="24dp"
         android:layout_below="@+id/tvHead2"
         android:layout_centerHorizontal="true" />
 
@@ -27,6 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
+        android:gravity="center"
         android:ems="10"
         android:id="@+id/etSlope2Elev1"
         android:layout_below="@+id/tv2Elev1"
@@ -38,7 +39,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Distance"
         android:id="@+id/tv2Dist"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="24dp"
         android:layout_below="@+id/etSlope2Elev2"
         android:layout_centerHorizontal="true" />
 
@@ -46,6 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
+        android:gravity="center"
         android:ems="10"
         android:id="@+id/etSlope2Dist"
         android:layout_below="@+id/tv2Dist"
@@ -59,7 +61,7 @@
         android:id="@+id/lblSlope2Result"
         android:layout_below="@+id/etSlope2Dist"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="24dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -87,7 +89,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Elevation 2"
         android:id="@+id/tv2Elev2"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="24dp"
         android:layout_below="@+id/etSlope2Elev1"
         android:layout_centerHorizontal="true" />
 
@@ -95,6 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
+        android:gravity="center"
         android:ems="10"
         android:id="@+id/etSlope2Elev2"
         android:layout_below="@+id/tv2Elev2"

@@ -12,17 +12,17 @@
         android:id="@+id/tvHead3"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="20dp" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
+        android:gravity="center"
         android:ems="10"
-        android:id="@+id/etSlope3Elev"
+        android:id="@+id/etSlope3Per"
         android:layout_below="@+id/tvPer3"
-        android:layout_alignLeft="@+id/etSlope3Dist"
-        android:layout_alignStart="@+id/etSlope3Dist" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
         android:id="@+id/tvPer3"
         android:layout_below="@+id/tvHead3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="24dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,16 +40,17 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Degrees"
         android:id="@+id/tvDeg3"
-        android:layout_below="@+id/etSlope3Elev"
+        android:layout_below="@+id/etSlope3Per"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="24dp" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
+        android:gravity="center"
         android:ems="10"
-        android:id="@+id/etSlope3Dist"
+        android:id="@+id/etSlope3Deg"
         android:layout_below="@+id/tvDeg3"
         android:layout_centerHorizontal="true" />
 
@@ -67,10 +68,20 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="%"
-        android:id="@+id/tvSymbol3"
-        android:layout_alignBottom="@+id/etSlope3Elev"
-        android:layout_toRightOf="@+id/etSlope3Elev"
-        android:layout_toEndOf="@+id/etSlope3Elev" />
+        android:id="@+id/tvSymbol3percent"
+        android:layout_alignTop="@+id/etSlope3Per"
+        android:layout_alignBottom="@+id/etSlope3Per"
+        android:layout_toRightOf="@+id/etSlope3Per" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/rvSymbol3degrees"
+        android:layout_alignTop="@+id/etSlope3Deg"
+        android:layout_alignBottom="@+id/etSlope3Deg"
+        android:layout_toRightOf="@+id/etSlope3Deg"
+        android:text="°" />
 </RelativeLayout>
