@@ -8,48 +8,47 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Elevation Change / Distance"
-        android:id="@+id/textView"
+        android:id="@+id/tvHead2"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Elevation 1"
+        android:id="@+id/tv2Elev1"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/tvHead2"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etSlope3Elev"
-        android:layout_below="@+id/textView2"
-        android:layout_alignLeft="@+id/etSlope3Dist"
-        android:layout_alignStart="@+id/etSlope3Dist" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Elevation Change"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:id="@+id/etSlope2Elev1"
+        android:layout_below="@+id/tv2Elev1"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Distance"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/etSlope3Elev"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+        android:id="@+id/tv2Dist"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/etSlope2Elev2"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etSlope3Dist"
-        android:layout_below="@+id/textView3"
+        android:id="@+id/etSlope2Dist"
+        android:layout_below="@+id/tv2Dist"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -57,8 +56,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="RESULT"
-        android:id="@+id/lblSlope3Result"
-        android:layout_below="@+id/etSlope3Dist"
+        android:id="@+id/lblSlope2Result"
+        android:layout_below="@+id/etSlope2Dist"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp" />
 
@@ -66,9 +65,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Percent / Degrees"
-        android:id="@+id/tvSlope3Result"
-        android:layout_below="@+id/lblSlope3Result"
+        android:text="% / Deg"
+        android:id="@+id/tvSlope2Result"
+        android:layout_below="@+id/lblSlope2Result"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -76,9 +75,29 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Note: Use the same units of measure for all values. (i.e. feet or inches)"
-        android:id="@+id/tvSlope1Note"
-        android:layout_below="@+id/tvSlope3Result"
+        android:id="@+id/tvNote2"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="54dp" />
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Elevation 2"
+        android:id="@+id/tv2Elev2"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/etSlope2Elev1"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/etSlope2Elev2"
+        android:layout_below="@+id/tv2Elev2"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
