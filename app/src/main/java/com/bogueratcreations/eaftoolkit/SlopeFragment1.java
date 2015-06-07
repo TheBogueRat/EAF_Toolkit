@@ -18,7 +18,6 @@ public class SlopeFragment1 extends Fragment{
     EditText etElev;
     EditText etDist;
     TextView tvResult;
-    Boolean editing;
 
     public SlopeFragment1() {
         // Required empty public constructor
@@ -41,20 +40,17 @@ public class SlopeFragment1 extends Fragment{
 
             @Override
             public void afterTextChanged(Editable s) {
-                editing = true;
                 // Don't show results if either EditText is empty
-                if ((s.toString().length() == 0) || (etDist.getText().toString().length()) == 0){
+                if ((s.toString().length() == 0) || (etDist.getText().toString().length() == 0)){
                     tvResult.setText("");
-                    editing = false;
                     return;
                 }
                 Double rise = Double.parseDouble(s.toString());
                 Double run = Double.parseDouble(etDist.getText().toString());
                 Double percent = (rise / run) * 100;
                 String degrees = convert.Percent2Degrees(percent);
-                String percent2 = convert.Degrees2Percent(Double.parseDouble(degrees));
+                String percent2 = percent.toString();
                 tvResult.setText(percent2 + "% / " + degrees + (char) 0x00B0);
-                editing = false;
             }
         });
         etDist.addTextChangedListener(new TextWatcher() {
@@ -65,20 +61,17 @@ public class SlopeFragment1 extends Fragment{
 
             @Override
             public void afterTextChanged(Editable s) {
-                editing = true;
                 // Don't show results if either EditText is empty
                 if ((s.toString().length() == 0) || (etElev.getText().toString().length()) == 0){
                     tvResult.setText("");
-                    editing = false;
                     return;
                 }
                 Double rise = Double.parseDouble(etElev.getText().toString());
                 Double run = Double.parseDouble(s.toString());
                 Double percent = (rise / run) * 100;
                 String degrees = convert.Percent2Degrees(percent);
-                String percent2 = convert.Degrees2Percent(Double.parseDouble(degrees));
+                String percent2 = percent.toString();
                 tvResult.setText(percent2 + "% / " + degrees + (char) 0x00B0);
-                editing = false;
             }
         });
 
