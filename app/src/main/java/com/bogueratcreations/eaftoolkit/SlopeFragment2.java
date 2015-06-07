@@ -46,7 +46,7 @@ public class SlopeFragment2 extends Fragment {
                 String elev2 = etElev2.getText().toString();
                 String dist = etDist.getText().toString();
                 Double rise;
-                // Don't show results if either EditText is empty
+                // Don't show results if any EditText is empty
                 if ((elev1.length() == 0) || (dist.length() == 0) || (elev2.length() == 0)){
                     tvResult.setText("");
                     return;
@@ -77,7 +77,7 @@ public class SlopeFragment2 extends Fragment {
                 String elev2 = s.toString();
                 String dist = etDist.getText().toString();
                 Double rise;
-                // Don't show results if either EditText is empty
+                // Don't show results if any EditText is empty
                 if ((elev1.length() == 0) || (dist.length() == 0) || (elev2.length() == 0)){
                     tvResult.setText("");
                     return;
@@ -108,7 +108,7 @@ public class SlopeFragment2 extends Fragment {
                 String elev2 = etElev2.getText().toString();
                 String dist = s.toString();
                 Double rise;
-                // Don't show results if either EditText is empty
+                // Don't show results if any EditText is empty
                 if ((elev1.length() == 0) || (dist.length() == 0) || (elev2.length() == 0)){
                     tvResult.setText("");
                     return;

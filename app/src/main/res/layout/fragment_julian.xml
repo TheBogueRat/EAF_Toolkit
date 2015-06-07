@@ -6,7 +6,59 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.bogueratcreations.eaftoolkit.JulianFragment">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Julian Date (YDDD)"
+        android:id="@+id/tvJulian"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:gravity="center"
+        android:ems="12"
+        android:id="@+id/etJulian"
+        android:layout_below="@+id/tvJulian"
+        android:layout_centerHorizontal="true" />
+
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/datePicker"
+        android:calendarViewShown="false"
+        android:descendantFocusability="blocksDescendants"
+        android:layout_below="@+id/etJulian"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:gravity="center"
+        android:text="The Calendar is not synchronized until a valid Julian Date is entered or the Calendar is changed."
+        android:id="@+id/tvSync"
+        android:textStyle="bold"
+        android:textColor="#FF0000"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/datePicker"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="75dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Note: Enter a 4-digit Julian date or change the calendar to convert either value."
+        android:id="@+id/tvJulianNote"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
 
 </RelativeLayout>

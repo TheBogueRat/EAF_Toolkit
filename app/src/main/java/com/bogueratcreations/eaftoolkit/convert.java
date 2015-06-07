@@ -1,6 +1,9 @@
 package com.bogueratcreations.eaftoolkit;
 
 import java.text.DecimalFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * Created by TheBogueRat on 6/6/2015.
@@ -32,4 +35,19 @@ public class convert {
         Double percent = Math.tan(radians) * 100.0;
         return df.format(percent);
     }
+
+    public static String cal2Julian(Calendar cal) {
+        String julian;
+        String yStr;
+        String dStr;
+
+        yStr = String.valueOf(cal.get(cal.YEAR));
+        yStr = yStr.substring(yStr.length() - 1);
+        dStr = String.format("%03d", cal.get(cal.DAY_OF_YEAR));
+
+        julian = yStr + dStr;
+
+        return julian;
+    }
 }
+
