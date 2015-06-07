@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:gravity="center"
-        android:ems="10"
+        android:ems="12"
         android:id="@+id/etSlope3Per"
         android:layout_below="@+id/tvPer3"
         android:layout_centerHorizontal="true" />
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:gravity="center"
-        android:ems="10"
+        android:ems="12"
         android:id="@+id/etSlope3Deg"
         android:layout_below="@+id/tvDeg3"
         android:layout_centerHorizontal="true" />

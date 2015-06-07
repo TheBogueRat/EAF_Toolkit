@@ -24,11 +24,11 @@
         android:layout_centerHorizontal="true" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:gravity="center"
-        android:ems="10"
+        android:ems="12"
         android:id="@+id/etSlope2Elev1"
         android:layout_below="@+id/tv2Elev1"
         android:layout_centerHorizontal="true" />
@@ -44,11 +44,11 @@
         android:layout_centerHorizontal="true" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:gravity="center"
-        android:ems="10"
+        android:ems="12"
         android:id="@+id/etSlope2Dist"
         android:layout_below="@+id/tv2Dist"
         android:layout_centerHorizontal="true" />
@@ -94,11 +94,11 @@
         android:layout_centerHorizontal="true" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:gravity="center"
-        android:ems="10"
+        android:ems="12"
         android:id="@+id/etSlope2Elev2"
         android:layout_below="@+id/tv2Elev2"
         android:layout_centerHorizontal="true" />

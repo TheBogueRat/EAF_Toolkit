@@ -23,14 +23,11 @@ public class SlopePagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int i) {
         switch (i) {
             case 0:
-                SlopeFragment1 sf1 = new SlopeFragment1();
-                return sf1;
+                return new SlopeFragment1();
             case 1:
-                SlopeFragment2 sf2 = new SlopeFragment2();
-                return sf2;
+                return new SlopeFragment2();
             case 2:
-                SlopeFragment3 sf3 = new SlopeFragment3();
-                return sf3;
+                return new SlopeFragment3();
         }
         return null;
     }
