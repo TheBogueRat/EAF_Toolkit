@@ -59,6 +59,7 @@ public class MatCalcFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
+                // Clear the results when changes are made.
                 result1.setText("");
                 result2.setText("");
             }
@@ -77,6 +78,7 @@ public class MatCalcFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
+                // Clear the results when changes are made.
                 result1.setText("");
                 result2.setText("");
             }

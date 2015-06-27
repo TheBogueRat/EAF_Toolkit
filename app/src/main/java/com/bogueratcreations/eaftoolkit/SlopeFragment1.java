@@ -47,7 +47,8 @@ public class SlopeFragment1 extends Fragment{
                 }
                 Double rise = Double.parseDouble(s.toString());
                 Double run = Double.parseDouble(etDist.getText().toString());
-                Double percent = (rise / run) * 100;
+                Double percent = (rise / run) * 100.0;
+                percent = Math.round(percent * 100.0) / 100.0;
                 String degrees = convert.Percent2Degrees(percent);
                 String percent2 = percent.toString();
                 tvResult.setText(percent2 + "% / " + degrees + (char) 0x00B0);
@@ -68,7 +69,8 @@ public class SlopeFragment1 extends Fragment{
                 }
                 Double rise = Double.parseDouble(etElev.getText().toString());
                 Double run = Double.parseDouble(s.toString());
-                Double percent = (rise / run) * 100;
+                Double percent = (rise / run) * 100.0;
+                percent = Math.round(percent * 100.0) / 100.0;
                 String degrees = convert.Percent2Degrees(percent);
                 String percent2 = percent.toString();
                 tvResult.setText(percent2 + "% / " + degrees + (char) 0x00B0);

@@ -30,9 +30,10 @@ public class convert {
      */
     public static String Degrees2Percent(Double degrees) {
         //
-        DecimalFormat df = new DecimalFormat("#.##");
         Double radians = Math.toRadians(degrees);
         Double percent = Math.tan(radians) * 100.0;
+        percent = Math.round(percent*100.0)/100.0;
+        DecimalFormat df = new DecimalFormat("###.##");
         return df.format(percent);
     }
 

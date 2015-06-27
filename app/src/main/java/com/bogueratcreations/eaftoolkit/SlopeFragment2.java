@@ -59,7 +59,8 @@ public class SlopeFragment2 extends Fragment {
                     rise = elev2dbl - elev1dbl;
                 }
                 Double run = Double.parseDouble(dist);
-                Double percent = (rise / run) * 100;
+                Double percent = (rise / run) * 100.0;
+                percent = Math.round(percent * 100.0) / 100.0;
                 String degrees = convert.Percent2Degrees(percent);
                 String percent2 = percent.toString();
                 tvResult.setText(percent2 + "% / " + degrees + (char) 0x00B0);
@@ -76,12 +77,13 @@ public class SlopeFragment2 extends Fragment {
                 String elev1 = etElev1.getText().toString();
                 String elev2 = s.toString();
                 String dist = etDist.getText().toString();
-                Double rise;
-                // Don't show results if any EditText is empty
-                if ((elev1.length() == 0) || (dist.length() == 0) || (elev2.length() == 0)){
+
+                // Don't process if any EditText is empty
+                if ((elev1.length() == 0) || (dist.length() == 0) || (s.length() == 0)){
                     tvResult.setText("");
                     return;
                 }
+                Double rise;
                 Double elev1dbl = Double.parseDouble(elev1);
                 Double elev2dbl = Double.parseDouble(elev2);
                 if (elev1dbl > elev2dbl) {
@@ -90,7 +92,8 @@ public class SlopeFragment2 extends Fragment {
                     rise = elev2dbl - elev1dbl;
                 }
                 Double run = Double.parseDouble(dist);
-                Double percent = (rise / run) * 100;
+                Double percent = (rise / run) * 100.0;
+                percent = Math.round(percent * 100.0) / 100.0;
                 String degrees = convert.Percent2Degrees(percent);
                 String percent2 = percent.toString();
                 tvResult.setText(percent2 + "% / " + degrees + (char) 0x00B0);
@@ -121,7 +124,8 @@ public class SlopeFragment2 extends Fragment {
                     rise = elev2dbl - elev1dbl;
                 }
                 Double run = Double.parseDouble(dist);
-                Double percent = (rise / run) * 100;
+                Double percent = (rise / run) * 100.0;
+                percent = Math.round(percent * 100.0) / 100.0;
                 String degrees = convert.Percent2Degrees(percent);
                 String percent2 = percent.toString();
                 tvResult.setText(percent2 + "% / " + degrees + (char) 0x00B0);
