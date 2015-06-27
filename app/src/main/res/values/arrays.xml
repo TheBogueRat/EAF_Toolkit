@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="layPatterns">
+        <item>Brickwork</item>
+        <item>2-1 Lay</item>
+        <item>3-4 Max 6</item>
+        <item>3-4 Max 12</item>
+    </string-array>
+
+</resources>

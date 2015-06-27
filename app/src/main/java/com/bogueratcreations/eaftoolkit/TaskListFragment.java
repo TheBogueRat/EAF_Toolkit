@@ -65,6 +65,7 @@ public class TaskListFragment extends ListFragment {
      * fragment (e.g. upon screen orientation changes).
      */
     public TaskListFragment() {
+
     }
 
     @Override
@@ -149,4 +150,5 @@ public class TaskListFragment extends ListFragment {
 
         mActivatedPosition = position;
     }
+
 }

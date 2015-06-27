@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -104,22 +103,26 @@ public class Main extends AppCompatActivity {
                 LinearLayout linearLayoutChild = (LinearLayout ) linearLayoutParent.getChildAt(1);
                 // Getting the Country TextView
                 TextView tvCountry = (TextView) linearLayoutChild.getChildAt(0);
-                Toast.makeText(getBaseContext(), position + ": " + tvCountry.getText().toString(), Toast.LENGTH_SHORT).show();
 
                 switch (position) {
-                    case 0:
-                        //do
+                    case 0: // Matting Calculator
                         startActivity(new Intent(Main.this, MatCalc.class));
                         break;
-                    case 1:
+                    case 1: // Slope
                         startActivity(new Intent(Main.this, Slope.class));
                         break;
-                    case 2:
+                    case 2: // Julian
                         startActivity(new Intent(Main.this, Julian.class));
                         break;
-                    case 3:
+                    case 3:  // FLOLS
+                        break;
+                    case 4:  // CGRI
                         startActivity(new Intent(Main.this, Inspections.class));
                         break;
+                    case 5:  // CSEC
+                        startActivity(new Intent(Main.this, Inspections.class));
+                        break;
+
                 }
             }
         };

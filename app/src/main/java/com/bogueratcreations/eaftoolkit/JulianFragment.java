@@ -91,7 +91,7 @@ public class JulianFragment extends Fragment {
                 Calendar cal = Calendar.getInstance();
                 int year = Integer.valueOf(yearDigit) + ((dp.getYear() / 10) * 10);
                 cal.set(year, 1, 1);
-                Log.e("Day of year: ", String.valueOf(day));
+
                 // zero based so day less one.
                 cal.add(Calendar.DATE, day - 1);
                 editing = true;

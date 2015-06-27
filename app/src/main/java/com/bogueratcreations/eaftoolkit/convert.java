@@ -36,6 +36,11 @@ public class convert {
         return df.format(percent);
     }
 
+    /**
+     *
+     * @param cal A Calendar Object with date to be converted
+     * @return Julian Date string format "YDDD"
+     */
     public static String cal2Julian(Calendar cal) {
         String julian;
         String yStr;
