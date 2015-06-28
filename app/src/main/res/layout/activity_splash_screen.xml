@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@color/BRCgreen"
+tools:context="com.bogueratcreations.eaftoolkit.SplashScreen">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ivEAFtoolkitLogo"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/splash"
+        android:contentDescription="Splash Logo"
+        android:layout_alignParentTop="false"
+        android:layout_marginTop="100dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ivBRC"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/brc"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="@string/brc_name" />
+
+</RelativeLayout>

@@ -18,8 +18,8 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">ListViewWithImagesAndTextItemClick</string>
 
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_flols">FLOLS Hook 2 Eye</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="brc_name">Bogue Rat Creations</string>
 
 </resources>
