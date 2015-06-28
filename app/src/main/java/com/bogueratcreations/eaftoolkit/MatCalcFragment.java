@@ -37,7 +37,6 @@ public class MatCalcFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View V = inflater.inflate(R.layout.fragment_mat_calc, container, false);
-        //tvResult = (TextView)V.findViewById(R.id.tvSlope1Result);
         etWidth = (EditText)V.findViewById(R.id.etWidth);
         etLength = (EditText)V.findViewById(R.id.etLength);
         swStartLay = (Switch)V.findViewById(R.id.swStartLay);

@@ -2,8 +2,6 @@ package com.bogueratcreations.eaftoolkit;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
 
 /**
  * Created by TheBogueRat on 6/6/2015.
@@ -25,7 +23,7 @@ public class convert {
 
     /**
      *
-     * @param degrees
+     * @param degrees Input to convert
      * @return The percent slope equivalent formatted string.
      */
     public static String Degrees2Percent(Double degrees) {

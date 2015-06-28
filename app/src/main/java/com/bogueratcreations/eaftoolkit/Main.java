@@ -115,6 +115,7 @@ public class Main extends AppCompatActivity {
                         startActivity(new Intent(Main.this, Julian.class));
                         break;
                     case 3:  // FLOLS
+                        startActivity(new Intent(Main.this, FLOLS.class));
                         break;
                     case 4:  // CGRI
                         startActivity(new Intent(Main.this, Inspections.class));
