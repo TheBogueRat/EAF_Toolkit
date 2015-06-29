@@ -14,10 +14,10 @@ import android.widget.Toast;
 public class InspectDbHelper extends SQLiteOpenHelper {
     public SQLiteDatabase DB;
     public String DBPath;
-    public static String DBName = "EAFToolkit";
+    public static String DBName = "csec.db";
     public static final int version = '1';
     public static Context currentContext;
-    public static String tableName = "CSEC";
+    public static String tableName = "questions";
 
     public InspectDbHelper(Context context) {
         super(context, DBName, null, version);
