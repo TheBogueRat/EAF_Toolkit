@@ -23,14 +23,14 @@ public class Main extends AppCompatActivity {
     int[] listIcons = new int[]{
             R.drawable.forks,
             R.drawable.slope,
-            R.drawable.icon,
+            R.drawable.calendar,
             R.drawable.flols,
-            R.drawable.icon,
-            R.drawable.icon,
-            R.drawable.icon,
-            R.drawable.icon,
-            R.drawable.icon,
-            R.drawable.icon
+            R.drawable.temp,
+            R.drawable.temp,
+            R.drawable.temp,
+            R.drawable.temp,
+            R.drawable.temp,
+            R.drawable.brc
     };
 
     // Array of strings storing country names
@@ -122,6 +122,15 @@ public class Main extends AppCompatActivity {
                         break;
                     case 5:  // CSEC
                         startActivity(new Intent(Main.this, Inspections.class));
+                        break;
+                    case 6: // NAMP
+                        break;
+                    case 7: // DCP
+                        break;
+                    case 8: // Images
+                        break;
+                    case 9: // About
+                        startActivity(new Intent(Main.this, About.class));
                         break;
 
                 }
