@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,7 +16,7 @@ import java.sql.SQLException;
 /**
  * Created by jodyroth on 6/29/15.
  */
-public class CGRIDbHelper extends SQLiteOpenHelper {
+public class CGRIDbHelper extends SQLiteAssetHelper {
 
     // The Android default sys path for app data
     private static String DB_PATH = "/data/data/com.bogueratcreations.eaftoolkit/databases";
@@ -24,7 +26,8 @@ public class CGRIDbHelper extends SQLiteOpenHelper {
 
     // Constructor
     // Takes and keeps reference of the passed context to access the app assets and resources
-    Public DataBaseHelper(Context myContext) {
+    public CGRIDbHelper(Context context) {
+        // context, db name, null, database_version
         super(context, DB_NAME, null, 1);
         this.myContext = context;
     }
@@ -92,10 +95,6 @@ public class CGRIDbHelper extends SQLiteOpenHelper {
         super.close();
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-
-    }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 

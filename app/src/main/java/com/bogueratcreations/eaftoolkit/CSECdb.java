@@ -20,7 +20,7 @@ import java.util.List;
 public class CSECdb extends SQLiteOpenHelper {
     //The Android's default system path of your application database.
     private static String DB_PATH = "data/data/com.bogueratcreations.eaftoolkit.app/databases/";
-    private static String DB_NAME = "eafCSEC";
+    private static String DB_NAME = "databases/eafCSEC";
     private static String TABLE_LOCATION = "CSEC";
 
     private final Context context;
