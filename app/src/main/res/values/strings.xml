@@ -23,5 +23,6 @@
     <string name="brc_name">Bogue Rat Creations</string>
     <string name="about_text">Tools for the EAF community.</string>
     <string name="title_activity_about">About</string>
+    <string name="title_activity_csec">CSEC</string>
 
 </resources>

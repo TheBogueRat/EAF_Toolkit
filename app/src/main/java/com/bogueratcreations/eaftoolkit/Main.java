@@ -118,10 +118,10 @@ public class Main extends AppCompatActivity {
                         startActivity(new Intent(Main.this, FLOLS.class));
                         break;
                     case 4:  // CGRI
-                        startActivity(new Intent(Main.this, Inspections.class));
+                        startActivity(new Intent(Main.this, CSEC.class));
                         break;
                     case 5:  // CSEC
-                        startActivity(new Intent(Main.this, Inspections.class));
+                        startActivity(new Intent(Main.this, CSEC.class));
                         break;
                     case 6: // NAMP
                         break;

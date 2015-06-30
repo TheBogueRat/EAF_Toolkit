@@ -12,7 +12,7 @@ public class Slope extends FragmentActivity{
         // Get the view from activity_main.xml
         setContentView(R.layout.activity_slope);
 
-        // Locate the viewpager in activity_main.xml
+        // Locate the viewpager in activity_slope.xml
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
 
         // Set the ViewPagerAdapter into ViewPager
