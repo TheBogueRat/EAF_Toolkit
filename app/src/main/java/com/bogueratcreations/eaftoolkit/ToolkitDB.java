@@ -20,7 +20,7 @@ import java.sql.SQLException;
  */
 public class ToolkitDB extends SQLiteAssetHelper {
 
-    private static final String DB_PATH = "/data/data/com.bogueratcreations.eaftoolkit/databases";
+    private static final String DB_PATH = "/data/data/com.bogueratcreations.eafToolkit/databases";
     private static final String DB_NAME = "eafToolkit.sqlite";
     private static final int DB_VER = 1;
     private SQLiteDatabase eafToolkitDatabase;
@@ -112,12 +112,17 @@ public class ToolkitDB extends SQLiteAssetHelper {
         super.close();
     }
 
-    public Cursor getCSECquestions() {
+    // TODO: Pass Table Name as Parameter
+    public Cursor getQuestions() {
+
+        // Table name that will be passed as argument
+        String TABLE_NAME = "csec";
+
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
         String[] sqlSelect = {"0 _ID","programID","programName","number","question","reference","complies","userMod","remarks"};
-        String sqlTables = "csec";
+        String sqlTables = TABLE_NAME;
 
         qb.setTables(sqlTables);
         // add where statement later to pull specific sections
