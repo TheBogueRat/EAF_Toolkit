@@ -1,7 +1,5 @@
 package com.bogueratcreations.eaftoolkit;
 
-import android.util.Log;
-
 /**
  * Created by TheBogueRat on 6/26/2015.
  * Calculates the amount of matting for a given span

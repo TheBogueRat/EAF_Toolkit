@@ -6,10 +6,12 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/CustomActionBarTheme">
+
         <activity
             android:name=".Main"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
 
             <!--
         <intent-filter>
@@ -21,7 +23,8 @@
         <activity
             android:name=".Julian"
             android:label="@string/title_activity_julian"
-            android:parentActivityName=".Main" >
+            android:parentActivityName=".Main"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bogueratcreations.eaftoolkit.Main" />
@@ -29,7 +32,8 @@
         <activity
             android:name=".Slope"
             android:label="@string/title_activity_slope"
-            android:parentActivityName=".Main" >
+            android:parentActivityName=".Main"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bogueratcreations.eaftoolkit.Main" />
@@ -37,7 +41,9 @@
         <activity
             android:name=".MatCalc"
             android:label="@string/title_activity_mat_calc"
-            android:parentActivityName=".Main" >
+            android:parentActivityName=".Main"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bogueratcreations.eaftoolkit.Main" />
@@ -45,7 +51,8 @@
         <activity
             android:name=".FLOLS"
             android:label="@string/title_activity_flols"
-            android:parentActivityName=".Main" >
+            android:parentActivityName=".Main"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bogueratcreations.eaftoolkit.Main" />
@@ -65,7 +72,8 @@
         <activity
             android:name=".About"
             android:label="@string/title_activity_about"
-            android:parentActivityName=".Main" >
+            android:parentActivityName=".Main"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bogueratcreations.eaftoolkit.Main" />
@@ -73,7 +81,8 @@
         <activity
             android:name=".Pics"
             android:label="@string/title_activity_pics"
-            android:parentActivityName=".Main" >
+            android:parentActivityName=".Main"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bogueratcreations.eaftoolkit.Main" />

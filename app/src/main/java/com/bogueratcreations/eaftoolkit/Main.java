@@ -104,11 +104,11 @@ public class Main extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View container, int position, long id) {
                 // Getting the Container Layout of the ListView
-                LinearLayout linearLayoutParent = (LinearLayout) container;
+                //LinearLayout linearLayoutParent = (LinearLayout) container;
                 // Getting the inner Linear Layout
-                LinearLayout linearLayoutChild = (LinearLayout ) linearLayoutParent.getChildAt(1);
+                //LinearLayout linearLayoutChild = (LinearLayout ) linearLayoutParent.getChildAt(1);
                 // Getting the Country TextView
-                TextView tvCountry = (TextView) linearLayoutChild.getChildAt(0);
+                //TextView tvCountry = (TextView) linearLayoutChild.getChildAt(0);
 
                 switch (position) {
                     case 0: // Matting Calculator

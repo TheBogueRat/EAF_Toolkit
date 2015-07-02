@@ -8,8 +8,8 @@ android {
         applicationId "com.bogueratcreations.eafToolkit"
         minSdkVersion 17
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode 27
+        versionName "2.0"
     }
     buildTypes {
         release {
@@ -25,5 +25,5 @@ dependencies {
     compile 'com.android.support:support-v4:22.2.0'
 // SQLite helper to prepackage the database
     // Disable on Macbook due to connectivity issues and may not need this
-     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
+     //compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
 }
