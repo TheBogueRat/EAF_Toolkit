@@ -26,12 +26,14 @@ public class Main extends AppCompatActivity {
             R.drawable.calendar,
             R.drawable.flols,
             R.drawable.temp,
-            R.drawable.temp,
-            R.drawable.temp,
-            R.drawable.temp,
-            R.drawable.temp,
             R.drawable.brc
     };
+    /*
+            R.drawable.temp,
+            R.drawable.temp,
+            R.drawable.temp,
+            R.drawable.temp,
+     */
 
     // Array of strings storing country names
     String[] listTitles = new String[] {
@@ -39,28 +41,31 @@ public class Main extends AppCompatActivity {
             "Slope Converter",
             "Julian Dater",
             "FLOLS H/E",
+            "Images",
+            "About"
+    };
+/*
             "CGRI/FAI",
             "CSEC",
             "NAMP Codes",
             "DCP (TBD)",
-            "Images",
-            "About"
-    };
-
+ */
     // Array of strings to store currencies
     String[] listDesc = new String[]{
             "Calculate Matting Requirements",
             "Get the Slope in Percent or Degrees",
             "Convert to/from Julain and Gregorian Calendars",
             "Calculate Roll Angle and Pole Height",
+            "Random EAF Pictures",
+            "About the EAF Toolkit"
+    };
+/*
+
             "Inspection checklist from HQMC website",
             "NAMP Computerized Self Examination Checklists",
             "Maintenance Codes",
             "CBR Calculator in the works",
-            "Random EAF Pictures",
-            "About the EAF Toolkit"
-    };
-
+ */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,8 +73,9 @@ public class Main extends AppCompatActivity {
 
         // Each row in the list stores country name, currency and flag
         List<HashMap<String,String>> aList = new ArrayList<>();
+        int lengthOfArray = listDesc.length;
 
-        for(int i=0;i<10;i++){
+        for(int i=0;i<lengthOfArray;i++){
             HashMap<String, String> hm = new HashMap<>();
             hm.put("listTitles", listTitles[i]);
             hm.put("listDesc", listDesc[i]);
@@ -117,19 +123,10 @@ public class Main extends AppCompatActivity {
                     case 3:  // FLOLS
                         startActivity(new Intent(Main.this, FLOLS.class));
                         break;
-                    case 4:  // CGRI
-                        //startActivity(new Intent(Main.this, CSEC.class));
+                    case 4: // Images
+                        startActivity(new Intent(Main.this, Pics.class));
                         break;
-                    case 5:  // CSEC
-                        startActivity(new Intent(Main.this, CSEC.class));
-                        break;
-                    case 6: // NAMP
-                        break;
-                    case 7: // DCP
-                        break;
-                    case 8: // Images
-                        break;
-                    case 9: // About
+                    case 5: // About
                         startActivity(new Intent(Main.this, About.class));
                         break;
 

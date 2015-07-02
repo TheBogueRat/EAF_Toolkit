@@ -43,22 +43,6 @@
                 android:value="com.bogueratcreations.eaftoolkit.Main" />
         </activity>
         <activity
-            android:name=".TaskListActivity"
-            android:label="@string/title_task_list"
-            android:parentActivityName=".Inspections" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bogueratcreations.eaftoolkit.Inspections" />
-        </activity>
-        <activity
-            android:name=".TaskDetailActivity"
-            android:label="@string/title_task_detail"
-            android:parentActivityName=".TaskListActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bogueratcreations.eaftoolkit.TaskListActivity" />
-        </activity>
-        <activity
             android:name=".FLOLS"
             android:label="@string/title_activity_flols"
             android:parentActivityName=".Main" >
@@ -87,8 +71,8 @@
                 android:value="com.bogueratcreations.eaftoolkit.Main" />
         </activity>
         <activity
-            android:name=".CSEC"
-            android:label="@string/title_activity_csec"
+            android:name=".Pics"
+            android:label="@string/title_activity_pics"
             android:parentActivityName=".Main" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
