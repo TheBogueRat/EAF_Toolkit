@@ -13,7 +13,27 @@ public class SplashScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        int myTimer = 3000;
+        Thread timerThread = new Thread() {
+            public void run() {
+                try {
+                    sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    Intent i = new Intent(SplashScreen.this, Main.class);
+                    startActivity(i);
+                }
+            }
+        };
+        timerThread.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
+/*        int myTimer = 2000;
         new Handler().postDelayed(new Runnable() {
 
             @Override
@@ -22,8 +42,6 @@ public class SplashScreen extends Activity {
                 startActivity(i);
                 finish(); // close this activity
             }
-        }, myTimer);
-
-    }
+        }, myTimer);*/
 
 }

@@ -2,7 +2,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".Main">
 
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+    <item android:id="@+id/action_matcalc" android:title="MatCalc"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_slope" android:title="Slopes"
+        android:orderInCategory="200" app:showAsAction="never" />
+    <item android:id="@+id/action_julian" android:title="Julian"
+        android:orderInCategory="300" app:showAsAction="never" />
+    <item android:id="@+id/action_flols" android:title="FLOLS H2E"
+        android:orderInCategory="400" app:showAsAction="never" />
+    <item android:id="@+id/action_images" android:title="Images"
+        android:orderInCategory="500" app:showAsAction="never" />
+    <item android:id="@+id/action_about" android:title="About"
+        android:orderInCategory="600" app:showAsAction="never" />
 
 </menu>

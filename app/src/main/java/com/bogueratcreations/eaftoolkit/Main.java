@@ -25,7 +25,7 @@ public class Main extends AppCompatActivity {
             R.drawable.slope,
             R.drawable.calendar,
             R.drawable.flols,
-            R.drawable.temp,
+            R.drawable.br,
             R.drawable.brc
     };
     /*
@@ -161,11 +161,27 @@ public class Main extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        switch (id) {
+            case R.id.action_matcalc: // Matting Calculator
+                startActivity(new Intent(Main.this, MatCalc.class));
+                break;
+            case R.id.action_slope: // Slope
+                startActivity(new Intent(Main.this, Slope.class));
+                break;
+            case R.id.action_julian: // Julian
+                startActivity(new Intent(Main.this, Julian.class));
+                break;
+            case R.id.action_flols:  // FLOLS
+                startActivity(new Intent(Main.this, FLOLS.class));
+                break;
+            case R.id.action_images: // Images
+                startActivity(new Intent(Main.this, Pics.class));
+                break;
+            case R.id.action_about: // About
+                startActivity(new Intent(Main.this, About.class));
+                break;
 
+        }
         return super.onOptionsItemSelected(item);
     }
 }
