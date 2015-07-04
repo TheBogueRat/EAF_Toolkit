@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,8 +23,9 @@ public class MatCalcFragment extends Fragment {
 
     EditText etWidth;
     EditText etLength;
-    TextView result1;
-    TextView result2;
+    TextView results1;
+    TextView results2;
+    TextView results3;
     Switch swStartLay;
     Spinner spPattern;
     Button btnCalcMat;
@@ -41,9 +43,9 @@ public class MatCalcFragment extends Fragment {
         swStartLay = (Switch)V.findViewById(R.id.swStartLay);
         spPattern = (Spinner)V.findViewById(R.id.spLay);
         btnCalcMat = (Button)V.findViewById(R.id.btnCalcMat);
-        result1 = (TextView)V.findViewById(R.id.tvResult1);
-        result2 = (TextView)V.findViewById(R.id.tvResult2);
-
+        results1 = (TextView)V.findViewById(R.id.tvResults1);
+        results2 = (TextView)V.findViewById(R.id.tvResults2);
+        results3 = (TextView)V.findViewById(R.id.tvResults3);
         etWidth.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -58,8 +60,9 @@ public class MatCalcFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 // Clear the results when changes are made.
-                result1.setText("");
-                result2.setText("");
+                results1.setText("");
+                results2.setText("");
+                results3.setText("");
             }
         });
 
@@ -77,16 +80,17 @@ public class MatCalcFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 // Clear the results when changes are made.
-                result1.setText("");
-                result2.setText("");
+                results1.setText("");
+                results2.setText("");
+                results3.setText("");
             }
         });
         btnCalcMat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Collect Values from View
-                if ((etWidth.length() == 0)||(etLength.length() == 0)) {
-                    Toast.makeText(getActivity(),"Entry required for Width and Length", Toast.LENGTH_SHORT).show();
+                if ((etWidth.length() == 0) || (etLength.length() == 0)) {
+                    Toast.makeText(getActivity(), "Entry required for Width and Length", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 final Integer width = Integer.parseInt(etWidth.getText().toString());
@@ -95,20 +99,29 @@ public class MatCalcFragment extends Fragment {
                 // pattern: 0 - brickwork; 1 - 2-1; 2 - 3/4 Lay max 6; 3 - 3/4 Lay Max 12
                 final Integer pattern = spPattern.getSelectedItemPosition();
 
-                if((width > 0)&&(length > 0)) {
+                if ((width > 0) && (length > 0)) {
                     // Validate Width and Length
-                    if ((width % 6 > 0)||(length % 2 > 0)) {
-                        Toast.makeText(getActivity(),"Width must be divisible by 6 and Length by 2; and greater than zero!", Toast.LENGTH_SHORT).show();
+                    if ((width % 6 > 0) || (length % 2 > 0)) {
+                        Toast.makeText(getActivity(), "Width must be divisible by 6 and Length by 2; and greater than zero!", Toast.LENGTH_SHORT).show();
                         return;
                     }
                     // Calculate stuff here
                     Integer sixes = CalcMat.getMat6(length, width, startWith12, pattern, 0, 0, 0, 0);
                     Integer twelves = CalcMat.getMat12(length, width, startWith12, pattern, 0, 0, 0, 0);
+                    Integer sixRack = Integer.valueOf(CalcMat.getPallet(sixes, 162));
+                    Integer tweRack = Integer.valueOf(CalcMat.getPallet(twelves, 162));
 
-                    result1.setText("12' Sheets: " + twelves + " and 6' Sheets: " + sixes.toString());
-                    result2.setText("F71: " + CalcMat.getPallet(twelves, 18) + " - F72: " + CalcMat.getPallet(sixes, 18));
+                    results1.setText(twelves.toString() + " / " + sixes.toString());
+                    results2.setText(CalcMat.getPallet(twelves, 18) + " / " + CalcMat.getPallet(sixes, 18));
+                    if (sixRack == null || tweRack == null) {
+                    }
+                    if (sixRack > tweRack) {
+                        results3.setText(sixRack.toString());
+                    } else {
+                        results3.setText(tweRack.toString());
+                    }
                 } else {
-                    Toast.makeText(getActivity(),"Width must be divisible by 6 and Length by 2; and greater than zero!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Width must be divisible by 6 and Length by 2; and greater than zero!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

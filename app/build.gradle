@@ -8,7 +8,7 @@ android {
         applicationId "com.bogueratcreations.eafToolkit"
         minSdkVersion 17
         targetSdkVersion 22
-        versionCode 27
+        versionCode 20020
         versionName "2.0"
     }
     buildTypes {

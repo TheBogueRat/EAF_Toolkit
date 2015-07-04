@@ -8,10 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
+
+import com.bogueratcreations.eaftoolkit.imgGallery.ui.ImageGridActivity;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,12 +29,6 @@ public class Main extends AppCompatActivity {
             R.drawable.br,
             R.drawable.brc
     };
-    /*
-            R.drawable.temp,
-            R.drawable.temp,
-            R.drawable.temp,
-            R.drawable.temp,
-     */
 
     // Array of strings storing country names
     String[] listTitles = new String[] {
@@ -124,7 +119,7 @@ public class Main extends AppCompatActivity {
                         startActivity(new Intent(Main.this, FLOLS.class));
                         break;
                     case 4: // Images
-                        startActivity(new Intent(Main.this, Pics.class));
+                        startActivity(new Intent(Main.this, ImageGridActivity.class));
                         break;
                     case 5: // About
                         startActivity(new Intent(Main.this, About.class));
@@ -175,7 +170,7 @@ public class Main extends AppCompatActivity {
                 startActivity(new Intent(Main.this, FLOLS.class));
                 break;
             case R.id.action_images: // Images
-                startActivity(new Intent(Main.this, Pics.class));
+                startActivity(new Intent(Main.this, ImageGridActivity.class));
                 break;
             case R.id.action_about: // About
                 startActivity(new Intent(Main.this, About.class));

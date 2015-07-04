@@ -1,5 +1,7 @@
 package com.bogueratcreations.eaftoolkit;
 
+import android.util.Log;
+
 /**
  * Created by TheBogueRat on 6/26/2015.
  * Calculates the amount of matting for a given span
@@ -226,8 +228,11 @@ public class CalcMat {
     } // end getMat12
 
     public static String getPallet(int qty, int perPallet) {
+        double pallets = Math.ceil((double)qty / perPallet);
+        Integer pal = (int)pallets;
         // Cast one int variable to double else it works as int
-        return Double.toString(Math.ceil((double)qty / perPallet));
+        Log.e("DEBUG:", "getPallet returns " + pal.toString());
+        return pal.toString();
     }
 
 }
