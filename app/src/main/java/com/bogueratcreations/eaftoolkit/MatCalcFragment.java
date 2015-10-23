@@ -15,10 +15,6 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-/**
- * A placeholder fragment containing a simple view.
- */
 public class MatCalcFragment extends Fragment {
 
     EditText etWidth;
@@ -122,7 +118,6 @@ public class MatCalcFragment extends Fragment {
                     }
                 } else {
                     Toast.makeText(getActivity(), "Width must be divisible by 6 and Length by 2; and greater than zero!", Toast.LENGTH_SHORT).show();
-                    return;
                 }
 
             }

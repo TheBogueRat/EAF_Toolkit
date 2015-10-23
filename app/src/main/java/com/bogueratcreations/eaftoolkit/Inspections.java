@@ -1,25 +1,26 @@
 package com.bogueratcreations.eaftoolkit;
 
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
-public class MatCalc extends AppCompatActivity {
+public class Inspections extends AppCompatActivity implements QuestionsFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_mat_calc);
+        Log.d("EAFtoolkit", "Inspctions.java was called.");
+        setContentView(R.layout.activity_inspect);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_mat_calc, menu);
+        getMenuInflater().inflate(R.menu.menu_inspections, menu);
         return true;
     }
 
@@ -36,5 +37,10 @@ public class MatCalc extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFragmentInteraction(String id) {
+
     }
 }

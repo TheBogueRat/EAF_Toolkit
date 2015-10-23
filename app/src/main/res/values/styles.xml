@@ -30,5 +30,12 @@
         <item name="android:drawSelectorOnTop">true</item>
         <item name="android:listSelector">@drawable/photogrid_list_selector</item>-->
     </style>
+    <style name="CustomActionBarTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="CustomActionBarTheme.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="CustomActionBarTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

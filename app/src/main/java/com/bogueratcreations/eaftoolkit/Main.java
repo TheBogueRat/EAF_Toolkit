@@ -26,6 +26,7 @@ public class Main extends AppCompatActivity {
             R.drawable.slope,
             R.drawable.calendar,
             R.drawable.flols,
+            R.drawable.brc,
             R.drawable.br,
             R.drawable.brc
     };
@@ -36,6 +37,7 @@ public class Main extends AppCompatActivity {
             "Slope Converter",
             "Julian Dater",
             "FLOLS H/E",
+            "Inspections",
             "Images",
             "About"
     };
@@ -45,12 +47,13 @@ public class Main extends AppCompatActivity {
             "NAMP Codes",
             "DCP (TBD)",
  */
-    // Array of strings to store currencies
+    // Array of strings to store descriptions
     String[] listDesc = new String[]{
             "Calculate Matting Requirements",
             "Get the Slope in Percent or Degrees",
             "Convert to/from Julain and Gregorian Calendars",
             "Calculate Roll Angle and Pole Height",
+            "Review CESC and CGRI Checklists",
             "Random EAF Pictures",
             "About the EAF Toolkit"
     };
@@ -66,7 +69,7 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Each row in the list stores country name, currency and flag
+        // Each row in the list stores name, description and icon
         List<HashMap<String,String>> aList = new ArrayList<>();
         int lengthOfArray = listDesc.length;
 
@@ -118,10 +121,13 @@ public class Main extends AppCompatActivity {
                     case 3:  // FLOLS
                         startActivity(new Intent(Main.this, FLOLS.class));
                         break;
-                    case 4: // Images
+                    case 4: // Inspections
+                        startActivity(new Intent(Main.this, ChkList.class));
+                        break;
+                    case 5: // Images
                         startActivity(new Intent(Main.this, ImageGridActivity.class));
                         break;
-                    case 5: // About
+                    case 6: // About
                         startActivity(new Intent(Main.this, About.class));
                         break;
 

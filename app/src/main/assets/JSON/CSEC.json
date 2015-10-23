@@ -1,0 +1,3167 @@
+{
+  "Inspection": "CSEC",
+  "DisplayName": "CSEC",
+  "DisplayDesc": "Computerized Self-Evaluation Checklist",
+  "ListVersion": "1",
+  "Checklist": [
+    {
+      "ProgramID": "200",
+      "ProgramName": "Maintenance Training",
+      "Qnum": "201",
+      "Question": "Does the AMO establish and coordinate department training requirements, to include obtaining school quotas, to support training requirements? ",
+      "Reference": " Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.1.3.4 (f), 10.1.3.4 (g), 10.1.3.4 (h) and 10.1.3.4 (p)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "200",
+      "ProgramName": "Maintenance Training",
+      "Qnum": "221",
+      "Question": "Are required reading files properly established and utilized?",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.1.4.3",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "200",
+      "ProgramName": "Maintenance Training",
+      "Qnum": "222",
+      "Question": "Is the required reading file reviewed by the Work Center Supervisor on a monthly basis to ensure material is current and all work center personnel are logging their progress?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.1.4.3",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "200",
+      "ProgramName": "Maintenance Training",
+      "Qnum": "233",
+      "Question": "Is required training conducted on NAMP programs/processes?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.1.3.4 (g) and  10.1.4.1 thru 10.1.4.1.3",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "200",
+      "ProgramName": "Maintenance Training",
+      "Qnum": "234",
+      "Question": "Is required NAVOSH/Safety Program training conducted?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.1.3.4 (f) and (h), 10.1.4.2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "200",
+      "ProgramName": "Maintenance Training",
+      "Qnum": "235",
+      "Question": "Are supplemental lesson guides reviewed at least annually or sooner if system/component changes/modifications have occurred?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.1.4.5",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "200",
+      "ProgramName": "Maintenance Training",
+      "Qnum": "236",
+      "Question": "For large publications and instructions, do the Required Reading Cross Reference Locator Sheets have specific chapters/sections/paragraphs itemized? ",
+      "Reference": " Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.1.4.3",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "200",
+      "ProgramName": "Maintenance Training",
+      "Qnum": "237",
+      "Question": "Does the Program Manager maintain a Program File which includes elements listed in the Maintenance Training NAMPSOP? ",
+      "Reference": " Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.1.3.4 (k)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "200",
+      "ProgramName": "Maintenance Training",
+      "Qnum": "238",
+      "Question": "Have all officers assigned to the squadron Maintenance Department attended the appropriate FASOTRAGRU or CNATT courses prior to or within 60 days of assuming their duties? ",
+      "Reference": " Ref. COMNAVAIRFORINST 4790.2, Chapter 3, par. 3.5.8.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "200",
+      "ProgramName": "Maintenance Training",
+      "Qnum": "241",
+      "Question": "Is departmental professional/technical training being given by the most qualified technicians? ",
+      "Reference": " Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.1.3.10 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "200",
+      "ProgramName": "Maintenance Training",
+      "Qnum": "242",
+      "Question": "Is training being documented within an individual's qualification/certification record in a timely manner?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.1.3.10 (e)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "200",
+      "ProgramName": "Maintenance Training",
+      "Qnum": "244",
+      "Question": "Is the Division Officer ensuring training is being focused towards maintaining a balance between maintenance training and required training to ensure there is a critical mass of QPTs on hand? ",
+      "Reference": " Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.1.3.9 (f)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "801",
+      "Question": "Is the QA Division organized IAW the NAMP? ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.2.2.1 and figs. 7-3 thru 7-6",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "802",
+      "Question": "Are sufficient QARs/CDQARs assigned in relation to the size of the unit and number of work shifts?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.2.1.2 and figs. 7-3 thru 7-6",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "803",
+      "Question": "Are qualification requirements for QARs, CDQARs, and CDIs established? ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.1.7.1 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "804",
+      "Question": "Does a QAR review the qualifications of personnel nominated to become a CDI or CDQAR? ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.4.3.1 (d)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "805",
+      "Question": "Does QA prepare and administer CDI tests?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.4.5.2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "808",
+      "Question": "Does the QAR/CDQAR/CDI designation form (CNAF 4790/12) or ASM equivalent list the current aircraft/system/work center qualifications?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.1.7.3 and Fig. 7-2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "809",
+      "Question": "Does the QAR/CDQAR/CDI Designation form (CNAF 4790/12) or ASM equivalent list the currently assigned stamp number?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.1.7.3 and Fig. 7-2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "810",
+      "Question": "Do billet descriptions exist for all QA personnel (QARs, CDQARs and CDIs) and do they assign specific functions and responsibilities? ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.1.7.2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "811",
+      "Question": "Are QA stamps/lead crimps (if applicable) issued and closely controlled? ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, pars. 7.4.1.5 and 7.4.1.6",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "812",
+      "Question": "Is adequate storage provided for QA stamps? ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, pars. 7.4.1.5 and 7.4.2.2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "813",
+      "Question": "Are QA stamps held in an inactive status for a minimum of three months before reassignment? ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.4.2.2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "814",
+      "Question": "Is there a cross training program established which provides for documented QAR training in functions not encompassed in their assigned areas?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.4.3.4",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "815",
+      "Question": "Does the QA Officer ensure personnel (QARs, CDQARs and CDIs) assigned to perform QA functions receive continuous training in inspecting, testing, and quality control methods specifically applicable to their area of assignment? ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.4.3.4",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "816",
+      "Question": "Does the QAR qualification process and training program include PQS, local training courses, OJT, formal schools, and rotation of job assignments?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.4.3.4 and Chapter 10, par. 10.13.6.4",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "819",
+      "Question": "Does each QA inspection include an examination of the work area for sources of potential FOD?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.4.3.1 (n)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "821",
+      "Question": "Does the MO review/analyze CSEC reports and provide appropriate direction to division officers and program managers? ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.7.3.2 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "822",
+      "Question": "Does the QA Audit Program Manager maintain the last two program audits and last three work center audits on file for trend tracking and analysis, to include CSEC discrepancy sheets, CSEC checklists, corrective actions, QA follow-up annotations, and accompanying routing forms?",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.7.3.4 (f)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "823",
+      "Question": "Does QA conduct and document follow-ups (normally 10 working days) to ensure that the Work Center Supervisor has taken corrective action on all discrepancies noted during audits?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.7.3.2 (c),  10.7.3.5 (d)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "824",
+      "Question": "Are CDIs accompanied periodically on scheduled/unscheduled maintenance actions and documented using the CDI Monitor CSEC Area 5600 checklist to evaluate their performance? ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.1.7.1 (c)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "826",
+      "Question": "Are contractors and field maintenance teams briefed regarding the Command's FOD Prevention Program requirements?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.4.3.1 (m) and Chapter 10, par. 10.11.3.9 (d)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "827",
+      "Question": "Has QA established a program to ensure proper tool control for contractor/field teams to comply with local requirements?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.9 (e)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "832",
+      "Question": "Does QA ensure that work centers adhere to fire and safety regulations and does QA check and document for existence of satisfactory environmental conditions within the work spaces and that equipment is maintained in safe, operating conditions in conjunction with semi-annual work center audits?",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.1.7.1 (g)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "833",
+      "Question": "Does QA review all incoming technical publications and directives to determine their application to the maintenance department?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.1.7.1 (p)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "835",
+      "Question": "Does QA ensure all work guides, check-off lists, check sheets, MRCs, etc., used to define or control maintenance, are complete and current prior to issuing to crews or individuals?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.1.7.1 (d)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "838",
+      "Question": "Do QARs coordinate with the Analyst to develop discrepancy trends and applicable charts and graphs necessary to depict quality performance? ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.4.3.1 (k)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "840",
+      "Question": "Has the MO assigned a Program Manager for each program monitored by QA and list programs and individuals assigned in the MMP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.7.3.2 (a)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "841",
+      "Question": "Has the QAO designated, in writing via the MMP, the QA Supervisor as the QA Audit Program Manager? ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.7.3.3",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "842",
+      "Question": "Are program monitors designated via the MMP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.7.3.4 (g)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "843",
+      "Question": "Has the QA Audit Program Manager ensured that QARs are adequately trained and possess sufficient knowledge to perform audits? ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.7.3.4 (g)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "844",
+      "Question": "Is a current list of all QARs, CDQARs, and CDIs included in the MMP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 3, pars. 3.3.4.1.1 (i) and 3.3.4.1.2 (g)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "846",
+      "Question": "Did the QA Audit Program Manager establish a schedule to ensure all work centers and programs are audited within established time frames?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.7.3.4 (c)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "848",
+      "Question": "Are additional instructions for Non-NAMPSOP Programs managed within the maintenance department written by the ACC/TYCOM/WING? ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 3, par. 3.2.2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "849",
+      "Question": "Does QA ensure that local command procedures are written for NAMPSOP programs when required? ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.1.7.1 (s)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "850",
+      "Question": "Does QA review blocks IV-VI and initials block VI of  part II of the TD Tracking and Routing form?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, fig. 10.10-4 and pars. 10.10.3.10 and 10.10.3.15",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "851",
+      "Question": "Does QA review all unit DR's to ensure they are accurate, clear, and concise, prior to submission via the JDRS (http://www.jdrs.mil) website or non-JDRS method when connectivity is unavailable?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.1.7.1 (f)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "853",
+      "Question": "Does QA maintain current assignments and roles (initiators, submitters, and view-only) for personnel with authorized access to the JDRS (http://www.jdrs.mil/) web site?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.1.7.1 (r) and Chapter 10, par. 10.9.3.1.3 (k)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "854",
+      "Question": "Has QA determined and designated in writing, by annotating the master and work center decks, whether a QAR, CDQAR, or CDI shall perform the QA functions listed in the MRCs?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.1.7.6",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "859",
+      "Question": "Upon designation as Program Manager or FRC equivalent, has a self audit been performed within 30 days and annually thereafter using the CSEC and is the most current self audit retained within the program binder?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.7.3.4 NOTE",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "800",
+      "ProgramName": "Quality Assurance Audit",
+      "Qnum": "868",
+      "Question": "Has one QAR completed the Aeronautical Technical Publications Library management course (D/E-555-0007)?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2,  Chapter 7.5.1.2  NOTE",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "901",
+      "Question": "Does QA manage the Department Safety Program with responsibilities, internal procedures and methods for administering the program's processes as defined in the NAMP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, pars. 7.5 (b) and 7.5.2.2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "902",
+      "Question": "Are OPNAVINST 3750.6, Naval Aviation Safety Program, OPNAVINST 5100.19, NAVOSH AFLOAT, and/or OPNAVINST 5100.23, NAVOSH ASHORE and the ACC/TYCOM directives available for use in conducting the unit's safety program (MCO 5100.8 for Marine activities)?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.5.2.1 and MCO 5100.8",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "903",
+      "Question": "When a report is required, does QA collect and provide maintenance and material data necessary for the preparation of required reports?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.5.2.3",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "905",
+      "Question": "Is safety training conducted for all personnel in the work center?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 6, par. 6.2.5.1 (a)  and OPNAVINST 5100.23, pg. 6-1, par. 0602",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "906",
+      "Question": "Are personnel, who are required to work in designated noise hazard areas or with noise hazardous equipment, entered in a hearing conservation program?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.5.2.1; OPNAVINST 5100.19, pg. B4-9, par. B0407 and OPNAVINST 5100.23 pg. 18-6, par. 1806",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "907",
+      "Question": "Do eye wash stations meet all safety requirements? ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.5.2.1 and OPNAVINST 5100.19, pg. B5-5, par. B0508 and OPNAVINST 5100.23, pg. 19-1, par. 1902",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "908",
+      "Question": "Are eyewash stations periodically activated and functionally tested in accordance with the required periodic maintenance?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.5.2.1; OPNAVINST 5100.19, pg. B5-5, par. B0508 and OPNAVINST 5100.23, pg. 19-1, par. 1902",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "909",
+      "Question": "Are safety posters and literature disseminated and posted in the work centers? ",
+      "Reference": " Ref. COMNAVAIRFORINST 4790.2, Chapter 6, par. 6.2.5.1 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "910",
+      "Question": "Are assigned personnel trained in the selection, use, inspection and care of PPE; is the training documented and is the PPE, utilized?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.5.2.1; OPNAVINST 5100.19, pg. B 12-1, par. B1202 and OPNAVINST 5100.23",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "912",
+      "Question": "Are designated hazardous noise areas and equipment identified with the appropriate warning signs?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.5.2.1; OPNAVINST 5100.19, pg. B4-6, par. B0404C and OPNAVINST 5100.23, pg. 18-5, par. 1805",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "913",
+      "Question": "Are designated eye hazardous areas identified (posted) with the appropriate warning signs? ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.5.2.1; OPNAVINST 5100.19, pg. B5-3, par. B0504 and OPNAVINST 5100.23, pg. 19-1, par. 1901",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "914",
+      "Question": "Are all personnel as defined in OPNAVINST 5100.19; OPNAVINST 5100.23 and NA 01-1A-35 qualified in CPR?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.5.2.1; OPNAVINST 5100.19, pg. B7-5, par. B0708 and OPNAVINST 5100.23, pg. 6-4, par. 0602 (f) and NAVAIR 01-1A-35, WP 004 00, par. 22 (d)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "915",
+      "Question": "Were any safety violations observed?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.5.2.3 and OPNAVINST 5100.23, par. 1001",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "916",
+      "Question": "Are all aviation maintenance managers and technicians incorporating risk management concepts into maintenance planning evolutions?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 1, par. 1.2.6.2 and OPNAVINST 3500.39, enclosure (1), and MCO 3500.27",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "918",
+      "Question": "Are suitable fire extinguishing devices available where combustibles are stored (within 10 ft outside the door opening if in a storage room, 10-25 ft, if material is located outside a room, but still in a building)? ",
+      "Reference": "Ref 29 CFR 1910.106 p10.",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "919",
+      "Question": "Do applicable personnel wear appropriate foot protective devices at all times in a designated foot hazard areas? ",
+      "Reference": "Ref. OPNAVINST 5100.23G para 2008, NAVMC 5100.8 para 13006, OPNAVINST 5100.19, D0802(d).",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "920",
+      "Question": "Are shop hazard areas properly identified/color coded (e.g. for machinery: yellow/black stripes to mark strike against, stumbling, and falling hazards)? ",
+      "Reference": "Ref 29 CFR 1910.176(a) and 29 CFR 1910.144(a)(3).",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "922",
+      "Question": "Are sound attenuating devices available and are they utilized in all designated noise hazardous areas? ",
+      "Reference": "Ref. OPNAVINST 5100.23, pg. 18-5, par. 1805 (c)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "900",
+      "ProgramName": "Maintenance Safety",
+      "Qnum": "923",
+      "Question": "Do personnel wear appropriate eye protection equipment when performing eye hazardous operations, including handling corrosive liquids or solids, grinding, shipping, blasting or other particle generating job tasks? ",
+      "Reference": "Ref OPNAVINST 5100.23, Pg 20-2, par 2004",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1001",
+      "Question": "Does the Program Manager manage the NAMDRP with responsibilities, internal procedures and methods of administering processes assigned for management as defined in  the NAMPSOP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.9.3.1.3",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1002",
+      "Question": "Are all required publications and instructions available as well as those used to address exceptions to the NAMDRP ?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.9.1.2 and 10.9.2.3",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1003",
+      "Question": "Are required DR reports reviewed by the Program Manager/QA Division to ensure that they are accurate, clear, concise and comprehensive?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2,  Chapter 10, pars. 10.9.3.1.3 (c) and Chaper 7, pars. 7.1.4.1(f)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1004",
+      "Question": "Does the Program Manager monitor the ISSC/Quality Team NAMDRP response time to ensure action is taken within required time frames?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.9.3.1.3 (i)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1005",
+      "Question": "Does the Program Manager perform follow-ups to NAMDRP reports when replies have not been received within prescribed time frames?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.9.3.1.3 (i)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1006",
+      "Question": "Does the Program Manager maintain file copies of all reports (except for reports stored on the JDRS; they do not require hard copy files) for a minimum of one year or until closing action is received?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.9.3.1.3 (g 2,3,4)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1007",
+      "Question": "Are CAT I Els submitted within 24 hours of discovery by the JDRS reporting system (if accessible) or by priority precedence message if the  JDRS website is not accessible?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.9.4.3 and https://jdrs.mil",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1008",
+      "Question": "Are CAT I TPDRs submitted within 24 hours from the time of discovery by the JDRS reporting system (if applicable) or by priority precedence message?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.9.9.3 (JDRS Deviation)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1009",
+      "Question": "Are CAT II Els submitted within five calendar days after discovery by the JDRS reporting system (if accessible) or by routine precedence message if the JDRS is not accessible?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.9.5.3 and https://jdrs.mil",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1010",
+      "Question": "Are CAT I PQDRs submitted within 24 hours from the time of discovery by the JDRS reporting system (if accessible) or by  priority  precedence message?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.9.6.5.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1011",
+      "Question": "Are supporting supply department and DSPs (for DLRs) listed as information addressees on CAT I PQDR and EI request messages?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.9.5.3 and 10.9.6.5.5",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1012",
+      "Question": "Does the Program Manager maintain a DR log for assignment of a unique RCN to each DR report submitted (including EERs and CODRs)?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.9.3.1.3 (h) and 10.9.8.2 (a) thru (e)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1013",
+      "Question": "Does the Program Manager issue locally assigned control numbers, sequentially throughout the calendar year, regardless of the type of report, beginning with 0001?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.9.3.1.3 (h) and 10.9.8.2 (d) (e)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1014",
+      "Question": "Has the QA Officer designated, in writing via the MMP, a NAMDRP Manager?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.9.3.1.2 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1015",
+      "Question": "Is the Program Manager maintaining a Program file which includes elements listed in the NAMDRP NAMPSOP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.9.3.1.3 (g)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1016",
+      "Question": "Does the Program Manager maintain current JDRS assignments and roles (initiators, submitters, and view-only) for personnel authorized within JDRS http://www.jdrs.mil/?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.1.7.1 (r)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1018",
+      "Question": "Are the technical dialog correspondence, digital pictures, and attachment features, i.e., RFI tag, contract number, turn in document or requisition number for PQDRs within JDRS http://www.jdrs.mil/, used as required/necessary?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.9.3.4.2(a)(b), par. 10.9.6.5.2, par. 10.9.6.6.2 and http://www.jdrs.mil",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1019",
+      "Question": "Is there documentation to support that the MO reviews and approves all DR reports?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.9.3.1.1(b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1020",
+      "Question": "Upon designation as Program Manager/ FRC equivalent personnel, has a self audit been performed within 30 days and annually thereafter using the CSEC and is the most current self audit retained within the program binder?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.9.3.1.3 NOTE",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1022",
+      "Question": "Are exhibit handling procedures being followed?  ",
+      "Reference": "Ref.  COMNAVAIRFORINST 4790.2,  Chapter 10, par. 10.9.3.4",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1023",
+      "Question": "Is the program manager performing audits of the unit users enrolled in JDRS on a monthly basis to update, delete, or change unit personnel profiles?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par.10.9.3.1.3 (k); Chapter 7, par. 7.1.4.1 (t)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1024",
+      "Question": "Do all personnel listed as submitters within JDRS have delegated message release authority?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.9.3.1.1(e)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1000",
+      "ProgramName": "Maintenance Discrepancy Reporting (NAMDRP)",
+      "Qnum": "1025",
+      "Question": "Is there documentation to support that the Aviation Safety Officer reviews all correspondence relating to aviation ground, flight, flight related, explosive mishaps?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.9.3.1.2 (e) and  Chapter 7, par. 7.1.7.1 ®",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1200",
+      "ProgramName": "Foreign Object Damage",
+      "Qnum": "1201",
+      "Question": "Has the MO designated, in writing via the MMP, a FOD Prevention Program Manager?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.11.3.6 (a)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1200",
+      "ProgramName": "Foreign Object Damage",
+      "Qnum": "1205",
+      "Question": "Does the FOD Prevention Program Manager routinely spot check selected areas, such as parking ramps, turn-up areas, work spaces, taxiways, runways, flight decks, catwalk, test cell areas, hangar bays, runway and flight deck cleaning equipment and procedures, and SE?",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.11.3.7 (g)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1200",
+      "ProgramName": "Foreign Object Damage",
+      "Qnum": "1206",
+      "Question": "Does QA monitor FOD walk downs (to ensure all hands participation) and analyze collected FOD for possible trends?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.11.3.9 (e)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1200",
+      "ProgramName": "Foreign Object Damage",
+      "Qnum": "1207",
+      "Question": "Are assigned SE preoperational inspections being performed to verify material integrity?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.11.3.11 (e)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1200",
+      "ProgramName": "Foreign Object Damage",
+      "Qnum": "1208",
+      "Question": "Are all work spaces routinely spot checked for evidence of program support, such as FOD posters?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.11.3.10 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1200",
+      "ProgramName": "Foreign Object Damage",
+      "Qnum": "1209",
+      "Question": "Does the Work Center Supervisor ensure maximum participation in FOD walk downs?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.11.3.11 (g)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1200",
+      "ProgramName": "Foreign Object Damage",
+      "Qnum": "1210",
+      "Question": "Does the Work Center Supervisor or CDI ensure personnel account for each tool, item of SE, and consumables utilized in repair of aeronautical equipment before installing, operating, or activating?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.11.3.11",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1200",
+      "ProgramName": "Foreign Object Damage",
+      "Qnum": "1213",
+      "Question": "Does the command have a FOD Prevention/Investigation Team assigned in writing?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.11.2.3 and 10.11.3.6 (c)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1200",
+      "ProgramName": "Foreign Object Damage",
+      "Qnum": "1214",
+      "Question": "Are effective aircraft/engine fastener control procedures established and enforced?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.11.3.4 (e)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1200",
+      "ProgramName": "Foreign Object Damage",
+      "Qnum": "1215",
+      "Question": "Are FOD inspections part of the QA inspection process of all aircraft, aircraft equipment, and SE which have completed phase maintenance, extensive corrosion control, aircraft engine repair or modification by D-level or contract field teams, engine or major component change, or after extended down time in excess of tyhirty days?",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.11.3.8 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1200",
+      "ProgramName": "Foreign Object Damage",
+      "Qnum": "1216",
+      "Question": "Is the Program Manager maintaining a Program File which includes elements listed in the FOD Prevention Program NAMPSOP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.11.3.7 (c)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1200",
+      "ProgramName": "Foreign Object Damage",
+      "Qnum": "1217",
+      "Question": "Has the Program Manager developed  local command procedures (as required) per Appendix D, in concert with the Safety Officer for OMAs, or in concert with the station, MAG, or ship FOD Prevention/Safety Officer for IMAs?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.11.3.7 (d) thru €",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1200",
+      "ProgramName": "Foreign Object Damage",
+      "Qnum": "1218",
+      "Question": "Is the Program Manager following assigned action responsibilities directed in the FOD Prevention NAMPSOP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.11.3.7 (a) thru (x)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1200",
+      "ProgramName": "Foreign Object Damage",
+      "Qnum": "1219",
+      "Question": "Are publications available for use by personnel responsible for carrying out the FOD Prevention Program?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.11.1.2 and 10.11.3.7 c (6)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1200",
+      "ProgramName": "Foreign Object Damage",
+      "Qnum": "1220",
+      "Question": "Has the Quality Assurance Officer designated, in writing via the MMP, a QAR as the FOD Prevention Program Monitor?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.11.3.8 (a)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1200",
+      "ProgramName": "Foreign Object Damage",
+      "Qnum": "1221",
+      "Question": "Are loose or missing fasteners identified on aircraft/SE marked and are they documented on a MAF?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.11.3.11 (i)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1200",
+      "ProgramName": "Foreign Object Damage",
+      "Qnum": "1222",
+      "Question": "Is the Work Center Supervisor following assigned action responsibilities directed in the FOD Prevention NAMPSOP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.11.3.11 (a) thru (j)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1200",
+      "ProgramName": "Foreign Object Damage",
+      "Qnum": "1223",
+      "Question": "Are personnel performing thorough pre-maintenance and post-maintenance inspections of tool containers, ducts, plenum chambers, crevices, engine cavities and work areas?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.11.3.11 (c)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1301",
+      "Question": "Are all work center personnel aware of proper procedures for missing tool's?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.12 (i)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1302",
+      "Question": "Does the Work Center Supervisor conduct beginning/end of shift inventories on each tool container, special tool, PPE and IMRL in the work center?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.12 (f) and par. 10.12.3.9 (e)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1303",
+      "Question": "Upon task assignment, is a sight inventory conducted by the Work Center Supervisor or CDI, and the technician?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.12 (h)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1304",
+      "Question": "Upon task completion or work stoppage, are tool containers inventoried by the Work Center Supervisor or CDI, and the technician?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.12 (h)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1305",
+      "Question": "Prior to operational system checks, are tool containers inventoried by the Work Center Supervisor or CDI, and the technician?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.12 (h)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1306",
+      "Question": "Are MAFs annotated with tool container number upon task assignment?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.12 (h)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1307",
+      "Question": "Are appropriate signatures entered on the MAF upon task completion?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 15, pars. 15.1.2.9.4, 15.2.1.2.2.4 and Chapter 16, par. 16.1.3.6 (c)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1310",
+      "Question": "Is the position of each tool silhouetted against a contrasting background?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.12.4.2.4 and 10.12.6.6 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1314",
+      "Question": "Are all special, locally manufactured tools and IMRL accounted for as per the TCP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.5.2 (d)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1315",
+      "Question": "Is a separate listing (shortage list) properly annotated to show tools undergoing calibration or requiring replacement?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.12.4.2.7, 10.12.4.2.8, 10.12.6.5 and fig. 10.12-5",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1316",
+      "Question": "Is there a procedure established for the accountability of those tools not suitable for etching?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.4.1.6",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1317",
+      "Question": "Are tools/tool containers marked to indicate the organizational code, work center code and tool container number?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.4.2.3",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1318",
+      "Question": "Does the TCP Coordinator coordinate semiannual tool container inventories with the TC Representative, and reconcile/document semiannual inventories with master inventories to ensure no unauthorized additions/deletions to tool containers have occurred?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.7 (g)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1319",
+      "Question": "Does the TCP Coordinator issue tool containers by container number to the Work Center Supervisor using a Controlled Equipage Custody Record (NAVSUP 306) and obtain the Work Center Supervisor's signature for each tool container number assigned?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.7 ©",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1320",
+      "Question": "When tools are no longer required, are they turned in to the TCP Coordinator for proper disposal?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.6.7",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1321",
+      "Question": "Has  the Program Manager upon designtation performed a self-audit within 30 days and annually thereafter using the CSEC and the most current audit retained in the Program binder?   ",
+      "Reference": "Ref.  COMNAVFORINST 4970.2,  Chapter 10, par. 10.12.3.6 NOTE",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1322",
+      "Question": "Has QA established and maintained a log to assign a tool report number to each Missing/Broken/Worn Tool Report with a sequential numbering system consisting of year, type of report, and serial number?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1323",
+      "Question": "Do all replacement tools not assigned to a toolbox container have an inventory record containing the required elements, properly marked with organizational code, accurately inventoried and maintained in locked containers?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.7 (d) (3) (5)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1324",
+      "Question": "Are Missing/Broken/Worn Tool reports maintained on file by the TCP Coordinator?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.7 (j) (2)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1325",
+      "Question": "Are all tool containers maintained in a clean, FOD-free condition?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.11 (f)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1326",
+      "Question": "Does the program monitor perform audits using  CSEC?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.9 (a)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1327",
+      "Question": "Are tool tags from a portable container used to checkout a tool from the shop container, or if not using a portable tool container, is a shop container logbook used to check out individual tools to supplement a container?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.4.2.10",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1328",
+      "Question": "Does the TCP Coordinator provide indoctrination and follow-on training to personnel relating to their responsibilities regarding the Tool Control Program?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.7 (i)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1329",
+      "Question": "Are tool control discrepancies identified by QA audits corrected in a timely manner?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.11 (m)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1331",
+      "Question": "Does the MMCO (or PCO) approve required tool container modifications?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.5 (c)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1332",
+      "Question": "Has the MO developed local command procedures (as required) per Appendix D?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.2 (a)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1333",
+      "Question": "Has the MO designated, in writing via the MMP, a Tool Control Program Manager?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.2 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1334",
+      "Question": "Has the Quality Assurance Officer designated, in writing via the MMP, a QAR as the TCP Program Monitor?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.8",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1335",
+      "Question": "Does the TCP Coordinator maintain a master copy of each individual tool container inventory and photograph or diagram with the NAVSUP 306?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.7 (j) (5)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1337",
+      "Question": "Are replacement tools issued by the TCP Coordinator upon receipt of a completed Missing/Broken/Worn tool report?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.7 (d) (1) NOTE",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1339",
+      "Question": "Are tools awaiting disposal maintained in a locked container and all markings have been removed/eradicated?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.7 (k)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1340",
+      "Question": "Does the TCP Coordinator maintain a program file to include the required elements of the Tool Control NAMPSOP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.7 (j)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1341",
+      "Question": "Is a shop tool container logbook utilized to check out tools from the shop container when not using a portable container?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.4.2.10",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1342",
+      "Question": "Are tool sets and multiple piece tools properly identified on the inventory lists?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.12.4.1.5 and 10.12.4.1.6",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1343",
+      "Question": "Are the tool container shortage lists, encl. (5), properly maintained?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.6.5",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1345",
+      "Question": "Are consumable materials not included on the tool box inventory, such as rags, safety wire, acid brushes, etc., inventoried prior to and at the completion of each task?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.6.3",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1346",
+      "Question": "Are proper security and control maintained over all tools and equipment assigned?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.11 (g)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1347",
+      "Question": "Are multiple piece tools containing a type of locking nut peened or spot welded?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.6.4",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1348",
+      "Question": "Does the work center TCP representative maintain a TCP file with all required information?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.13 (f)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1349",
+      "Question": "Are all tool tags etched with the AV-3M organizational code, work center code, container number and the tag number?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.6.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1350",
+      "Question": "Has the Program Manager designated a TCP Coordinator?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.6 (a)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1351",
+      "Question": "Is a copy of the TCM inventory list, TCM diagram, and Tool Container Shortage List maintained within all tool containers (except tool pouches) and firmly attached so they do not become a source of FOD?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1352",
+      "Question": "Has the work center supervisor assigned a Tool Control Representative? ",
+      "Reference": " Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.11 (e)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1353",
+      "Question": "Has the Maintenance Officer released the aircraft/equipment only after an investigation is conducted to confirm the missing tool or part of a tool is not in the aircraft/equipment?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.2 (3)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1354",
+      "Question": "Is the proper missing/broken/worn tool report utilized?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, figs. 10.12-1 and 10.12-2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1356",
+      "Question": "Are tool requisition numbers being provided to the work center supervisors/tool control representatives?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.7 (e)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1300",
+      "ProgramName": "Tool Control Program",
+      "Qnum": "1357",
+      "Question": "Are outstanding tool requisition follow-ups being conducted monthly?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.7 (e)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1400",
+      "ProgramName": "Corrosion Control and Prevention",
+      "Qnum": "1401",
+      "Question": "Is the MO following assigned action responsibilities directed in the Corrosion Prevention and Control Program NAMPSOP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.13.3.1 (a) thru (d)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1400",
+      "ProgramName": "Corrosion Control and Prevention",
+      "Qnum": "1402",
+      "Question": "Is the Program Manager maintaining a Program File which includes elements listed in the Corrosion Prevention and Control Program NAMPSOP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.13.3.2 (h)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1400",
+      "ProgramName": "Corrosion Control and Prevention",
+      "Qnum": "1403",
+      "Question": "Is the Program Manager following assigned action responsibilities directed in the Corrosion Prevention and Control Program NAMPSOP and are they familiar with all applicable program references?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.13.1.2 (a)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1400",
+      "ProgramName": "Corrosion Control and Prevention",
+      "Qnum": "1404",
+      "Question": "Does the Program Manager provide Corrosion Prevention and Control Program indoctrination training and emergency reclamation processes/procedures training?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.13.3.2 (g)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1400",
+      "ProgramName": "Corrosion Control and Prevention",
+      "Qnum": "1406",
+      "Question": "Have all personnel, engaged in aircraft, engine, component, or SE maintenance, completed one of the mandatory minimum corrosion control training courses?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.13.6.1 (a) thru (e)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1400",
+      "ProgramName": "Corrosion Control and Prevention",
+      "Qnum": "1407",
+      "Question": "Is an effective corrosion prevention and control training program established to ensure all personnel are capable of detecting, identifying, reporting and treating various forms of corrosion?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.13.3.1 (b),",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1400",
+      "ProgramName": "Corrosion Control and Prevention",
+      "Qnum": "1411",
+      "Question": "Are only authorized and current shelf life corrosion prevention and control materials utilized?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.13.3.7 (e); NAVAIR 01-1A-509, vol. II, app. A, pars. A-3 thru A-3.3.3; NAVAIR 01-1A-509, vol. IV and NAVAIR 01-1A-509, vol. V",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1400",
+      "ProgramName": "Corrosion Control and Prevention",
+      "Qnum": "1415",
+      "Question": "Do personnel assigned duties involving exposure to potentially harmful dusts, mists, or vapors use required PPE?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.13.3.2 (c) and NAVAIR 01-1A-509, vol. ll, app. A, par. A-10.5.2.3",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1400",
+      "ProgramName": "Corrosion Control and Prevention",
+      "Qnum": "1422",
+      "Question": "Is proper respiratory training, both prior to use and annually thereafter, conducted for personnel required to wear respirators, their supervisors, persons issuing respirators and emergency rescue teams?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.13.1.2 (a) and (b); OPNAVINST 5100.19, par. B0612(a) and OPNAVINST 5100.23, Chapter 15, par. 1511 (a) thru (k)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1400",
+      "ProgramName": "Corrosion Control and Prevention",
+      "Qnum": "1423",
+      "Question": "Are shore-based activities recording respiratory training in the appropriate section of an individual's qualification/certification record, and are they maintaining those records for 5 years?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.13.1.2 (b) and OPNAVINST 5100.23, Chapter 6, par. 0605 and Chapter 15, par. 1509 (c) ",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1400",
+      "ProgramName": "Corrosion Control and Prevention",
+      "Qnum": "1424",
+      "Question": "For shore activities, does each person required to use a respirator have a current PHA and are they ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.13.1.2 (a) and (b); OPNAVINST 5100.19, par. B0613 (a) and (b) and OPNAVINST 5100.23, Chapter 15, par. 1508",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1400",
+      "ProgramName": "Corrosion Control and Prevention",
+      "Qnum": "1425",
+      "Question": "Is the respirator fit test documented in the individual's qualification/certification record and does the documentation include:  make, model, style and size, method of test and test results, strip chart recording or other recording of test results for quantitative fit test, test date and name of instructor/fit tester?",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.13.1.2 (a) and (b); OPNAVINST 5100.19, par. B0608 and OPNAVINST 5100.23, Chapter 15, par. 1509 ©",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1400",
+      "ProgramName": "Corrosion Control and Prevention",
+      "Qnum": "1426",
+      "Question": "Are respirators inspected, cleaned and stored properly?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.13.1.2 (a) and (b); OPNAVINST 5100.19, par. B0609; OPNAVINST 5100.23, par. 1510 and 29 CFR 1910.134(h)(1) thru 1910.134(h)(4)(iii)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1400",
+      "ProgramName": "Corrosion Control and Prevention",
+      "Qnum": "1433",
+      "Question": "Has the Quality Assurance Officer designated, in writing via the MMP, a qualified corrosion control QAR (AM senior petty officer, or equivalent MOS and rank) as the Corrosion Prevention and Control Program Monitor?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1400",
+      "ProgramName": "Corrosion Control and Prevention",
+      "Qnum": "1438",
+      "Question": "Are bare metal discrepancies discovered during the look phase of inspections being correctly documented?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 15, par. 15.2.4.1.19.2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1400",
+      "ProgramName": "Corrosion Control and Prevention",
+      "Qnum": "1442",
+      "Question": "Is only touch-up painting performed and not painting solely for the sake of cosmetic appearance?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 3, par. 3.2.3.1.2 and NAVAIR 01-1A-509, vol. II, app. A, par. A4.4 and A.4.5",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1901",
+      "Question": "Does QA manage the CTPL in accordance with the responsibilities outlined in the current publication, and has at least one QAR attended the ATPL management course?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 7, pars. 7.1.7.1 (a), 7.5.1.2 and NAVAIR 00-25-100, WP 013 00, pars, 3-1 thru 3-3 ",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1902",
+      "Question": "Can the CTPL demonstrate the ability to use electronic media to perform the full range of maintenance actions?  ",
+      "Reference": "Ref. NAVAIR 00-25-100, WP 011 00, par. 1-3",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1904",
+      "Question": "Does the CTPL maintain and utilize the files required for the Central Library Transaction File (program file) (e.g.,  ADRL CDs (with updated IRACs), copies of audits/inventories and results conducted on CTPL/DTPL, Requisition Log, IRAC tracker and Weekly Summary of Issued TDs, etc)?",
+      "Reference": "Ref. NAVAIR 00-25-100, WP 013 00, pars. 23-1 thru 23-3",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1905",
+      "Question": "Does the Central Librarian maintain the required directives and manuals to operate a library? ",
+      "Reference": "Ref. NAVAIR 00-25-100, WP 007 00, par. 8-2, WP 013 00, par. 28-2 and  figure 10, sheets 1 and 2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1907",
+      "Question": "Are TDs identified as applicable, but not received, procured by the Central Librarian and reviewed by the cognizant personnel?  ",
+      "Reference": "Ref. NAVAIR  00-25-100, WP 014 00, par. 2-5",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1908",
+      "Question": "Are manual binder spines properly labeled?  ",
+      "Reference": "Ref. NAVAIR 00-25-100, WP 013 00, pars. 14-2 thru 14-3 and fig. 5",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1909",
+      "Question": "Are manuals arranged alpha-numerically by NAVAIR publication numbers and are other documents stored appropriately?  ",
+      "Reference": "Ref.  NAVAIR 00-25-100, WP 013 00, par. 14-4",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1910",
+      "Question": "Is a locally procured stamp which includes the activity, copy number, and location used on each publication?  ",
+      "Reference": "Ref.  NAVAIR 00-25-100, WP 013 00, par. 12-2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1911",
+      "Question": "Are 45/60 day follow-ups submitted for publication requisitions which have not been received?  ",
+      "Reference": "Ref. NAVAIR 00-25-100, WP 009 00, par. 4-8",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1912",
+      "Question": "Are changes, notices, revisions, IRACs/RACs and TDs correctly incorporated into manuals?  ",
+      "Reference": "Ref. NAVAIR 00-25-100, WP 012 00, pars. 2 thru 8",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1913",
+      "Question": "Are NAVAIR publications and manuals current and readily accessible to work center personnel?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.5.1.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1916",
+      "Question": "Was an Annual/Turn-over Audit performed on the CTPL as required, and does the audit fulfill all requirements?  ",
+      "Reference": "Ref. NAVAIR 00-25-100, WP 014 00, pars. 3-1 thru 3-8",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1919",
+      "Question": "Are audits/inventories on dispersed libraries conducted on the following occasions: quarterly; when directed by competent authority; when a new Work Center Supervisor is assigned; when a new Dispersed Librarian is assigned?  Also are the audits retained by the CTPL for four consecutive audits (one year) and reviewed for repeat discrepancies?",
+      "Reference": "Ref. NAVAIR 00-25-100, WP 014 00, pars. 4-2 and 4-3",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1920",
+      "Question": "Are the minimum requirements performed during each dispersed library audit?  ",
+      "Reference": "Ref. NAVAIR 00-25-100, WP 014 00, par. 5-2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1922",
+      "Question": "Are CECRs filled out and returned to the CTPL within the required timeframes?  ",
+      "Reference": "Ref.  NAVAIR 00-25-100, WP 013 00, pars. 15-7 thru 15-12",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1923",
+      "Question": "Does the Central Librarian provide training at least quarterly and assistance to both the Work Center Supervisors and the dispersed librarians?  ",
+      "Reference": "Ref. NAVAIR 00-25-100, WP 013 00, par. 24-2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1925",
+      "Question": "Do dispersed libraries have a visible, readily accessible list of publications and their location?  ",
+      "Reference": "Ref. NAVAIR 00-25-100, WP 013 00, pars. 12-4 and 24-4",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1926",
+      "Question": "Is the Dispersed Librarian incorporating changes into publications in the required time frames?  ",
+      "Reference": "Ref. NAVAIR 00-25-100, WP 013 00, pars. 15-7 (a) and (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1933",
+      "Question": "Does the Central Librarian maintain a master file of applicable TDs and enter them into the ELMS database as required?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.10.3.11 (b) (2) and NAVAIR 00-25-100, WP 013 00, pars. 19-3 and 20-1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1936",
+      "Question": "Are work centers properly returning copies of TDs to the CTPL?  ",
+      "Reference": "Ref. NAVAIR 00-25-100, WP 014 00, par. 5-2 (i)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1939",
+      "Question": "Are MRC decks stored in appropriate containers in alpha-numerical order?  ",
+      "Reference": "Ref. NAVAIR 00-25-100, WP 013 00, par. 14-4 (d)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1940",
+      "Question": "Do MRC decks have QAR/CDQAR/CDI functions correctly annotated?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.5.1.4.5.1.4.4 (d)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1941",
+      "Question": "Are local MRC numbers correctly entered on the MRC deck ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.5.1.4.5.1.4.2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1942",
+      "Question": "Are local MRCs printed on NAVAIR 4790/3 (Rev 10/90), and is all required information correct?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.5.1.4.5.1.4.2 and fig. 7-9",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1943",
+      "Question": "Do local MRCs cite the 'Higher Authority Reference or Material Condition' generating the local card?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.5.1.4.5.1.4.2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1944",
+      "Question": "Are copies of all local MRCs forwarded to the applicable TYCOM (NAMP_ POLICY.fct@navy.mil), Type WING, MAW, and/or MALS for review, endorsement and approval?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, pars. 7.5.1.4.5.1.4.5 thru 7.5.1.4.5.1.4.5.4",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1945",
+      "Question": "Are local MRCs reviewed and updated annually based on the date block and when there is a change/revision to the appropriate Master MRC deck?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.5.1.4.5.1.4.4",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1946",
+      "Question": "Does the Central Librarian maintain a tickler file for Part I and Part II CECRs (set up sequentially by due dates to facilitate daily review of outstanding changes?  ",
+      "Reference": "Ref. NAVAIR 00-25-100, WP 013 00, pars. 15-7 thru 15-12",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1949",
+      "Question": "Has the Central Librarian received indoctrination and continuous training in library operations?  ",
+      "Reference": "Ref. NAVAIR 00-25-100, WP 013 00,  par. 5-2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "1900",
+      "ProgramName": "Central Technical Publications Library",
+      "Qnum": "1953",
+      "Question": "Are all reproduced manuals managed and controlled by the CTPL?  ",
+      "Reference": "Refs. NAVAIR 00-25-100, WP 010 00, pars. 1-5 and 3-16, WP 011 00, par. 7-5 and WP 013 00, pars. 18-1 thru 18-7",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2000",
+      "ProgramName": "Calibrations",
+      "Qnum": "2001",
+      "Question": "Is a current MEASURE Format 350 and 802 available and verified with the supporting calibration activity?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.18.3.5 (f) (O-level) and 10.18.3.10 (c)  (I-level); OPNAV 43P6B, pg. J-4, par. J.4.8 and pg. J-6, par J.4.17",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2000",
+      "ProgramName": "Calibrations",
+      "Qnum": "2002",
+      "Question": "Is the activity responding to the recall schedule (Format 802) and submitting PME/TAMS to the supporting calibration activity whenever it is recalled for calibration?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.18.3.5 (a) and (f) (O-level) and 10.",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2000",
+      "ProgramName": "Calibrations",
+      "Qnum": "2003",
+      "Question": "Is the METCAL Program Manager retaining a receipt record of calibratable SE turned in for calibration?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.18.3.5 (a)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2000",
+      "ProgramName": "Calibrations",
+      "Qnum": "2004",
+      "Question": "Does the O-Level Program Manager/IMA Work Center Supervisor retain METER card (OPNAV 4790/58) pink copies until Inventory Format 350 reflects new calibration dates?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.18.3.5 (e) and 10.18.3.10 (g)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2000",
+      "ProgramName": "Calibrations",
+      "Qnum": "2005",
+      "Question": "Is action taken to determine the cause of overdue items on the Format 350?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.18.3.9 (f) and OPNAV 43P6B, pg. I-7, par. I.19",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2000",
+      "ProgramName": "Calibrations",
+      "Qnum": "2006",
+      "Question": "Are all calibration standards and calibratable SE appropriately labeled to indicate calibration status?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.18.2.8",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2000",
+      "ProgramName": "Calibrations",
+      "Qnum": "2007",
+      "Question": "Do the METCAL Program Manager and Work Center Supervisors verify and update the Format 350 and resolve any differences?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.18.3.5 (f), 10.18.3.9 (c) and 10.18.3.10 (c)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2000",
+      "ProgramName": "Calibrations",
+      "Qnum": "2008",
+      "Question": "Is special attention given to new or recently received items added to or removed from the activity's inventory during custody changes?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.18.3.9 (a) and 10.18.3.10 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2000",
+      "ProgramName": "Calibrations",
+      "Qnum": "2022",
+      "Question": "Do Work Center Supervisors ensure that SE/PME/TAMS under MEASURE have been properly calibrated and that calibration labels are valid and not damaged?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.18.3.10 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2000",
+      "ProgramName": "Calibrations",
+      "Qnum": "2023",
+      "Question": "Are all non-operational and suspect PME/TAMS turned in regardless of actual calibration due date?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.18.3.10 (d)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2000",
+      "ProgramName": "Calibrations",
+      "Qnum": "2024",
+      "Question": "Are all SE/PME/TAMS properly protected during handling, transportation and storage?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.18.3.1 (s)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2000",
+      "ProgramName": "Calibrations",
+      "Qnum": "2026",
+      "Question": "Has the MO developed local command procedures (as required) per Appendix D?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.18.3.2 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2000",
+      "ProgramName": "Calibrations",
+      "Qnum": "2027",
+      "Question": "Has the MO designated, in writing via the MMP, a METCAL Program Manager?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.18.3.2 (a)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2000",
+      "ProgramName": "Calibrations",
+      "Qnum": "2029",
+      "Question": "Is the Program Manager following assigned action responsibilities directed in the METCAL Program NAMPSOP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.18.3.4 (a) thru (f) and 10.18.3.5 (a) thru (n)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2000",
+      "ProgramName": "Calibrations",
+      "Qnum": "2030",
+      "Question": "Is the Program Manager maintaining a Program File which includes elements listed in the METCAL Program NAMPSOP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.18.3.4 (f) and 10.18.3.5 (n)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2000",
+      "ProgramName": "Calibrations",
+      "Qnum": "2031",
+      "Question": "Are all publications available for use by personnel responsible for carrying out the METCAL Program?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.18.3.4 (f) (2) and 10.18.3.5 (n) (2)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2000",
+      "ProgramName": "Calibrations",
+      "Qnum": "2032",
+      "Question": "Has the Quality Assurance Officer designated, in writing via the MMP, a QAR as the METCAL Program Monitor?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.18.3.6",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2201",
+      "Question": "Has the MO developed local command procedures per Appendix D, which includes written emergency procedures to contain, control, and resolve HAZMAT spills?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.19.3.2 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2203",
+      "Question": "Has the Quality Assurance Officer designated, in writing via the MMP, a QAR as the Hazardous Material Control and Management Program Monitor?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.19.3.5",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2204",
+      "Question": "Has the CO designated in writing an officer or FRC equivalent as the maintenance department HMC&M program manager?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.19.3.1 (a)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2205",
+      "Question": "Is the program manager performing self-evaluations within 30 days and annually thereafter using CSEC and the most current audit retained in the program binder?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.19.3.3.NOTE",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2206",
+      "Question": "Has the Program Manager attended Introduction to Hazardous Materials (Ashore) course (Course A-493-0031) and Introduction to  Hazardous Waste Generation and Handling (Course A-493-0080) applicable to their CONUS duty location or Overseas Hazardous Waste Facility Operations course (Course A-493-0093) applicable to their OCONUS duty location within 60 days of assignment and hold this position for a minimum of 12 months?",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.19.3.3 (m)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2207",
+      "Question": "If the command does not have an AMD or T/O established billet, is a collateral duty HMC&M Supervisor assigned?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.19.3.4 and NOTE",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2208",
+      "Question": "Is the HMC&M Supervisor an E-5 or above and hold the position for a minimum of 2 years?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.19.3.3 (h) and 10.19.3.4 (a)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2209",
+      "Question": "Has the HMC&M Supervisor attended the required formal training course (A-322-2600) or equivalent (as determined or approved by Echelon 2 headquarters) within 120 days of assignment?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.19.3.4 (a); OPNAVINST",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2210",
+      "Question": "Is the HMC&M Supervisor maintaining a Program File which includes elements listed in the Hazardous Material Control and Management Program NAMPSOP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.19.3.4 (b) (1) thru (6)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2211",
+      "Question": "Are all publications available for use by personnel responsible for carrying out the Hazardous Material Control and Management Program?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.19.3.4 (b) (4)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2212",
+      "Question": "Is an HM AUL developed, implemented, managed and revised as necessary utilizing a Unique Identifier?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par 10.19.3.8 (g) and OPNAVINST 5100.23, par. 0702.g.(2) and par. 0702.g.(5)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2213",
+      "Question": "Do Work Center Supervisors review work center AUL and SHML annually and submit material substitutions or process changes to the HMC&M Supervisor?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.19.3.8 (c) and (g)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2214",
+      "Question": "Does the HMC&M Supervisor ensure an MSDS for each HAZMAT used is available at a centralized location within the activity?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.19.3.4 (c)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2215",
+      "Question": "Does the Work Center Supervisor provide job specific training to newly assigned personnel on specific MSDSs and the procedures of handling, usage, storage and disposal of HAZMAT/HAZWASTE prior to handling of HAZMAT and is the training documentation retained for 5 years within the individual's training record?",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.19.3.8 (d) NOTE",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2216",
+      "Question": "Have all Work Center Supervisors and designated HMC&M personnel completed or are they scheduled for formal or local HAZMAT storage and handling training within thirty days of assignment?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.19.3.4 (h)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2218",
+      "Question": "Are weekly inspections of work center HAZMAT and HAZWASTE sites accomplished and recorded and retained for a minimum of 1 year?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.19.3.9 (g)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2219",
+      "Question": "Are spaces for using and storing paints, solvents, and other combustible HAZMAT fire resistant and ventilated?  ",
+      "Reference": "Ref. 29 CFR 1910.106 (d) (3) (ii) and 29 CFR 1910.106 (d) (4) (iv)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2220",
+      "Question": "Are containers of HAZMAT labeled, tagged or marked with the identity of the chemical, hazard warnings, and the name and address of the manufacturer or other responsible party?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.19.3.6 (d) (1) and OPNAVINS",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2221",
+      "Question": "Does the HMC&M Petty Officer/representative ensure all HAZMAT and HAZWASTE containers are properly labeled, segregated, and free of corrosion and leakage?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.19.3.9 (h)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2222",
+      "Question": "Are containers, into which HAZMAT is transferred, properly labeled?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.19.3.6 (d) (1); OPNAVINST 5100.19, par. C2302 (d)  NOTE (1)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2223",
+      "Question": "Does the HMC&M Petty Officer/representative maintain an inventory of all HAZMAT present in the work center and ensure current shelf life has not expired?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.19.3.9 (c)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2224",
+      "Question": "Is the HAZMAT log used to identify material issued, retained for reuse and disposed of as HAZWASTE?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.19.3.4 (r) and 10.19.3.8 (f)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2225",
+      "Question": "Is HAZWASTE disposed of properly and documented?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.19.3.4 (r) and 10.19.3.7 (a)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2226",
+      "Question": "Are emergency spill drills conducted with activity personnel at a minimum quarterly?  ",
+      "Reference": "Ref.  COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.19.3.4 (s)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2227",
+      "Question": "Is the HMC&M Petty Officer/representative complying with all program requirements as defined by the NAMPSOP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.19.3.9 (a) thru (l)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2200",
+      "ProgramName": "Hazardous Material Control and Management",
+      "Qnum": "2228",
+      "Question": "Is the Program Manager following assigned action responsibilities directed in the Hazardous Material Control and Management Program NAMPSOP?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.19.3.3 (a) thru (m)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2600",
+      "ProgramName": "Technical Directive Compliance",
+      "Qnum": "2601",
+      "Question": "Has the MO designated, in writing via the MMP, the MMCO/civilian equivalent as the TD Compliance Program Manager and has the MMCO designated, in writing via MMP, an E6 or above (or civilian equivalent) assigned to maintenance/production control as a collateral duty TDPC?",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.10.3.5 (b) and 10.10.3.6 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2600",
+      "ProgramName": "Technical Directive Compliance",
+      "Qnum": "2602",
+      "Question": "Is the Program Manager following assigned action responsibilities directed in the TD Compliance Program NAMPSOP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.10.3.6",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2600",
+      "ProgramName": "Technical Directive Compliance",
+      "Qnum": "2604",
+      "Question": "Has the Program Manager performed a self-audit within 30 days of designation and annually thereafter?  ",
+      "Reference": "Ref.  COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.10.3.6 NOTE",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2600",
+      "ProgramName": "Technical Directive Compliance",
+      "Qnum": "2606",
+      "Question": "Has the Quality Assurance Officer designated, in writing via the MMP, a QAR as the TD Compliance Program Monitor?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.10.3.10 (c)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2600",
+      "ProgramName": "Technical Directive Compliance",
+      "Qnum": "2608",
+      "Question": "DOes the TDPC ensure Maintenance Control/Production Control issues applicable TD compliance MAF/WOs?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.10.3.9 (c)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2600",
+      "ProgramName": "Technical Directive Compliance",
+      "Qnum": "2609",
+      "Question": "Are TDs complied within the required timeframes?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.10.3.5 (c) NOTE",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2600",
+      "ProgramName": "Technical Directive Compliance",
+      "Qnum": "2612",
+      "Question": "Are A/C, engines, SE, components, AWSE, ALSS and CM ALS screened upon Acceptance/receipt and prior to transfer to ensure all applicable TDs are incorporated?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.2.3.5.1 and Chapter 10, pars. 10.10.3.9.1, 10.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2600",
+      "ProgramName": "Technical Directive Compliance",
+      "Qnum": "2617",
+      "Question": "Are TDs that affect a component which has an ASR/SRC/MSR/EHRs properly recorded on their respective forms?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2,  Chapter 5, pars.  5.2.1.16.1.3 and  5.2.3.17.3 and Chapter 10, pars. 10.10.3.12 (c) and (f) (1)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2600",
+      "ProgramName": "Technical Directive Compliance",
+      "Qnum": "2618",
+      "Question": "Have requests for TD compliance waivers/deviations been submitted?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.10.3.5 (c) NOTE and 10.10.3.6 (g)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2600",
+      "ProgramName": "Technical Directive Compliance",
+      "Qnum": "2619",
+      "Question": "When a new TD is received, is the CNAF Form 4790/24A and NALCOMIS database correctly annotated to include multiple entries if applicable?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 5, pars. 5.2.1.16.1.3 thru 5.2.1.16.1.4.3 and 5.2.1.16.1.9 and Chapter 10, par. 10.10.3.12 (c) ",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2600",
+      "ProgramName": "Technical Directive Compliance",
+      "Qnum": "2626",
+      "Question": "Does QA use the TD routing and tracking sheet to track TD compliance?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, pars. 10.10.3.10 (b) (1) and 10.10.3.15 (c) thru (f)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2600",
+      "ProgramName": "Technical Directive Compliance",
+      "Qnum": "2627",
+      "Question": "Do Logs and Records and Maintenance Administrators (Marine Corps) annotate the incorporation compliance time and event on the MAF/WO to include the system reason block?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.10.3.12 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2902",
+      "Question": "Does the MMP provide dates of scheduled inspections (e.g., A/C, engine, survival equipment, etc.) or is a database locator sheet included in MMP?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapters 3, par. 3.3.4.1.1 (b) and Chapter 5, par. 5.2.1.1.2 (n)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2905",
+      "Question": "Does the MMP provide PME requirements?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 3, par. 3.3.4.1.1 (e)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2906",
+      "Question": "Does the MMP provide a schedule of Technical Training or reference a separate Monthly Training Plan?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 3, par. 3.3.4.1.1 (f)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2907",
+      "Question": "Does the MMP provide a listing of forced removal items (e.g., high time, etc.) or is a database locator sheet included in MMP?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 3, par. 3.3.4.4.1 (g)  and Chapter 5, par. 5.2.1.1.2 (n) (1)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2909",
+      "Question": "Does the MMP provide a current listing of QA personnel (e.g., QARs, CDQARs, CDIs)?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 3, par. 3.3.4.1.1 (i)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2913",
+      "Question": "Does Maintenance Control note deviations from the master MMP and initiate actions to adjust the maintenance workload to meet the noted variations?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.1.1.12",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2914",
+      "Question": "Does the MMP provide a list of SE licensed personnel?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.16.3.2 (a) (2)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2915",
+      "Question": "Does the MMP provide a listing of QA audited programs and the program manager/monitors?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 3, par. 3.3.4.1.1 (j)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2926",
+      "Question": "Does Maintenance Control screen all MAFs, and ensure completeness prior to approving the MAF?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 15, par. 15.2.1.2.2.6",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2944",
+      "Question": "In the case of When Discovered Code O, does Maintenance Control initiate the MAF?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 15, pars. 15.1.1.3.2.1 and 15.1.2.3.2.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2945",
+      "Question": "Does Maintenance Control properly maintain historical files for support equipment?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 15, par. 15.1.2.5.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2952",
+      "Question": "Does the Program Coordinator, coordinate with the Program Manager to schedule incorporation of TD's when parts/kits and aircraft/equipment are available within the compliance requirements?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.10.3.9 (c) thru (e) ",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2955",
+      "Question": "Are MCIs being performed at required intervals?   ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 2, pars. 2.1.3.2.1.8.2.3 thru 2.1.3.2.1.8.2.6",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2958",
+      "Question": "Does Maintenance/Production Control enter the appropriate malfunction code when initiating a cannibalization action MAF?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.1.1.11.2 NOTE",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2962",
+      "Question": "Has the MMCO established procedures for controlling cannibalization?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 3,  par. 3.5.5.2.1(d)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2966",
+      "Question": "Each time the status of a discrepancy changes, is Maintenance Control notified immediately?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 15, par.15.1.2.3.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2967",
+      "Question": "Does Information flow expeditiously among Maintenance Control, Material Control, and the work center?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 15, par.15.1.2.3.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2968",
+      "Question": "Does Maintenance Control manage resources in an efficient manner, and demonstrate control of the various elements within their area of responsibility?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 15, par. 15.1.2 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "2900",
+      "ProgramName": "Maintenance Control",
+      "Qnum": "2969",
+      "Question": "Is Maintenance Control reviewing MAFs for complete and accurate documentation at time of initiation and at time of completion, prior to approval?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 15, pars. 15.1.2.3.2.2 and 15.2.1.2.2.6",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3000",
+      "ProgramName": "Production Control",
+      "Qnum": "3001",
+      "Question": "Does the IMA MO schedule and conduct a monthly maintenance and material planning meeting?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 3, par. 3.5.3.2 (z)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3000",
+      "ProgramName": "Production Control",
+      "Qnum": "3002",
+      "Question": "Is the MMP prepared and distributed by the last day of the month?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 3, par. 3.3.4.1.3 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3000",
+      "ProgramName": "Production Control",
+      "Qnum": "3007",
+      "Question": "Does the MMP provide a listing of TD compliance requirements?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 3, par. 3.3.4.1.2 (f)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3000",
+      "ProgramName": "Production Control",
+      "Qnum": "3010",
+      "Question": "Where physically possible, is an alternate means of communication, independent of telephones, available between Production Control and all work centers?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 3, par. 3.5.5.2 (d)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3000",
+      "ProgramName": "Production Control",
+      "Qnum": "3013",
+      "Question": "Are joint AWP validations conducted weekly by Production Control, Production Work Centers and Supply and does the validation ensure that all parts on order are still required and parts required are still on order?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5,",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3000",
+      "ProgramName": "Production Control",
+      "Qnum": "3022",
+      "Question": "Are work centers immediately notifying PC of supply status changes, and do PCs display boards/reports reflect those changes?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 16, par. 16.1.3.2 (c)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3000",
+      "ProgramName": "Production Control",
+      "Qnum": "3023",
+      "Question": "Are Production Controllers familiar with the Navy supply system, SM&R codes, material allowances and project/priority codes?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, pars. 5.1.2.1.3 and  5.1.2.2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3304",
+      "Question": "Do Logs and Records perform a verification of aircraft/equipment logbooks, associated records and CM ALS records upon receipt/induction and perform follow-up as necessary to correct any discrepancies?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, pars. 5.1.1.",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3308",
+      "Question": "Is the replacement-due time annotated on the cover page of AESRs made in pencil and based on the MSR/ASR/SRC/EHR with the least amount of time remaining until replacement due and is the deadline tasking updated on the MSR/ASR/SRC/EHR log sets with the least amount of time remaining until replacement due?",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, pars. 5.2.1.25.3",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3309",
+      "Question": "Is full identification of the equipment to which the aircraft/AESR pertains properly filled in on each page (front and back)?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, pars. 5.2.1.3.1 and 5.2.1.25.1.2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3310",
+      "Question": "Are superseded forms properly closed out and new forms initiated?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, pars. 5.2.1.3.2 and 5.2.1.25.1.4",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3311",
+      "Question": "Are all entries printed in ink or typewritten (except where pencil entries are authorized)?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.2.1.2.5",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3314",
+      "Question": "Are Phase/Major, Special and Conditional Inspection Records maintained as separate pages in the inspection section of the logbook/AESR/CM ALS?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, pars. 5.2.1.14.2.1,  5.2.1.14.3.1 and 5.2.3.15.2.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3315",
+      "Question": "Are the flight/operating hours of the equipment inspected entered on the Inspection Record?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, pars. 5.2.1.14.5 and 5.2.3.15",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3316",
+      "Question": "Is the Equipment Operating Record (EOR) within the AESR/CM ALS AESR maintained correctly?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, pars. 5.2.1.26 and 5.2.3.23",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3320",
+      "Question": "When rework/repair is accomplished, does the activity accomplishing the action make the required entries on the Record of Rework Page/CM ALS?   ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, pars. 5.2.1.15 and 5.2.3.16",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3321",
+      "Question": "Is a copy of the rework/repair work order and all pertinent data placed in the manila envelope in the back of the logbook or appropriate historical file?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.2.1.5.6",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3322",
+      "Question": "Does the Miscellaneous History section/CM ALS contain all necessary entries as outlined in the NAMP?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, pars. 5.2.1.17 and 5.2.3.18",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3323",
+      "Question": "Are all entries listed on the Preservation/De-preservation page/CM ALS accurately computed and annotated correctly to include proper reference, and do they accurately reflect the preservation status of the equipment?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, pars. 5.2.1.18 and 5.2.3.19",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3326",
+      "Question": "Does the TD section include separate pages for each type of directive and are TDs documented correctly?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, pars. 5.2.1.16 and 5.2.3.17",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3327",
+      "Question": "Are all PMIC directed airframe/AESR equipment, components and assemblies, or those requiring an MSR, ASR, EHR, and SRC recorded on the inventory record? ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.2.1.20.1.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3328",
+      "Question": "Is there an ASR/SRC/EHR/MSR card/CM ALS maintained for each component required by the applicable PMIC?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, pars. 5.2.1.27,  5.2.1.28,  5.2.1.29,  5.2.1.30,  5.2.3.22.5,  5.2.3.28.1.1, 5.2.3.28.1.2 and 5.2.3.29",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3329",
+      "Question": "Are the replacement intervals and due times recorded properly on SRC, MSR, ASR and EHR components and is deadline tasking updated in CM ALS?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, pars. 5.2.1.27.3,  5.2.1.28.4,  5.2.1.29.4,  5.2.1.30.4,  and 5.2.3.1.2 ",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3332",
+      "Question": "Are corrections to logbooks made by single line entries (vice corrective tape or correction fluid) and initialed by only those persons authorized to sign logbooks?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.2.1.6",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3333",
+      "Question": "Are appropriate entries entered in logbooks/AESRs and CM ALS, and are entries signed by authorized personnel?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, pars. 5.2.1.2, 5.2.1.5 and 5.2.3.7.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3300",
+      "ProgramName": "Logs and Records",
+      "Qnum": "3342",
+      "Question": "If there is a change in the authorized inspection interval of aircraft or equipment, whether it establishes and/or rebases the current interval, is the appropriate Miscellaneous History Page entry made?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, pars. 5.2.",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3500",
+      "ProgramName": "Maintenance Administration",
+      "Qnum": "3501",
+      "Question": "Does Maintenance Administration distribute and maintain a master file of current and up-to-date non-technical instructions?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 3, par. 3.5.4.5 (k)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3704",
+      "Question": "When material is received from the Supply Department, is the date and time the material is delivered to the specified delivery point entered on the DD 1348?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.1.3.3.1 (c)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3705",
+      "Question": "When the turn-in of defective repairable components is made available for simultaneous exchange, is a signature obtained for retrograde material?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.1.3.2.4",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3707",
+      "Question": "Does Material Control ensure that project/priority codes are correctly assigned prior to forwarding requirements to supporting ASD?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 5, pars. 5.1.2.2.1 thru 5.1.2.2.3 and NAVSUP P-485, par. 3048 and Appendix 6",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3708",
+      "Question": "Does Material Control ensure components that require an ASR, EHR, or SRC have the appropriate card enclosed and attached to the component prior to turn-in to supporting ASD?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.1.3.1.1 (c) ",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3709",
+      "Question": "Are all RFI/non-RFI components properly packaged and handled to prevent damage and deterioration?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.1.3.5.2.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3710",
+      "Question": "Are work stoppage and routine priority requisitions validated frequently between Material Control and the work centers?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.1.3.1.3 (j) and NAVSUP P-485, par. 3590",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3711",
+      "Question": "Is follow-up action initiated and documented by Material Control in a timely manner?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 9, par. 9.1.11.1.3.1 and NAVSUP P-485, par. 3532",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3712",
+      "Question": "Are all piece parts properly accounted for and, if applicable, documented on blocks H thru Z on the MAF?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 6, par. 6.2.9.2 (a)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3715",
+      "Question": "Is there accountability for all materials and equipment in custody?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.1.3.1.3 (h)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3716",
+      "Question": "When U.S. Government property is determined to be lost, damaged or destroyed, is a Financial Liability Investigation of Property Loss (DD 200) initiated?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.1.3.1.3 (f) and NAVSUP P-485, pars. 5125 thru 5134",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3717",
+      "Question": "Is the original survey (DD 200) with all attachments retained at the activity?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 9, par. 9.1.11.1.3.1 and NAVSUP P-485, par. 5128",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3719",
+      "Question": "Are surveys (DD 200)  reviewed and approved by the appointing authority/CO?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 9, par. 9.1.11.1.3.1 and NAVSUP P-485, par. 5127",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3728",
+      "Question": "Have Requisition/OPTAR Logs been established for each ACC/TYCOM operating budget?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.1.3.7.3.8.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3752",
+      "Question": "Is a Report of Discrepancy (SF 364) initiated for material received with discrepancies?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 9, par. 9.1.11.1.3.1 and NAVSUP P-485, pars. 4269-4270",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3753",
+      "Question": "Are TD kits ordered, issued and accounted for based on the requirements stated in the TD?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.1.3.2.2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3761",
+      "Question": "Are parts and materials received expeditiously routed to applicable work center and not allowed to accumulate?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.1.3.1.1 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3762",
+      "Question": "Does Material Control take proper custody of assigned pack-up materials, maintained accurate stock records and usage data, submitted requisition for all materials used, returned the balance of unused material to the supplying activity, and ensured all items sub-custodied are returned RFI or non-RFI to supply upon completion of usage?",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.1.3.12.2.3.3 and COMNAVAIRFORINST 4419.1, par 5 (b) (1)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3765",
+      "Question": "Is the policy of one-for-one exchange of Mandatory Turn in Repairable (MTR) components being strictly followed?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4415.1A,  Chapter 7, par. 708.3",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "3700",
+      "ProgramName": "Material Control",
+      "Qnum": "3767",
+      "Question": "Does AMSU ensure a photocopy of the ASR, E H R, or SRC card is firmly affixed outside of the shipping container?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 5, par. 5.1.3.8.2 (a)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5501",
+      "Question": "Is the mobile facility logbook and inventory record (LIR) established?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 3, par. 3.2.2.16.2 (a)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5504",
+      "Question": "When MFs are transferred with shortages, is approval received from the ACC/TYCOM/COMMARFOR/ASL-34?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 3, par. 3.2.2.16.2 (c)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5505",
+      "Question": "Are MFs and major related equipment inventoried upon receipt/transfer and are all concerned advised by naval message?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 3, par. 3.2.2.16.2 (c)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5508",
+      "Question": "Is the record of shortages annotated on receipt and transfer?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 3, par. 3.2.2.16.3.3 (i)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5509",
+      "Question": "Is Production Control utilizing Support Equipment Standardization System (SESS) and NALCOMIS to properly manage MMF and related SE?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 16, par. 16.1.4 and Chapter 10, par. 10.17.2.5",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5510",
+      "Question": "Are PM inspections and maintenance requirements completed on MFs and related SE?  ",
+      "Reference": "Refs. COMNAVAIRFORINST 4790.2, Chapter 3, par. 3.2.2.16.2 (a) and Chapter 10, par. 10.17.2.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5513",
+      "Question": "Does each mobile facility have all required test equipment and support equipment installed to allow it to perform the intended function of its configuration design?  ",
+      "Reference": "Ref. AG-360MF-CCD-000  (work package as applicable to configuration)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5514",
+      "Question": "Are all Convention for Safe Container inspections current?  ",
+      "Reference": "Ref. NAVAIRINST 13670.1C, encl. 1, par. 7.b.1.h",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5516",
+      "Question": "Are all mobile facilities properly marked with all conventions and markings?  ",
+      "Reference": "Ref. MIL-HDBK-138B, Chapter 4, pgs. 37 thru 42",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5517",
+      "Question": "Are all fire extinguisher dates current?  ",
+      "Reference": "Ref. AG-360MF-IIN-000, Chapter 7, pg. 7-1, par. 7.2.1.1 (b)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5519",
+      "Question": "Are power and grounding cable runs protected in areas where vehicles and/or material handling equipment could damage cables?  ",
+      "Reference": "Ref. AG-360MF-IIN-000, Chapter 8, pg. 8-1, par. 8.2.1.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5520",
+      "Question": "Are all mobile facilities, power distribution boxes, and generator sets providing power to a mobile facility grounded?  ",
+      "Reference": "Ref. AG-360MF-IIN-000, Chapter 8, pg. 8-1, par. 8.2.1.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5525",
+      "Question": "Is the MFC assigned in writing?  ",
+      "Reference": "Ref. MCO 13670.1B, 3.b.4.b and 3.b.5.a",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5526",
+      "Question": "Does the MFC maintain an up-to-date inventory of MF Program equipment?",
+      "Reference": "Ref. MCO 13670.1B, 3.c.4",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5536",
+      "Question": "Are Surveyed MFs stenciled with ",
+      "Reference": "Ref.  MCO 13670.1B, 3.c.7.e.2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5538",
+      "Question": "Do all surveyed MFs have all MF markings or decals and CSC data plate removed?  ",
+      "Reference": "Ref.  MCO 13670.1B, 3.c.7.e.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5539",
+      "Question": "Are any surveyed MFs stacked?  ",
+      "Reference": "Ref.  MCO 13670.1B, 3.c.7.g",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5540",
+      "Question": "Are any surveyed MFs physically or electrically connected to an active MF or MF complex?  ",
+      "Reference": "Ref.  MCO 13670.1B, 3.d.7.c",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5542",
+      "Question": "Do all surveyed MFs retained on site have an approval retention message from HQMC (ASL-34).  ",
+      "Reference": "Ref.  MCO 13670.1B, 3.c.7.b",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5500",
+      "ProgramName": "Mobile Maintenance Facilities",
+      "Qnum": "5543",
+      "Question": "Have authorized deconfigurations been properly documented and items identified in the respective LIRs?  ",
+      "Reference": "Ref. MCO 13670.1B, 3.c.5.g",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5600",
+      "ProgramName": "CDI Periodic",
+      "Qnum": "5601",
+      "Question": "Are CDIs conducting receiving or screening inspections applicable to material, components, parts, equipment, logs and records, and documents?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.1.7.7 (c)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5600",
+      "ProgramName": "CDI Periodic",
+      "Qnum": "5602",
+      "Question": "Does the CDI spot check all maintenance actions performed by their respective work center?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.4.5.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5600",
+      "ProgramName": "CDI Periodic",
+      "Qnum": "5603",
+      "Question": "Is the CDI familiar with provisions and responsibilities of programs managed and audited by QA?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.4.5.1",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5600",
+      "ProgramName": "CDI Periodic",
+      "Qnum": "5604",
+      "Question": "Did the supervisor or CDI and the technician conduct a sight inventory of all tools prior to starting each task, at each work stoppage, and before an operational systems check?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 10, par. 10.12.3.12 (h)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5600",
+      "ProgramName": "CDI Periodic",
+      "Qnum": "5605",
+      "Question": "Did the CDI or supervisor initial for tools in the tool box block of the MAF accumulated work hours section?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 15, par. 15.2.1.3.2",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5600",
+      "ProgramName": "CDI Periodic",
+      "Qnum": "5606",
+      "Question": "Did the CDI inspect only the work of others?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2, Chapter 7, par. 7.4.5  NOTE",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    },
+    {
+      "ProgramID": "5600",
+      "ProgramName": "CDI Periodic",
+      "Qnum": "5607",
+      "Question": "Are In-process inspections required during the performance of maintenance requirements and actions where satisfactory task performance cannot be determined after the task has been completed properly documented?  ",
+      "Reference": "Ref. COMNAVAIRFORINST 4790.2 Chapter 7, par 7.1.7.7 (a)",
+      "Complies": "FALSE",
+      "UserMod": "FALSE"
+    }
+  ]
+}

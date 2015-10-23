@@ -23,5 +23,10 @@
     <string name="no_network_connection_toast">No network connection found</string>
 
     <string name="about_extra">Additional features in the works such as CSEC and CGRI checklists, NAMP Code Lookup, and possibly a DCP Calculator.</string>
+    <string name="title_activity_inspections">Inspections</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_chk_list">Inspections</string>
+    <string name="title_activity_program">Program</string>
 
 </resources>

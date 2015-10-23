@@ -21,9 +21,10 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.2.0'
-    compile 'com.android.support:support-v4:22.2.0'
-// SQLite helper to prepackage the database
+    // SQLite helper to prepackage the database
     // Disable on Macbook due to connectivity issues and may not need this
-     //compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
+    //compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:support-v4:22.2.1'
+    compile 'com.android.support:design:22.2.1'
 }
