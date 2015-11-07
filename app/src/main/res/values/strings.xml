@@ -8,7 +8,6 @@
 
     <string name="title_activity_mat_calc">MatCalc</string>
 
-
     <string name="title_activity_flols">FLOLS Hook 2 Eye</string>
     <string name="title_activity_splash_screen">EAF Toolkit</string>
     <string name="brc_name">Bogue Rat Creations</string>
@@ -22,11 +21,12 @@
     <string name="imageview_description">Image Thumbnail</string>
     <string name="no_network_connection_toast">No network connection found</string>
 
-    <string name="about_extra">Additional features in the works such as CSEC and CGRI checklists, NAMP Code Lookup, and possibly a DCP Calculator.</string>
-    <string name="title_activity_inspections">Inspections</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_chk_list">Inspections</string>
-    <string name="title_activity_program">Program</string>
+    <string name="about_extra">Additional features in the works such as a NAMP code lookup and possibly a DCP CBR calculator.  </string>
+    <string name="about_extra2">Submit your own photos depicting  EAF Equipment and Sites.  And let me know what we should be working on at support@boguerat.com  </string>
+    <string name="about_extra3">This app is not endorsed by any governmental agency.  Always follow local policies and instructions.</string>
+    <string name="title_activity_inspect">Inspections</string>
+    <string name="title_activity_programs">Programs</string>
+    <string name="title_activity_questions">Questions</string>
+    <string name="title_activity_question_detail">QuestionDetail</string>
 
 </resources>

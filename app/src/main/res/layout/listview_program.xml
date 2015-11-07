@@ -7,20 +7,11 @@
     android:paddingTop="10dp">
 
     <TextView
-        android:id="@+id/tvQuestionAndNum"
+        android:id="@+id/tvProgram"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:text="Question"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/tvReference"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="10dp"
-        android:text="Reference"
+        android:text="Program"
         android:textSize="20sp" />
 
 </LinearLayout>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="BRCgreen">#41643F</color>
-    
     <color name="grid_state_pressed">#1Affffff</color>
     <color name="grid_state_focused">#80000000</color>
+    <color name="BRCtext">#000000</color>
+    <color name="BRCsubtext">#666666</color>
 
 </resources>

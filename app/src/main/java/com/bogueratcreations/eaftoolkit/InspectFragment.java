@@ -8,15 +8,10 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.bogueratcreations.eaftoolkit.imgGallery.ui.ImageGridActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A placeholder fragment containing a simple view.
- */
-public class ChkListFragment extends ListFragment {
+public class InspectFragment extends ListFragment {
 
     private List<ListViewItem> mItems;  // ListView items list
 
@@ -28,12 +23,12 @@ public class ChkListFragment extends ListFragment {
         mItems = new ArrayList<ListViewItem>();
         Resources resources = getResources();
 
-        mItems.add(new ListViewItem(resources.getDrawable(R.drawable.forks), "NAMP - CSEC", "Computerized Self-Evaluation Checklist"));
-        mItems.add(new ListViewItem(resources.getDrawable(R.drawable.slope), "CGRI - EAF", "dtd August 2012"));
-        mItems.add(new ListViewItem(resources.getDrawable(R.drawable.calendar), "CGRI - ARFF", "dtd December 2014"));
+        mItems.add(new ListViewItem(resources.getDrawable(R.drawable.inspectcsec), "NAMP - CSEC", "Computerized Self-Evaluation Checklist"));
+        mItems.add(new ListViewItem(resources.getDrawable(R.drawable.inspecteaf), "CGRI - EAF", "dtd August 2012"));
+        mItems.add(new ListViewItem(resources.getDrawable(R.drawable.inspectarff), "CGRI - ARFF", "dtd December 2014"));
 
         // Initialize and set the list adapter
-        setListAdapter(new ListViewDemoAdapter(getActivity(), mItems));
+        setListAdapter(new ListViewItemAdapter(getActivity(), mItems));
     }
 
     @Override
@@ -41,7 +36,6 @@ public class ChkListFragment extends ListFragment {
         super.onViewCreated(view, savedInstanceState);
         //Customize the view?
         // getListView().setDivider(null);
-
     }
 
     @Override
@@ -49,20 +43,29 @@ public class ChkListFragment extends ListFragment {
         // retrieve the listview item
         ListViewItem item = mItems.get(position);
 
-        // Do Something with it (pass to next)
-        Toast.makeText(getActivity(), item.title, Toast.LENGTH_SHORT).show();
+        // Prepare intent
+        Intent intent = new Intent(getActivity(), Programs.class);
 
+        String message = "";
         // Then go to new activity, perhaps change Toast to Loading....
         switch (position) {
             case 0: // CSEC
-                startActivity(new Intent(getActivity(), Inspections.class));
+                message = "CSEC";
                 break;
             case 1: // CGRI EAF
-                startActivity(new Intent(getActivity(), Inspections.class));
+                message = "EAF";
                 break;
             case 2: // CGRI ARFF
-                startActivity(new Intent(getActivity(), Inspections.class));
+                message = "ARFF";
                 break;
+            default:
+                message = "CSEC";
         }
+
+        Prefs.writeString(getActivity().getApplicationContext(), "TABLE", message);
+        // intent.putExtra(Inspect.EXTRA_MESSAGE, message);
+
+        startActivity(intent);
+
     }
 }

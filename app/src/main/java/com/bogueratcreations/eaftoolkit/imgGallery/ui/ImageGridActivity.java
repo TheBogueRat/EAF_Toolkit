@@ -19,13 +19,8 @@ package com.bogueratcreations.eaftoolkit.imgGallery.ui;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.bogueratcreations.eaftoolkit.BuildConfig;
-import com.bogueratcreations.eaftoolkit.R;
 import com.bogueratcreations.eaftoolkit.imgGallery.util.Utils;
 
 /**

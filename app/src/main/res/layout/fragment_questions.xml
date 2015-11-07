@@ -4,14 +4,12 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.bogueratcreations.eaftoolkit.ChkListFragment">
+    tools:showIn="@layout/activity_questions"
+    tools:context="com.bogueratcreations.eaftoolkit.QuestionsFragment">
 
     <ListView
+        android:id="@+id/lvQuestions"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:choiceMode="singleChoice"
-        android:id="@+id/lvChkList"
-        tools:listitem="@layout/listview_layout">
-    </ListView>
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

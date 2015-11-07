@@ -4,16 +4,19 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.DecimalFormat;
+import java.util.Formatter;
 
 public class MatCalcFragment extends Fragment {
 
@@ -22,6 +25,7 @@ public class MatCalcFragment extends Fragment {
     TextView results1;
     TextView results2;
     TextView results3;
+    TextView results4;
     Switch swStartLay;
     Spinner spPattern;
     Button btnCalcMat;
@@ -42,6 +46,8 @@ public class MatCalcFragment extends Fragment {
         results1 = (TextView)V.findViewById(R.id.tvResults1);
         results2 = (TextView)V.findViewById(R.id.tvResults2);
         results3 = (TextView)V.findViewById(R.id.tvResults3);
+        results4 = (TextView)V.findViewById(R.id.tvResults4);
+
         etWidth.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -59,6 +65,7 @@ public class MatCalcFragment extends Fragment {
                 results1.setText("");
                 results2.setText("");
                 results3.setText("");
+                results4.setText("");
             }
         });
 
@@ -79,6 +86,7 @@ public class MatCalcFragment extends Fragment {
                 results1.setText("");
                 results2.setText("");
                 results3.setText("");
+                results4.setText("");
             }
         });
         btnCalcMat.setOnClickListener(new View.OnClickListener() {
@@ -116,10 +124,13 @@ public class MatCalcFragment extends Fragment {
                     } else {
                         results3.setText(tweRack.toString());
                     }
+                    Integer SqFt = length * width;
+                    String strSqFt;
+                    strSqFt = new DecimalFormat("#,###,##0").format(SqFt);
+                    results4.setText(strSqFt);
                 } else {
                     Toast.makeText(getActivity(), "Width must be divisible by 6 and Length by 2; and greater than zero!", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 

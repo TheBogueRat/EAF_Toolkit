@@ -1,32 +1,38 @@
 package com.bogueratcreations.eaftoolkit;
 
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
+/**
+ * Created by jodyroth on 10/29/15.
+ */
+public class Program {
 
-import com.bogueratcreations.eaftoolkit.R;
+    private int id;
+    private String program;
 
-public class Program extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_program);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    public Program() {
     }
 
+    public Program(String program, String question, String reference) {
+        this.program = program;
+    }
+
+    public Program(int id, String program, String question, String reference) {
+        this.id = id;
+        this.program = program;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getProgram() {
+        return program;
+    }
+
+    public void setProgram(String program){
+        this.program = program;
+    }
 }

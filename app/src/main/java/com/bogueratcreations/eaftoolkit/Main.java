@@ -26,7 +26,7 @@ public class Main extends AppCompatActivity {
             R.drawable.slope,
             R.drawable.calendar,
             R.drawable.flols,
-            R.drawable.brc,
+            R.drawable.inspect,
             R.drawable.br,
             R.drawable.brc
     };
@@ -122,7 +122,7 @@ public class Main extends AppCompatActivity {
                         startActivity(new Intent(Main.this, FLOLS.class));
                         break;
                     case 4: // Inspections
-                        startActivity(new Intent(Main.this, ChkList.class));
+                        startActivity(new Intent(Main.this, Inspect.class));
                         break;
                     case 5: // Images
                         startActivity(new Intent(Main.this, ImageGridActivity.class));
@@ -174,6 +174,9 @@ public class Main extends AppCompatActivity {
                 break;
             case R.id.action_flols:  // FLOLS
                 startActivity(new Intent(Main.this, FLOLS.class));
+                break;
+            case R.id.action_inspect: // Inspections
+                startActivity(new Intent(Main.this, Inspect.class));
                 break;
             case R.id.action_images: // Images
                 startActivity(new Intent(Main.this, ImageGridActivity.class));

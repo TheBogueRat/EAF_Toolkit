@@ -17,7 +17,6 @@
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="com.bogueratcreations.eaftoolkit.Main" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -106,25 +105,39 @@
                 android:value=".imgGallery.ui.ImageGridActivity" />
         </activity>
         <activity
-            android:name=".Inspections"
-            android:label="@string/title_activity_inspections" >
-        </activity>
-        <activity
-            android:name=".ChkList"
-            android:label="@string/title_activity_chk_list"
+            android:name=".Inspect"
+            android:label="@string/title_activity_inspect"
             android:parentActivityName=".Main" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bogueratcreations.eaftoolkit.Main" />
         </activity>
         <activity
-            android:name=".Program"
-            android:label="@string/title_activity_program"
-            android:parentActivityName=".Main"
-            android:theme="@style/CustomActionBarTheme.NoActionBar" >
+            android:name=".Programs"
+            android:label="@string/title_activity_programs"
+            android:parentActivityName=".Inspect"
+            android:theme="@style/CustomActionBarTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bogueratcreations.eaftoolkit.Main" />
+                android:value="com.bogueratcreations.eaftoolkit.Inspect" />
+        </activity>
+        <activity
+            android:name=".Questions"
+            android:label="@string/title_activity_questions"
+            android:parentActivityName=".Programs"
+            android:theme="@style/CustomActionBarTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bogueratcreations.eaftoolkit.Programs" />
+        </activity>
+        <activity
+            android:name=".QuestionDetail"
+            android:label="@string/title_activity_question_detail"
+            android:parentActivityName=".Questions"
+            android:theme="@style/CustomActionBarTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bogueratcreations.eaftoolkit.Questions" />
         </activity>
     </application>
 

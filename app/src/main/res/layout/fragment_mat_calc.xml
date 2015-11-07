@@ -65,6 +65,7 @@
         android:layout_marginTop="20dp"
         android:textOn="12'"
         android:textOff="6'"
+        android:textSize="17sp"
         android:checked="true" />
 
     <Spinner
@@ -74,6 +75,7 @@
         android:layout_below="@+id/swStartLay"
         android:entries="@array/layPatterns"
         android:layout_marginTop="20dp"
+        android:textSize="17sp"
         android:layout_toRightOf="@+id/tvPattern" />
 
     <Button
@@ -89,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Results"
+        android:text="Results:"
         android:id="@+id/lblResults"
         android:layout_below="@+id/btnCalcMat"
         android:layout_alignParentLeft="true"
@@ -145,7 +147,8 @@
         android:id="@+id/tvResults1"
         android:layout_alignBottom="@+id/tvResult1"
         android:layout_toEndOf="@+id/tvResult1"
-        android:layout_marginLeft="10dp" />
+        android:layout_marginLeft="10dp"
+        android:text="    " />
 
     <TextView
         android:layout_width="wrap_content"
@@ -154,7 +157,8 @@
         android:id="@+id/tvResults2"
         android:layout_alignBottom="@+id/tvResult2"
         android:layout_toEndOf="@+id/tvResult1"
-        android:layout_marginLeft="10dp" />
+        android:layout_marginLeft="10dp"
+        android:text="     " />
 
     <TextView
         android:layout_width="wrap_content"
@@ -163,7 +167,26 @@
         android:id="@+id/tvResults3"
         android:layout_alignBottom="@+id/tvResult3"
         android:layout_toEndOf="@+id/tvResult1"
-        android:layout_marginLeft="10dp" />
+        android:layout_marginLeft="10dp"
+        android:text="     " />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Sq.Ft."
+        android:id="@+id/tvSqFt"
+        android:layout_below="@+id/tvResult3"
+        android:layout_toStartOf="@+id/tvResults3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="      "
+        android:id="@+id/tvResults4"
+        android:layout_below="@+id/tvResults3"
+        android:layout_alignStart="@+id/tvResults3" />
 
 
 </RelativeLayout>

@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 /**
+ *
  * Created by TheBogueRat on 6/5/2015.
  */
 public class SlopePagerAdapter extends FragmentPagerAdapter {
