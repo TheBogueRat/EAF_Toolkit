@@ -115,17 +115,17 @@ public class ProgramsFragment extends Fragment {
 
             // Showing progress dialog  (chaged from MainActivity.this to getActivity)
             pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Loading Data...");
+            pDialog.setMessage("Loading New Inspection Data...Gimme a minute...");
             pDialog.setCancelable(false);
             pDialog.show();
         }
 
         @Override
         protected Void doInBackground(Void... params) {
-            JSONObject jsonObject;
+            JSONObject jsonObject = null;
 
             // Retrieve CSEC JSON Data
-            jsonObject = parseJSONData("json/CSEC.json");
+            jsonObject = parseJSONData("CSEC.json");
             handler.setTableName("CSEC");
             // Push into DB
             try {
@@ -151,7 +151,7 @@ public class ProgramsFragment extends Fragment {
             }
 
             // Retrieve CSEC JSON Data
-            jsonObject = parseJSONData("json/EAF.json");
+            jsonObject = parseJSONData("EAF.json");
             handler.setTableName("EAF");
             // Push into DB
             try {
@@ -177,7 +177,7 @@ public class ProgramsFragment extends Fragment {
             }
 
             // Retrieve CSEC JSON Data
-            jsonObject = parseJSONData("json/ARFF.json");
+            jsonObject = parseJSONData("ARFF.json");
             handler.setTableName("ARFF");
             // Push into DB
             try {
@@ -227,10 +227,12 @@ public class ProgramsFragment extends Fragment {
         String JSONString = null;
         JSONObject JSONObject = null;
 
-        Log.d("EAFtoolkit", "Parsing JSON Data " + jsonFile);
+        Log.i("EAFtoolkit", "Parsing JSON Data from file: " + jsonFile);
         try {
+            InputStream inputStream =
+                    getActivity().getApplicationContext().getAssets().open(jsonFile);
             //open the inputStream to the file (added getActivity())
-            InputStream inputStream = getActivity().getAssets().open(jsonFile);
+            //InputStream inputStream = context.getAssets().open(jsonFile);
 
             int sizeOfJSONFile = inputStream.available();
 
@@ -247,6 +249,7 @@ public class ProgramsFragment extends Fragment {
             JSONObject = new JSONObject(JSONString);
 
         } catch (IOException ex) {
+
             ex.printStackTrace();
             return null;
         } catch (JSONException x) {

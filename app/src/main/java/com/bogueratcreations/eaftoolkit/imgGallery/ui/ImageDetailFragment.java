@@ -29,6 +29,8 @@ import com.bogueratcreations.eaftoolkit.imgGallery.util.ImageFetcher;
 import com.bogueratcreations.eaftoolkit.imgGallery.util.ImageWorker;
 import com.bogueratcreations.eaftoolkit.imgGallery.util.Utils;
 
+import uk.co.senab.photoview.PhotoViewAttacher;
+
 /**
  * This fragment will populate the children of the ViewPager from {@link ImageDetailActivity}.
  */
@@ -37,6 +39,7 @@ public class ImageDetailFragment extends Fragment {
     private String mImageUrl;
     private ImageView mImageView;
     private ImageFetcher mImageFetcher;
+    private PhotoViewAttacher mAttacher;
 
     /**
      * Factory method to generate a new instance of the fragment given an image number.
@@ -75,6 +78,8 @@ public class ImageDetailFragment extends Fragment {
         // Inflate and locate the main ImageView
         final View v = inflater.inflate(R.layout.image_detail_fragment, container, false);
         mImageView = (ImageView) v.findViewById(R.id.imageView);
+        mAttacher = new PhotoViewAttacher(mImageView);
+
         return v;
     }
 

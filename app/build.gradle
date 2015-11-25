@@ -8,8 +8,8 @@ android {
         applicationId "com.bogueratcreations.eafToolkit"
         minSdkVersion 17
         targetSdkVersion 22
-        versionCode 20020
-        versionName "2.0"
+        versionCode 20033
+        versionName "3.3"
     }
     buildTypes {
         release {
@@ -27,4 +27,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:support-v4:22.2.1'
     compile 'com.android.support:design:22.2.1'
+    compile 'com.commit451:PhotoView:1.2.4'
 }

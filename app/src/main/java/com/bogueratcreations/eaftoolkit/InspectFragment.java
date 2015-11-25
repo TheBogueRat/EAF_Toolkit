@@ -24,7 +24,7 @@ public class InspectFragment extends ListFragment {
         Resources resources = getResources();
 
         mItems.add(new ListViewItem(resources.getDrawable(R.drawable.inspectcsec), "NAMP - CSEC", "Computerized Self-Evaluation Checklist"));
-        mItems.add(new ListViewItem(resources.getDrawable(R.drawable.inspecteaf), "CGRI - EAF", "dtd August 2012"));
+        mItems.add(new ListViewItem(resources.getDrawable(R.drawable.inspecteaf), "CGRI - EAF", "dtd October 2015"));
         mItems.add(new ListViewItem(resources.getDrawable(R.drawable.inspectarff), "CGRI - ARFF", "dtd December 2014"));
 
         // Initialize and set the list adapter

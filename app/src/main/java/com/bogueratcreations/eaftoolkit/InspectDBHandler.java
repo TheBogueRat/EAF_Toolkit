@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class InspectDBHandler extends SQLiteOpenHelper implements InspectListener{
     // TODO: Make this agnostic to any list so we can query down to the program from CSEC & CGRI
-    private static final int DB_VERSION = 6;
+    private static final int DB_VERSION = 7;
     private static final String DB_NAME = "EAFToolkit.db";
     private static final String KEY_ID = "_id";
     private static final String KEY_PROGRAM = "_program";

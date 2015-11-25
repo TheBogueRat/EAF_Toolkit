@@ -18,7 +18,7 @@
       "ProgramName": "Administration",
       "Qnum": "915 01 002 ",
       "Question": "Has a local SOP been published?",
-      "Reference": "NAVAIR 00-80-T-115",
+      "Reference": "NAVAIR 00-80-T-115, par 1.3.4",
       "Complies": "FALSE",
       "UserMod": "FALSE"
     },
@@ -27,7 +27,7 @@
       "ProgramName": "Administration",
       "Qnum": "915 01 003 ",
       "Question": "Are sufficient personnel available to ensure minimum crew manning levels at all times?",
-      "Reference": "NAVAIR 00-80T-115, PAR 4.4.3",
+      "Reference": "NAVAIR 00-80T-115, PAR 1.4.1",
       "Complies": "FALSE",
       "UserMod": "FALSE"
     },
@@ -36,7 +36,7 @@
       "ProgramName": "Administration",
       "Qnum": "915 01 004 ",
       "Question": "Does the Branch maintain a current copy of certification documentation for all installed equipment?",
-      "Reference": "NAVAIRINST 13800.12",
+      "Reference": "NAVAIRINST 13800.12C, SECNAV M-5210.0",
       "Complies": "FALSE",
       "UserMod": "FALSE"
     },
@@ -45,7 +45,7 @@
       "ProgramName": "Administration",
       "Qnum": "915 01 005 ",
       "Question": "After each aircraft arrestment, is all data recorded onto the quarterly engagement report for submission to NAWC Lakehurst NJ? Is a negative report submitted quarterly if no arrestments occur?",
-      "Reference": "NAVAIRINST 13810.3",
+      "Reference": "NAVAIRINST 13810.3E",
       "Complies": "FALSE",
       "UserMod": "FALSE"
     },
@@ -81,7 +81,7 @@
       "ProgramName": "Training",
       "Qnum": "915 02 003 ",
       "Question": "Is the Marine Sierra Hotel Aviation Readiness Program (M-SHARP) used to track and monitor the Training and Readiness events for all Expeditionary Airfield Technicians assigned to the Squadron?",
-      "Reference": "NAVMC 3500.14, PAR 205.2.D & PAR 205.3",
+      "Reference": "NAVMC 3500.14, 800.2, 801.1B",
       "Complies": "FALSE",
       "UserMod": "FALSE"
     },
@@ -90,7 +90,7 @@
       "ProgramName": "Training",
       "Qnum": "915 02 004 ",
       "Question": "Has a T&R designation letter been completed for all Designations (Quality Assurance, Production Control, etc.)?",
-      "Reference": "MCO P3500.45, PAR 303.2",
+      "Reference": "MCO P3500.113, PAR 2.5",
       "Complies": "FALSE",
       "UserMod": "FALSE"
     },
@@ -108,7 +108,7 @@
       "ProgramName": "Training",
       "Qnum": "915 02 006 ",
       "Question": "Is the airfield vehicle operator’s course completed annually and documented, if applicable?",
-      "Reference": "NAVAIR 00-80T-115",
+      "Reference": "NAVAIR 00-80T-113",
       "Complies": "FALSE",
       "UserMod": "FALSE"
     },
@@ -117,7 +117,7 @@
       "ProgramName": "Supply/TCC/Calibrations/HAZMAT",
       "Qnum": "915 03 001 ",
       "Question": "Is a Responsible Officer (RO) appointed in writing by the Commanding Officer?",
-      "Reference": "MCO 4400.150, PAR 1003.1.B.2",
+      "Reference": "MCO 4400.150, chap 1, 5(f)",
       "Complies": "FALSE",
       "UserMod": "FALSE"
     },
@@ -126,7 +126,7 @@
       "ProgramName": "Supply/TCC/Calibrations/HAZMAT",
       "Qnum": "915 03 002 ",
       "Question": "Are the Table of Basic Allowance (TBA)/Consolidated Memorandum Receipt (CMR) assets being properly documented and inventoried by the section?",
-      "Reference": "MCO 4400.124 (CMR), PAR 2.5.A; MCO 4400.177F (TBA), CH 7; TM3125- OI/1",
+      "Reference": "MCO 4400.177F (TBA), chap 7; TBA update provided by APX 10/3 on 031715",
       "Complies": "FALSE",
       "UserMod": "FALSE"
     },
@@ -134,8 +134,8 @@
       "ProgramID": "915 03",
       "ProgramName": "Supply/TCC/Calibrations/HAZMAT",
       "Qnum": "915 03 003 ",
-      "Question": "Are TBA assets reported via the online asset reporting tool? Is the material condition properly reported?",
-      "Reference": "NAVAIRWARCENACDIV LAKEHURST NJ msg dtd 081201Z MAY 12 EAF ASSET REPORTING",
+      "Question": "Does the Mobile Maintenance Facilities Program satisfactorily meet the requirements defined in the NAMP? Does a review of the CSEC 5500 area checklist reflect compliance?",
+      "Reference": "CNAF 4790.2, chap 3, 3.2.2.16; MCO 13670.1C, par 4",
       "Complies": "FALSE",
       "UserMod": "FALSE"
     },
@@ -143,8 +143,8 @@
       "ProgramID": "915 03",
       "ProgramName": "Supply/TCC/Calibrations/HAZMAT",
       "Qnum": "915 03 004 ",
-      "Question": "Does the Mobile Maintenance Facilities Program satisfactorily meet the requirements defined in the NAMP? Does a review of the CSEC 5500 area checklist reflect compliance?",
-      "Reference": "CNAF 4790.2; MCO 13670.1",
+      "Question": "Has the section designated, in writing, personnel to submit/sign requisitions and receipt for materials?",
+      "Reference": "MCO 4400.150",
       "Complies": "FALSE",
       "UserMod": "FALSE"
     },
@@ -152,8 +152,8 @@
       "ProgramID": "915 03",
       "ProgramName": "Supply/TCC/Calibrations/HAZMAT",
       "Qnum": "915 03 005 ",
-      "Question": "Has the section designated, in writing, personnel to submit/sign requisitions and receipt for materials?",
-      "Reference": "MCO 4400.150E, PAR 3001.9",
+      "Question": "Does Material Control satisfactorily meet the requirements defined in the NAMP? Does a review of the CSEC 3700 program checklist reflect compliance?",
+      "Reference": "CNAF 4790.2, chap 9; NAVSUP P-485 Vol II and III",
       "Complies": "FALSE",
       "UserMod": "FALSE"
     },
@@ -161,15 +161,6 @@
       "ProgramID": "915 03",
       "ProgramName": "Supply/TCC/Calibrations/HAZMAT",
       "Qnum": "915 03 006 ",
-      "Question": "Does Material Control satisfactorily meet the requirements defined in the NAMP? Does a review of the CSEC 3700 program checklist reflect compliance?",
-      "Reference": "CNAF 4790.2; NAVSUP P-485",
-      "Complies": "FALSE",
-      "UserMod": "FALSE"
-    },
-    {
-      "ProgramID": "915 03",
-      "ProgramName": "Supply/TCC/Calibrations/HAZMAT",
-      "Qnum": "915 03 007 ",
       "Question": "Does the Tool Control Program satisfactorily meet the requirements defined in the NAMPSOP? Does a review of the CSEC 1300 program checklist reflect compliance?",
       "Reference": "CNAF 4790.2, CHAP 10.12",
       "Complies": "FALSE",
@@ -178,7 +169,7 @@
     {
       "ProgramID": "915 03",
       "ProgramName": "Supply/TCC/Calibrations/HAZMAT",
-      "Qnum": "915 03 008 ",
+      "Qnum": "915 03 007 ",
       "Question": "Does the Naval Aviation Metrology and Calibration (METCAL) Program satisfactorily meet the requirements defined in the NAMPSOP? Does a review of the CSEC 2000 program checklist reflect compliance?",
       "Reference": "CNAF 4790.2, CHAP 10.18",
       "Complies": "FALSE",
@@ -187,7 +178,7 @@
     {
       "ProgramID": "915 03",
       "ProgramName": "Supply/TCC/Calibrations/HAZMAT",
-      "Qnum": "915 03 009 ",
+      "Qnum": "915 03 008 ",
       "Question": "Does the Hazardous Material Control and Management (HMC&M) Program satisfactorily meet the requirements defined in the NAMPSOP? Does a review of the CSEC 2200 program checklist reflect compliance?",
       "Reference": "CNAF 4790.2, CHAP10.19",
       "Complies": "FALSE",

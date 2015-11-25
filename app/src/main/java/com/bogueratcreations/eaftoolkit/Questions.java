@@ -30,7 +30,7 @@ public class Questions extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Export Questions via Email.", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Exporting Questions via Email if possible on your device.", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 try {
                     exportQuestions();
@@ -46,8 +46,6 @@ public class Questions extends AppCompatActivity {
     private void exportQuestions() throws IOException {
 
         Intent intent = getIntent();
-        //String progName = intent.getStringExtra(Programs.EXTRA_MESSAGE);
-        //String tableName = intent.getStringExtra(Programs.EXTRA_MESSAGE_TABLE);
         String progName = Prefs.readString(getApplicationContext(), "PROGRAM", "");
         String tableName = Prefs.readString(getApplicationContext(), "TABLE", "");
         // TODO - Get table and prog from sharedPreferences
@@ -63,10 +61,13 @@ public class Questions extends AppCompatActivity {
             bodyText += questionList.get(loop).getReference() + "\r\n";
             bodyText += "\r\n";
         }
+
         Intent sendIntent = new Intent(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_SUBJECT, progName);
-        sendIntent.putExtra(Intent.EXTRA_TEXT,bodyText);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, bodyText);
         sendIntent.setType("text/html");
-        startActivity(sendIntent);
+        try {
+            startActivity(sendIntent);
+        } catch (Exception e) {}
     }
 }
