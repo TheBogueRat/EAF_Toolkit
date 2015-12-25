@@ -98,6 +98,7 @@ public class ImageDetailFragment extends Fragment {
         if (OnClickListener.class.isInstance(getActivity()) && Utils.hasHoneycomb()) {
             mImageView.setOnClickListener((OnClickListener) getActivity());
         }
+        mAttacher.update();
     }
 
     @Override
