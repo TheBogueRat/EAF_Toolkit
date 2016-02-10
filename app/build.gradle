@@ -27,7 +27,10 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:support-v4:23.1.1'
     compile 'com.android.support:design:23.1.1'
+    // Not sure I need the pallete support but was in Glide example
+    // compile 'com.android.support:palette-v7:23.1.1'
     // Adding Glide dependency to test a new Image Gallery
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.commit451:PhotoView:1.2.4'
+    // Probably don't need this after switching to Glide
+     compile 'com.commit451:PhotoView:1.2.4'
 }

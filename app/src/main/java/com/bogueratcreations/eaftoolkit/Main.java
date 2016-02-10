@@ -126,8 +126,8 @@ public class Main extends AppCompatActivity {
                         break;
                     case 5: // Images
                         // TODO: Fix images to provide local data, Testing pics.class
-//                        startActivity(new Intent(Main.this, Pics.class));
-                        startActivity(new Intent(Main.this, ImageGridActivity.class));
+                        startActivity(new Intent(Main.this, GalleryThumbs.class));
+                     //   startActivity(new Intent(Main.this, ImageGridActivity.class));
                         break;
                     case 6: // About
                         startActivity(new Intent(Main.this, About.class));

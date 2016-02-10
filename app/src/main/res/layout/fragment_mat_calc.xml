@@ -57,7 +57,7 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Lay With Which Sheet"
+        android:text="Start Lay With 12' Sheet?"
         android:id="@+id/swStartLay"
         android:layout_below="@+id/etWidth"
         android:layout_alignParentLeft="true"

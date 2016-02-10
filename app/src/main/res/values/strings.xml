@@ -15,7 +15,7 @@
     <string name="title_activity_about">About</string>
     <string name="title_activity_pics">Pics</string>
 
-<!-- Strings for imgGallery -->
+    <!-- Strings for imgGallery -->
     <string name="clear_cache_menu">Clear Caches</string>
     <string name="clear_cache_complete_toast">Caches have been cleared</string>
     <string name="imageview_description">Image Thumbnail</string>
@@ -27,6 +27,8 @@
     <string name="title_activity_inspect">Inspections</string>
     <string name="title_activity_programs">Programs</string>
     <string name="title_activity_questions">Questions</string>
-    <string name="title_activity_question_detail">QuestionDetail</string>
+    <string name="title_activity_question_detail">Question Detail</string>
+    <string name="title_activity_gallery_thumbs">EAF Images</string>
+    <string name="title_activity_gallery_detail">EAF Image Detail</string>
 
 </resources>
