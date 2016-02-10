@@ -19,7 +19,7 @@
             android:layout_height="?attr/actionBarSize"
             app:elevation="0dp"
             app:popupTheme="@style/CustomActionBarTheme.PopupOverlay"
-            android:background="#32ffffff"
-            android:foreground="#ffffff" />
+            android:background="#BB41643F"
+            android:foreground="#31ce1313" />
 
 </android.support.design.widget.CoordinatorLayout>

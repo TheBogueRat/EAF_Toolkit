@@ -11,12 +11,9 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.bogueratcreations.eaftoolkit.imgGallery.ui.ImageGridActivity;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 
 public class Main extends AppCompatActivity {
 
@@ -125,9 +122,7 @@ public class Main extends AppCompatActivity {
                         startActivity(new Intent(Main.this, Inspect.class));
                         break;
                     case 5: // Images
-                        // TODO: Fix images to provide local data, Testing pics.class
                         startActivity(new Intent(Main.this, GalleryThumbs.class));
-                     //   startActivity(new Intent(Main.this, ImageGridActivity.class));
                         break;
                     case 6: // About
                         startActivity(new Intent(Main.this, About.class));
@@ -181,7 +176,7 @@ public class Main extends AppCompatActivity {
                 startActivity(new Intent(Main.this, Inspect.class));
                 break;
             case R.id.action_images: // Images
-                startActivity(new Intent(Main.this, ImageGridActivity.class));
+                startActivity(new Intent(Main.this, GalleryThumbs.class));
                 break;
             case R.id.action_about: // About
                 startActivity(new Intent(Main.this, About.class));
