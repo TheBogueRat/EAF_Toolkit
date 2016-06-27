@@ -6,4 +6,17 @@
     <dimen name="image_thumbnail_size">100dp</dimen>
     <dimen name="image_thumbnail_spacing">1dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <!-- Brush sizes -->
+    <dimen name="small_brush">10dp</dimen>
+    <integer name="small_size">10</integer>
+    <dimen name="medium_brush">20dp</dimen>
+    <integer name="medium_size">20</integer>
+    <dimen name="large_brush">30dp</dimen>
+    <integer name="large_size">30</integer>
+    <dimen name="camo_width">30dp</dimen>
+    <integer name="camo_width_size">30</integer>
+    <dimen name="camo_length">70dp</dimen>
+    <integer name="camo_length_size">70</integer>
+
 </resources>

@@ -79,33 +79,6 @@
                 android:value="com.bogueratcreations.eaftoolkit.Main" />
         </activity>
         <activity
-            android:name=".Pics"
-            android:label="@string/title_activity_pics"
-            android:parentActivityName=".Main"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bogueratcreations.eaftoolkit.Main" />
-        </activity>
-        <activity
-            android:name=".imgGallery.ui.ImageGridActivity"
-            android:label="Grid View"
-            android:parentActivityName=".Main"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bogueratcreations.eaftoolkit.Main" />
-        </activity>
-        <activity
-            android:name=".imgGallery.ui.ImageDetailActivity"
-            android:label="Picture View"
-            android:parentActivityName=".imgGallery.ui.ImageGridActivity"
-            android:theme="@style/AppThemeDark.FullScreen">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".imgGallery.ui.ImageGridActivity" />
-        </activity>
-        <activity
             android:name=".Inspect"
             android:label="@string/title_activity_inspect"
             android:parentActivityName=".Main">
@@ -158,6 +131,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bogueratcreations.eaftoolkit.GalleryThumbs" />
         </activity>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="9784c67895ec9ea26ecb24a87c823f78599c2756" />
+
+        <activity android:name=".Draw"></activity>
     </application>
 
 </manifest>

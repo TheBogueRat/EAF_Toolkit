@@ -25,6 +25,7 @@ public class Main extends AppCompatActivity {
             R.drawable.flols,
             R.drawable.inspect,
             R.drawable.br,
+            R.drawable.br,
             R.drawable.brc
     };
 
@@ -36,6 +37,7 @@ public class Main extends AppCompatActivity {
             "FLOLS H/E",
             "Inspections",
             "Images",
+            "Draw",
             "About"
     };
 /*
@@ -46,13 +48,14 @@ public class Main extends AppCompatActivity {
  */
     // Array of strings to store descriptions
     String[] listDesc = new String[]{
-            "Calculate Matting Requirements",
-            "Get the Slope in Percent or Degrees",
-            "Convert to/from Julain and Gregorian Calendars",
-            "Calculate Roll Angle and Pole Height",
-            "Review CESC and CGRI Checklists",
-            "Random EAF Pictures",
-            "About the EAF Toolkit"
+        "Calculate Matting Requirements",
+        "Get the Slope in Percent or Degrees",
+        "Convert to/from Julain and Gregorian Calendars",
+        "Calculate Roll Angle and Pole Height",
+        "Review CESC and CGRI Checklists",
+        "Random EAF Pictures",
+        "Scratchpad to draw out and share your ideas",
+        "About the EAF Toolkit"
     };
 /*
 
@@ -125,6 +128,9 @@ public class Main extends AppCompatActivity {
                         startActivity(new Intent(Main.this, GalleryThumbs.class));
                         break;
                     case 6: // About
+                        startActivity(new Intent(Main.this, Draw.class));
+                        break;
+                    case 7: // About
                         startActivity(new Intent(Main.this, About.class));
                         break;
 
