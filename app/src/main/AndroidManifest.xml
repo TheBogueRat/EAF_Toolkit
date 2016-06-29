@@ -136,7 +136,9 @@
             android:name="io.fabric.ApiKey"
             android:value="9784c67895ec9ea26ecb24a87c823f78599c2756" />
 
-        <activity android:name=".Draw"></activity>
+        <activity android:name=".Draw"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

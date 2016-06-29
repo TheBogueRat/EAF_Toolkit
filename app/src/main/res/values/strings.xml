@@ -33,12 +33,16 @@
 
     <!-- Strings for Draw -->
     <string name="start_new">New</string>
+    <string name="gallery">Gallery</string>
     <string name="brush">Brush</string>
+    <string name="opacity">Opacity</string>
+    <string name="color">Colors</string>
     <string name="erase">Erase</string>
     <string name="save">Save</string>
     <string name="paint">Paint</string>
     <string name="sml">Small</string>
     <string name="med">Medium</string>
     <string name="lrg">Large</string>
+    <string name="opacity_desc">Visual Depiction of Opacity Level</string>
 
 </resources>

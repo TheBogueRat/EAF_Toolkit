@@ -16,13 +16,13 @@ repositories {
 
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 24
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "com.bogueratcreations.eafToolkit"
-        minSdkVersion 17
-        targetSdkVersion 22
+        minSdkVersion 19
+        targetSdkVersion 24
         versionCode 20037
         versionName "3.7"
     }
@@ -39,9 +39,9 @@ dependencies {
     // SQLite helper to prepackage the database
     // Disable on Macbook due to connectivity issues and may not need this
     //compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:support-v4:23.1.1'
-    compile 'com.android.support:design:23.1.1'
+    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.android.support:support-v4:24.0.0'
+    compile 'com.android.support:design:24.0.0'
     // Not sure I need the pallete support but was in Glide example
     // compile 'com.android.support:palette-v7:23.1.1'
     // Adding Glide dependency to test a new Image Gallery

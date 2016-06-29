@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:id="@+id/paintColor">
+    <ImageButton
+        android:id="@+id/camoBlack"
+        android:layout_width="@dimen/camo_width"
+        android:layout_height="@dimen/camo_length"
+        android:layout_margin="3dp"
+        android:contentDescription="@string/paint"
+        android:onClick="paintClicked"
+        android:src="@drawable/black"
+        android:tag="000000" />
+    <ImageButton
+        android:id="@+id/camoGray"
+        android:layout_width="@dimen/camo_width"
+        android:layout_height="@dimen/camo_length"
+        android:layout_margin="3dp"
+        android:contentDescription="@string/paint"
+        android:onClick="paintClicked"
+        android:src="@drawable/grey"
+        android:tag="666666" />
+    <ImageButton
+        android:id="@+id/camoRed"
+        android:layout_width="@dimen/camo_width"
+        android:layout_height="@dimen/camo_length"
+        android:layout_margin="3dp"
+        android:contentDescription="@string/paint"
+        android:src="@drawable/red"
+        android:tag="FF0000" />
+    <ImageButton
+        android:id="@+id/camoBlue"
+        android:layout_width="@dimen/camo_width"
+        android:layout_height="@dimen/camo_length"
+        android:layout_margin="3dp"
+        android:contentDescription="@string/paint"
+        android:src="@drawable/blue"
+        android:tag="0000FF" />
+    <ImageButton
+        android:id="@+id/camoGreen"
+        android:layout_width="@dimen/camo_width"
+        android:layout_height="@dimen/camo_length"
+        android:layout_margin="3dp"
+        android:contentDescription="@string/paint"
+        android:src="@drawable/green"
+        android:tag="66CC00" />
+    <ImageButton
+        android:id="@+id/camoBrown"
+        android:layout_width="@dimen/camo_width"
+        android:layout_height="@dimen/camo_length"
+        android:layout_margin="3dp"
+        android:contentDescription="@string/paint"
+        android:src="@drawable/brown"
+        android:tag="654321" />
+    <ImageButton
+        android:id="@+id/camoWhite"
+        android:layout_width="@dimen/camo_width"
+        android:layout_height="@dimen/camo_length"
+        android:layout_margin="3dp"
+        android:contentDescription="@string/paint"
+        android:src="@drawable/white"
+        android:tag="FFFFFF" />
+</LinearLayout>

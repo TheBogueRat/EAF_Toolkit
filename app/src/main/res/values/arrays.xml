@@ -8,4 +8,10 @@
         <item>3–4 Max 12</item>
     </string-array>
 
+    <string-array name="clearOptions">
+        <item>All</item>
+        <item>Background Image</item>
+        <item>Annotations</item>
+        <item>Cancel</item>
+    </string-array>
 </resources>
