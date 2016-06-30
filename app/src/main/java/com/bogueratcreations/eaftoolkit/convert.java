@@ -45,9 +45,9 @@ public class convert {
         String yStr;
         String dStr;
 
-        yStr = String.valueOf(cal.get(cal.YEAR));
+        yStr = String.valueOf(cal.get(Calendar.YEAR));
         yStr = yStr.substring(yStr.length() - 1);
-        dStr = String.format("%03d", cal.get(cal.DAY_OF_YEAR));
+        dStr = String.format("%03d", cal.get(Calendar.DAY_OF_YEAR));
 
         julian = yStr + dStr;
 

@@ -34,6 +34,6 @@ public interface LogNode {
      * @param tr If an exception was thrown, this can be sent along for the logging facilities
      *           to extract and print useful information.
      */
-    public void println(int priority, String tag, String msg, Throwable tr);
+    void println(int priority, String tag, String msg, Throwable tr);
 
 }

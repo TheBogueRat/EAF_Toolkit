@@ -25,7 +25,7 @@ public class Main extends AppCompatActivity {
             R.drawable.flols,
             R.drawable.inspect,
             R.drawable.br,
-            R.drawable.br,
+            R.drawable.pencil3,
             R.drawable.brc
     };
 

@@ -11,7 +11,7 @@
     <string-array name="clearOptions">
         <item>All</item>
         <item>Background Image</item>
-        <item>Annotations</item>
+        <item>Recent Annotations</item>
         <item>Cancel</item>
     </string-array>
 </resources>

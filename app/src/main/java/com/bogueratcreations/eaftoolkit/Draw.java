@@ -1,18 +1,23 @@
 package com.bogueratcreations.eaftoolkit;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.LinearLayout;
 
-import java.util.StringTokenizer;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.UUID;
 import android.provider.MediaStore;
 import android.app.AlertDialog;
@@ -21,7 +26,6 @@ import android.content.DialogInterface;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 // Added for import from gallery function
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
@@ -34,10 +38,13 @@ public class Draw extends AppCompatActivity implements OnClickListener{
 
     private DrawingView drawView;
     private float smallBrush, mediumBrush, largeBrush;
-    private ImageButton drawBtn, newBtn, galleryBtn, saveBtn, colorBtn, opacityBtn;
+    private ImageButton drawBtn, newBtn, saveBtn, colorBtn, opacityBtn;
     private String opacity;
     private int opacityInt;
+    private float brushSize;
     private String brushColor;
+
+    private SharedPreferences prefs;
 
     // For import from gallery
     private static int RESULT_LOAD_IMG = 1;
@@ -48,9 +55,13 @@ public class Draw extends AppCompatActivity implements OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_draw);
         drawView = (DrawingView)findViewById(R.id.drawing);
-        opacity = "#FF";
-        opacityInt = 250;
-        drawView.setColor(opacity + "000000");
+
+        prefs = this.getPreferences(Context.MODE_PRIVATE);
+        opacity = prefs.getString("keyOpacity", "#FF");
+        opacityInt = prefs.getInt("keyOpacityInt", 250);
+        brushColor = prefs.getString("keyBrushColor", "000000");
+        brushSize = prefs.getFloat("keyBrushSize", 20);
+        drawView.setColor(opacity + brushColor);
 
         smallBrush = getResources().getInteger(R.integer.small_size);
         mediumBrush = getResources().getInteger(R.integer.medium_size);
@@ -74,6 +85,57 @@ public class Draw extends AppCompatActivity implements OnClickListener{
         //galleryBtn = (ImageButton)findViewById(R.id.gallery_btn);
         //galleryBtn.setOnClickListener(this);
 
+        // Restore a drawing in progress
+        FileInputStream fis;
+        Drawable drawable = null;
+        try {
+            fis = openFileInput("drawingInProgress");
+            drawable = new BitmapDrawable(getResources(), BitmapFactory.decodeStream(fis));
+            fis.close();
+        } catch (FileNotFoundException e) {
+            // Don't need to do anything, user probably never edited the image.
+            e.printStackTrace();
+        } catch (IOException e) {
+            // Unable to connect to internal storage?
+            e.printStackTrace();
+        }
+        // set as background image.
+        drawView.setBackground(drawable);
+    }
+
+    private String getOpacityString(){
+        return "#" + Integer.toString(opacityInt, 16);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Another activity is taking focus (this activity is about to be "paused").
+
+        prefs = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = prefs.edit();
+
+        prefsEditor.putString("keyOpacity", opacity);
+        prefsEditor.putInt("keyOpacityInt", opacityInt);
+        prefsEditor.putString("keyBrushColor", brushColor);
+        prefsEditor.putFloat("keyBrushSize", brushSize);
+        prefsEditor.apply();
+
+        FileOutputStream fos;
+        drawView.setDrawingCacheEnabled(true);
+        Bitmap drawViewImage = drawView.getDrawingCache();
+        try {
+            fos = openFileOutput("drawingInProgress", Context.MODE_PRIVATE);
+            drawViewImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            fos.close();
+
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        drawView.destroyDrawingCache();
     }
 
     @Override
@@ -91,6 +153,7 @@ public class Draw extends AppCompatActivity implements OnClickListener{
                 public void onClick(View v) {
                     drawView.setBrushSize(smallBrush);
                     drawView.setLastBrushSize(smallBrush);
+                    brushSize = smallBrush;
                     brushDialog.dismiss();
                 }
             });
@@ -114,7 +177,6 @@ public class Draw extends AppCompatActivity implements OnClickListener{
             });
 
             brushDialog.show();
-            drawView.setBrushSize(mediumBrush);
         }
         else if(view.getId()==R.id.new_btn){
             //Eraser button to clear Background or Annotations
@@ -175,6 +237,7 @@ public class Draw extends AppCompatActivity implements OnClickListener{
                 }
             });
             saveDialog.show();
+
         } else if(view.getId()==R.id.color_btn){
             //Brush Color button clicked
             final Dialog colorDialog = new Dialog(this);
@@ -250,10 +313,10 @@ public class Draw extends AppCompatActivity implements OnClickListener{
         } else if (view.getId()==R.id.opacity_btn) {
             //Brush Size button clicked
             final Dialog opacityDialog = new Dialog(this);
-            opacityDialog.setTitle("Adjust Opacity:");
+            opacityDialog.setTitle("Adjust Brush Opacity:");
             opacityDialog.setContentView(R.layout.brush_opacity);
             final ImageView ivOpacity = (ImageView) opacityDialog.findViewById(R.id.imageViewOpacity);
-            ivOpacity.setImageDrawable(getResources().getDrawable(R.drawable.paint));
+            ivOpacity.setImageDrawable(getResources().getDrawable(R.drawable.br));
             ivOpacity.setImageAlpha(opacityInt);
             final TextView tvOpacity = (TextView) opacityDialog.findViewById(R.id.textOpacity);
             tvOpacity.setText(Integer.toString(opacityInt/25*10)+"%");
@@ -263,14 +326,17 @@ public class Draw extends AppCompatActivity implements OnClickListener{
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                     opacityInt = (seekBar.getProgress() + 1) * 25;
-                    opacity = "#" + Integer.toHexString(opacityInt);
+                    //opacity = "#" + Integer.toHexString(opacityInt);
                     tvOpacity.setText(Integer.toString(opacityInt/25*10)+"%");
                     ivOpacity.setImageAlpha(opacityInt);
                 }
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar) {}
                 @Override
-                public void onStopTrackingTouch(SeekBar seekBar) {}
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                    opacity = getOpacityString();
+                    drawView.setColor(opacity + brushColor);
+                }
             });
             opacityDialog.show();
         }
@@ -319,6 +385,6 @@ public class Draw extends AppCompatActivity implements OnClickListener{
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
                     .show();
         }
-
     }
+
 }
