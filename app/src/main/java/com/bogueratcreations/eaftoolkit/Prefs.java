@@ -17,7 +17,7 @@ public class Prefs {
     public static final String PREF_NAME = "BRCprefs";
 
     //@SuppressWarnings("deprecation")
-    public static final int MODE = Context.MODE_WORLD_WRITEABLE;
+    public static final int MODE = Context.MODE_PRIVATE;
 
     public static final String PROGRAM = "PROGRAM";
     public static final String TABLE = "TABLE";

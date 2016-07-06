@@ -1,9 +1,6 @@
 package com.bogueratcreations.eaftoolkit;
 
-/**
- * Created by jodyroth on 10/29/15.
- */
-public class Program {
+class Program {
 
     private int id;
     private String program;

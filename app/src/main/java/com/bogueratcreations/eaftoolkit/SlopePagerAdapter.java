@@ -9,9 +9,9 @@ import android.support.v4.app.FragmentPagerAdapter;
  *
  * Created by TheBogueRat on 6/5/2015.
  */
-public class SlopePagerAdapter extends FragmentPagerAdapter {
+class SlopePagerAdapter extends FragmentPagerAdapter {
 
-    final int PAGE_COUNT = 3;
+    private final int PAGE_COUNT = 3;
     // Tab Titles
     private String tabtitles[] = new String[] { "Elev / Dist", "Elev Diff / Dist", "Convert % <-> \u00b0" };
     Context context;

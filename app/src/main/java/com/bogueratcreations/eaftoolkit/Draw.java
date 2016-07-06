@@ -1,44 +1,44 @@
 package com.bogueratcreations.eaftoolkit;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.IntegerRes;
-import android.support.v7.app.AppCompatActivity;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.v4.content.res.ResourcesCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.UUID;
-import android.provider.MediaStore;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
+
 // Added for import from gallery function
-import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.widget.ImageView;
-import android.util.Log;
 
 // Changed onClickListener to OnClickListener to fix issue, may not be correct way...Seems to be working
 public class Draw extends AppCompatActivity implements OnClickListener{
 
     private DrawingView drawView;
     private float smallBrush, mediumBrush, largeBrush;
-    private ImageButton drawBtn, newBtn, saveBtn, colorBtn, opacityBtn;
     private String opacity;
     private int opacityInt;
     private float brushSize;
@@ -48,7 +48,7 @@ public class Draw extends AppCompatActivity implements OnClickListener{
 
     // For import from gallery
     private static int RESULT_LOAD_IMG = 1;
-    String imgDecodableString;
+    private String imgDecodableString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,19 +67,19 @@ public class Draw extends AppCompatActivity implements OnClickListener{
         mediumBrush = getResources().getInteger(R.integer.medium_size);
         largeBrush = getResources().getInteger(R.integer.large_size);
 
-        drawBtn = (ImageButton)findViewById(R.id.draw_btn);
+        ImageButton drawBtn = (ImageButton) findViewById(R.id.draw_btn);
         drawBtn.setOnClickListener(this);
 
-        newBtn = (ImageButton)findViewById(R.id.new_btn);
+        ImageButton newBtn = (ImageButton) findViewById(R.id.new_btn);
         newBtn.setOnClickListener(this);
 
-        saveBtn = (ImageButton)findViewById(R.id.save_btn);
+        ImageButton saveBtn = (ImageButton) findViewById(R.id.save_btn);
         saveBtn.setOnClickListener(this);
 
-        opacityBtn = (ImageButton)findViewById(R.id.opacity_btn);
+        ImageButton opacityBtn = (ImageButton) findViewById(R.id.opacity_btn);
         opacityBtn.setOnClickListener(this);
 
-        colorBtn = (ImageButton)findViewById(R.id.color_btn);
+        ImageButton colorBtn = (ImageButton) findViewById(R.id.color_btn);
         colorBtn.setOnClickListener(this);
 
         //galleryBtn = (ImageButton)findViewById(R.id.gallery_btn);
@@ -311,12 +311,12 @@ public class Draw extends AppCompatActivity implements OnClickListener{
             });
             colorDialog.show();
         } else if (view.getId()==R.id.opacity_btn) {
-            //Brush Size button clicked
+            //Brush Opacity button clicked
             final Dialog opacityDialog = new Dialog(this);
             opacityDialog.setTitle("Adjust Brush Opacity:");
             opacityDialog.setContentView(R.layout.brush_opacity);
             final ImageView ivOpacity = (ImageView) opacityDialog.findViewById(R.id.imageViewOpacity);
-            ivOpacity.setImageDrawable(getResources().getDrawable(R.drawable.br));
+            ivOpacity.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.br, null));
             ivOpacity.setImageAlpha(opacityInt);
             final TextView tvOpacity = (TextView) opacityDialog.findViewById(R.id.textOpacity);
             tvOpacity.setText(Integer.toString(opacityInt/25*10)+"%");

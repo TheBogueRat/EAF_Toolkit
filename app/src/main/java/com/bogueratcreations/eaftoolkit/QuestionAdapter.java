@@ -3,6 +3,7 @@ package com.bogueratcreations.eaftoolkit;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +12,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by jodyroth on 10/23/15.
- */
-public class QuestionAdapter extends BaseAdapter {
+class QuestionAdapter extends BaseAdapter {
 
-    Context context;
-    ArrayList<Question> listData;
+    private Context context;
+    private ArrayList<Question> listData;
 
     public QuestionAdapter(Context context,ArrayList<Question> listData){
         this.context = context;
@@ -50,10 +48,10 @@ public class QuestionAdapter extends BaseAdapter {
     }
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         if(view == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.listview_question,null);
+            view = inflater.inflate(R.layout.listview_question, null);
             viewHolder = new ViewHolder();
             viewHolder.tvQuestionAndNum = (TextView) view.findViewById(R.id.tvQuestionAndNum);
             viewHolder.tvReference = (TextView) view.findViewById(R.id.tvReference);
@@ -67,12 +65,12 @@ public class QuestionAdapter extends BaseAdapter {
         String question = myQuestion.getQuestion();
         viewHolder.tvQuestionAndNum.setText(question);
         // Set text color
-        viewHolder.tvQuestionAndNum.setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.BRCtext)));
+        viewHolder.tvQuestionAndNum.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.BRCtext)));
         // Adding the reference to the view
         String reference = myQuestion.getReference();
         viewHolder.tvReference.setText(reference);
         // Set the color for the text
-        viewHolder.tvReference.setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.BRCsubtext)));
+        viewHolder.tvReference.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.BRCsubtext)));
 
         return view;
     }

@@ -23,7 +23,7 @@
         android:id="@+id/etH2E"
         android:layout_column="1"
         android:layout_row="1"
-        android:text="16.7" />
+        android:text="@string/H2E" />
 
     <EditText
         android:layout_width="100dp"

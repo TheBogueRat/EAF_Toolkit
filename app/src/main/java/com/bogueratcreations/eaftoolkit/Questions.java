@@ -5,8 +5,8 @@ import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
@@ -14,8 +14,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Questions extends AppCompatActivity {
-
-    InspectDBHandler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +24,7 @@ public class Questions extends AppCompatActivity {
 //        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.BRCgreen)));
+        fab.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.BRCgreen)));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,12 +43,12 @@ public class Questions extends AppCompatActivity {
     // TODO: Because DB has combined fields, will have to send everything and sort it out on the other end.
     private void exportQuestions() throws IOException {
 
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
         String progName = Prefs.readString(getApplicationContext(), "PROGRAM", "");
         String tableName = Prefs.readString(getApplicationContext(), "TABLE", "");
         // TODO - Get table and prog from sharedPreferences
 
-        handler = new InspectDBHandler(this);
+        InspectDBHandler handler = new InspectDBHandler(this);
         handler.setTableName(tableName);
         // Get SQL data via Question class method getQuestions(program) which returns ArrayList of Question.class objects
         ArrayList<Question> questionList = handler.getQuestions(progName);

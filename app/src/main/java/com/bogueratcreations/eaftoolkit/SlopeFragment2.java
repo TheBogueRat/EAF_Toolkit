@@ -15,10 +15,10 @@ import android.widget.TextView;
  */
 public class SlopeFragment2 extends Fragment {
 
-    EditText etElev1;
-    EditText etElev2;
-    EditText etDist;
-    TextView tvResult;
+    private EditText etElev1;
+    private EditText etElev2;
+    private EditText etDist;
+    private TextView tvResult;
 
     public SlopeFragment2() {
         // Required empty public constructor

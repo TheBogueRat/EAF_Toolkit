@@ -3,9 +3,6 @@ package com.bogueratcreations.eaftoolkit;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by jodyroth on 2/10/16.
- */
 public class ImageModel implements Parcelable {
     String name;//, url;
     Integer url;

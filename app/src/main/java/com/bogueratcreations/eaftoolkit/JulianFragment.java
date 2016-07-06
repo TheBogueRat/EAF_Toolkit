@@ -19,11 +19,10 @@ import java.util.TimeZone;
  */
 public class JulianFragment extends Fragment {
 
-    DatePicker dp;
-    EditText etJulian;
-    TextView tvSync;
-    Calendar cal;
-    Boolean editing = false;
+    private DatePicker dp;
+    private EditText etJulian;
+    private TextView tvSync;
+    private Boolean editing = false;
 
     public JulianFragment() {
     }
@@ -36,7 +35,7 @@ public class JulianFragment extends Fragment {
         tvSync = (TextView)V.findViewById(R.id.tvSync);
         dp = (DatePicker)V.findViewById(R.id.datePicker);
 
-        cal = Calendar.getInstance(TimeZone.getDefault());
+        Calendar cal = Calendar.getInstance(TimeZone.getDefault());
         cal.set(dp.getYear(), dp.getMonth(), dp.getDayOfMonth());
         etJulian.setText(convert.cal2Julian(cal));
 

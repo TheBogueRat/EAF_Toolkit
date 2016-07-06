@@ -1,21 +1,17 @@
 package com.bogueratcreations.eaftoolkit;
 
-import android.graphics.Color;
-import android.view.View;
 import android.content.Context;
-import android.util.AttributeSet;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.view.MotionEvent;
 import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
+import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.MotionEvent;
+import android.view.View;
 
-/**
- * Created by jodyroth on 6/25/16.
- */
 public class DrawingView extends View {
     //drawing path
     private Path drawPath;
@@ -100,9 +96,8 @@ public class DrawingView extends View {
     }
     public void setBrushSize(float newSize){
         //update size
-        float pixelAmount = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+        brushSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 newSize, getResources().getDisplayMetrics());
-        brushSize=pixelAmount;
         drawPaint.setStrokeWidth(brushSize);
 
     }

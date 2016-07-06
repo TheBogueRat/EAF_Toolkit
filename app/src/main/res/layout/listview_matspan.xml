@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1"
+        android:paddingBottom="10dp">
+        <TableRow>
+            <CheckBox
+                android:id="@+id/checkBoxMatSpan"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:text=""
+                android:focusable="false"
+                android:onClick="clickHandler"/>
+            <TableLayout
+                android:id="@+id/tableLayoutDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*">
+                <TableRow>
+                    <TextView
+                        android:id="@+id/tvMsName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:text="Span Name"
+                        android:textSize="20sp"
+                        android:layout_span="3" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:id="@+id/tvMsWid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Width"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/tvMsLen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="length"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/tvMsSpans"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="# Spans"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/tvMsArea"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Area"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/tvMsLay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Area"
+                        android:textSize="20sp" />
+                </TableRow>
+            </TableLayout>
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>

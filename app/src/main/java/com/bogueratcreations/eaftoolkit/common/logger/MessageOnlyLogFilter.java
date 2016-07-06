@@ -22,7 +22,7 @@ package com.bogueratcreations.eaftoolkit.common.logger;
  */
 public class MessageOnlyLogFilter implements LogNode {
 
-    LogNode mNext;
+    private LogNode mNext;
 
     /**
      * Takes the "next" LogNode as a parameter, to simplify chaining.
@@ -46,7 +46,7 @@ public class MessageOnlyLogFilter implements LogNode {
     /**
      * Returns the next LogNode in the chain.
      */
-    public LogNode getNext() {
+    private LogNode getNext() {
         return mNext;
     }
 

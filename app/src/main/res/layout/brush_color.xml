@@ -10,7 +10,6 @@
         android:layout_height="@dimen/camo_length"
         android:layout_margin="3dp"
         android:contentDescription="@string/paint"
-        android:onClick="paintClicked"
         android:src="@drawable/black"
         android:tag="000000" />
     <ImageButton
@@ -19,7 +18,6 @@
         android:layout_height="@dimen/camo_length"
         android:layout_margin="3dp"
         android:contentDescription="@string/paint"
-        android:onClick="paintClicked"
         android:src="@drawable/grey"
         android:tag="666666" />
     <ImageButton

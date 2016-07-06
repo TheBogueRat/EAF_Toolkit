@@ -2,7 +2,7 @@ package com.bogueratcreations.eaftoolkit;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +11,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by jodyroth on 10/29/15.
- */
-public class ProgramAdapter extends BaseAdapter {
+class ProgramAdapter extends BaseAdapter {
 
-    Context context;
-    ArrayList<Program> listData;
+    private Context context;
+    private ArrayList<Program> listData;
 
     public ProgramAdapter(Context context,ArrayList<Program> listData){
         this.context = context;
@@ -49,7 +46,7 @@ public class ProgramAdapter extends BaseAdapter {
     }
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         if(view == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.listview_program,null);
@@ -65,7 +62,7 @@ public class ProgramAdapter extends BaseAdapter {
         String program = myProgram.getProgram();
         viewHolder.tvProgram.setText(program);
         // Set the color for the text in the list view item.
-        viewHolder.tvProgram.setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.BRCtext)));
+        viewHolder.tvProgram.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.BRCtext)));
         return view;
     }
 

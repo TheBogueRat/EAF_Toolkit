@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by jodyroth on 10/23/15.
  * Interface for InspectDBHandler.class
  */
-public interface InspectListener {
+interface InspectListener {
 
     void setTableName(String tableName);
 

@@ -1,6 +1,5 @@
 package com.bogueratcreations.eaftoolkit;
 
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,10 +15,6 @@ import java.util.ArrayList;
  */
 public class QuestionsFragment extends Fragment {
 
-    ListView listView;
-    QuestionAdapter adapter;
-    InspectDBHandler handler;
-
     public QuestionsFragment() {
     }
 
@@ -29,17 +24,17 @@ public class QuestionsFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_questions, container, false);
 
         // Retrieve the program for the sending activity/fragment?
-        Intent intent = getActivity().getIntent();
+        //Intent intent = getActivity().getIntent();
         //String message = intent.getStringExtra(Programs.EXTRA_MESSAGE);
         //String tableName = intent.getStringExtra(Programs.EXTRA_MESSAGE_TABLE);
         String message = Prefs.readString(getActivity().getApplicationContext(), "PROGRAM", "");
         String tableName = Prefs.readString(getActivity().getApplicationContext(), "TABLE", "");
         //String message = "200  Maintenance Training";
-        listView = (ListView) v.findViewById(R.id.lvQuestions);
-        handler = new InspectDBHandler(getActivity().getApplicationContext());
+        ListView listView = (ListView) v.findViewById(R.id.lvQuestions);
+        InspectDBHandler handler = new InspectDBHandler(getActivity().getApplicationContext());
         handler.setTableName(tableName);
         ArrayList<Question> questionList = handler.getQuestions(message);
-        adapter = new QuestionAdapter(getActivity().getApplicationContext(), questionList);
+        QuestionAdapter adapter = new QuestionAdapter(getActivity().getApplicationContext(), questionList);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

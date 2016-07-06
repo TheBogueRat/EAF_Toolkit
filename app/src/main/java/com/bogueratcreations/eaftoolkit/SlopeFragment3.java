@@ -14,9 +14,9 @@ import android.widget.EditText;
  */
 public class SlopeFragment3 extends Fragment {
 
-    EditText etPer;
-    EditText etDeg;
-    Boolean editing = false;
+    private EditText etPer;
+    private EditText etDeg;
+    private Boolean editing = false;
 
     public SlopeFragment3() {
         // Required empty public constructor

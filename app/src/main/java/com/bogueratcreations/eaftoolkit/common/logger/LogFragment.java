@@ -53,7 +53,7 @@ public class LogFragment extends Fragment {
 
     public LogFragment() {}
 
-    public View inflateViews() {
+    private View inflateViews() {
         mScrollView = new ScrollView(getActivity());
         ViewGroup.LayoutParams scrollParams = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,

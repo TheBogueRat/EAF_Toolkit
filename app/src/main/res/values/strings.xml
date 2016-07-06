@@ -21,8 +21,8 @@
     <string name="imageview_description">Image Thumbnail</string>
     <string name="no_network_connection_toast">No network connection found</string>
 
-    <string name="about_extra">Always looking for ways to improve the Toolkit, let me know what you would like to see.  </string>
-    <string name="about_extra2">Submit your own photos depicting  EAF Equipment and Sites.  And let me know what we should be working on at support@boguerat.com  </string>
+    <string name="about_extra">Always looking for ways to improve the Toolkit, let me know what you would like to see.</string>
+    <string name="about_extra2">Submit your own photos depicting EAF Equipment and Sites.  And let me know what we should be working on at support@boguerat.com</string>
     <string name="about_extra3">This app is not endorsed by any governmental agency.  Always follow local policies and instructions.</string>
     <string name="title_activity_inspect">Inspections</string>
     <string name="title_activity_programs">Programs</string>
@@ -44,5 +44,9 @@
     <string name="med">Medium</string>
     <string name="lrg">Large</string>
     <string name="opacity_desc">Visual Depiction of Opacity Level</string>
-
+    <string name="H2E">16.7</string>
+    <string name="title_activity_mat_span">Matting Spans</string>
+    <string name="title_activity_mat_span_new">New Span</string>
+    <string name="title_activity_mat_span_edit">Edit Span</string>
+    <string name="title_activity_mat_span_summary">Summary of Selected Spans</string>
 </resources>

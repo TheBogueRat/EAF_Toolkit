@@ -2,11 +2,9 @@ package com.bogueratcreations.eaftoolkit;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
-/**
- * Created by TheBogueRat on 6/6/2015.
- */
-public class convert {
+class convert {
     // General Usage: result = convert.sizeOf("hello");
 
     /**
@@ -47,7 +45,7 @@ public class convert {
 
         yStr = String.valueOf(cal.get(Calendar.YEAR));
         yStr = yStr.substring(yStr.length() - 1);
-        dStr = String.format("%03d", cal.get(Calendar.DAY_OF_YEAR));
+        dStr = String.format(Locale.ENGLISH, "%03d", cal.get(Calendar.DAY_OF_YEAR));
 
         julian = yStr + dStr;
 

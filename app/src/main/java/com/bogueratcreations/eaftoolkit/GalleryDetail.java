@@ -1,10 +1,7 @@
 package com.bogueratcreations.eaftoolkit;
 
 import android.graphics.Bitmap;
-import android.graphics.Matrix;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -12,11 +9,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bogueratcreations.eaftoolkit.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
@@ -25,23 +20,10 @@ import java.util.ArrayList;
 
 public class GalleryDetail extends AppCompatActivity {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
-    private SectionsPagerAdapter mSectionsPagerAdapter;
-
-    public ArrayList<ImageModel> data = new ArrayList<>();
-    int pos;
-
-    Toolbar toolbar;
+    private ArrayList<ImageModel> data = new ArrayList<>();
 
     // An array of full-sized images to display
-    public static Integer IMGS[] = {
+    private static Integer IMGS[] = {
             R.drawable.eaf1, R.drawable.eaf2,
             R.drawable.eaf3, R.drawable.eaf4,
             R.drawable.eaf5, R.drawable.eaf6,
@@ -61,11 +43,6 @@ public class GalleryDetail extends AppCompatActivity {
             R.drawable.eaf33
     };
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
-    private ViewPager mViewPager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,15 +52,26 @@ public class GalleryDetail extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         data = getIntent().getParcelableArrayListExtra("data");
-        pos = getIntent().getIntExtra("pos", 0);
+        int pos = getIntent().getIntExtra("pos", 0);
 
         setTitle(data.get(pos).getName());
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), data);
+        /*
+      The {@link android.support.v4.view.PagerAdapter} that will provide
+      fragments for each of the sections. We use a
+      {@link FragmentPagerAdapter} derivative, which will keep every
+      loaded fragment in memory. If this becomes too memory intensive, it
+      may be best to switch to a
+      {@link android.support.v4.app.FragmentStatePagerAdapter}.
+     */
+        SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), data);
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        /*
+      The {@link ViewPager} that will host the section contents.
+     */
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setPageTransformer(true, new DepthPageTransformer());
 
         mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -152,8 +140,6 @@ public class GalleryDetail extends AppCompatActivity {
         private static final String ARG_SECTION_NUMBER = "section_number";
         private static final String ARG_IMG_TITLE = "image_title";
         private static final String ARG_IMG_URL = "image_url";
-        private ScaleGestureDetector scaleGestureDetector;
-        private Matrix matrix = new Matrix();
 
         @Override
         public void setArguments(Bundle args) {
@@ -178,11 +164,6 @@ public class GalleryDetail extends AppCompatActivity {
         }
 
         public PlaceholderFragment() {
-        }
-
-        @Override
-        public void onStart() {
-            super.onStart();
         }
 
         @Override

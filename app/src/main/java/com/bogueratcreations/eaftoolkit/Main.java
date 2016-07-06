@@ -18,7 +18,7 @@ import java.util.List;
 public class Main extends AppCompatActivity {
 
     // Array of integers points to images stored in /res/drawable-ldpi/
-    int[] listIcons = new int[]{
+    private int[] listIcons = new int[]{
             R.drawable.forks,
             R.drawable.slope,
             R.drawable.calendar,
@@ -30,7 +30,7 @@ public class Main extends AppCompatActivity {
     };
 
     // Array of strings storing country names
-    String[] listTitles = new String[] {
+    private String[] listTitles = new String[] {
             "Matting Calculator",
             "Slope Converter",
             "Julian Dater",
@@ -47,7 +47,7 @@ public class Main extends AppCompatActivity {
             "DCP (TBD)",
  */
     // Array of strings to store descriptions
-    String[] listDesc = new String[]{
+private String[] listDesc = new String[]{
         "Calculate Matting Requirements",
         "Get the Slope in Percent or Degrees",
         "Convert to/from Julain and Gregorian Calendars",
@@ -110,7 +110,7 @@ public class Main extends AppCompatActivity {
 
                 switch (position) {
                     case 0: // Matting Calculator
-                        startActivity(new Intent(Main.this, MatCalc.class));
+                        startActivity(new Intent(Main.this, MatSpan.class));
                         break;
                     case 1: // Slope
                         startActivity(new Intent(Main.this, Slope.class));
@@ -167,7 +167,7 @@ public class Main extends AppCompatActivity {
 
         switch (id) {
             case R.id.action_matcalc: // Matting Calculator
-                startActivity(new Intent(Main.this, MatCalc.class));
+                startActivity(new Intent(Main.this, MatSpan.class));
                 break;
             case R.id.action_slope: // Slope
                 startActivity(new Intent(Main.this, Slope.class));

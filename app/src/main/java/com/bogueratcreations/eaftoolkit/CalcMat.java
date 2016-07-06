@@ -6,16 +6,16 @@ import android.util.Log;
  * Created by TheBogueRat on 6/26/2015.
  * Calculates the amount of matting for a given span
  */
-public class CalcMat {
+class CalcMat {
 
     /**
      *
      * @param wid The span width
      * @param len The span length
      * @param startLay Boolean representing if starting with 12' sheet
-     * @return The number of 6 foot sheets required for param.
+     * @return The number of 6 foot sheets required for brickwork span of specified length.
      */
-    public static Integer getBW6(int len, int wid, boolean startLay) {
+    private static Integer getBW6(int len, int wid, boolean startLay) {
         int sheets;
         int start;
         if (startLay){start=12;}else{start=6;}
@@ -43,7 +43,15 @@ public class CalcMat {
         }
         return sheets;
     }
-
+    /**
+     *
+     * @param wid The span width
+     * @param len The span length
+     * @param start Boolean representing if starting with 12' sheet
+     * @param lay  Int representing layPattern requested
+     *             @param cust46
+     * @return The number of 6 foot sheets required for param.
+     */
     public static Integer getMat6(int len,int wid, boolean start, int lay,int cust46,int cust56,int cust66,int cust76) {
         int sheets = 0;
         int extraRows;
@@ -124,7 +132,7 @@ public class CalcMat {
         return sheets;
     } // end getMat6
 
-    public static Integer getBW12(int len,int wid,boolean startLay) {
+    private static Integer getBW12(int len, int wid, boolean startLay) {
         Integer start;
 
         if (startLay){start=12;}else{start=6;}

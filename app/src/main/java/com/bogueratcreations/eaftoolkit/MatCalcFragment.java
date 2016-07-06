@@ -7,7 +7,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -16,19 +15,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
-import java.util.Formatter;
 
 public class MatCalcFragment extends Fragment {
 
-    EditText etWidth;
-    EditText etLength;
-    TextView results1;
-    TextView results2;
-    TextView results3;
-    TextView results4;
-    Switch swStartLay;
-    Spinner spPattern;
-    Button btnCalcMat;
+    private EditText etWidth;
+    private EditText etLength;
+    private TextView results1;
+    private TextView results2;
+    private TextView results3;
+    private TextView results4;
+    private Switch swStartLay;
+    private Spinner spPattern;
 
     public MatCalcFragment() {
     }
@@ -42,7 +39,7 @@ public class MatCalcFragment extends Fragment {
         etLength = (EditText)V.findViewById(R.id.etLength);
         swStartLay = (Switch)V.findViewById(R.id.swStartLay);
         spPattern = (Spinner)V.findViewById(R.id.spLay);
-        btnCalcMat = (Button)V.findViewById(R.id.btnCalcMat);
+        Button btnCalcMat = (Button) V.findViewById(R.id.btnCalcMat);
         results1 = (TextView)V.findViewById(R.id.tvResults1);
         results2 = (TextView)V.findViewById(R.id.tvResults2);
         results3 = (TextView)V.findViewById(R.id.tvResults3);
@@ -117,8 +114,7 @@ public class MatCalcFragment extends Fragment {
 
                     results1.setText(twelves.toString() + " / " + sixes.toString());
                     results2.setText(CalcMat.getPallet(twelves, 18) + " / " + CalcMat.getPallet(sixes, 18));
-                    if (sixRack == null || tweRack == null) {
-                    }
+                    //if (sixRack == null || tweRack == null) {}
                     if (sixRack > tweRack) {
                         results3.setText(sixRack.toString());
                     } else {

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:paddingBottom="@dimen/activity_vertical_margin"-->
+    <!--android:paddingLeft="@dimen/activity_horizontal_margin"-->
+    <!--android:paddingRight="@dimen/activity_horizontal_margin"-->
+    <!--android:paddingTop="@dimen/activity_vertical_margin"-->
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+    <!--tools:context="com.bogueratcreations.eaftoolkit.MatSpanEditActivity"-->
+    <!--tools:showIn="@layout/activity_mat_span_edit">-->
+
+<!--</RelativeLayout>-->
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+    android:padding="20dp">
+
+<TableLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="*" >
+    <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Span Name:"
+            android:layout_column="0" />
+    </TableRow>
+    <TableRow>
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="0">
+            <requestFocus />
+        </EditText>
+    </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Width: "
+            android:layout_gravity="center"
+            android:layout_column="0" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Length: "
+            android:layout_column="1"
+            android:layout_gravity="center" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="# of Spans: "
+            android:layout_column="2"
+            android:layout_gravity="center" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/et_wid"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_column="0" />
+        <EditText
+            android:id="@+id/et_len"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_gravity="center_horizontal" />
+        <EditText
+            android:id="@+id/et_spans"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_gravity="center_horizontal" />
+    </TableRow>
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    </TableRow>
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <NumberPicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/numberPicker"
+            android:layout_gravity="center"
+            android:layout_column="0" />
+        <NumberPicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/numberPicker2"
+            android:layout_column="1"
+            android:layout_gravity="center" />
+        <NumberPicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/numberPicker3"
+            android:layout_column="2"
+            android:layout_gravity="center" />
+    </TableRow>
+</TableLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="update" />
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete" />
+</LinearLayout>
+
+
+</LinearLayout>

@@ -134,7 +134,7 @@ public class LogView extends TextView implements LogNode {
     }
 
     // The next LogNode in the chain.
-    LogNode mNext;
+    private LogNode mNext;
 
     /** Outputs the string as a new line of log data in the LogView. */
     public void appendToLog(String s) {

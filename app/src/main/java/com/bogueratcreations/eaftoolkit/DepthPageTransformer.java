@@ -3,10 +3,7 @@ package com.bogueratcreations.eaftoolkit;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
-/**
- * Created by jodyroth on 2/10/16.
- */
-public class DepthPageTransformer implements ViewPager.PageTransformer {
+class DepthPageTransformer implements ViewPager.PageTransformer {
     private static final float MIN_SCALE = 0.75f;
 
     public void transformPage(View view, float position) {

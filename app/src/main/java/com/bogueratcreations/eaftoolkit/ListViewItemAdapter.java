@@ -10,10 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-/**
- * Created by jodyroth on 10/28/15.
- */
-public class ListViewItemAdapter extends ArrayAdapter<ListViewItem> {
+class ListViewItemAdapter extends ArrayAdapter<ListViewItem> {
 
     public ListViewItemAdapter(Context context, List<ListViewItem> items) {
         super(context, R.layout.listview_main, items);

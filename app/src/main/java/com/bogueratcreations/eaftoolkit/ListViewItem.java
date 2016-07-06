@@ -2,10 +2,7 @@ package com.bogueratcreations.eaftoolkit;
 
 import android.graphics.drawable.Drawable;
 
-/**
- * Created by jodyroth on 8/28/15.
- */
-public class ListViewItem {
+class ListViewItem {
     public final Drawable icon;
     public final String title;
     public final String description;

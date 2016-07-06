@@ -2,25 +2,19 @@ package com.bogueratcreations.eaftoolkit;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.bogueratcreations.eaftoolkit.R;
-
 import java.util.ArrayList;
 
 public class GalleryThumbs extends AppCompatActivity {
-    GalleryAdapter mAdapter;
-    RecyclerView mRecyclerView;
 
-    ArrayList<ImageModel> data = new ArrayList<>();
+    private ArrayList<ImageModel> data = new ArrayList<>();
 
-    public static Integer IMGS[] = {
+    private static Integer IMGS[] = {
             R.drawable.eaf_thumb1, R.drawable.eaf_thumb2,
             R.drawable.eaf_thumb3, R.drawable.eaf_thumb4,
             R.drawable.eaf_thumb5, R.drawable.eaf_thumb6,
@@ -39,7 +33,7 @@ public class GalleryThumbs extends AppCompatActivity {
             R.drawable.eaf_thumb31, R.drawable.eaf_thumb32,
             R.drawable.eaf_thumb33
     };
-    public static String CAPTIONS[] = {
+    private static String CAPTIONS[] = {
             "Matting Project @ Bogue",
             "AM-2 Matting Storage",
             "VTOL 96x96 - Iraq",
@@ -93,12 +87,12 @@ public class GalleryThumbs extends AppCompatActivity {
 
         }
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.list);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.list);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         mRecyclerView.setHasFixedSize(true);
 
 
-        mAdapter = new GalleryAdapter(GalleryThumbs.this, data);
+        GalleryAdapter mAdapter = new GalleryAdapter(GalleryThumbs.this, data);
         mRecyclerView.setAdapter(mAdapter);
 
         mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this,

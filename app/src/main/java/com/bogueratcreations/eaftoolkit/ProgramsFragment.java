@@ -26,10 +26,9 @@ import java.util.ArrayList;
  */
 public class ProgramsFragment extends Fragment {
 
-    ListView listView;
-    ProgramAdapter adapter;
-    InspectDBHandler handler;
-    ArrayList<Question> questionArrayList;
+    private ListView listView;
+    private ProgramAdapter adapter;
+    private InspectDBHandler handler;
     // For displaying the Programs
     ArrayList<Program> programArrayList;
 
@@ -52,7 +51,7 @@ public class ProgramsFragment extends Fragment {
         // Retrieve the table name that was passed from the Inspect.class
         // Get the message from the intent
         // TODO: only retrieve from initial navigation from Inspect, not back-nav from Question (revisit when complete, may be problem with Question back-nav)
-        Intent intent = getActivity().getIntent();
+        //Intent intent = getActivity().getIntent();
 
         //String message = intent.getStringExtra(Inspect.EXTRA_MESSAGE);
         String message = Prefs.readString(getActivity().getApplicationContext(), "TABLE", "");
@@ -107,7 +106,7 @@ public class ProgramsFragment extends Fragment {
     }
 
     // Retrieves data from JSON and inserts it into the DB if it doesn't exist.
-    class DataFetcherTask extends AsyncTask<Void,Void,Void> {
+    private class DataFetcherTask extends AsyncTask<Void,Void,Void> {
 
         @Override
         protected void onPreExecute() {
@@ -122,12 +121,13 @@ public class ProgramsFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... params) {
-            JSONObject jsonObject = null;
+            JSONObject jsonObject;
 
             // Retrieve CSEC JSON Data
             jsonObject = parseJSONData("CSEC.json");
             handler.setTableName("CSEC");
             // Push into DB
+            ArrayList<Question> questionArrayList;
             try {
                 questionArrayList = new ArrayList<Question>();
                 // Get the Array of all programs for the current checklist
@@ -224,8 +224,8 @@ public class ProgramsFragment extends Fragment {
 
     //Method that will parse the JSON file and will return a JSONObject
     private JSONObject parseJSONData(String jsonFile) {
-        String JSONString = null;
-        JSONObject JSONObject = null;
+        String JSONString;
+        JSONObject JSONObject;
 
         Log.i("EAFtoolkit", "Parsing JSON Data from file: " + jsonFile);
         try {

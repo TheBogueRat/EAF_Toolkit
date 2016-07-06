@@ -9,12 +9,10 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-/**
- * Created by jodyroth on 10/23/15.
- */
 public class InspectDBHandler extends SQLiteOpenHelper implements InspectListener{
     // TODO: Make this agnostic to any list so we can query down to the program from CSEC & CGRI
-    private static final int DB_VERSION = 7;
+    // THIS IS NOT BEING USED, THIS DATABASE DOES NOT EXIST
+    private static final int DB_VERSION = 8;
     private static final String DB_NAME = "EAFToolkit.db";
     private static final String KEY_ID = "_id";
     private static final String KEY_PROGRAM = "_program";
@@ -161,7 +159,7 @@ public class InspectDBHandler extends SQLiteOpenHelper implements InspectListene
     @Override
     public int getQuestionCount() {
         // Returns the number of questions in the assigned table.
-        int num = 0;
+        int num;
         SQLiteDatabase db = this.getReadableDatabase();
         try{
             String QUERY = "SELECT * FROM "+TABLE_NAME;

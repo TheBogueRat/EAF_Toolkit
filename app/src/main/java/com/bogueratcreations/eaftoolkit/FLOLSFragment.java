@@ -15,10 +15,9 @@ import android.widget.Toast;
  */
 public class FLOLSFragment extends Fragment {
 
-    EditText etH2e, etGSA, etDistCL, etDistTD, etDistBeyond;
-    EditText etCellHt, etElevBASP, etElevRWSP, etElevTD;
-    EditText etResultBAPH, etResultSPDist, etResultRWPH, etResultRoll;
-    Button btnGetResults;
+    private EditText etH2e, etGSA, etDistCL, etDistTD, etDistBeyond;
+    private EditText etCellHt, etElevBASP, etElevRWSP, etElevTD;
+    private EditText etResultBAPH, etResultSPDist, etResultRWPH, etResultRoll;
 
     public FLOLSFragment() {
     }
@@ -39,7 +38,7 @@ public class FLOLSFragment extends Fragment {
         etElevBASP = (EditText)V.findViewById(R.id.etElevBASP);
         etElevRWSP = (EditText)V.findViewById(R.id.etElevRWSP);
         etElevTD = (EditText)V.findViewById(R.id.etElevTD);
-        btnGetResults = (Button)V.findViewById(R.id.btnResults);
+        Button btnGetResults = (Button) V.findViewById(R.id.btnResults);
 
         etResultBAPH = (EditText)V.findViewById(R.id.etBAPH);
         etResultSPDist = (EditText)V.findViewById(R.id.etSPDist);

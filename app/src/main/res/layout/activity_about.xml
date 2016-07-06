@@ -18,6 +18,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="Company Logo"
             android:id="@+id/ivAbout_BRC"
             android:adjustViewBounds="true"
             android:src="@drawable/splash"
