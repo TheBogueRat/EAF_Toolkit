@@ -132,10 +132,6 @@ public class MatSpan extends AppCompatActivity {
                 passIntent.putExtras(passdata);
                 startActivity(passIntent);
                 return true;
-            // TODO: Remove this case for production
-            case R.id.action_dbManager:
-                Intent dbmanager = new Intent(MatSpan.this,AndroidDatabaseManager.class);
-                startActivity(dbmanager);
             default:
                 return super.onOptionsItemSelected(item);
         }

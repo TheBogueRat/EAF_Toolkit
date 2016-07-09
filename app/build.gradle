@@ -49,5 +49,6 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.5.7@aar') {
         transitive = true;
     }
+    // Required for segmented control
     compile 'info.hoang8f:android-segmented:1.0.6'
 }

@@ -131,7 +131,6 @@ public class MatSpanDbHelper extends SQLiteOpenHelper {
         db.execSQL(SEED_TABLE);
     }
 
-
     // TODO: Remove for production - This is for the Android Database Manager
     public ArrayList<Cursor> getData(String Query){
         //get writable database

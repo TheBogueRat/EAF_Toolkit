@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -223,7 +222,7 @@ public class MatSpanNewActivity extends AppCompatActivity {
                 int layVal = segLay.indexOfChild(findViewById(segLay.getCheckedRadioButtonId()));
                 int startVal = segStart.indexOfChild(findViewById(segStart.getCheckedRadioButtonId()));
                 // Create database entry
-                long val = adapter.insertMatSpan(nameVal, widVal, lenVal, spansVal, layVal, startVal, 0);
+                adapter.insertMatSpan(nameVal, widVal, lenVal, spansVal, layVal, startVal, 0);
                 finish();
             }
         });

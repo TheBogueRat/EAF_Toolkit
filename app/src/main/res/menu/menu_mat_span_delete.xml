@@ -13,10 +13,10 @@
         android:title="Edit"
         app:showAsAction="never" />
     <!-- TODO: Remove this item for production -->
-    <item
-        android:id="@+id/action_dbManager"
-        android:orderInCategory="250"
-        android:title="Db Manager" />
+    <!--<item-->
+        <!--android:id="@+id/action_dbManager"-->
+        <!--android:orderInCategory="250"-->
+        <!--android:title="Db Manager" />-->
     <item
         android:id="@+id/action_exit"
         android:orderInCategory="300"

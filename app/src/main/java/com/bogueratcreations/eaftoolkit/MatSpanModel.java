@@ -113,7 +113,7 @@ public class MatSpanModel {
 
     public String summarize() {
         // Called to return a summary snippet for email.
-        String summary = "";
+        String summary;
         DecimalFormat df = new DecimalFormat("#,###");
 
         summary = "Span: " + name + "\n";
@@ -149,7 +149,7 @@ public class MatSpanModel {
         f44extra12 = (f44 * 16) - sheet12;
         f44extra6 = (f44 * 4) - sheet6;
 
-        String summary = "";
+        String summary;
         DecimalFormat df = new DecimalFormat("#,###");
 
         summary =  "MULTIPLE SPANS, single shipment.\n\n";

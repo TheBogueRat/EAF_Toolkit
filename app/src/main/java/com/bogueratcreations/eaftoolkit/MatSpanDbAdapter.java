@@ -79,7 +79,7 @@ public class MatSpanDbAdapter {
     }
 
     public String summarizeSelected() {
-        String summaryOfSelectedSpans = "";
+        String summaryOfSelectedSpans;
         String spanSummary = "";
         int i12 = 0, i6 = 0, iF71 = 0, iF72=0, iF44=0;
         try {
@@ -94,7 +94,7 @@ public class MatSpanDbAdapter {
                     matSpan.setLay(cursor.getInt(5));
                     matSpan.setStart(cursor.getInt(6));
                     matSpan.calcMat();
-                    spanSummary += matSpan.summarize() + "\n - .... . / -... --- --. ..- . / .-. .- - \n\n";
+                    spanSummary = matSpan.summarize() + "\n - .... . / -... --- --. ..- . / .-. .- - \n\n";
                     i12 += matSpan.getSheet12();
                     i6 += matSpan.getSheet6();
                     iF71 += matSpan.getF71();
@@ -119,7 +119,6 @@ public class MatSpanDbAdapter {
     // Fill an array of MatSpanModel objects from the database of selected spans
     public ArrayList<MatSpanModel> getSelectedSpans() {
         // Gets the questions for the selected program in the assigned table.
-        String summaryOfSpans;
         openToRead(); // sets db and helper variables
         ArrayList<MatSpanModel> matSpanList = null;
         try{
@@ -137,7 +136,6 @@ public class MatSpanDbAdapter {
                     matSpan.setLay(cursor.getInt(5));
                     matSpan.setStart(cursor.getInt(6));
                     matSpan.calcMat();
-                    String me = matSpan.summarize();
                     matSpanList.add(matSpan);
                 }
             }

@@ -127,9 +127,9 @@ public class ProgramsFragment extends Fragment {
             jsonObject = parseJSONData("CSEC.json");
             handler.setTableName("CSEC");
             // Push into DB
-            ArrayList<Question> questionArrayList;
+            //ArrayList<Question> questionArrayList;
             try {
-                questionArrayList = new ArrayList<Question>();
+                //questionArrayList = new ArrayList<Question>();
                 // Get the Array of all programs for the current checklist
                 JSONArray jsonArray = jsonObject.getJSONArray("Checklist");
                 for (int i=0;i<jsonArray.length();i++)
@@ -155,7 +155,6 @@ public class ProgramsFragment extends Fragment {
             handler.setTableName("EAF");
             // Push into DB
             try {
-                questionArrayList = new ArrayList<Question>();
                 // Get the Array of all programs for the current checklist
                 JSONArray jsonArray = jsonObject.getJSONArray("Checklist");
                 for (int i=0;i<jsonArray.length();i++)
@@ -181,7 +180,6 @@ public class ProgramsFragment extends Fragment {
             handler.setTableName("ARFF");
             // Push into DB
             try {
-                questionArrayList = new ArrayList<Question>();
                 // Get the Array of all programs for the current checklist
                 JSONArray jsonArray = jsonObject.getJSONArray("Checklist");
                 for (int i=0;i<jsonArray.length();i++)
