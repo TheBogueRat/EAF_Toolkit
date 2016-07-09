@@ -23,7 +23,8 @@
         android:ems="12"
         android:id="@+id/etSlope1Elev"
         android:layout_below="@+id/lblSlope1Elev"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,7 +34,8 @@
         android:id="@+id/lblSlope1Elev"
         android:layout_below="@+id/tvHead1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="10dp"
+        android:textSize="20sp" />
 
     <EditText
         android:layout_width="100dp"
@@ -43,7 +45,8 @@
         android:ems="12"
         android:id="@+id/etSlope1Dist"
         android:layout_below="@+id/lblSlope1Dist"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -53,17 +56,18 @@
         android:id="@+id/lblSlope1Dist"
         android:layout_below="@+id/etSlope1Elev"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="10dp"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="RESULT"
         android:id="@+id/lblSlope1Result"
         android:layout_below="@+id/etSlope1Dist"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -77,10 +81,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Note: Use the same units of measure for all values. (i.e. feet or inches)"
+        android:text="Use the same units (ft/in) for all."
         android:id="@+id/tvSlope1Note"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="10dp"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

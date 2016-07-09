@@ -29,7 +29,6 @@ public class QuestionsFragment extends Fragment {
         //String tableName = intent.getStringExtra(Programs.EXTRA_MESSAGE_TABLE);
         String message = Prefs.readString(getActivity().getApplicationContext(), "PROGRAM", "");
         String tableName = Prefs.readString(getActivity().getApplicationContext(), "TABLE", "");
-        //String message = "200  Maintenance Training";
         ListView listView = (ListView) v.findViewById(R.id.lvQuestions);
         InspectDBHandler handler = new InspectDBHandler(getActivity().getApplicationContext());
         handler.setTableName(tableName);

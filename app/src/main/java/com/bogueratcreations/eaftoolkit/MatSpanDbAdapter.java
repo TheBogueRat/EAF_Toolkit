@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDiskIOException;
+import android.text.TextUtils;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class MatSpanDbAdapter {
 
     public long insertMatSpan(String name, int wid, int len, int spans, int layPat, int start, int selected) {
         ContentValues contentValues = new ContentValues();
+        if (TextUtils.isEmpty(name)) {name = "No time for a name";}
         contentValues.put(MatSpanDbHelper.KEY_NAME, name);
         contentValues.put(MatSpanDbHelper.KEY_WIDTH, wid);
         contentValues.put(MatSpanDbHelper.KEY_LENGTH, len);

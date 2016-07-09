@@ -62,7 +62,7 @@ class ProgramAdapter extends BaseAdapter {
         String program = myProgram.getProgram();
         viewHolder.tvProgram.setText(program);
         // Set the color for the text in the list view item.
-        viewHolder.tvProgram.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.BRCtext)));
+        //viewHolder.tvProgram.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.BRCtext)));
         return view;
     }
 

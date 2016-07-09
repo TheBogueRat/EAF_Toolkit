@@ -65,7 +65,7 @@ class QuestionAdapter extends BaseAdapter {
         String question = myQuestion.getQuestion();
         viewHolder.tvQuestionAndNum.setText(question);
         // Set text color
-        viewHolder.tvQuestionAndNum.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.BRCtext)));
+        //viewHolder.tvQuestionAndNum.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.BRCtext)));
         // Adding the reference to the view
         String reference = myQuestion.getReference();
         viewHolder.tvReference.setText(reference);

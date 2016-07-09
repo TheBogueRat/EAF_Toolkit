@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MatSpanDbHelper extends SQLiteOpenHelper {
-    public static final int DB_VERSION = 16;
-    public static final String DB_NAME = "EAFToolkit.db";
+    public static final int DB_VERSION = 1;
+    public static final String DB_NAME = "EAFToolkitMatting.db";
     public static final String KEY_ID = "_id";
     public static final String KEY_NAME = "_name";
     public static final String KEY_LENGTH = "_len";

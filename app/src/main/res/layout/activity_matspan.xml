@@ -23,12 +23,13 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Summary"
+                android:text="Report"
                 android:layout_gravity="right"
                 android:clickable="false"
                 android:onClick="clickHandler"
                 android:id="@+id/btnSummary"
-                android:backgroundTint="@color/BRCbutton" />
+                android:textColor="@android:color/white"
+                android:background="@android:color/transparent" />
         </android.support.v7.widget.Toolbar>
 
 

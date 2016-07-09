@@ -1,27 +1,25 @@
 package com.bogueratcreations.eaftoolkit;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.CompoundButton;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import info.hoang8f.android.segmented.SegmentedGroup;
 
 public class MatSpanNewActivity extends AppCompatActivity {
     MatSpanDbAdapter adapter;
     MatSpanDbHelper helper;
-    EditText etName;
-    Button submitBtn, resetBtn;
+    EditTextBackEvent etName;
     NumberPicker npWid, npLen, npSpans;
     MatSpanModel newSpan = new MatSpanModel();
     TextView tvSummary;
@@ -31,9 +29,7 @@ public class MatSpanNewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mat_span_new);
-        etName = (EditText) findViewById(R.id.et_name);
-        submitBtn = (Button) findViewById(R.id.btn_update);
-        resetBtn = (Button) findViewById(R.id.btn_delete);
+        etName = (EditTextBackEvent) findViewById(R.id.et_name);
         npWid = (NumberPicker) findViewById(R.id.npWid);
         npLen = (NumberPicker) findViewById(R.id.npLen);
         npSpans = (NumberPicker)findViewById(R.id.npSpans);
@@ -41,10 +37,41 @@ public class MatSpanNewActivity extends AppCompatActivity {
         segLay = (SegmentedGroup)findViewById(R.id.segmentLay);
         segStart = (SegmentedGroup)findViewById(R.id.segmentStart);
 
-
         adapter = new MatSpanDbAdapter(this);
+        etName.setOnEditTextImeBackListener(new EditTextImeBackListener() {
+            @Override
+            public void onImeBack(EditTextBackEvent ctrl, String text) {
+                newSpan.setName(etName.getText().toString());
+                newSpan.calcMat();
+                tvSummary.setText(newSpan.summarize());
+            }
+        });
+        etName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (!b) {
+                    // if lost focus, update name entry.
+                    EditText editText = (EditText) view;
+                    newSpan.setName(editText.getText().toString());
+                    newSpan.calcMat();
+                    tvSummary.setText(newSpan.summarize());
+                }
+            }
+        });
+        etName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    InputMethodManager imm= (InputMethodManager) getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(etName.getWindowToken(), 0);
+                    etName.clearFocus();
+                    return true;
+                }
+                return false;
+            }
+        });
         // Set up number picker for Width
-        npWid.setMinValue(12);
+        npWid.setMinValue(0);
         npWid.setMaxValue(1500);
         npWid.setValue(96);
         npWid.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
@@ -65,6 +92,27 @@ public class MatSpanNewActivity extends AppCompatActivity {
                 tvSummary.setText(newSpan.summarize());
             }
         });
+        EditText etNpWid = null;
+        int childCountWid = npWid.getChildCount();
+        for (int i = 0; i < childCountWid; i++) {
+            View childView = npWid.getChildAt(i);
+            if (childView instanceof EditText) {
+                etNpWid = (EditText) childView;
+            }
+        }
+        if (etNpWid != null) {
+            etNpWid.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                @Override
+                public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                    if (actionId == EditorInfo.IME_ACTION_DONE) {
+                        // By clearing focus, the numberpicker refreshes it's value triggering the summary update
+                        npWid.clearFocus();
+                        return true;
+                    }
+                    return false;
+                }
+            });
+        }
         // Setup number picker for Length
         npLen.setMinValue(2);
         npLen.setMaxValue(20000);
@@ -87,6 +135,27 @@ public class MatSpanNewActivity extends AppCompatActivity {
                 tvSummary.setText(newSpan.summarize());
             }
         });
+        EditText etNpLen = null;
+        int childCountLen = npLen.getChildCount();
+        for (int i = 0; i < childCountLen; i++) {
+            View childView = npLen.getChildAt(i);
+            if (childView instanceof EditText) {
+                etNpLen = (EditText) childView;
+            }
+        }
+        if (etNpLen != null) {
+            etNpLen.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                @Override
+                public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                    if (actionId == EditorInfo.IME_ACTION_DONE) {
+                        // By clearing focus, the numberpicker refreshes it's value triggering the summary update
+                        npLen.clearFocus();
+                        return true;
+                    }
+                    return false;
+                }
+            });
+        }
         // Set up number picker for the number of spans
         npSpans.setMinValue(1);
         npSpans.setMaxValue(99);
@@ -99,16 +168,47 @@ public class MatSpanNewActivity extends AppCompatActivity {
                 tvSummary.setText(newSpan.summarize());
             }
         });
-
-        // Set click actions for reset button - ?????
-        resetBtn.setOnClickListener(new OnClickListener() {
+        EditText etNpSpans = null;
+        int childCountSpans = npWid.getChildCount();
+        for (int i = 0; i < childCountSpans; i++) {
+            View childView = npWid.getChildAt(i);
+            if (childView instanceof EditText) {
+                etNpSpans = (EditText) childView;
+            }
+        }
+        if (etNpSpans != null) {
+            etNpSpans.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                @Override
+                public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                    if (actionId == EditorInfo.IME_ACTION_DONE) {
+                        // By clearing focus, the numberpicker refreshes it's value triggering the summary update
+                        npWid.clearFocus();
+                        return true;
+                    }
+                    return false;
+                }
+            });
+        }
+        segLay.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                etName.setText("");
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                int layVal = segLay.indexOfChild(findViewById(segLay.getCheckedRadioButtonId()));
+                newSpan.setLay(layVal);
+                newSpan.calcMat();
+                tvSummary.setText(newSpan.summarize());
             }
         });
+        segStart.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
 
+                int startVal = segStart.indexOfChild(findViewById(segStart.getCheckedRadioButtonId()));
+                newSpan.setStart(startVal);
+                newSpan.calcMat();
+                tvSummary.setText(newSpan.summarize());
+            }
+        });
         //  Setup toolbar item - is FAB part of this object?
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -124,8 +224,6 @@ public class MatSpanNewActivity extends AppCompatActivity {
                 int startVal = segStart.indexOfChild(findViewById(segStart.getCheckedRadioButtonId()));
                 // Create database entry
                 long val = adapter.insertMatSpan(nameVal, widVal, lenVal, spansVal, layVal, startVal, 0);
-                //Toast.makeText(getApplicationContext(), Long.toString(val), Toast.LENGTH_SHORT).show();
-                Snackbar.make(view, Long.toString(val), Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 finish();
             }
         });

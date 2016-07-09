@@ -35,7 +35,8 @@
         android:descendantFocusability="blocksDescendants"
         android:layout_below="@+id/etJulian"
         android:layout_centerHorizontal="true"
-        android:spinnersShown="true" />
+        android:spinnersShown="true"
+        android:datePickerMode="spinner" />
 
     <TextView
         android:layout_width="wrap_content"

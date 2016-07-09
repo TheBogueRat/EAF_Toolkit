@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by jodyroth on 7/4/16.
  */
@@ -34,26 +36,28 @@ public class MatSpanCursorAdapter extends CursorAdapter {
 
     @Override
     public void bindView(View view, final Context context, Cursor cursor) {
+        DecimalFormat df = new DecimalFormat("#,###");
         TextView tvName = (TextView) view.findViewById(R.id.tvMsName);
         String title = cursor.getString(cursor.getColumnIndex(MatSpanDbHelper.KEY_NAME));
         tvName.setText(title);
         TextView tvWidth = (TextView) view.findViewById(R.id.tvMsWid);
-        String width = cursor.getString(cursor.getColumnIndex(MatSpanDbHelper.KEY_WIDTH));
-        tvWidth.setText(width);
-        TextView tvLength = (TextView) view.findViewById(R.id.tvMsLen);
-        String length = cursor.getString(cursor.getColumnIndex(MatSpanDbHelper.KEY_LENGTH));
-        tvLength.setText(length);
+        int width = cursor.getInt(cursor.getColumnIndex(MatSpanDbHelper.KEY_WIDTH));
+        //tvWidth.setText(width);
+        //TextView tvLength = (TextView) view.findViewById(R.id.tvMsLen);
+        int length = cursor.getInt(cursor.getColumnIndex(MatSpanDbHelper.KEY_LENGTH));
+        tvWidth.setText(df.format(width) + " x " + df.format(length));
+        //tvLength.setText(length);
         TextView tvSpans = (TextView) view.findViewById(R.id.tvMsSpans);
         String spans = cursor.getString(cursor.getColumnIndex(MatSpanDbHelper.KEY_SPANS));
-        tvSpans.setText(spans);
+        tvSpans.setText("(" + spans + ")");
         TextView tvArea = (TextView) view.findViewById(R.id.tvMsArea);
-        int intArea = Integer.parseInt(width) * Integer.parseInt(length) * Integer.parseInt(spans);
-        String strArea = String.valueOf(intArea);
+        int intArea = width * length * Integer.parseInt(spans);
+        String strArea = df.format(intArea);
         tvArea.setText(strArea);
         final CheckBox chkSelected = (CheckBox) view.findViewById(R.id.checkBoxMatSpan);
         String selected = cursor.getString(cursor.getColumnIndex(MatSpanDbHelper.KEY_SELECTED));
         chkSelected.setTag(cursor.getString(cursor.getColumnIndex(MatSpanDbHelper.KEY_ID)));
-        final boolean isSelected = (Integer.parseInt(selected)==1)?true:false;
+        final boolean isSelected = (Integer.parseInt(selected) == 1);
         chkSelected.setChecked(isSelected);
         chkSelected.setSelected(isSelected);
 //        chkSelected.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -68,19 +72,27 @@ public class MatSpanCursorAdapter extends CursorAdapter {
         String layPat = cursor.getString(cursor.getColumnIndex(MatSpanDbHelper.KEY_lAYPAT));
         switch (layPat) {
             case "0":
-                tvLay.setText("B/W");
+                tvLay.setText(" B/W ");
                 break;
             case "1":
-                tvLay.setText("2-1");
+                tvLay.setText(" 2-1 ");
                 break;
             case "2":
             case "3":
-                tvLay.setText("3-4");
+                tvLay.setText(" 3-4 ");
                 break;
             default:
-                tvLay.setText("Unk");
+                tvLay.setText(" Unk ");
                 break;
         }
+        //String starter = cursor.getString(cursor.getColumnIndex(MatSpanDbHelper.KEY_START));
+        int starter = cursor.getInt(cursor.getColumnIndex(MatSpanDbHelper.KEY_START));
+        MatSpanModel matSpan = new MatSpanModel(title, width, length,
+                Integer.parseInt(spans),
+                Integer.parseInt(layPat), starter);
+        matSpan.calcMat();
+        TextView tvPkgs = (TextView) view.findViewById(R.id.tvMsPkg);
+        tvPkgs.setText(df.format(matSpan.getF71()) + "/" + df.format(matSpan.getF72()));
     }
 
 }

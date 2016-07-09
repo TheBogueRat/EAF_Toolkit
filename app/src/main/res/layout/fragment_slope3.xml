@@ -24,27 +24,28 @@
         android:ems="12"
         android:id="@+id/etSlope3Per"
         android:layout_below="@+id/tvPer3"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Percent"
         android:id="@+id/tvPer3"
         android:layout_below="@+id/tvHead3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="10dp"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Degrees"
         android:id="@+id/tvDeg3"
         android:layout_below="@+id/etSlope3Per"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="10dp"
+        android:textSize="20sp" />
 
     <EditText
         android:layout_width="100dp"
@@ -54,18 +55,20 @@
         android:ems="12"
         android:id="@+id/etSlope3Deg"
         android:layout_below="@+id/tvDeg3"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Note: Enter a value for either Percent or Degrees."
+        android:text="Enter either Percent or Degrees."
         android:id="@+id/tvNote3"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp" />
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"

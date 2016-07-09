@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:text="Program"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="#000000"/>
 
 </LinearLayout>

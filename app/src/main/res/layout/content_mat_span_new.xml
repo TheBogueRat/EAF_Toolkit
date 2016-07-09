@@ -12,6 +12,12 @@
     tools:context="com.bogueratcreations.eaftoolkit.MatSpanNewActivity"
     tools:showIn="@layout/activity_mat_span_new">
 
+    <ScrollView
+        android:id="@+id/SCROLLER_ID"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:fillViewport="true">
 <TableLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -30,7 +36,7 @@
                 android:textSize="20dp" />
         </TableRow>
         <TableRow>
-            <EditText
+            <com.bogueratcreations.eaftoolkit.EditTextBackEvent
                 android:id="@+id/et_name"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -41,7 +47,7 @@
                 android:layout_span="3"
                 android:lines="1">
                 <requestFocus />
-            </EditText>
+            </com.bogueratcreations.eaftoolkit.EditTextBackEvent>
         </TableRow>
         <TableRow
             android:layout_width="fill_parent"
@@ -71,12 +77,7 @@
         </TableRow>
         <TableRow
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
             <NumberPicker
                 android:theme="@android:style/Theme.Dialog"
                 android:layout_width="wrap_content"
@@ -151,62 +152,57 @@
             style="@style/RadioButton" />
     </info.hoang8f.android.segmented.SegmentedGroup>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Starting with:"
-        android:textSize="20sp" />
-    <info.hoang8f.android.segmented.SegmentedGroup
-        xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/segmentStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:checkedButton="@+id/btn12"
-        segmentedgroup:sc_tint_color="@color/BRCgreen"
-        segmentedgroup:sc_checked_text_color="#FFFFFF"
-        segmentedgroup:sc_border_width="2dp"
-        segmentedgroup:sc_corner_radius="5dp">
-
-        <RadioButton
-            android:id="@+id/btn12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12' Sheet"
-            style="@style/RadioButton" />
-
-        <RadioButton
-            android:id="@+id/btn6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="6' Sheet"
-            style="@style/RadioButton" />
-    </info.hoang8f.android.segmented.SegmentedGroup>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/tvSummary" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
 
-        <Button
-            android:id="@+id/btn_update"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="update" />
-
-        <Button
-            android:id="@+id/btn_delete"
+            android:text="Starting with:  "
+            android:textSize="20sp"
+            android:layout_gravity="center_vertical" />
+        <info.hoang8f.android.segmented.SegmentedGroup
+            xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/segmentStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delete" />
+            android:orientation="horizontal"
+            android:checkedButton="@+id/btn12"
+            segmentedgroup:sc_tint_color="@color/BRCgreen"
+            segmentedgroup:sc_checked_text_color="#FFFFFF"
+            segmentedgroup:sc_border_width="2dp"
+            segmentedgroup:sc_corner_radius="5dp">
+
+            <RadioButton
+                android:id="@+id/btn12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12' Sheet"
+                style="@style/RadioButton" />
+
+            <RadioButton
+                android:id="@+id/btn6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6' Sheet"
+                style="@style/RadioButton" />
+        </info.hoang8f.android.segmented.SegmentedGroup>
     </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/tvSummary"
+            android:paddingTop="10dp" />
+
 </TableLayout>
+
+</ScrollView>
 
 </RelativeLayout>

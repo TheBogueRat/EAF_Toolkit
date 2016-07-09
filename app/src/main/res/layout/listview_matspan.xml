@@ -1,71 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TableLayout
-        android:id="@+id/tableLayout"
+    android:layout_height="match_parent"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
+    <CheckBox
+        android:id="@+id/checkBoxMatSpan"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_centerVertical="true"
+        android:text=""
+        android:focusable="false"
+        android:onClick="clickHandler"/>
+    <TextView
+        android:id="@+id/tvMsSpans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/checkBoxMatSpan"
+        android:text="# Spans"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/tvMsName"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:stretchColumns="1"
-        android:paddingBottom="10dp">
-        <TableRow>
-            <CheckBox
-                android:id="@+id/checkBoxMatSpan"
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:text=""
-                android:focusable="false"
-                android:onClick="clickHandler"/>
-            <TableLayout
-                android:id="@+id/tableLayoutDetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:stretchColumns="*">
-                <TableRow>
-                    <TextView
-                        android:id="@+id/tvMsName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:paddingTop="10dp"
-                        android:text="Span Name"
-                        android:textSize="20sp"
-                        android:layout_span="3" />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:id="@+id/tvMsWid"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="Width"
-                        android:textSize="20sp" />
-                    <TextView
-                        android:id="@+id/tvMsLen"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="length"
-                        android:textSize="20sp" />
-                    <TextView
-                        android:id="@+id/tvMsSpans"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="# Spans"
-                        android:textSize="20sp" />
-                    <TextView
-                        android:id="@+id/tvMsArea"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Area"
-                        android:textSize="20sp" />
-                    <TextView
-                        android:id="@+id/tvMsLay"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Area"
-                        android:textSize="20sp" />
-                </TableRow>
-            </TableLayout>
-        </TableRow>
-    </TableLayout>
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tvMsSpans"
+        android:text="Span Name"
+        android:textSize="20sp"
+        android:layout_toStartOf="@+id/roundedLayout"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
+        android:layout_alignParentRight="true"
+        android:id="@+id/roundedLayout">
+        <TextView
+            android:id="@+id/tvMsLay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Lay "
+            android:textSize="15sp"
+            android:textColor="@color/BRCtext" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvMsWidLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvMsSpans"
+        android:layout_toRightOf="@+id/checkBoxMatSpan"
+        android:layout_alignLeft="@+id/tvMsWid"
+        android:layout_alignRight="@+id/tvMsWid"
+        android:text="Wid x Len"
+        android:textSize="18sp"
+        android:textAlignment="gravity"
+        android:gravity="center_horizontal" />
+    <TextView
+        android:id="@+id/tvMsAreaLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Area"
+        android:textSize="18sp"
+        android:layout_alignTop="@+id/tvMsWidLabel"
+        android:layout_alignLeft="@+id/tvMsArea"
+        android:layout_alignRight="@+id/tvMsArea"
+        android:textAlignment="gravity"
+        android:gravity="center_horizontal" />
+    <TextView
+        android:id="@+id/tvMsPkgLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="F-71/72"
+        android:textSize="18sp"
+        android:layout_alignTop="@+id/tvMsAreaLabel"
+        android:layout_alignLeft="@+id/tvMsPkg"
+        android:layout_alignRight="@+id/tvMsPkg"
+        android:textAlignment="gravity"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/tvMsWid"
+        android:layout_width="105dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvMsWidLabel"
+        android:layout_toRightOf="@+id/checkBoxMatSpan"
+        android:text="4,500 x 9,600"
+        android:textSize="18sp"
+        android:textAlignment="gravity"
+        android:gravity="center_horizontal" />
+    <TextView
+        android:id="@+id/tvMsArea"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:text="2,500,008"
+        android:textSize="18sp"
+        android:layout_alignTop="@+id/tvMsWid"
+        android:layout_toEndOf="@+id/tvMsWid"
+        android:textAlignment="gravity"
+        android:gravity="center_horizontal"
+        android:paddingLeft="5dp" />
+    <TextView
+        android:id="@+id/tvMsPkg"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="6,400/3,983"
+        android:textSize="18sp"
+        android:layout_alignTop="@+id/tvMsArea"
+        android:layout_toEndOf="@+id/tvMsArea"
+        android:textAlignment="gravity"
+        android:gravity="center_horizontal"
+        android:paddingLeft="5dp"
+        android:layout_alignParentEnd="false" />
+
 </RelativeLayout>

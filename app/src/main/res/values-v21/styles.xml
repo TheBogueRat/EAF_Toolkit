@@ -6,4 +6,12 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
+    <style name="CustomEAFtoolkitTheme" parent="CustomActionBarTheme">
+        <item name="colorPrimary">@color/BRCgreen</item>
+        <item name="android:navigationBarColor">@color/BRCgreen</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:statusBarColor">@color/BRCgreen</item>
+        <item name="android:textColorPrimaryInverse">@android:color/black</item>
+    </style>
 </resources>

@@ -1,5 +1,8 @@
 package com.bogueratcreations.eaftoolkit;
 
+import android.text.TextUtils;
+import android.util.Log;
+
 import java.text.DecimalFormat;
 
 /**
@@ -48,7 +51,7 @@ public class MatSpanModel {
     public String getName() {return name;}
     public void setName(String name) {
         // Perform some validation.
-        if (name == null) {
+        if (TextUtils.isEmpty(name)) {
             this.name = "No time for a name.";
         } else {
             this.name = name;
@@ -86,6 +89,7 @@ public class MatSpanModel {
         area = len * wid * qty;
         sheet12 = getMat12() * qty;
         sheet6 = getMat6() * qty;
+        Log.d("EAF Toolkit", "12s - "+sheet12 + "  6s - "+sheet6);
         f71 = getPallet(sheet12, 18);
         f72 = getPallet(sheet6, 18);
         // Calculate ISO Flatrack Qty based on the most type of sheet.
@@ -179,7 +183,8 @@ public class MatSpanModel {
                 sheets = (len - 2) / 2;
                 if ((start == 6) && (wid % 12 == 0)) {
                     sheets = sheets + 2;
-                } else {
+                    // Updated following to else if for width ! divisible by 12 otherwise no adjustment needed
+                } else if (wid % 12 == 6){
                     sheets = sheets + 1;
                 }
             }
@@ -202,10 +207,10 @@ public class MatSpanModel {
                     return getBW6(4, wid, start) + ((len - 4) * wid / 36);
             }
         } // end 2-1 lay evaluation
-        if (lay == 0) { // Brickwork
+        else if (lay == 0) { // Brickwork
             return getBW6(len, wid, start);
         }
-        if (lay == 2) { // 3-4 Lay max 6
+        else if (lay == 2) { // 3-4 Lay max 6
             extraRows = len % 14;
             sheets = (getBW6(6, wid, start) + (wid / 6) * 4) * (len / 14);
             switch (extraRows) {
@@ -219,17 +224,17 @@ public class MatSpanModel {
                     return sheets + getBW6(6, wid, start) + ((wid / 6) * ((extraRows / 2) - 3));
             }
             return sheets;
-        }
-        if (lay == 3) {  //3-4 Lay max 12
-            extraRows = len % 14;
+        } else if (lay == 3) {  //3-4 Lay max 12
             if (len > 13) {
                 sheets = getBW6(6, wid, start);
+                // Adds additional sheets for the 4 rows that must have a 6' due to width
                 if (wid % 12 == 6) {
                     sheets = sheets + 4;
                 }
-                // get the total matting for full legs of the pattern.
+                // multiply full legs by # of sheets in each 3-4 lay section
                 sheets = sheets * (len / 14);
             }
+            extraRows = len % 14;
             switch (extraRows) {
                 case 2:
                 case 4:
@@ -243,6 +248,7 @@ public class MatSpanModel {
                     if (wid % 12 == 6) {
                         sheets = sheets + ((extraRows / 2) - 3);
                     }
+                    break;
             }
             return sheets;
         } // end 3-4 Max 12 evaluation
@@ -299,13 +305,13 @@ public class MatSpanModel {
         if (lay == 1) {
             extraRows = len % 6;
             if (extraRows == 0) {
-                sheet12 = len * wid / 36;
+                return len * wid / 36;
             }
             if (extraRows == 2) {
-                sheet12 = getBW12(2, wid, start) + ((len - 2) * wid / 36);
+                return getBW12(2, wid, start) + ((len - 2) * wid / 36);
             }
             if (extraRows == 4) {
-                sheet12 = getBW12(4, wid, start) + ((len - 4) * wid / 36);
+                return getBW12(4, wid, start) + ((len - 4) * wid / 36);
             }
         } // end 2-1 lay evaluation
         if (lay == 0) {

@@ -28,7 +28,6 @@ public class Main extends AppCompatActivity {
             R.drawable.pencil3,
             R.drawable.brc
     };
-
     // Array of strings storing country names
     private String[] listTitles = new String[] {
             "Matting Calculator",
@@ -40,12 +39,6 @@ public class Main extends AppCompatActivity {
             "Draw",
             "About"
     };
-/*
-            "CGRI/FAI",
-            "CSEC",
-            "NAMP Codes",
-            "DCP (TBD)",
- */
     // Array of strings to store descriptions
 private String[] listDesc = new String[]{
         "Calculate Matting Requirements",
@@ -184,10 +177,12 @@ private String[] listDesc = new String[]{
             case R.id.action_images: // Images
                 startActivity(new Intent(Main.this, GalleryThumbs.class));
                 break;
+            case R.id.action_draw: // Draw
+                startActivity(new Intent(Main.this, Draw.class));
+                break;
             case R.id.action_about: // About
                 startActivity(new Intent(Main.this, About.class));
                 break;
-
         }
         return super.onOptionsItemSelected(item);
     }

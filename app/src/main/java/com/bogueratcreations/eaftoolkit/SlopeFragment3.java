@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 
 /**
@@ -28,6 +29,7 @@ public class SlopeFragment3 extends Fragment {
         // Inflate the layout for this fragment
         View V = inflater.inflate(R.layout.fragment_slope3, container, false);
         etPer = (EditText)V.findViewById(R.id.etSlope3Per);
+        etPer.setImeOptions(EditorInfo.IME_ACTION_DONE);
         etPer.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
