@@ -51,16 +51,6 @@
                 android:value="com.bogueratcreations.eaftoolkit.Main" />
         </activity>
         <activity
-            android:name=".MatCalc"
-            android:label="@string/title_activity_mat_calc"
-            android:parentActivityName=".Main"
-            android:screenOrientation="portrait"
-            android:theme="@style/CustomActionBarTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bogueratcreations.eaftoolkit.Main" />
-        </activity>
-        <activity
             android:name=".FLOLS"
             android:label="@string/title_activity_flols"
             android:parentActivityName=".Main"

@@ -6,22 +6,6 @@
     <statePointEntry>
       <state      
         class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
-        className = "com.bogueratcreations.eaftoolkit.MatCalc"/>
-      <point      
-        x = "2368"      
-        y = "1528"/>
-    </statePointEntry>
-    <statePointEntry>
-      <state      
-        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
-        className = "com.bogueratcreations.eaftoolkit.MatCalc"/>
-      <point      
-        x = "3636"      
-        y = "1528"/>
-    </statePointEntry>
-    <statePointEntry>
-      <state      
-        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
         className = "com.bogueratcreations.eaftoolkit.Inspections"/>
       <point      
         x = "500"      
