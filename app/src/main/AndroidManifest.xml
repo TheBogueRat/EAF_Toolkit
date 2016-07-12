@@ -17,7 +17,6 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.bogueratcreations.eaftoolkit.Main" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -127,8 +126,7 @@
             android:name=".Draw"
             android:label="Draw"
             android:parentActivityName=".Main"
-            android:screenOrientation="portrait"
-            android:theme="@style/CustomActionBarTheme">
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bogueratcreations.eaftoolkit.Main" />

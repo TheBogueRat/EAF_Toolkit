@@ -296,6 +296,7 @@ public class MatSpanEditActivity extends AppCompatActivity {
                 finish();
             }
         });
+        refreshData();
     }
 
     private void refreshData(){

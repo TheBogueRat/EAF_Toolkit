@@ -9,15 +9,18 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -25,7 +28,6 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -82,25 +84,19 @@ public class Draw extends AppCompatActivity implements OnClickListener{
         ImageButton colorBtn = (ImageButton) findViewById(R.id.color_btn);
         colorBtn.setOnClickListener(this);
 
-        //galleryBtn = (ImageButton)findViewById(R.id.gallery_btn);
-        //galleryBtn.setOnClickListener(this);
-
         // Restore a drawing in progress
         FileInputStream fis;
-        Drawable drawable = null;
+        Drawable drawable;
         try {
             fis = openFileInput("drawingInProgress");
             drawable = new BitmapDrawable(getResources(), BitmapFactory.decodeStream(fis));
+            // set as background image.
+            drawView.setBackground(drawable);
             fis.close();
-        } catch (FileNotFoundException e) {
-            // Don't need to do anything, user probably never edited the image.
-            e.printStackTrace();
         } catch (IOException e) {
             // Unable to connect to internal storage?
             e.printStackTrace();
         }
-        // set as background image.
-        drawView.setBackground(drawable);
     }
 
     private String getOpacityString(){
@@ -120,226 +116,259 @@ public class Draw extends AppCompatActivity implements OnClickListener{
         prefsEditor.putFloat("keyBrushSize", brushSize);
         prefsEditor.apply();
 
-        FileOutputStream fos;
+        //FileOutputStream fos;
         drawView.setDrawingCacheEnabled(true);
         Bitmap drawViewImage = drawView.getDrawingCache();
-        try {
-            fos = openFileOutput("drawingInProgress", Context.MODE_PRIVATE);
-            drawViewImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
-            fos.close();
-
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        // create a copy to pass for storage...
+        Bitmap viewImageCopy = drawViewImage.copy(drawViewImage.getConfig(),true);
         drawView.destroyDrawingCache();
+        BitmapWorkerTask task = new BitmapWorkerTask();
+        task.execute(viewImageCopy);
     }
+    class BitmapWorkerTask extends AsyncTask<Bitmap, Void, Void> {
 
+        // Store image in background.
+        @Override
+        protected Void doInBackground(Bitmap... params) {
+            Bitmap image = params[0];
+            FileOutputStream fos;
+            try {
+                fos = openFileOutput("drawingInProgress", Context.MODE_PRIVATE);
+                image.compress(Bitmap.CompressFormat.PNG, 100, fos);
+                fos.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+    }
     @Override
     public void onClick(View view){
 
         //respond to clicks
         if(view.getId()==R.id.draw_btn){
-            //Brush Size button clicked
-            final Dialog brushDialog = new Dialog(this);
-            brushDialog.setTitle("Brush size:");
-            brushDialog.setContentView(R.layout.brush_chooser);
-            ImageButton smallBtn = (ImageButton)brushDialog.findViewById(R.id.small_brush);
-            smallBtn.setOnClickListener(new OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    drawView.setBrushSize(smallBrush);
-                    drawView.setLastBrushSize(smallBrush);
-                    brushSize = smallBrush;
-                    brushDialog.dismiss();
-                }
-            });
-            ImageButton mediumBtn = (ImageButton)brushDialog.findViewById(R.id.medium_brush);
-            mediumBtn.setOnClickListener(new OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    drawView.setBrushSize(mediumBrush);
-                    drawView.setLastBrushSize(mediumBrush);
-                    brushDialog.dismiss();
-                }
-            });
-            ImageButton largeBtn = (ImageButton)brushDialog.findViewById(R.id.large_brush);
-            largeBtn.setOnClickListener(new OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    drawView.setBrushSize(largeBrush);
-                    drawView.setLastBrushSize(largeBrush);
-                    brushDialog.dismiss();
-                }
-            });
-
-            brushDialog.show();
+            setBrushDimens();
         }
         else if(view.getId()==R.id.new_btn){
-            //Eraser button to clear Background or Annotations
-            AlertDialog.Builder newDialog = new AlertDialog.Builder(this);
-            newDialog.setTitle("Clear?");
-            newDialog.setItems(R.array.clearOptions, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    // The 'which' argument contains the index position of the selected item
-                    switch(which) {
-                        case 0:
-                            // Clear background an annotations
-                            drawView.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                            drawView.startNew();
-                            break;
-                        case 1:
-                            // Clear Background
-                            drawView.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                            break;
-                        case 2:
-                            // Clear Annotations
-                            drawView.startNew();
-                            break;
-                        default:
-                            // Do nothing
-                    }
-                }
-            });
-            newDialog.show();
+            erase();
         }
         else if(view.getId()==R.id.save_btn){
-            //save drawing
-            AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
-            saveDialog.setTitle("Save drawing");
-            saveDialog.setMessage("Save drawing to device Gallery?");
-            saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
-                public void onClick(DialogInterface dialog, int which){
-                    //save drawing
-                    drawView.setDrawingCacheEnabled(true);
-                    String imgSaved = MediaStore.Images.Media.insertImage(
-                            getContentResolver(), drawView.getDrawingCache(),
-                            UUID.randomUUID().toString()+".png", "drawing");
-                    if(imgSaved!=null){
-                        Toast savedToast = Toast.makeText(getApplicationContext(),
-                                "Drawing saved to Gallery!", Toast.LENGTH_SHORT);
-                        savedToast.show();
-                    }
-                    else{
-                        Toast unsavedToast = Toast.makeText(getApplicationContext(),
-                                "Oops! Image could not be saved.", Toast.LENGTH_SHORT);
-                        unsavedToast.show();
-                    }
-                    drawView.destroyDrawingCache();
-                }
-            });
-            saveDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
-                public void onClick(DialogInterface dialog, int which){
-                    dialog.cancel();
-                }
-            });
-            saveDialog.show();
-
-        } else if(view.getId()==R.id.color_btn){
-            //Brush Color button clicked
-            final Dialog colorDialog = new Dialog(this);
-            colorDialog.setTitle("Select Color:");
-            colorDialog.setContentView(R.layout.brush_color);
-
-            ImageButton camoBlackBtn = (ImageButton)colorDialog.findViewById(R.id.camoBlack);
-            camoBlackBtn.setOnClickListener(new OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    brushColor = "000000";
-                    drawView.setColor(opacity + brushColor);
-                    colorDialog.dismiss();
-                }
-            });
-            ImageButton camoGreyBtn = (ImageButton)colorDialog.findViewById(R.id.camoGray);
-            camoGreyBtn.setOnClickListener(new OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    brushColor = "666666";
-                    drawView.setColor(opacity + brushColor);
-                    colorDialog.dismiss();
-                }
-            });
-            ImageButton camoRedBtn = (ImageButton)colorDialog.findViewById(R.id.camoRed);
-            camoRedBtn.setOnClickListener(new OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    brushColor = "FF0000";
-                    drawView.setColor(opacity + brushColor);
-                    colorDialog.dismiss();
-                }
-            });
-            ImageButton camoBlueBtn = (ImageButton)colorDialog.findViewById(R.id.camoBlue);
-            camoBlueBtn.setOnClickListener(new OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    brushColor = "0000FF";
-                    drawView.setColor(opacity + brushColor);
-                    colorDialog.dismiss();
-                }
-            });
-            ImageButton camoGreenBtn = (ImageButton)colorDialog.findViewById(R.id.camoGreen);
-            camoGreenBtn.setOnClickListener(new OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    brushColor = "66CC00";
-                    drawView.setColor(opacity + brushColor);
-                    colorDialog.dismiss();
-                }
-            });
-            ImageButton camoBrownBtn = (ImageButton)colorDialog.findViewById(R.id.camoBrown);
-            camoBrownBtn.setOnClickListener(new OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    brushColor = "654321";
-                    drawView.setColor(opacity + brushColor);
-                    colorDialog.dismiss();
-                }
-            });
-            ImageButton camoWhiteBtn = (ImageButton)colorDialog.findViewById(R.id.camoWhite);
-            camoWhiteBtn.setOnClickListener(new OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    // TODO: User v.getTag for all...
-                    brushColor = v.getTag().toString();
-                    //brushColor = "FFFFFF";
-                    drawView.setColor(opacity + brushColor);
-                    colorDialog.dismiss();
-                }
-            });
-            colorDialog.show();
-        } else if (view.getId()==R.id.opacity_btn) {
-            //Brush Opacity button clicked
-            final Dialog opacityDialog = new Dialog(this);
-            opacityDialog.setTitle("Adjust Brush Opacity:");
-            opacityDialog.setContentView(R.layout.brush_opacity);
-            final ImageView ivOpacity = (ImageView) opacityDialog.findViewById(R.id.imageViewOpacity);
-            ivOpacity.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.br, null));
-            ivOpacity.setImageAlpha(opacityInt);
-            final TextView tvOpacity = (TextView) opacityDialog.findViewById(R.id.textOpacity);
-            tvOpacity.setText(Integer.toString(opacityInt/25*10)+"%");
-            SeekBar sbOpacity = (SeekBar) opacityDialog.findViewById(R.id.seekBarOpacity);
-            sbOpacity.setProgress(opacityInt/25-1);
-            sbOpacity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                @Override
-                public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                    opacityInt = (seekBar.getProgress() + 1) * 25;
-                    //opacity = "#" + Integer.toHexString(opacityInt);
-                    tvOpacity.setText(Integer.toString(opacityInt/25*10)+"%");
-                    ivOpacity.setImageAlpha(opacityInt);
-                }
-                @Override
-                public void onStartTrackingTouch(SeekBar seekBar) {}
-                @Override
-                public void onStopTrackingTouch(SeekBar seekBar) {
-                    opacity = getOpacityString();
-                    drawView.setColor(opacity + brushColor);
-                }
-            });
-            opacityDialog.show();
+            saveImage();
         }
+        else if(view.getId()==R.id.color_btn){
+            setBrushColor();
+        }
+        else if (view.getId()==R.id.opacity_btn) {
+            setBrushOpacity();
+        }
+    }
+
+    // Methods for UI buttons/menu items
+    private void setBrushDimens() {
+        //Brush Size button clicked
+        final Dialog brushDialog = new Dialog(this);
+        brushDialog.setTitle("Brush size:");
+        brushDialog.setContentView(R.layout.brush_chooser);
+        ImageButton smallBtn = (ImageButton)brushDialog.findViewById(R.id.small_brush);
+        smallBtn.setOnClickListener(new OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                drawView.setBrushSize(smallBrush);
+                drawView.setLastBrushSize(smallBrush);
+                brushSize = smallBrush;
+                brushDialog.dismiss();
+            }
+        });
+        ImageButton mediumBtn = (ImageButton)brushDialog.findViewById(R.id.medium_brush);
+        mediumBtn.setOnClickListener(new OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                drawView.setBrushSize(mediumBrush);
+                drawView.setLastBrushSize(mediumBrush);
+                brushDialog.dismiss();
+            }
+        });
+        ImageButton largeBtn = (ImageButton)brushDialog.findViewById(R.id.large_brush);
+        largeBtn.setOnClickListener(new OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                drawView.setBrushSize(largeBrush);
+                drawView.setLastBrushSize(largeBrush);
+                brushDialog.dismiss();
+            }
+        });
+        brushDialog.show();
+    }
+
+    private void setBrushColor() {
+        //Brush Color button clicked
+        final Dialog colorDialog = new Dialog(this);
+        colorDialog.setTitle("Select Color:");
+        colorDialog.setContentView(R.layout.brush_color);
+
+        ImageButton camoBlackBtn = (ImageButton)colorDialog.findViewById(R.id.camoBlack);
+        camoBlackBtn.setOnClickListener(new OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                brushColor = "000000";
+                drawView.setColor(opacity + brushColor);
+                colorDialog.dismiss();
+            }
+        });
+        ImageButton camoGreyBtn = (ImageButton)colorDialog.findViewById(R.id.camoGray);
+        camoGreyBtn.setOnClickListener(new OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                brushColor = "666666";
+                drawView.setColor(opacity + brushColor);
+                colorDialog.dismiss();
+            }
+        });
+        ImageButton camoRedBtn = (ImageButton)colorDialog.findViewById(R.id.camoRed);
+        camoRedBtn.setOnClickListener(new OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                brushColor = "FF0000";
+                drawView.setColor(opacity + brushColor);
+                colorDialog.dismiss();
+            }
+        });
+        ImageButton camoBlueBtn = (ImageButton)colorDialog.findViewById(R.id.camoBlue);
+        camoBlueBtn.setOnClickListener(new OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                brushColor = "0000FF";
+                drawView.setColor(opacity + brushColor);
+                colorDialog.dismiss();
+            }
+        });
+        ImageButton camoGreenBtn = (ImageButton)colorDialog.findViewById(R.id.camoGreen);
+        camoGreenBtn.setOnClickListener(new OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                brushColor = "66CC00";
+                drawView.setColor(opacity + brushColor);
+                colorDialog.dismiss();
+            }
+        });
+        ImageButton camoBrownBtn = (ImageButton)colorDialog.findViewById(R.id.camoBrown);
+        camoBrownBtn.setOnClickListener(new OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                brushColor = "654321";
+                drawView.setColor(opacity + brushColor);
+                colorDialog.dismiss();
+            }
+        });
+        ImageButton camoWhiteBtn = (ImageButton)colorDialog.findViewById(R.id.camoWhite);
+        camoWhiteBtn.setOnClickListener(new OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                // TODO: User v.getTag for all...
+                brushColor = v.getTag().toString();
+                //brushColor = "FFFFFF";
+                drawView.setColor(opacity + brushColor);
+                colorDialog.dismiss();
+            }
+        });
+        colorDialog.show();
+    }
+
+    private void setBrushOpacity() {
+        //Brush Opacity button clicked
+        final Dialog opacityDialog = new Dialog(this);
+        opacityDialog.setTitle("Adjust Brush Opacity:");
+        opacityDialog.setContentView(R.layout.brush_opacity);
+        final ImageView ivOpacity = (ImageView) opacityDialog.findViewById(R.id.imageViewOpacity);
+        ivOpacity.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.br, null));
+        ivOpacity.setImageAlpha(opacityInt);
+        final TextView tvOpacity = (TextView) opacityDialog.findViewById(R.id.textOpacity);
+        String opacityPercent = Integer.toString(opacityInt/25*10)+"%";
+        tvOpacity.setText(opacityPercent);
+        SeekBar sbOpacity = (SeekBar) opacityDialog.findViewById(R.id.seekBarOpacity);
+        sbOpacity.setProgress(opacityInt/25-1);
+        sbOpacity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                opacityInt = (seekBar.getProgress() + 1) * 25;
+                String opacityPercent = Integer.toString(opacityInt/25*10)+"%";
+                tvOpacity.setText(opacityPercent);
+                ivOpacity.setImageAlpha(opacityInt);
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                opacity = getOpacityString();
+                drawView.setColor(opacity + brushColor);
+            }
+        });
+        opacityDialog.show();
+    }
+
+    private void erase() {
+        //Eraser button to clear Background or Annotations
+        AlertDialog.Builder newDialog = new AlertDialog.Builder(this);
+        newDialog.setTitle("Clear?");
+        newDialog.setItems(R.array.clearOptions, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                // The 'which' argument contains the index position of the selected item
+                switch(which) {
+                    case 0:
+                        // Clear background an annotations
+                        drawView.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                        drawView.startNew();
+                        break;
+                    case 1:
+                        // Clear Background
+                        drawView.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                        break;
+                    case 2:
+                        // Clear Annotations
+                        drawView.startNew();
+                        break;
+                    default:
+                        // Do nothing
+                }
+            }
+        });
+        newDialog.show();
+    }
+
+    private void saveImage() {
+        //save drawing
+        AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
+        saveDialog.setTitle("Save drawing");
+        saveDialog.setMessage("Save drawing to device Gallery?");
+        saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog, int which){
+                //save drawing
+                drawView.setDrawingCacheEnabled(true);
+                String imgSaved = MediaStore.Images.Media.insertImage(
+                        getContentResolver(), drawView.getDrawingCache(),
+                        UUID.randomUUID().toString()+".png", "drawing");
+                if(imgSaved!=null){
+                    Toast savedToast = Toast.makeText(getApplicationContext(),
+                            "Drawing saved to Gallery!", Toast.LENGTH_SHORT);
+                    savedToast.show();
+                }
+                else{
+                    Toast unsavedToast = Toast.makeText(getApplicationContext(),
+                            "Oops! Image could not be saved.", Toast.LENGTH_SHORT);
+                    unsavedToast.show();
+                }
+                drawView.destroyDrawingCache();
+            }
+        });
+        saveDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog, int which){
+                dialog.cancel();
+            }
+        });
+        saveDialog.show();
     }
 
     public void loadImagefromGallery(View view) {
@@ -354,7 +383,6 @@ public class Draw extends AppCompatActivity implements OnClickListener{
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         try {
-            Log.d("EAF Toolkit", "Getting image from data");
             // When an Image is picked
             if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
                     && null != data) {
@@ -372,19 +400,62 @@ public class Draw extends AppCompatActivity implements OnClickListener{
                     imgDecodableString = cursor.getString(columnIndex);
                     cursor.close();
                 }
-
-                // Convert bitmap to drawable and set as background image.
-                Drawable drawable = new BitmapDrawable(getResources(), BitmapFactory.decodeFile(imgDecodableString));
-                drawView.setBackground(drawable);
-
-            } else {
-                Toast.makeText(this, "You haven't picked Image",
-                        Toast.LENGTH_LONG).show();
+                int myWidth = drawView.getWidth();
+                int myHeight = drawView.getHeight();
+                // Convert bitmap to drawable, resize and set as background image.
+                BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), BitmapFactory.decodeFile(imgDecodableString));
+                // Extract bitmap and crop center
+                Bitmap bitmap = scaleRotateCenterCrop(bitmapDrawable.getBitmap(), myHeight, myWidth);
+                bitmapDrawable = new BitmapDrawable(getResources(),bitmap);
+                // Clear screen and set background image.
+                drawView.startNew();
+                drawView.setBackground(bitmapDrawable);
             }
         } catch (Exception e) {
-            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
-                    .show();
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
         }
     }
 
+    private Bitmap scaleRotateCenterCrop(Bitmap source, int newHeight, int newWidth) {
+        int sourceWidth = source.getWidth();
+        int sourceHeight = source.getHeight();
+
+        // Rotates image if landscape to retain as much of the image as possible after cropping
+        if (sourceWidth > sourceHeight) {
+            Matrix matrix = new Matrix();
+            matrix.postRotate(90);
+            source = Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, true);
+            // Update width/height values
+            sourceWidth = sourceHeight + sourceWidth;
+            sourceHeight = sourceWidth - sourceHeight;
+            sourceWidth = sourceWidth - sourceHeight;
+        }
+        // Compute the scaling factors to fit the new height and width, respectively.
+        // To cover the final image, the final scaling will be the bigger
+        // of these two.
+        float xScale = (float) newWidth / sourceWidth;
+        float yScale = (float) newHeight / sourceHeight;
+        float scale = Math.max(xScale, yScale);
+
+        // Now get the size of the source bitmap when scaled
+        float scaledWidth = scale * sourceWidth;
+        float scaledHeight = scale * sourceHeight;
+
+        // Let's find out the upper left coordinates if the scaled bitmap
+        // should be centered in the new size give by the parameters
+        float left = (newWidth - scaledWidth) / 2;
+        float top = (newHeight - scaledHeight) / 2;
+
+        // The target rectangle for the new, scaled version of the source bitmap will now
+        // be
+        RectF targetRect = new RectF(left, top, left + scaledWidth, top + scaledHeight);
+
+        // Finally, we create a new bitmap of the specified size and draw our new,
+        // scaled bitmap onto it.
+        Bitmap dest = Bitmap.createBitmap(newWidth, newHeight, source.getConfig());
+        Canvas canvas = new Canvas(dest);
+        canvas.drawBitmap(source, null, targetRect, null);
+
+        return dest;
+    }
 }

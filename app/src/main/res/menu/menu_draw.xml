@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Draw">
+
+    <item android:id="@+id/action_draw_color" android:title="Color"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_draw_brush" android:title="Brush"
+        android:orderInCategory="200" app:showAsAction="never" />
+    <item android:id="@+id/action_draw_opacity" android:title="Opacity"
+        android:orderInCategory="300" app:showAsAction="never" />
+    <item android:id="@+id/action_draw_erase" android:title="Erase"
+        android:orderInCategory="400" app:showAsAction="never" />
+    <item android:id="@+id/action_draw_gallery" android:title="Import from Gallery"
+        android:orderInCategory="500" app:showAsAction="never" />
+    <item android:id="@+id/action_draw_save" android:title="Save"
+        android:orderInCategory="600" app:showAsAction="never" />
+    <item android:id="@+id/action_draw_hide" android:title="Show/Hide Toolbar"
+        android:orderInCategory="700" app:showAsAction="never" />
+</menu>

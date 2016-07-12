@@ -21,10 +21,10 @@ android {
 
     defaultConfig {
         applicationId "com.bogueratcreations.eafToolkit"
-        minSdkVersion 19
+        minSdkVersion 16
         targetSdkVersion 24
-        versionCode 20037
-        versionName "3.7"
+        versionCode 20038
+        versionName "3.8"
     }
     buildTypes {
         release {
