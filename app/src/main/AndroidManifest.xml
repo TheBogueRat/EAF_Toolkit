@@ -17,6 +17,7 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.bogueratcreations.eaftoolkit.Main" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -170,6 +171,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bogueratcreations.eaftoolkit.MatSpan" />
+        </activity>
+        <activity
+            android:name=".DCP.DcpMain"
+            android:label="@string/title_activity_dcp_main"
+            android:parentActivityName=".Main"
+            android:theme="@style/CustomActionBarTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bogueratcreations.eaftoolkit.Main" />
         </activity>
     </application>
 

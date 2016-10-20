@@ -381,14 +381,4 @@ public class MatSpanModel {
         return (int) pallets;
     }
 
-
-//
-//    public static String getPallet(int qty, int perPallet) {
-//        double pallets = Math.ceil((double)qty / perPallet);
-//        Integer pal = (int)pallets;
-//        // Cast one int variable to double else it works as int
-//        Log.e("DEBUG:", "getPallet returns " + pal.toString());
-//        return pal.toString();
-//    }
-
 }

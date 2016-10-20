@@ -9,7 +9,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-public class InspectDBHandler extends SQLiteOpenHelper implements InspectListener{
+class InspectDBHandler extends SQLiteOpenHelper implements InspectListener{
     // TODO: Make this agnostic to any list so we can query down to the program from CSEC & CGRI
     // TODO: THIS HANDLER IS USED BUT I'M NOT SURE IF THIS DB IS BEING USED OR IF I JUST PULL FROM THE JSON
     private static final int DB_VERSION = 1;
@@ -21,13 +21,29 @@ public class InspectDBHandler extends SQLiteOpenHelper implements InspectListene
 
     private String TABLE_NAME = "CSEC";
 
-    String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+" ("+KEY_ID+" INTEGER PRIMARY KEY,"+KEY_PROGRAM+" TEXT,"+KEY_QUESTION+" TEXT,"+KEY_REFERENCE+" TEXT)";
+    String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+" ("+
+            KEY_ID+" INTEGER PRIMARY KEY,"+
+            KEY_PROGRAM+" TEXT,"+
+            KEY_QUESTION+" TEXT,"+
+            KEY_REFERENCE+" TEXT)";
     String DROP_TABLE = "DROP TABLE IF EXISTS "+TABLE_NAME;
 
-    public InspectDBHandler(Context context) {
+    InspectDBHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
+
+//    private static InspectDBHandler sInstance;
+//    public static synchronized InspectDBHandler getInstance(Context context) {
+//
+//        // Use the application context, which will ensure that you
+//        // don't accidentally leak an Activity's context.
+//        if (sInstance == null) {
+//            sInstance = new InspectDBHandler(context.getApplicationContext());
+//        }
+//        return sInstance;
+//    }
+    
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE CSEC ("+KEY_ID+" INTEGER PRIMARY KEY,"+KEY_PROGRAM+" TEXT,"+KEY_QUESTION+" TEXT,"+KEY_REFERENCE+" TEXT)");
@@ -72,7 +88,7 @@ public class InspectDBHandler extends SQLiteOpenHelper implements InspectListene
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Question> questionList = null;
         try{
-            questionList = new ArrayList<Question>();
+            questionList = new ArrayList<>();
             String QUERY = "SELECT * FROM " + TABLE_NAME;
             Cursor cursor = db.rawQuery(QUERY, null);
             if(!cursor.isLast())
@@ -87,6 +103,7 @@ public class InspectDBHandler extends SQLiteOpenHelper implements InspectListene
                     questionList.add(question);
                 }
             }
+            cursor.close();
             db.close();
         }catch (Exception e){
             Log.e("error", e + "");
@@ -101,8 +118,7 @@ public class InspectDBHandler extends SQLiteOpenHelper implements InspectListene
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Question> questionList = null;
         try{
-            questionList = new ArrayList<Question>();
-            // TODO: filter by program here?
+            questionList = new ArrayList<>();
             String QUERY = "SELECT * FROM "+TABLE_NAME + " WHERE "+ KEY_PROGRAM + "='" + program + "'";
             Cursor cursor = db.rawQuery(QUERY, null);
             Log.i("EAF Toolkit", "Received program: " + program);
@@ -119,6 +135,7 @@ public class InspectDBHandler extends SQLiteOpenHelper implements InspectListene
                     questionList.add(question);
                 }
             }
+            cursor.close();
             db.close();
         }catch (Exception e){
             Log.e("error", e + "");
@@ -133,8 +150,7 @@ public class InspectDBHandler extends SQLiteOpenHelper implements InspectListene
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Program> programList = null;
         try{
-            programList = new ArrayList<Program>();
-            // TODO: filter by program here?
+            programList = new ArrayList<>();
             String QUERY = "SELECT DISTINCT " + KEY_PROGRAM + " FROM " + TABLE_NAME;
             Cursor cursor = db.rawQuery(QUERY, null);
             Log.i("EAF Toolkit", "Selected Distinct Data");
@@ -147,6 +163,7 @@ public class InspectDBHandler extends SQLiteOpenHelper implements InspectListene
                     programList.add(program);
                 }
             }
+            cursor.close();
             db.close();
         }catch (Exception e){
             Log.e("error", e + "");
@@ -165,6 +182,7 @@ public class InspectDBHandler extends SQLiteOpenHelper implements InspectListene
             String QUERY = "SELECT * FROM "+TABLE_NAME;
             Cursor cursor = db.rawQuery(QUERY, null);
             num = cursor.getCount();
+            cursor.close();
             db.close();
             return num;
         }catch (Exception e){

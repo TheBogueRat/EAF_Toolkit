@@ -42,4 +42,10 @@
     <string name="title_activity_mat_span_new">New Span</string>
     <string name="title_activity_mat_span_edit">Edit Span</string>
     <string name="title_activity_mat_span_summary">Summary of Selected Spans</string>
+    <string name="title_activity_dcp_main">DcpMain</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

@@ -12,6 +12,7 @@ apply plugin: 'io.fabric'
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
+    maven { url "https://jitpack.io" }
 }
 
 
@@ -51,4 +52,6 @@ dependencies {
     }
     // Required for segmented control
     compile 'info.hoang8f:android-segmented:1.0.6'
+    // Adding Charting for DCP
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.0'
 }
