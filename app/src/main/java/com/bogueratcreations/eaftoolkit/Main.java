@@ -15,6 +15,7 @@ import com.bogueratcreations.eaftoolkit.Draw.Draw;
 import com.bogueratcreations.eaftoolkit.Inspections.Inspect;
 import com.bogueratcreations.eaftoolkit.MatSpan.MatSpan;
 import com.bogueratcreations.eaftoolkit.gallery.GalleryThumbs;
+import com.bogueratcreations.eaftoolkit.slope.Slope;
 
 import java.util.ArrayList;
 import java.util.HashMap;

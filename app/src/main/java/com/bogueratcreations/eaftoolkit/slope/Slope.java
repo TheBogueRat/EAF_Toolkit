@@ -1,14 +1,14 @@
-package com.bogueratcreations.eaftoolkit;
+package com.bogueratcreations.eaftoolkit.slope;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import com.bogueratcreations.eaftoolkit.R;
 
 import java.util.ArrayList;
 import java.util.List;

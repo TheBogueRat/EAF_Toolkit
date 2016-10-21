@@ -87,7 +87,6 @@ public class GalleryThumbs extends AppCompatActivity {
             imageModel.setName(CAPTIONS[i]);
             imageModel.setUrl(IMGS[i]);
             data.add(imageModel);
-
         }
 
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.list);
@@ -111,7 +110,6 @@ public class GalleryThumbs extends AppCompatActivity {
 
                     }
                 }));
-
     }
 
 }

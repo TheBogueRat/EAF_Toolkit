@@ -42,7 +42,7 @@
                 android:value="com.bogueratcreations.eaftoolkit.Main" />
         </activity>
         <activity
-            android:name=".Slope"
+            android:name=".slope.Slope"
             android:label="@string/title_activity_slope"
             android:parentActivityName=".Main"
             android:screenOrientation="portrait">

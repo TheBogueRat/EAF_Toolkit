@@ -1,11 +1,12 @@
-package com.bogueratcreations.eaftoolkit;
+package com.bogueratcreations.eaftoolkit.slope;
 
 import java.text.DecimalFormat;
-import java.util.Calendar;
-import java.util.Locale;
 
-class convert {
+/**
+ * Created by jodyroth on 10/21/16.
+ */
 
+class SlopeConversions {
     /**
      *
      * @param percent Rise divided by Run
@@ -31,24 +32,4 @@ class convert {
         DecimalFormat df = new DecimalFormat("###.##");
         return df.format(percent);
     }
-
-    /**
-     *
-     * @param cal A Calendar Object with date to be converted
-     * @return Julian Date string format "YDDD"
-     */
-    public static String cal2Julian(Calendar cal) {
-        String julian;
-        String yStr;
-        String dStr;
-
-        yStr = String.valueOf(cal.get(Calendar.YEAR));
-        yStr = yStr.substring(yStr.length() - 1);
-        dStr = String.format(Locale.ENGLISH, "%03d", cal.get(Calendar.DAY_OF_YEAR));
-
-        julian = yStr + dStr;
-
-        return julian;
-    }
 }
-

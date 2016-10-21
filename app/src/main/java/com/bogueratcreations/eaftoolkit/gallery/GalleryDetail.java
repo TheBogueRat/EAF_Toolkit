@@ -8,12 +8,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.bogueratcreations.eaftoolkit.R;
-import com.bogueratcreations.eaftoolkit.TouchImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
@@ -25,7 +25,7 @@ public class GalleryDetail extends AppCompatActivity {
     private ArrayList<ImageModel> data = new ArrayList<>();
 
     // An array of full-sized images to display
-    private static Integer IMGS[] = {
+    private static Integer fullIMGS[] = {
             R.drawable.eaf1, R.drawable.eaf2,
             R.drawable.eaf3, R.drawable.eaf4,
             R.drawable.eaf5, R.drawable.eaf6,
@@ -44,6 +44,41 @@ public class GalleryDetail extends AppCompatActivity {
             R.drawable.eaf31, R.drawable.eaf32,
             R.drawable.eaf33
     };
+    private static String CAPTIONS[] = {
+            "Matting Project @ Bogue",
+            "AM-2 Matting Storage",
+            "VTOL 96x96 - Iraq",
+            "MobiMat Installation",
+            "MobiMat 3x7",
+            "VTOL 96x96 - Iraq",
+            "Matting Project",
+            "Matting Embark",
+            "Dust Abatement - COP",
+            "Matting Evolution",
+            "HPRU - Al Asad",
+            "Another HPRU",
+            "Revetments - Kandahar",
+            "Tie-Downs",
+            "MOSLS - oooooh",
+            "M-31 MCEAGS Installation",
+            "Arrested Landing with LSO",
+            "Cable Boots after runover",
+            "M-21 LEA Installation",
+            "M-21 Retrieve Engine",
+            "M-21 Absorber Assy",
+            "M-21 Arrestment @ An Numinyah",
+            "FLOLS for delivery",
+            "EAF Complex - Al Asad",
+            "California Shelter",
+            "Dust Abatement Trailer",
+            "OLS Tower - MCALF Bogue",
+            "AV-8B Landing at OLS",
+            "Alaska Shelter",
+            "M-31 Stake installation",
+            "MOSLS CabKit testing",
+            "DCP - CBR evaluation",
+            "Windsock"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,21 +88,21 @@ public class GalleryDetail extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        data = getIntent().getParcelableArrayListExtra("data");
+        // Load up thumbnail links and image captions
+        for (int i = 0; i < fullIMGS.length; i++) {
+
+            ImageModel imageModel = new ImageModel();
+            imageModel.setName(CAPTIONS[i]);
+            imageModel.setUrl(fullIMGS[i]);
+            data.add(imageModel);
+        }
+        //data = getIntent().getParcelableArrayListExtra("data");
         int pos = getIntent().getIntExtra("pos", 0);
 
         setTitle(data.get(pos).getName());
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        /*
-      The {@link android.support.v4.view.PagerAdapter} that will provide
-      fragments for each of the sections. We use a
-      {@link FragmentPagerAdapter} derivative, which will keep every
-      loaded fragment in memory. If this becomes too memory intensive, it
-      may be best to switch to a
-      {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
         SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), data);
         // Set up the ViewPager with the sections adapter.
         /*
@@ -104,7 +139,7 @@ public class GalleryDetail extends AppCompatActivity {
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
         public ArrayList<ImageModel> data = new ArrayList<>();
 
-        public SectionsPagerAdapter(FragmentManager fm, ArrayList<ImageModel> data) {
+        SectionsPagerAdapter(FragmentManager fm, ArrayList<ImageModel> data) {
             super(fm);
             this.data = data;
         }
@@ -113,17 +148,20 @@ public class GalleryDetail extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
+            Log.d("EAF Toolkit", "Fragment getItem called");
             return PlaceholderFragment.newInstance(position, data.get(position).getName(), data.get(position).getUrl());
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
+            //Log.d("EAF Toolkit", "data.size: " + data.size());
             return data.size();
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
+
             return data.get(position).getName();
         }
     }
@@ -160,7 +198,8 @@ public class GalleryDetail extends AppCompatActivity {
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             args.putString(ARG_IMG_TITLE, name);
-            args.putInt(ARG_IMG_URL, IMGS[sectionNumber]);
+            // Using IMGS array to insert the full size image for use in the fragment
+            args.putInt(ARG_IMG_URL, url); // IMGS[sectionNumber]);
             fragment.setArguments(args);
             return fragment;
         }
@@ -174,14 +213,15 @@ public class GalleryDetail extends AppCompatActivity {
             View rootView = inflater.inflate(R.layout.fragment_gallery_detail, container, false);
             //removed final from the following
             final TouchImageView touchImageView = (TouchImageView) rootView.findViewById(R.id.detail_image);
-
+            // Using this to load the image because glide was not showing the first image to the right.
+            touchImageView.setImageResource(url);
             // Original:  Glide.with(getActivity()).load(url).thumbnail(0.1f).into(touchImageView);
-            Glide.with(getActivity()).load(url).asBitmap().into(new SimpleTarget<Bitmap>() {
-                @Override
-                public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                    touchImageView.setImageBitmap(resource);
-                }
-            });
+//            Glide.with(getActivity()).load(url).asBitmap().into(new SimpleTarget<Bitmap>() {
+//                @Override
+//                public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+//                    touchImageView.setImageBitmap(resource);
+//                }
+//            });
 
             return rootView;
         }

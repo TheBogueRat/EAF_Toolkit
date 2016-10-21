@@ -11,8 +11,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.TimeZone;
-
 
 /**
  * A placeholder fragment containing a simple view.
@@ -37,7 +37,7 @@ public class JulianFragment extends Fragment {
 
         Calendar cal = Calendar.getInstance(TimeZone.getDefault());
         cal.set(dp.getYear(), dp.getMonth(), dp.getDayOfMonth());
-        etJulian.setText(convert.cal2Julian(cal));
+        etJulian.setText(cal2Julian(cal));
 
         dp.init(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), new DatePicker.OnDateChangedListener() {
 
@@ -56,7 +56,7 @@ public class JulianFragment extends Fragment {
                 Calendar cal = Calendar.getInstance(TimeZone.getDefault());
                 cal.set(dp.getYear(), dp.getMonth(), dp.getDayOfMonth());
                 editing = true;
-                etJulian.setText(convert.cal2Julian(cal));
+                etJulian.setText(cal2Julian(cal));
                 editing = false;
             }
         });
@@ -101,4 +101,22 @@ public class JulianFragment extends Fragment {
         return V;
     }
 
+    /**
+     *
+     * @param cal A Calendar Object with date to be converted
+     * @return Julian Date string format "YDDD"
+     */
+    public static String cal2Julian(Calendar cal) {
+        String julian;
+        String yStr;
+        String dStr;
+
+        yStr = String.valueOf(cal.get(Calendar.YEAR));
+        yStr = yStr.substring(yStr.length() - 1);
+        dStr = String.format(Locale.ENGLISH, "%03d", cal.get(Calendar.DAY_OF_YEAR));
+
+        julian = yStr + dStr;
+
+        return julian;
+    }
 }

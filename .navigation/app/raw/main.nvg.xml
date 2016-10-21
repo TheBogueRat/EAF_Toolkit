@@ -54,7 +54,7 @@
     <statePointEntry>
       <state      
         class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
-        className = "com.bogueratcreations.eaftoolkit.Slope"/>
+        className = "com.bogueratcreations.eaftoolkit.slope.Slope"/>
       <point      
         x = "452"      
         y = "4460"/>
@@ -62,7 +62,7 @@
     <statePointEntry>
       <state      
         class = "com.android.tools.idea.editors.navigation.model.MenuState"      
-        className = "com.bogueratcreations.eaftoolkit.Slope"/>
+        className = "com.bogueratcreations.eaftoolkit.slope.Slope"/>
       <point      
         x = "1720"      
         y = "4460"/>

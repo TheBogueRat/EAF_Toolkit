@@ -1,4 +1,4 @@
-package com.bogueratcreations.eaftoolkit;
+package com.bogueratcreations.eaftoolkit.slope;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;

@@ -1,4 +1,4 @@
-package com.bogueratcreations.eaftoolkit;
+package com.bogueratcreations.eaftoolkit.slope;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+
+import com.bogueratcreations.eaftoolkit.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,7 +55,7 @@ public class SlopeFragment3 extends Fragment {
                 } else {
                     if (etPer.getError() != null) {etPer.setError(null);}
                 }
-                etDeg.setText(convert.Percent2Degrees(percent));
+                etDeg.setText(SlopeConversions.Percent2Degrees(percent));
                 editing = false;
             }
         });
@@ -81,7 +83,7 @@ public class SlopeFragment3 extends Fragment {
                 } else {
                    if (etDeg.getError() != null) {etDeg.setError(null);}
                 }
-                etPer.setText(convert.Degrees2Percent(degrees));
+                etPer.setText(SlopeConversions.Degrees2Percent(degrees));
                 editing = false;
             }
         });

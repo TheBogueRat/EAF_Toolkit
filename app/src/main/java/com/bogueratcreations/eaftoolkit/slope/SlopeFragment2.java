@@ -1,4 +1,4 @@
-package com.bogueratcreations.eaftoolkit;
+package com.bogueratcreations.eaftoolkit.slope;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.bogueratcreations.eaftoolkit.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,7 +63,7 @@ public class SlopeFragment2 extends Fragment {
                 Double run = Double.parseDouble(dist);
                 Double percent = (rise / run) * 100.0;
                 percent = Math.round(percent * 100.0) / 100.0;
-                String degrees = convert.Percent2Degrees(percent);
+                String degrees = SlopeConversions.Percent2Degrees(percent);
                 String percent2 = percent.toString();
                 tvResult.setText(percent2 + "% / " + degrees + (char) 0x00B0);
             }
@@ -94,7 +96,7 @@ public class SlopeFragment2 extends Fragment {
                 Double run = Double.parseDouble(dist);
                 Double percent = (rise / run) * 100.0;
                 percent = Math.round(percent * 100.0) / 100.0;
-                String degrees = convert.Percent2Degrees(percent);
+                String degrees = SlopeConversions.Percent2Degrees(percent);
                 String percent2 = percent.toString();
                 tvResult.setText(percent2 + "% / " + degrees + (char) 0x00B0);
             }
@@ -126,7 +128,7 @@ public class SlopeFragment2 extends Fragment {
                 Double run = Double.parseDouble(dist);
                 Double percent = (rise / run) * 100.0;
                 percent = Math.round(percent * 100.0) / 100.0;
-                String degrees = convert.Percent2Degrees(percent);
+                String degrees = SlopeConversions.Percent2Degrees(percent);
                 String percent2 = percent.toString();
                 tvResult.setText(percent2 + "% / " + degrees + (char) 0x00B0);
             }
