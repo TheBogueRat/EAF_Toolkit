@@ -6,4 +6,4 @@
     android:layout_height="wrap_content"
     android:adjustViewBounds="true"
     android:scaleType="matrix"
-    tools:context="com.bogueratcreations.eaftoolkit.GalleryDetail$PlaceholderFragment" />
+    tools:context="com.bogueratcreations.eaftoolkit.gallery.GalleryDetail$PlaceholderFragment" />

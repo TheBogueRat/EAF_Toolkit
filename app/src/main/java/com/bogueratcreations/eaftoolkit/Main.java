@@ -11,6 +11,11 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.bogueratcreations.eaftoolkit.Draw.Draw;
+import com.bogueratcreations.eaftoolkit.Inspections.Inspect;
+import com.bogueratcreations.eaftoolkit.MatSpan.MatSpan;
+import com.bogueratcreations.eaftoolkit.gallery.GalleryThumbs;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -117,9 +122,6 @@ private String[] listDesc = new String[]{
                     case 4: // Inspections
                         startActivity(new Intent(Main.this, Inspect.class));
                         break;
-                    case 5: // DCP Manager
-                        startActivity(new Intent(Main.this, DCPMain.class));
-                        break;
                     case 5: // Images
                         startActivity(new Intent(Main.this, GalleryThumbs.class));
                         break;
@@ -176,9 +178,6 @@ private String[] listDesc = new String[]{
                 break;
             case R.id.action_inspect: // Inspections
                 startActivity(new Intent(Main.this, Inspect.class));
-                break;
-            case R.id.action_DCP: // DCP Manager
-                startActivity(new Intent(Main.this, DCPMain.class));
                 break;
             case R.id.action_images: // Images
                 startActivity(new Intent(Main.this, GalleryThumbs.class));

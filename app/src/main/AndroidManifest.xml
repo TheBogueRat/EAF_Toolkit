@@ -69,7 +69,7 @@
                 android:value="com.bogueratcreations.eaftoolkit.Main" />
         </activity>
         <activity
-            android:name=".Inspect"
+            android:name=".Inspections.Inspect"
             android:label="@string/title_activity_inspect"
             android:parentActivityName=".Main">
             <meta-data
@@ -77,31 +77,31 @@
                 android:value="com.bogueratcreations.eaftoolkit.Main" />
         </activity>
         <activity
-            android:name=".Programs"
+            android:name=".Inspections.Programs"
             android:label="@string/title_activity_programs"
-            android:parentActivityName=".Inspect">
+            android:parentActivityName=".Inspections.Inspect">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bogueratcreations.eaftoolkit.Inspect" />
+                android:value="com.bogueratcreations.eaftoolkit.Inspections.Inspect" />
         </activity>
         <activity
-            android:name=".Questions"
+            android:name=".Inspections.Questions"
             android:label="@string/title_activity_questions"
-            android:parentActivityName=".Programs">
+            android:parentActivityName=".Inspections.Programs">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bogueratcreations.eaftoolkit.Programs" />
+                android:value="com.bogueratcreations.eaftoolkit.Inspections.Programs" />
         </activity>
         <activity
-            android:name=".QuestionDetail"
+            android:name=".Inspections.QuestionDetail"
             android:label="@string/title_activity_question_detail"
-            android:parentActivityName=".Questions">
+            android:parentActivityName=".Inspections.Questions">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bogueratcreations.eaftoolkit.Questions" />
+                android:value="com.bogueratcreations.eaftoolkit.Inspections.Questions" />
         </activity>
         <activity
-            android:name=".GalleryThumbs"
+            android:name=".gallery.GalleryThumbs"
             android:label="@string/title_activity_gallery_thumbs"
             android:parentActivityName=".Main"
             android:theme="@style/CustomActionBarTheme.NoActionBar">
@@ -110,13 +110,13 @@
                 android:value="com.bogueratcreations.eaftoolkit.Main" />
         </activity>
         <activity
-            android:name=".GalleryDetail"
+            android:name=".gallery.GalleryDetail"
             android:label="@string/title_activity_gallery_detail"
-            android:parentActivityName=".GalleryThumbs"
+            android:parentActivityName=".gallery.GalleryThumbs"
             android:theme="@style/CustomActionBarTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bogueratcreations.eaftoolkit.GalleryThumbs" />
+                android:value="com.bogueratcreations.eaftoolkit.gallery.GalleryThumbs" />
         </activity>
 
         <meta-data
@@ -124,7 +124,7 @@
             android:value="9784c67895ec9ea26ecb24a87c823f78599c2756" />
 
         <activity
-            android:name=".Draw"
+            android:name=".Draw.Draw"
             android:label="Draw"
             android:parentActivityName=".Main"
             android:screenOrientation="portrait">
@@ -133,27 +133,27 @@
                 android:value="com.bogueratcreations.eaftoolkit.Main" />
         </activity>
         <activity
-            android:name=".MatSpanNewActivity"
+            android:name=".MatSpan.MatSpanNewActivity"
             android:label="@string/title_activity_mat_span_new"
-            android:parentActivityName=".MatSpan"
+            android:parentActivityName=".MatSpan.MatSpan"
             android:screenOrientation="portrait"
             android:theme="@style/CustomActionBarTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bogueratcreations.eaftoolkit.MatSpan" />
+                android:value="com.bogueratcreations.eaftoolkit.MatSpan.MatSpan" />
         </activity>
         <activity
-            android:name=".MatSpanEditActivity"
+            android:name=".MatSpan.MatSpanEditActivity"
             android:label="@string/title_activity_mat_span_edit"
-            android:parentActivityName=".MatSpan"
+            android:parentActivityName=".MatSpan.MatSpan"
             android:screenOrientation="portrait"
             android:theme="@style/CustomActionBarTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bogueratcreations.eaftoolkit.MatSpan" />
+                android:value="com.bogueratcreations.eaftoolkit.MatSpan.MatSpan" />
         </activity>
         <activity
-            android:name=".MatSpan"
+            android:name=".MatSpan.MatSpan"
             android:label="@string/title_activity_mat_span"
             android:parentActivityName=".Main"
             android:screenOrientation="portrait"
@@ -163,14 +163,14 @@
                 android:value="com.bogueratcreations.eaftoolkit.Main" />
         </activity>
         <activity
-            android:name=".MatSpanSummary"
+            android:name=".MatSpan.MatSpanSummary"
             android:label="@string/title_activity_mat_span_summary"
-            android:parentActivityName=".MatSpan"
+            android:parentActivityName=".MatSpan.MatSpan"
             android:screenOrientation="portrait"
             android:theme="@style/CustomActionBarTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bogueratcreations.eaftoolkit.MatSpan" />
+                android:value="com.bogueratcreations.eaftoolkit.MatSpan.MatSpan" />
         </activity>
         <activity
             android:name=".DCP.DcpMain"

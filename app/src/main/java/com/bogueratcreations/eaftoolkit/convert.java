@@ -5,7 +5,6 @@ import java.util.Calendar;
 import java.util.Locale;
 
 class convert {
-    // General Usage: result = convert.sizeOf("hello");
 
     /**
      *
