@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission-sdk-23 android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission-sdk-23 android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -171,15 +173,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bogueratcreations.eaftoolkit.MatSpan.MatSpan" />
-        </activity>
-        <activity
-            android:name=".DCP.DcpMain"
-            android:label="@string/title_activity_dcp_main"
-            android:parentActivityName=".Main"
-            android:theme="@style/CustomActionBarTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bogueratcreations.eaftoolkit.Main" />
         </activity>
     </application>
 

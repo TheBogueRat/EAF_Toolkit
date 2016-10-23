@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import io.realm.Realm;
+
 public class Main extends AppCompatActivity {
 
     // Array of integers points to images stored in /res/drawable-ldpi/
@@ -68,6 +70,7 @@ private String[] listDesc = new String[]{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Realm.init(this);
         // Each row in the list stores name, description and icon
         List<HashMap<String,String>> aList = new ArrayList<>();
         int lengthOfArray = listDesc.length;

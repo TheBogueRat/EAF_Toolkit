@@ -1,5 +1,6 @@
 package com.bogueratcreations.eaftoolkit.Draw;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -17,8 +18,11 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -29,7 +33,9 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bogueratcreations.eaftoolkit.Main;
 import com.bogueratcreations.eaftoolkit.R;
+import com.bogueratcreations.eaftoolkit.common.CapturePhotoUtils;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -37,10 +43,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.UUID;
 
-// Added for import from gallery function
+import android.Manifest;
+import android.content.pm.PackageManager;
 
 // Changed onClickListener to OnClickListener to fix issue, may not be correct way...Seems to be working
-public class Draw extends AppCompatActivity implements OnClickListener{
+public class Draw extends AppCompatActivity implements OnClickListener {
 
     private DrawingView drawView;
     private float smallBrush, mediumBrush, largeBrush;
@@ -55,11 +62,14 @@ public class Draw extends AppCompatActivity implements OnClickListener{
     private static int RESULT_LOAD_IMG = 1;
     private String imgDecodableString;
 
+    static final int MY_PERMISSIONS_REQUEST_SAVE_TO_EXTERNAL_STORAGE = 7011;
+    static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 7012;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_draw);
-        drawView = (DrawingView)findViewById(R.id.drawing);
+        drawView = (DrawingView) findViewById(R.id.drawing);
 
         prefs = this.getPreferences(Context.MODE_PRIVATE);
         opacity = prefs.getString("keyOpacity", "#FF");
@@ -102,9 +112,10 @@ public class Draw extends AppCompatActivity implements OnClickListener{
         }
     }
 
-    private String getOpacityString(){
+    private String getOpacityString() {
         return "#" + Integer.toString(opacityInt, 16);
     }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -123,11 +134,12 @@ public class Draw extends AppCompatActivity implements OnClickListener{
         drawView.setDrawingCacheEnabled(true);
         Bitmap drawViewImage = drawView.getDrawingCache();
         // create a copy to pass for storage...
-        Bitmap viewImageCopy = drawViewImage.copy(drawViewImage.getConfig(),true);
+        Bitmap viewImageCopy = drawViewImage.copy(drawViewImage.getConfig(), true);
         drawView.destroyDrawingCache();
         BitmapWorkerTask task = new BitmapWorkerTask();
         task.execute(viewImageCopy);
     }
+
     class BitmapWorkerTask extends AsyncTask<Bitmap, Void, Void> {
 
         // Store image in background.
@@ -148,23 +160,20 @@ public class Draw extends AppCompatActivity implements OnClickListener{
         }
 
     }
+
     @Override
-    public void onClick(View view){
+    public void onClick(View view) {
 
         //respond to clicks
-        if(view.getId()==R.id.draw_btn){
+        if (view.getId() == R.id.draw_btn) {
             setBrushDimens();
-        }
-        else if(view.getId()==R.id.new_btn){
+        } else if (view.getId() == R.id.new_btn) {
             erase();
-        }
-        else if(view.getId()==R.id.save_btn){
+        } else if (view.getId() == R.id.save_btn) {
             saveImage();
-        }
-        else if(view.getId()==R.id.color_btn){
+        } else if (view.getId() == R.id.color_btn) {
             setBrushColor();
-        }
-        else if (view.getId()==R.id.opacity_btn) {
+        } else if (view.getId() == R.id.opacity_btn) {
             setBrushOpacity();
         }
     }
@@ -175,8 +184,8 @@ public class Draw extends AppCompatActivity implements OnClickListener{
         final Dialog brushDialog = new Dialog(this);
         brushDialog.setTitle("Brush size:");
         brushDialog.setContentView(R.layout.brush_chooser);
-        ImageButton smallBtn = (ImageButton)brushDialog.findViewById(R.id.small_brush);
-        smallBtn.setOnClickListener(new OnClickListener(){
+        ImageButton smallBtn = (ImageButton) brushDialog.findViewById(R.id.small_brush);
+        smallBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawView.setBrushSize(smallBrush);
@@ -185,8 +194,8 @@ public class Draw extends AppCompatActivity implements OnClickListener{
                 brushDialog.dismiss();
             }
         });
-        ImageButton mediumBtn = (ImageButton)brushDialog.findViewById(R.id.medium_brush);
-        mediumBtn.setOnClickListener(new OnClickListener(){
+        ImageButton mediumBtn = (ImageButton) brushDialog.findViewById(R.id.medium_brush);
+        mediumBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawView.setBrushSize(mediumBrush);
@@ -194,8 +203,8 @@ public class Draw extends AppCompatActivity implements OnClickListener{
                 brushDialog.dismiss();
             }
         });
-        ImageButton largeBtn = (ImageButton)brushDialog.findViewById(R.id.large_brush);
-        largeBtn.setOnClickListener(new OnClickListener(){
+        ImageButton largeBtn = (ImageButton) brushDialog.findViewById(R.id.large_brush);
+        largeBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawView.setBrushSize(largeBrush);
@@ -212,8 +221,8 @@ public class Draw extends AppCompatActivity implements OnClickListener{
         colorDialog.setTitle("Select Color:");
         colorDialog.setContentView(R.layout.brush_color);
 
-        ImageButton camoBlackBtn = (ImageButton)colorDialog.findViewById(R.id.camoBlack);
-        camoBlackBtn.setOnClickListener(new OnClickListener(){
+        ImageButton camoBlackBtn = (ImageButton) colorDialog.findViewById(R.id.camoBlack);
+        camoBlackBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 brushColor = "000000";
@@ -221,8 +230,8 @@ public class Draw extends AppCompatActivity implements OnClickListener{
                 colorDialog.dismiss();
             }
         });
-        ImageButton camoGreyBtn = (ImageButton)colorDialog.findViewById(R.id.camoGray);
-        camoGreyBtn.setOnClickListener(new OnClickListener(){
+        ImageButton camoGreyBtn = (ImageButton) colorDialog.findViewById(R.id.camoGray);
+        camoGreyBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 brushColor = "666666";
@@ -230,8 +239,8 @@ public class Draw extends AppCompatActivity implements OnClickListener{
                 colorDialog.dismiss();
             }
         });
-        ImageButton camoRedBtn = (ImageButton)colorDialog.findViewById(R.id.camoRed);
-        camoRedBtn.setOnClickListener(new OnClickListener(){
+        ImageButton camoRedBtn = (ImageButton) colorDialog.findViewById(R.id.camoRed);
+        camoRedBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 brushColor = "FF0000";
@@ -239,8 +248,8 @@ public class Draw extends AppCompatActivity implements OnClickListener{
                 colorDialog.dismiss();
             }
         });
-        ImageButton camoBlueBtn = (ImageButton)colorDialog.findViewById(R.id.camoBlue);
-        camoBlueBtn.setOnClickListener(new OnClickListener(){
+        ImageButton camoBlueBtn = (ImageButton) colorDialog.findViewById(R.id.camoBlue);
+        camoBlueBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 brushColor = "0000FF";
@@ -248,8 +257,8 @@ public class Draw extends AppCompatActivity implements OnClickListener{
                 colorDialog.dismiss();
             }
         });
-        ImageButton camoGreenBtn = (ImageButton)colorDialog.findViewById(R.id.camoGreen);
-        camoGreenBtn.setOnClickListener(new OnClickListener(){
+        ImageButton camoGreenBtn = (ImageButton) colorDialog.findViewById(R.id.camoGreen);
+        camoGreenBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 brushColor = "66CC00";
@@ -257,8 +266,8 @@ public class Draw extends AppCompatActivity implements OnClickListener{
                 colorDialog.dismiss();
             }
         });
-        ImageButton camoBrownBtn = (ImageButton)colorDialog.findViewById(R.id.camoBrown);
-        camoBrownBtn.setOnClickListener(new OnClickListener(){
+        ImageButton camoBrownBtn = (ImageButton) colorDialog.findViewById(R.id.camoBrown);
+        camoBrownBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 brushColor = "654321";
@@ -266,8 +275,8 @@ public class Draw extends AppCompatActivity implements OnClickListener{
                 colorDialog.dismiss();
             }
         });
-        ImageButton camoWhiteBtn = (ImageButton)colorDialog.findViewById(R.id.camoWhite);
-        camoWhiteBtn.setOnClickListener(new OnClickListener(){
+        ImageButton camoWhiteBtn = (ImageButton) colorDialog.findViewById(R.id.camoWhite);
+        camoWhiteBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO: User v.getTag for all...
@@ -289,20 +298,23 @@ public class Draw extends AppCompatActivity implements OnClickListener{
         ivOpacity.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.br, null));
         ivOpacity.setImageAlpha(opacityInt);
         final TextView tvOpacity = (TextView) opacityDialog.findViewById(R.id.textOpacity);
-        String opacityPercent = Integer.toString(opacityInt/25*10)+"%";
+        String opacityPercent = Integer.toString(opacityInt / 25 * 10) + "%";
         tvOpacity.setText(opacityPercent);
         SeekBar sbOpacity = (SeekBar) opacityDialog.findViewById(R.id.seekBarOpacity);
-        sbOpacity.setProgress(opacityInt/25-1);
+        sbOpacity.setProgress(opacityInt / 25 - 1);
         sbOpacity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 opacityInt = (seekBar.getProgress() + 1) * 25;
-                String opacityPercent = Integer.toString(opacityInt/25*10)+"%";
+                String opacityPercent = Integer.toString(opacityInt / 25 * 10) + "%";
                 tvOpacity.setText(opacityPercent);
                 ivOpacity.setImageAlpha(opacityInt);
             }
+
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 opacity = getOpacityString();
@@ -319,7 +331,7 @@ public class Draw extends AppCompatActivity implements OnClickListener{
         newDialog.setItems(R.array.clearOptions, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 // The 'which' argument contains the index position of the selected item
-                switch(which) {
+                switch (which) {
                     case 0:
                         // Clear background an annotations
                         drawView.setBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -342,17 +354,47 @@ public class Draw extends AppCompatActivity implements OnClickListener{
     }
 
     private void saveImage() {
-        //save drawing
-        AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
-        saveDialog.setTitle("Save drawing");
-        saveDialog.setMessage("Save drawing to device Gallery?");
-        saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+        // Need to check version because of changes in permissions handling.
+        if (Build.VERSION.SDK_INT >= 23){
+            // Here, thisActivity is the current activity
+            if (ContextCompat.checkSelfPermission(Draw.this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                // Should we show an explanation?
+                if (ActivityCompat.shouldShowRequestPermissionRationale(Draw.this,
+                        Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                    // Ask again without any special message.
+                    ActivityCompat.requestPermissions(Draw.this,
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            MY_PERMISSIONS_REQUEST_SAVE_TO_EXTERNAL_STORAGE);
+                } else {
+                    // No explanation needed, we can request the permission.
+                    ActivityCompat.requestPermissions(Draw.this,
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            MY_PERMISSIONS_REQUEST_SAVE_TO_EXTERNAL_STORAGE);
+                }
+            }else{
+                saveDialog();
+            }
+        }else {
+            saveDialog();
+        }
+    }
+
+    private void saveDialog() {
+
+        // Code to save the drawing...
+        AlertDialog.Builder saveImgDialog = new AlertDialog.Builder(this);
+        saveImgDialog.setTitle("Save drawing");
+        saveImgDialog.setMessage("Save drawing to device Gallery?");
+        saveImgDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog, int which){
                 //save drawing
                 drawView.setDrawingCacheEnabled(true);
-                String imgSaved = MediaStore.Images.Media.insertImage(
+                String imgSaved = CapturePhotoUtils.insertImage(
                         getContentResolver(), drawView.getDrawingCache(),
-                        UUID.randomUUID().toString()+".png", "drawing");
+                        UUID.randomUUID().toString()+".png", "EAF Toolkit Drawing");
                 if(imgSaved!=null){
                     Toast savedToast = Toast.makeText(getApplicationContext(),
                             "Drawing saved to Gallery!", Toast.LENGTH_SHORT);
@@ -366,20 +408,90 @@ public class Draw extends AppCompatActivity implements OnClickListener{
                 drawView.destroyDrawingCache();
             }
         });
-        saveDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+        saveImgDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog, int which){
                 dialog.cancel();
             }
         });
-        saveDialog.show();
+        saveImgDialog.show();
     }
 
-    public void loadImagefromGallery(View view) {
-        // Create intent to Open Image applications like Gallery, Google Photos
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        // Start the Intent
-        startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
+    public void loadImageFromGallery(View view) {
+
+        // Need to check version because of changes in permissions handling.
+        if (Build.VERSION.SDK_INT >= 23){
+            if (ContextCompat.checkSelfPermission(Draw.this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                // Should we show an explanation?
+                if (ActivityCompat.shouldShowRequestPermissionRationale(Draw.this,
+                        Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                    // Try to request permissions again without a message.
+                    ActivityCompat.requestPermissions(Draw.this,
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+                } else {
+                    // No explanation needed, we can request the permission.
+                    ActivityCompat.requestPermissions(Draw.this,
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+                }
+            }else{
+                // Have permission so load image image.
+                // Create intent to Open Image applications like Gallery, Google Photos
+                Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                // Start the Intent
+                startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
+            }
+        }else {
+            // Create intent to Open Image applications like Gallery, Google Photos
+            Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                    android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            // Start the Intent
+            startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_SAVE_TO_EXTERNAL_STORAGE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the
+                    // gallery-related task you need to do.
+                    saveDialog();
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Toast unsavedToast = Toast.makeText(getApplicationContext(),
+                            "Oops! Image could not be saved without the proper permissions.", Toast.LENGTH_SHORT);
+                    unsavedToast.show();
+                }
+                break;
+            }
+            case MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Create intent to Open Image applications like Gallery, Google Photos
+                    Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    // Start the Intent
+                    startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Toast unsavedToast = Toast.makeText(getApplicationContext(),
+                            "Oops! Image could not be loaded without the appropriate permissions.", Toast.LENGTH_SHORT);
+                    unsavedToast.show();
+                }
+                break;
+            }
+        }
     }
 
     @Override
