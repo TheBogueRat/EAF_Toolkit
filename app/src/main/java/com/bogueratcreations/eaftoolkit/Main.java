@@ -11,6 +11,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.bogueratcreations.eaftoolkit.DCP.Projects;
 import com.bogueratcreations.eaftoolkit.Draw.Draw;
 import com.bogueratcreations.eaftoolkit.Inspections.Inspect;
 import com.bogueratcreations.eaftoolkit.MatSpan.MatSpan;
@@ -31,6 +32,7 @@ public class Main extends AppCompatActivity {
             R.drawable.slope,
             R.drawable.calendar,
             R.drawable.flols,
+            R.drawable.brc,
             R.drawable.inspect,
             R.drawable.br,
             R.drawable.pencil3,
@@ -42,35 +44,30 @@ public class Main extends AppCompatActivity {
             "Slope Converter",
             "Julian Dater",
             "FLOLS H/E",
+            "DCP Manager",
             "Inspections",
             "Images",
             "Draw",
             "About"
     };
     // Array of strings to store descriptions
-private String[] listDesc = new String[]{
-        "Calculate Matting Requirements",
-        "Get the Slope in Percent or Degrees",
-        "Convert to/from Julain and Gregorian Calendars",
-        "Calculate Roll Angle and Pole Height",
-        "Review CESC and CGRI Checklists",
-        "Random EAF Pictures",
-        "Scratchpad to draw out and share your ideas",
-        "About the EAF Toolkit"
+    private String[] listDesc = new String[]{
+            "Calculate Matting Requirements",
+            "Get the Slope in Percent or Degrees",
+            "Convert to/from Julain and Gregorian Calendars",
+            "Calculate Roll Angle and Pole Height",
+            "Manage CBR Readings",
+            "Review CESC and CGRI Checklists",
+            "Random EAF Pictures",
+            "Scratchpad to draw out and share your ideas",
+            "About the EAF Toolkit"
     };
-/*
-
-            "Inspection checklist from HQMC website",
-            "NAMP Computerized Self Examination Checklists",
-            "Maintenance Codes",
-            "CBR Calculator in the works",
- */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Realm.init(this);
+        //Realm.init(this);
         // Each row in the list stores name, description and icon
         List<HashMap<String,String>> aList = new ArrayList<>();
         int lengthOfArray = listDesc.length;
@@ -124,15 +121,18 @@ private String[] listDesc = new String[]{
                         startActivity(new Intent(Main.this, FLOLS.class));
                         break;
                     case 4: // Inspections
-                        startActivity(new Intent(Main.this, Inspect.class));
+                        startActivity(new Intent(Main.this, Projects.class));
                         break;
                     case 5: // Images
+                        startActivity(new Intent(Main.this, Inspect.class));
+                        break;
+                    case 6: // Draw
                         startActivity(new Intent(Main.this, GalleryThumbs.class));
                         break;
-                    case 6: // About
+                    case 7: // About
                         startActivity(new Intent(Main.this, Draw.class));
                         break;
-                    case 7: // About
+                    case 8: // About
                         startActivity(new Intent(Main.this, About.class));
                         break;
 

@@ -1,12 +1,14 @@
-package com.bogueratcreations.eaftoolkit.DCP;
+package com.bogueratcreations.eaftoolkit.DCP.model;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 
 /**
  * Created by jodyroth on 10/21/16.
  */
 
-public class DcpReadingModel extends RealmObject{
+public class Reading extends RealmObject{
+
     private int readingNum;
     private int hammer;
     private int blows;
