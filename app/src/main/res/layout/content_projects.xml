@@ -6,28 +6,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.bogueratcreations.eaftoolkit.DCP.Projects"
     tools:showIn="@layout/activity_projects">
 
-    <TextView
-        android:text="List of Project for use in my new DCP Manager application.  It should also wrap around the edges."
-        android:layout_width="wrap_content"
+    <ImageView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:srcCompat="@drawable/skyscape"
+        android:id="@+id/ivSky"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/tvDCPheader" />
+        android:scaleType="fitStart"
+        android:adjustViewBounds="true" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        app:srcCompat="@drawable/grassy"
+        android:id="@+id/ivGrass"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:scaleType="fitStart"
+        android:paddingTop="70dp"
+        android:adjustViewBounds="true"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
+
+    <TextView
+        android:text="Select / Create Project"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvDCPheader"
+        android:textColor="#FFF"
+        android:layout_alignBottom="@+id/ivSky"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:textAllCaps="false" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tvDCPheader"
+        android:id="@+id/projectListView"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="61dp"
-        android:id="@+id/projectListView" />
+        android:layout_below="@+id/ivSky" />
 </RelativeLayout>

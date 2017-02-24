@@ -13,16 +13,8 @@ public class Reading extends RealmObject{
     private int hammer;
     private int blows;
     private int depth;
-    private int soilType;
+    private int soilType; // Only needed to calc CBR, derived from Point
     private double cbr;
-
-    public double getCbr() {
-        return cbr;
-    }
-
-    public void setCbr(double cbr) {
-        this.cbr = cbr;
-    }
 
     public int getReadingNum() {
         return readingNum;
@@ -64,4 +56,11 @@ public class Reading extends RealmObject{
         this.soilType = soilType;
     }
 
+    public double getCbr() {
+        return cbr;
+    }
+
+    public void setCbr(double cbr) {
+        this.cbr = cbr;
+    }
 }

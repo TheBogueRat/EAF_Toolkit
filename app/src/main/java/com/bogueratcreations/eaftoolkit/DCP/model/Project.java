@@ -12,16 +12,20 @@ import io.realm.RealmObject;
 public class Project extends RealmObject {
 
     private String projName;
-    private String location;
+    private String projLoc;
     private String projInfo;
     private Date dateCreated;
-    private RealmList<Site> sites;
+    private int soilType;
+    private String soilInfo;
+    private float latitude;
+    private float longitude;
+    private RealmList<Point> points;
 
     public void cascadeDeleteProject() {
-        for (Site site : sites) {
-            site.cascadeDeletePoints(); // removes points and readings
+        for (Point point : points) {
+            point.cascadeDeleteReadings(); // removes readings
         }
-        sites.deleteAllFromRealm(); // removes sites
+        points.deleteAllFromRealm(); // removes points
         deleteFromRealm(); // removes self
     }
 
@@ -33,12 +37,12 @@ public class Project extends RealmObject {
         this.projName = projName;
     }
 
-    public String getLocation() {
-        return location;
+    public String getProjLoc() {
+        return projLoc;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setProjLoc(String projLoc) {
+        this.projLoc = projLoc;
     }
 
     public String getProjInfo() {
@@ -57,12 +61,45 @@ public class Project extends RealmObject {
         this.dateCreated = dateCreated;
     }
 
-    public RealmList<Site> getSites() {
-        return sites;
+    public int getSoilType() {
+        return soilType;
     }
 
-    public void setSites(RealmList<Site> sites) {
-        this.sites = sites;
+    public void setSoilType(int soilType) {
+        this.soilType = soilType;
     }
+
+    public String getSoilInfo() {
+        return soilInfo;
+    }
+
+    public void setSoilInfo(String soilInfo) {
+        this.soilInfo = soilInfo;
+    }
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(float latitude) {
+        this.latitude = latitude;
+    }
+
+    public float getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
+    }
+
+    public RealmList<Point> getPoints() {
+        return points;
+    }
+
+    public void setPoints(RealmList<Point> points) {
+        this.points = points;
+    }
+
 
 }

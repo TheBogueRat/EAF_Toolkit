@@ -14,7 +14,7 @@
         android:focusable="false"
         android:onClick="clickHandler"/>
     <TextView
-        android:id="@+id/tvMsSpans"
+        android:id="@+id/tvProject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/checkBoxMatSpan"
@@ -25,8 +25,8 @@
         android:id="@+id/tvMsName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/tvMsSpans"
-        android:layout_toEndOf="@+id/tvMsSpans"
+        android:layout_toRightOf="@+id/tvProject"
+        android:layout_toEndOf="@+id/tvProject"
         android:text="Span Name"
         android:textSize="20sp"
         android:layout_toStartOf="@+id/roundedLayout"
@@ -50,10 +50,10 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tvMsWidLabel"
+        android:id="@+id/tvProjectLoc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvMsSpans"
+        android:layout_below="@+id/tvProject"
         android:layout_toRightOf="@+id/checkBoxMatSpan"
         android:layout_toEndOf="@+id/checkBoxMatSpan"
         android:layout_alignLeft="@+id/tvMsWid"
@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:text="Area"
         android:textSize="18sp"
-        android:layout_alignTop="@+id/tvMsWidLabel"
+        android:layout_alignTop="@+id/tvProjectLoc"
         android:layout_alignLeft="@+id/tvMsArea"
         android:layout_alignStart="@+id/tvMsArea"
         android:layout_alignRight="@+id/tvMsArea"
@@ -95,7 +95,7 @@
         android:id="@+id/tvMsWid"
         android:layout_width="105dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvMsWidLabel"
+        android:layout_below="@+id/tvProjectLoc"
         android:layout_toRightOf="@+id/checkBoxMatSpan"
         android:layout_toEndOf="@+id/checkBoxMatSpan"
         android:text="4,500 x 9,600"

@@ -1,7 +1,6 @@
 package com.bogueratcreations.eaftoolkit.DCP.model;
 
 import java.util.Date;
-
 import io.realm.RealmList;
 import io.realm.RealmObject;
 
@@ -12,19 +11,18 @@ import io.realm.RealmObject;
 public class Point extends RealmObject {
 
     private int pointNum;
-    private int hammer;
-    private int blows;
-    private int depth;
     private int soilType;
-    private double cbr;
+    private double cbr; // This is the minimum CBR from the readings.
     private Date date;
     private RealmList<Reading> readings;
 
+    void cascadeDeletePoint() {
+        readings.deleteAllFromRealm(); // The cascade part
+        deleteFromRealm(); // delete this object
+    }
+
     void cascadeDeleteReadings() {
         readings.deleteAllFromRealm(); // The cascade part
-
-        // TODO: NOT SURE THIS SHOULD BE IN THE FINAL OBJECT
-        //deleteFromRealm(); // delete this object
     }
 
     public int getPointNum() {
@@ -33,30 +31,6 @@ public class Point extends RealmObject {
 
     public void setPointNum(int pointNum) {
         this.pointNum = pointNum;
-    }
-
-    public int getHammer() {
-        return hammer;
-    }
-
-    public void setHammer(int hammer) {
-        this.hammer = hammer;
-    }
-
-    public int getBlows() {
-        return blows;
-    }
-
-    public void setBlows(int blows) {
-        this.blows = blows;
-    }
-
-    public int getDepth() {
-        return depth;
-    }
-
-    public void setDepth(int depth) {
-        this.depth = depth;
     }
 
     public int getSoilType() {

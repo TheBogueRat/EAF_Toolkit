@@ -13,15 +13,17 @@ import io.realm.RealmBaseAdapter;
 
 /**
  * Created by jodyroth on 10/24/16.
+ *
+ * Realm adapter for Projects
  */
 
-public class projectListAdapter extends RealmBaseAdapter<Project> implements ListAdapter {
+public class ProjectsListAdapter extends RealmBaseAdapter<Project> implements ListAdapter {
 
     private static class ViewHolder {
         TextView project;
     }
 
-    public projectListAdapter(Context context, OrderedRealmCollection<Project> realmResults) {
+    public ProjectsListAdapter(Context context, OrderedRealmCollection<Project> realmResults) {
         super(context, realmResults);
     }
 
@@ -36,7 +38,6 @@ public class projectListAdapter extends RealmBaseAdapter<Project> implements Lis
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-
         Project item = adapterData.get(position);
         viewHolder.project.setText(item.getProjName());
         return convertView;

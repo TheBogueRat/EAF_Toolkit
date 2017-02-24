@@ -1,5 +1,6 @@
 package com.bogueratcreations.eaftoolkit.DCP;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.bogueratcreations.eaftoolkit.DCP.model.Point;
 import com.bogueratcreations.eaftoolkit.DCP.model.Project;
 import com.bogueratcreations.eaftoolkit.R;
 
@@ -25,8 +27,8 @@ public class Projects extends AppCompatActivity {
         setContentView(R.layout.activity_projects);
         realm = Realm.getDefaultInstance();
 
-        RealmResults<Project> projects = realm.where(Project.class).findAll();
-        final projectListAdapter adapter = new projectListAdapter(this, projects);
+        RealmResults<Point> projects = realm.where(Point.class).findAll();
+        final PointsListAdapter adapter = new PointsListAdapter(this, projects);
 
         ListView listView = (ListView) findViewById(R.id.projectListView);
         listView.setAdapter(adapter);
@@ -44,6 +46,12 @@ public class Projects extends AppCompatActivity {
             }
         });
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView adapterView, View view, int position, long id) {
+
+            }
+        });
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -51,21 +59,20 @@ public class Projects extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Will use this to create a new project...", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-                final String timestamp = Long.toString(System.currentTimeMillis());
-                realm.executeTransactionAsync(new Realm.Transaction() {
-                    @Override
-                    public void execute(Realm realm) {
-                        realm.createObject(Project.class).setProjName("Project-" + timestamp);
-                    }
-                });
+                Snackbar.make(view, "Will use this to create a new project...", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                startActivity(new Intent(Projects.this, ProjectsAdd.class));
 
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    void clickHandlerGraphProject(View view) {
+
+        Snackbar.make(view, "Will use this button to graph a project...", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.bogueratcreations.eaftoolkit.MatSpan.MatSpan">
+    tools:context="com.bogueratcreations.eaftoolkit.DCP.Points">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -17,24 +17,11 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/BRCgreen"
-            app:popupTheme="@style/CustomActionBarTheme.PopupOverlay">
-
-            <Button
-                android:id="@+id/btnSummary"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="end"
-                android:background="@android:color/transparent"
-                android:clickable="false"
-                android:onClick="clickHandler"
-                android:text="Report"
-                android:textColor="@android:color/white" />
-
-        </android.support.v7.widget.Toolbar>
+            app:popupTheme="@style/CustomActionBarTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_matspan" />
+    <include layout="@layout/content_points" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -42,6 +29,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_menu_add" />
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 </android.support.design.widget.CoordinatorLayout>

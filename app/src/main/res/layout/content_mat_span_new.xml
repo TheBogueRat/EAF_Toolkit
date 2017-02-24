@@ -16,193 +16,207 @@
         android:id="@+id/SCROLLER_ID"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        android:fillViewport="true">
-<TableLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:stretchColumns="1"
-    android:id="@+id/tableLayout">
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:stretchColumns="*" >
-        <TableRow>
+        android:fillViewport="true"
+        android:scrollbars="vertical">
+
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="1">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*">
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:text="Span Name:"
+                        android:textSize="20sp" />
+                </TableRow>
+
+                <TableRow>
+
+                    <com.bogueratcreations.eaftoolkit.EditTextBackEvent
+                        android:id="@+id/et_name"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_span="3"
+                        android:imeOptions="actionDone"
+                        android:inputType="textCapWords"
+                        android:lines="1"
+                        android:textSize="20sp">
+
+                        <requestFocus />
+                    </com.bogueratcreations.eaftoolkit.EditTextBackEvent>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvWidth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_gravity="center"
+                        android:text="Width"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="center"
+                        android:text="Length"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_gravity="center"
+                        android:text="# Spans"
+                        android:textSize="20sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <NumberPicker
+                        android:id="@+id/npWid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_gravity="center"
+                        android:minWidth="100dp"
+                        android:theme="@android:style/Theme.Dialog" />
+
+                    <NumberPicker
+                        android:id="@+id/npLen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="center"
+                        android:minWidth="100dp"
+                        android:theme="@android:style/Theme.Dialog" />
+
+                    <NumberPicker
+                        android:id="@+id/npSpans"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_gravity="center"
+                        android:theme="@android:style/Theme.Dialog" />
+                </TableRow>
+            </TableLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Span Name:"
-                android:layout_column="0"
-                android:textSize="20dp" />
-        </TableRow>
-        <TableRow>
-            <com.bogueratcreations.eaftoolkit.EditTextBackEvent
-                android:id="@+id/et_name"
+                android:paddingTop="10dp"
+                android:text="Lay Pattern:"
+                android:textSize="20sp" />
+
+            <info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/segmentLay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkedButton="@+id/btnBw"
+                android:orientation="horizontal"
+                segmentedgroup:sc_border_width="2dp"
+                segmentedgroup:sc_checked_text_color="#FFFFFF"
+                segmentedgroup:sc_corner_radius="5dp"
+                segmentedgroup:sc_tint_color="@color/BRCgreen">
+
+                <RadioButton
+                    android:id="@+id/btnBw"
+                    style="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Brickwork" />
+
+                <RadioButton
+                    android:id="@+id/btn21"
+                    style="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2-1 Lay" />
+
+                <RadioButton
+                    android:id="@+id/btn3412"
+                    style="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3-4 Max 6" />
+
+                <RadioButton
+                    android:id="@+id/btn346"
+                    style="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3-4 Max 12" />
+            </info.hoang8f.android.segmented.SegmentedGroup>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Starting with:  "
+                    android:textSize="20sp" />
+
+                <info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/segmentStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@+id/btn12"
+                    android:orientation="horizontal"
+                    segmentedgroup:sc_border_width="2dp"
+                    segmentedgroup:sc_checked_text_color="#FFFFFF"
+                    segmentedgroup:sc_corner_radius="5dp"
+                    segmentedgroup:sc_tint_color="@color/BRCgreen">
+
+                    <RadioButton
+                        android:id="@+id/btn12"
+                        style="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12' Sheet" />
+
+                    <RadioButton
+                        android:id="@+id/btn6"
+                        style="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="6' Sheet" />
+                </info.hoang8f.android.segmented.SegmentedGroup>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvSummary"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:textSize="20dp"
-                android:inputType="textCapWords"
-                android:imeOptions="actionDone"
-                android:layout_span="3"
-                android:lines="1">
-                <requestFocus />
-            </com.bogueratcreations.eaftoolkit.EditTextBackEvent>
-        </TableRow>
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvWidth"
-                android:text="Width"
-                android:layout_gravity="center"
-                android:layout_column="0"
-                android:textSize="20dp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Length"
-                android:layout_column="1"
-                android:layout_gravity="center"
-                android:textSize="20dp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="# Spans"
-                android:layout_column="2"
-                android:layout_gravity="center"
-                android:textSize="20dp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <NumberPicker
-                android:theme="@android:style/Theme.Dialog"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/npWid"
-                android:layout_gravity="center"
-                android:layout_column="0"
-                android:minWidth="100dp" />
-            <NumberPicker
-                android:theme="@android:style/Theme.Dialog"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/npLen"
-                android:layout_column="1"
-                android:layout_gravity="center"
-                android:minWidth="100dp" />
-            <NumberPicker
-                android:theme="@android:style/Theme.Dialog"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/npSpans"
-                android:layout_column="2"
-                android:layout_gravity="center" />
-        </TableRow>
-    </TableLayout>
+                android:layout_height="fill_parent"
+                android:paddingTop="10dp"
+                android:text="Medium Text"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:text="Lay Pattern:"
-        android:textSize="20sp" />
+        </TableLayout>
 
-    <info.hoang8f.android.segmented.SegmentedGroup
-        xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/segmentLay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:checkedButton="@+id/btnBw"
-        segmentedgroup:sc_tint_color="@color/BRCgreen"
-        segmentedgroup:sc_checked_text_color="#FFFFFF"
-        segmentedgroup:sc_border_width="2dp"
-        segmentedgroup:sc_corner_radius="5dp">
-
-        <RadioButton
-            android:id="@+id/btnBw"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Brickwork"
-            style="@style/RadioButton" />
-
-        <RadioButton
-            android:id="@+id/btn21"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2-1 Lay"
-            style="@style/RadioButton" />
-
-        <RadioButton
-            android:id="@+id/btn3412"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3-4 Max 6"
-            style="@style/RadioButton" />
-
-        <RadioButton
-            android:id="@+id/btn346"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3-4 Max 12"
-            style="@style/RadioButton" />
-    </info.hoang8f.android.segmented.SegmentedGroup>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Starting with:  "
-            android:textSize="20sp"
-            android:layout_gravity="center_vertical" />
-        <info.hoang8f.android.segmented.SegmentedGroup
-            xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/segmentStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:checkedButton="@+id/btn12"
-            segmentedgroup:sc_tint_color="@color/BRCgreen"
-            segmentedgroup:sc_checked_text_color="#FFFFFF"
-            segmentedgroup:sc_border_width="2dp"
-            segmentedgroup:sc_corner_radius="5dp">
-
-            <RadioButton
-                android:id="@+id/btn12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="12' Sheet"
-                style="@style/RadioButton" />
-
-            <RadioButton
-                android:id="@+id/btn6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="6' Sheet"
-                style="@style/RadioButton" />
-        </info.hoang8f.android.segmented.SegmentedGroup>
-    </LinearLayout>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/tvSummary"
-            android:paddingTop="10dp" />
-
-</TableLayout>
-
-</ScrollView>
+    </ScrollView>
 
 </RelativeLayout>

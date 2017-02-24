@@ -44,7 +44,7 @@ public class MatSpanCursorAdapter extends CursorAdapter {
         int length = cursor.getInt(cursor.getColumnIndex(MatSpanDbHelper.KEY_LENGTH));
         tvWidth.setText(df.format(width) + " x " + df.format(length));
         //tvLength.setText(length);
-        TextView tvSpans = (TextView) view.findViewById(R.id.tvMsSpans);
+        TextView tvSpans = (TextView) view.findViewById(R.id.tvProject);
         String spans = cursor.getString(cursor.getColumnIndex(MatSpanDbHelper.KEY_SPANS));
         tvSpans.setText("(" + spans + ")");
         TextView tvArea = (TextView) view.findViewById(R.id.tvMsArea);
