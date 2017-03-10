@@ -4,16 +4,22 @@ import java.util.Date;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
 
 /**
  * Created by jodyroth on 10/24/16.
  */
 
 public class Project extends RealmObject {
-
+    //TODO: Add required tags to appropriate fields.
+    @PrimaryKey
+    private long id;
+    @Required
     private String projName;
     private String projLoc;
     private String projInfo;
+    @Required
     private Date dateCreated;
     private int soilType;
     private String soilInfo;
@@ -27,6 +33,14 @@ public class Project extends RealmObject {
         }
         points.deleteAllFromRealm(); // removes points
         deleteFromRealm(); // removes self
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void  setId(long id) {
+        this.id = id;
     }
 
     public String getProjName() {

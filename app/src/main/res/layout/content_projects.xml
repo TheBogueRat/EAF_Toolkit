@@ -11,46 +11,35 @@
     tools:showIn="@layout/activity_projects">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/skyscape"
         android:id="@+id/ivSky"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:scaleType="fitStart"
-        android:adjustViewBounds="true" />
-
-    <ImageView
         android:layout_width="match_parent"
-        app:srcCompat="@drawable/grassy"
-        android:id="@+id/ivGrass"
-        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:scaleType="fitStart"
-        android:paddingTop="70dp"
+        android:layout_alignParentTop="true"
         android:adjustViewBounds="true"
-        android:layout_height="wrap_content"
-        android:visibility="invisible" />
+        android:contentDescription="Rolling grassy hills and blue sky"
+        android:scaleType="fitStart"
+        app:srcCompat="@drawable/skyscape" />
 
     <TextView
-        android:text="Select / Create Project"
+        android:id="@+id/tvDCPheader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tvDCPheader"
-        android:textColor="#FFF"
         android:layout_alignBottom="@+id/ivSky"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:gravity="center"
         android:layout_marginBottom="10dp"
-        android:textAllCaps="false" />
+        android:gravity="center"
+        android:text="@string/select_create_project"
+        android:textAllCaps="false"
+        android:textColor="#FFF"
+        android:textSize="20sp" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/projectListView"
+        android:id="@+id/listViewProjects"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

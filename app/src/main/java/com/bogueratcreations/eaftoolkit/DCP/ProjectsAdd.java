@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
+import com.bogueratcreations.eaftoolkit.DCP.model.Point;
 import com.bogueratcreations.eaftoolkit.DCP.model.Project;
 import com.bogueratcreations.eaftoolkit.R;
 
@@ -21,19 +23,28 @@ import java.util.Date;
 
 import info.hoang8f.android.segmented.SegmentedGroup;
 import io.realm.Realm;
+import io.realm.RealmList;
+import io.realm.RealmResults;
 
 public class ProjectsAdd extends AppCompatActivity {
 
-    static EditText projectName;
-    static EditText projectLoc;
-    static EditText projectInfo;
+    EditText projectName;
+    EditText projectLoc;
+    EditText projectInfo;
     static EditText projectDate;
-    static SegmentedGroup projectSoilType;
-    static EditText projectSoilInfo;
+    SegmentedGroup projectSoilType;
+    RadioButton btnLowClay;
+    RadioButton btnHighClay;
+    RadioButton btnAllSoils;
 
-    static Button projectSave;
+    EditText projectSoilInfo;
+
+    Button projectSave;
 
     DatePickerDialog datePickerDialog;
+
+    long passedProjectId;  // If -1 then create a new one, else edit.
+    Project passedProject;  // Used to hold the passed project as necessary.
 
     private Realm realm;
 
@@ -50,6 +61,9 @@ public class ProjectsAdd extends AppCompatActivity {
         projectDate = (EditText) findViewById(R.id.etProjDate);
         projectSoilType = (SegmentedGroup) findViewById(R.id.segmentSoil);
         projectSoilInfo = (EditText) findViewById(R.id.etSoilInfo);
+        btnLowClay = (RadioButton) findViewById(R.id.btnLowClay);
+        btnHighClay = (RadioButton) findViewById(R.id.btnHighClay);
+        btnAllSoils = (RadioButton) findViewById(R.id.btnAllSoils);
 
         projectDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,39 +72,92 @@ public class ProjectsAdd extends AppCompatActivity {
             }
         });
 
-        String currentDateTimeString = DateFormat.getDateInstance(DateFormat.SHORT).format(new Date());
-        // textView is the TextView view that should display it
-        projectDate.setText(currentDateTimeString);
-
+        // Check for add/edit
+        passedProjectId = getIntent().getLongExtra("projectId", -1);
+        if (passedProjectId == -1) {
+            String currentDateTimeString = DateFormat.getDateInstance(DateFormat.SHORT).format(new Date());
+            // textView is the TextView view that should display it
+            projectDate.setText(currentDateTimeString);
+        } else {
+            // Get the passed Project object and populate the fields.
+            passedProject = realm.where(Project.class)
+                    .equalTo("id",passedProjectId)
+                    .findFirst();
+            projectName.setText(passedProject.getProjName());
+            projectLoc.setText(passedProject.getProjLoc());
+            projectInfo.setText(passedProject.getProjInfo());
+            String dateTimeString = DateFormat.getDateInstance(DateFormat.SHORT).format(passedProject.getDateCreated());
+            projectDate.setText(dateTimeString);
+            switch(passedProject.getSoilType()) {
+                case 0:
+                    btnLowClay.setSelected(true);
+                    btnLowClay.setChecked(true);
+                    break;
+                case 1:
+                    btnHighClay.setSelected(true);
+                    btnHighClay.setChecked(true);
+                    break;
+                case 2:
+                    btnAllSoils.setSelected(true);
+                    btnAllSoils.setChecked(true);
+                    break;
+            }
+            projectSoilInfo.setText(passedProject.getSoilInfo());
+        }
     }
 
     public void clickHandler(View view) {
         if (view.getId()== R.id.btnSaveProject) {
-            // Save the current record and return to the master list
-            Log.e("EAF_Toolkit","Saving...");
-            realm.executeTransactionAsync(new Realm.Transaction() {
-                @Override
-                public void execute(Realm realm) {
-                    DateFormat formatter = new java.text.SimpleDateFormat("MM/dd/yyyy");
-                    Date dateObject = null;
-                    String projDate = projectDate.getText().toString();
-                    try {
-                        dateObject = formatter.parse(projDate);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
+
+            // Retrieve appropriate date
+            DateFormat formatter = new java.text.SimpleDateFormat("MM/dd/yyyy");
+            Date dateObject = null;
+            String projDate = projectDate.getText().toString();
+            try {
+                dateObject = formatter.parse(projDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            final Date finalDate = dateObject;
+            // Save current Project or create a new one
+            if (passedProjectId == -1) {
+                // Create new Project
+                final Project project = new Project();
+                // Assign a new ID, else use the existing one
+                project.setId(PrimaryKeyFactory.getInstance().nextKey(Project.class));
+                // Set values for Project
+                project.setProjName(projectName.getText().toString());
+                project.setProjLoc(projectLoc.getText().toString());
+                project.setProjInfo(projectInfo.getText().toString());
+                project.setDateCreated(finalDate);
+                project.setSoilType(projectSoilType.indexOfChild(findViewById(projectSoilType.getCheckedRadioButtonId())));
+                project.setSoilInfo(projectSoilInfo.getText().toString());
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        realm.copyToRealmOrUpdate(project);
                     }
-                    Project project = realm.createObject(Project.class);
-                    project.setProjName(projectName.getText().toString());
-                    project.setProjLoc(projectLoc.getText().toString());
-                    project.setProjInfo(projectInfo.getText().toString());
-                    project.setDateCreated(dateObject);
-                    project.setSoilType(projectSoilType.indexOfChild(findViewById(projectSoilType.getCheckedRadioButtonId())));
-                    project.setSoilInfo(projectSoilInfo.getText().toString());
-                }
-            });
+                });
+            } else {
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        // Update passedProject
+                        passedProject.setProjName(projectName.getText().toString());
+                        passedProject.setProjLoc(projectLoc.getText().toString());
+                        passedProject.setProjInfo(projectInfo.getText().toString());
+                        passedProject.setDateCreated(finalDate);
+                        passedProject.setSoilType(projectSoilType.indexOfChild(findViewById(projectSoilType.getCheckedRadioButtonId())));
+                        passedProject.setSoilInfo(projectSoilInfo.getText().toString());
+                        // Record changes, if any.
+                        realm.copyToRealmOrUpdate(passedProject);
+                    }
+                });
+            }
             // TODO: Add snackbars for success or failure...
 //                Snackbar.make(view, "Will use this to create a new project...", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
+
             // close activity and return to previous
             finish();
         }
@@ -117,7 +184,7 @@ public class ProjectsAdd extends AppCompatActivity {
         }
         public void onDateSet(DatePicker view, int year, int month, int day) {
             // Do something with the date chosen by the user
-            projectDate.setText(String.format("%02d", day) + "/" + String.format("%02d", (month + 1)) + "/" + year);
+            projectDate.setText(String.format("%02d", (month + 1)) + "/" + String.format("%02d", day) + "/" + year);
         }
     }
 

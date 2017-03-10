@@ -187,10 +187,36 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bogueratcreations.eaftoolkit.Main" />
         </activity>
-        <activity android:name=".DCP.ProjectsAdd" />
+        <activity
+            android:name=".DCP.ProjectsAdd"
+            android:label="Add Project"
+            android:parentActivityName=".DCP.Projects"
+            android:theme="@style/CustomActionBarTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bogueratcreations.eaftoolkit.DCP.Projects" />
+        </activity>
         <activity
             android:name=".DCP.Points"
             android:label="@string/title_activity_points"
+            android:parentActivityName=".DCP.Projects"
+            android:theme="@style/CustomActionBarTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bogueratcreations.eaftoolkit.DCP.Projects" />
+        </activity>
+        <activity
+            android:name=".DCP.Readings"
+            android:label="@string/title_activity_readings"
+            android:parentActivityName=".DCP.Points"
+            android:theme="@style/CustomActionBarTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bogueratcreations.eaftoolkit.DCP.Points" />
+        </activity>
+        <activity
+            android:name=".DCP.PointsAdd"
+            android:label="@string/title_activity_points_add"
             android:parentActivityName=".DCP.Projects"
             android:theme="@style/CustomActionBarTheme.NoActionBar">
             <meta-data

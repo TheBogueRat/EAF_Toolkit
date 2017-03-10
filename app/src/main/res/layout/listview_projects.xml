@@ -35,13 +35,16 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/roundedLayout">
+
         <TextView
             android:id="@+id/tvPoints"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:minWidth="30dp"
+            android:gravity="center"
             android:text="Pts"
-            android:textSize="15sp"
-            android:textColor="@color/BRCtext" />
+            android:textColor="@color/BRCtext"
+            android:textSize="15sp" />
     </LinearLayout>
 
 </RelativeLayout>

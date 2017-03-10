@@ -3,6 +3,8 @@ package com.bogueratcreations.eaftoolkit.DCP.model;
 import java.util.Date;
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
 
 /**
  * Created by jodyroth on 10/21/16.
@@ -10,10 +12,16 @@ import io.realm.RealmObject;
 
 public class Point extends RealmObject {
 
-    private int pointNum;
+    @PrimaryKey
+    private long id;
+    private String pointNum;
     private int soilType;
     private double cbr; // This is the minimum CBR from the readings.
+    @Required
     private Date date;
+    // The project I belong to...
+    private Project project;
+    // The Readings for this point...
     private RealmList<Reading> readings;
 
     void cascadeDeletePoint() {
@@ -25,11 +33,19 @@ public class Point extends RealmObject {
         readings.deleteAllFromRealm(); // The cascade part
     }
 
-    public int getPointNum() {
+    public long getId() {
+        return id;
+    }
+
+    public void  setId(long id) {
+        this.id = id;
+    }
+
+    public String getPointNum() {
         return pointNum;
     }
 
-    public void setPointNum(int pointNum) {
+    public void setPointNum(String pointNum) {
         this.pointNum = pointNum;
     }
 
@@ -55,6 +71,14 @@ public class Point extends RealmObject {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Project getProject() {
+        return this.project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     public RealmList<Reading> getReadings() {

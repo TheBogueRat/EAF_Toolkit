@@ -11,6 +11,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.bogueratcreations.eaftoolkit.DCP.ProjectsAdd">
 
+    <Button
+        android:id="@+id/btnProjCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:layout_alignBaseline="@+id/btnSaveProject"
+        android:layout_alignBottom="@+id/btnSaveProject"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -163,10 +173,11 @@
         android:text="Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="113dp"
+        android:layout_marginBottom="140dp"
         android:onClick="clickHandler"
-        android:id="@+id/btnSaveProject" />
+        android:id="@+id/btnSaveProject"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

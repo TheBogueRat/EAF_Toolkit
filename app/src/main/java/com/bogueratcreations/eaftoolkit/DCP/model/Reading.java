@@ -1,7 +1,10 @@
 package com.bogueratcreations.eaftoolkit.DCP.model;
 
+import java.util.UUID;
+
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by jodyroth on 10/21/16.
@@ -9,12 +12,24 @@ import io.realm.RealmObject;
 
 public class Reading extends RealmObject{
 
+    @PrimaryKey
+    private long id;
     private int readingNum;
     private int hammer;
     private int blows;
     private int depth;
     private int soilType; // Only needed to calc CBR, derived from Point
     private double cbr;
+    // Doesn't need the Point? Since this will be a part of the Point object? (NOT MAKING SENSE)
+    private Point point;
+
+    public long getId() {
+        return id;
+    }
+
+    public void  setId(long id) {
+        this.id = id;
+    }
 
     public int getReadingNum() {
         return readingNum;
@@ -62,5 +77,13 @@ public class Reading extends RealmObject{
 
     public void setCbr(double cbr) {
         this.cbr = cbr;
+    }
+
+    public Point getPoint() {
+        return this.point;
+    }
+
+    public void setPoint(Point point) {
+        this.point = point;
     }
 }
