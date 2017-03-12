@@ -8,6 +8,7 @@
     tools:context="com.bogueratcreations.eaftoolkit.DCP.PointsAdd"
     tools:showIn="@layout/activity_points_add">
 
+
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="0dp"
@@ -39,21 +40,20 @@
         android:textColor="@color/BRCsubtext"
         android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        android:layout_marginStart="8dp" />
     <EditText
         android:id="@+id/etPointDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="date"
-        android:layout_marginTop="0dp"
         app:layout_constraintTop_toBottomOf="@+id/tvPointDateLabel"
-        android:layout_marginLeft="0dp"
         app:layout_constraintLeft_toLeftOf="@+id/tvPointDateLabel" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -61,11 +61,13 @@
         android:text="Project Soil Type:"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPointDate" />
+        app:layout_constraintTop_toBottomOf="@+id/etPointDate"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/tvPointSoilType"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -73,6 +75,8 @@
         android:text="Soil Type passed in from Project"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
 </android.support.constraint.ConstraintLayout>

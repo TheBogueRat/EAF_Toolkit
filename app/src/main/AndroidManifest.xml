@@ -217,11 +217,11 @@
         <activity
             android:name=".DCP.PointsAdd"
             android:label="@string/title_activity_points_add"
-            android:parentActivityName=".DCP.Projects"
+            android:parentActivityName=".DCP.Points"
             android:theme="@style/CustomActionBarTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bogueratcreations.eaftoolkit.DCP.Projects" />
+                android:value="com.bogueratcreations.eaftoolkit.DCP.Points" />
         </activity>
     </application>
 
