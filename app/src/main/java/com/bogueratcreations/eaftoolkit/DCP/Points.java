@@ -42,6 +42,7 @@ public class Points extends AppCompatActivity {
     Point selectedPoint;
 
     boolean editMode = false; // Used to control the resulting FAB action
+    boolean newPoint = false;
     static Boolean hasChanged = false;
 
     private Realm realm;
@@ -64,6 +65,10 @@ public class Points extends AppCompatActivity {
 
         // Get the project name (ID) for use in finding associated points and for use in creating new points.
         passedProjectID = getIntent().getLongExtra("projId",-1);
+        Project passedProject = realm.where(Project.class)
+                .equalTo("id",passedProjectID)
+                .findFirst();
+        Log.d("Passed Project",passedProject.toString());
 
         // TODO: If receiving -1, I wasn't passed a valid project...
 
@@ -76,9 +81,6 @@ public class Points extends AppCompatActivity {
             tvSoilType = (TextView) findViewById(R.id.tvPointSoilType);
 
 //        Log.e("EAFToolkit","Passed ProjectID - " + passedProjectID);
-        final Project passedProject = realm.where(Project.class)
-                .equalTo("id",passedProjectID)
-                .findFirst();
         tvProjName.setText(passedProject.getProjName());
         pointDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,14 +156,19 @@ public class Points extends AppCompatActivity {
                     editView.setVisibility(View.GONE);
                     editMode = false;
                     // Change FAB to New button
-                    // Was editing an existing Point so need to save the changes
-                    updatePoint();
+                    if (newPoint) {
+                        newPoint = false;
+                        savePoint();
+                    } else {
+                        updatePoint();
+                    }
                 } else {
+                    // Only show edit view...
                     defaultView.setVisibility(View.GONE);
                     editView.setVisibility(View.VISIBLE);
                     editMode = true;
+                    newPoint = true;
                     // Change FAB to save button
-
                 }
 
                 //fab.setImageResource(R.drawable.icon_save);
@@ -174,7 +181,7 @@ public class Points extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    private void savePoint() {
+    public void savePoint() {
 
         // Retrieve appropriate date
         DateFormat formatter = new java.text.SimpleDateFormat("MM/dd/yyyy");
@@ -191,7 +198,7 @@ public class Points extends AppCompatActivity {
         point.setId(PrimaryKeyFactory.getInstance().nextKey(Point.class));
         point.setPointNum(pointName.getText().toString());
         point.setDate(finalDate);
-        point.setSoilType(passedProject.getSoilType());
+        point.setSoilType(passedProject.getSoilType()); // TODO: passedProject is null?
         point.setCbr(0.0);
         point.setProject(passedProject);
         realm.executeTransaction(new Realm.Transaction() {
@@ -201,11 +208,12 @@ public class Points extends AppCompatActivity {
                 RealmList<Point> pointsList = passedProject.getPoints();
                 pointsList.add(point);
                 passedProject.setPoints(pointsList);
+                realm.copyToRealmOrUpdate(passedProject);
             }
         });
     }
 
-    private void updatePoint() {
+    public void updatePoint() {
         // Retrieve appropriate date
         DateFormat formatter = new java.text.SimpleDateFormat("MM/dd/yyyy");
         Date dateObject = null;
@@ -253,11 +261,11 @@ public class Points extends AppCompatActivity {
         alertDialog.show();
     }
     public void showDatePickerDialog(View v) {
-        DialogFragment newFragment = new ProjectsAdd.DatePickerFragment();
+        DialogFragment newFragment = new Points.pointDatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
-    public static class DatePickerFragment extends DialogFragment implements
+    public static class pointDatePickerFragment extends DialogFragment implements
             DatePickerDialog.OnDateSetListener {
 
         @Override
