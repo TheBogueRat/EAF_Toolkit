@@ -5,16 +5,18 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.bogueratcreations.eaftoolkit.DCP.model.Point;
 import com.bogueratcreations.eaftoolkit.DCP.model.Reading;
 import com.bogueratcreations.eaftoolkit.R;
-
-import org.w3c.dom.Text;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -27,6 +29,9 @@ public class Readings extends AppCompatActivity {
     private Realm realm;
 
     TextView tvPointInfo;
+    NumberPicker npHammer;
+    NumberPicker npBlows;
+    NumberPicker npDepth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +41,37 @@ public class Readings extends AppCompatActivity {
         realm = Realm.getDefaultInstance();
 
         // Get the point name (ID) for use in finding associated points and for use in creating new points.
-        passedPointID = getIntent().getLongExtra("pointName",-1);
-
+        passedPointID = getIntent().getLongExtra("pointId",-1);
+        Log.d("Point id passed: ",String.valueOf(passedPointID));
         // TODO: If receiving -1, I wasn't passed a valid point...
 
         tvPointInfo = (TextView) findViewById(R.id.tvPointInfo);
+        npHammer = (NumberPicker) findViewById(R.id.pickHammer);
+        npBlows = (NumberPicker) findViewById(R.id.pickBlows);
+        npDepth = (NumberPicker) findViewById(R.id.pickDepth);
+
+        final String[] hammers = {"17.6", "10.1"};
+        npHammer.setDisplayedValues(hammers);
+        npHammer.setMinValue(0);
+        npHammer.setMaxValue(hammers.length - 1);
+        npHammer.setWrapSelectorWheel(true);
+//        npHammer.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+//            @Override
+//            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+//                // Don't need this because I;ll grab the info when saved.
+//            }
+//        });
+        final String[] blows = {"1","2","3","4","5","10","15","20","25","30","35","40","45","50"};
+        npBlows.setDisplayedValues(blows);
+        npBlows.setMinValue(0);
+        npBlows.setMaxValue(blows.length - 1);
+        npBlows.setWrapSelectorWheel(true);
+
+        final String[] depths = {"25","30","35","40","45","50","55","60","65","70","75","80","85","90","95","100"};
+        npDepth.setDisplayedValues(depths);
+        npDepth.setMinValue(0);
+        npDepth.setMaxValue(depths.length - 1);
+        npDepth.setWrapSelectorWheel(true);
 
         Point passedPoint = realm.where(Point.class)
                 .equalTo("id", passedPointID)
@@ -50,10 +81,14 @@ public class Readings extends AppCompatActivity {
         RealmResults<Reading> readings = realm.where(Reading.class)
                 .equalTo("point.id", passedPointID)
                 .findAll();
-        final ReadingsListAdapter adapter = new ReadingsListAdapter(this, readings);
 
+        final ReadingsListAdapter adapter = new ReadingsListAdapter(this, readings);
         ListView listView = (ListView) findViewById(R.id.listViewReadings);
+        LayoutInflater inflater = getLayoutInflater();
+        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.listview_readings_header,listView,false);
+        listView.addHeaderView(header, null, false);
         listView.setAdapter(adapter);
+
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -77,18 +112,18 @@ public class Readings extends AppCompatActivity {
 
             }
         });
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Create a new Reading...", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Create a new Reading...", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

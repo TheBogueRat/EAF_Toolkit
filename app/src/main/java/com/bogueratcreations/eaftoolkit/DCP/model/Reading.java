@@ -18,7 +18,7 @@ public class Reading extends RealmObject{
     private int hammer;
     private int blows;
     private int depth;
-    private int soilType; // Only needed to calc CBR, derived from Point
+    private int soilType; // Only needed to calc CBR, derived from Point (maybe just use that.)
     private double cbr;
     // Doesn't need the Point? Since this will be a part of the Point object? (NOT MAKING SENSE)
     private Point point;

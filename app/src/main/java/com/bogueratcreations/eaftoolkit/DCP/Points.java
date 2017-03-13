@@ -38,11 +38,12 @@ public class Points extends AppCompatActivity {
 
     long passedProjectID;
     Project passedProject;
+    int passedProjectSoilType;
     long selectedPointID;
     Point selectedPoint;
 
     boolean editMode = false; // Used to control the resulting FAB action
-    boolean newPoint = false;
+    boolean newPoint = false; // Edit mode just means we are editing or adding a point this indicates a newPoint
     static Boolean hasChanged = false;
 
     private Realm realm;
@@ -65,12 +66,12 @@ public class Points extends AppCompatActivity {
 
         // Get the project name (ID) for use in finding associated points and for use in creating new points.
         passedProjectID = getIntent().getLongExtra("projId",-1);
-        Project passedProject = realm.where(Project.class)
+        // TODO: If receiving -1, I wasn't passed a valid project...
+        passedProject = realm.where(Project.class)
                 .equalTo("id",passedProjectID)
                 .findFirst();
-        Log.d("Passed Project",passedProject.toString());
-
-        // TODO: If receiving -1, I wasn't passed a valid project...
+        passedProjectSoilType = passedProject.getSoilType();
+        Log.d("Passed Project Info: ", passedProject.toString());
 
         tvProjName = (TextView) findViewById(R.id.tvPointProject);
         defaultView = (LinearLayout) findViewById(R.id.viewPoints);
@@ -79,8 +80,6 @@ public class Points extends AppCompatActivity {
             pointName = (EditText) findViewById(R.id.etPointName);
             pointDate = (EditText) findViewById(R.id.etPointDate);
             tvSoilType = (TextView) findViewById(R.id.tvPointSoilType);
-
-//        Log.e("EAFToolkit","Passed ProjectID - " + passedProjectID);
         tvProjName.setText(passedProject.getProjName());
         pointDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +87,6 @@ public class Points extends AppCompatActivity {
                 showDatePickerDialog(v);
             }
         });
-//        Log.e("EAFToolkit","Passed Project Object -- " + passedProject);
         // Get list of points for this Project.
         RealmResults<Point> points = realm.where(Point.class)
                 .equalTo("project.id",passedProjectID)
@@ -113,7 +111,8 @@ public class Points extends AppCompatActivity {
                 pointName.setText(selectedPoint.getPointNum());
                 String dateTimeString = DateFormat.getDateInstance(DateFormat.SHORT).format(selectedPoint.getDate());
                 pointDate.setText(dateTimeString);
-                switch(selectedPoint.getProject().getSoilType()) {
+                // TODO: The soil type is based on the project, displaying this to remind user.
+                switch(passedProjectSoilType) {
                     case 0:
                         tvSoilType.setText("Low Plasticity Clay");
                         break;
@@ -124,11 +123,6 @@ public class Points extends AppCompatActivity {
                         tvSoilType.setText("All Other Soils");
                         break;
                 }
-                // Holding this after integrating views.
-//                Intent intent = new Intent(view.getContext(), PointsAdd.class);
-//                intent.putExtra("pointId", pointId);
-//                intent.putExtra("projectId", passedProjectID);
-//                startActivity(intent);
                 return true;
             }
         });
@@ -140,6 +134,7 @@ public class Points extends AppCompatActivity {
                 final long pointId = adapter.getItemId(position);
                 Intent intent = new Intent(view.getContext(), Readings.class);
                 intent.putExtra("pointId", pointId);
+                Log.d("Passing pointId: ", String.valueOf(pointId));
                 startActivity(intent);
             }
         });
@@ -156,14 +151,14 @@ public class Points extends AppCompatActivity {
                     editView.setVisibility(View.GONE);
                     editMode = false;
                     // Change FAB to New button
-                    if (newPoint) {
+                    // Was editing a Point so need to save the changes
+                    if(newPoint) {
                         newPoint = false;
                         savePoint();
                     } else {
                         updatePoint();
                     }
                 } else {
-                    // Only show edit view...
                     defaultView.setVisibility(View.GONE);
                     editView.setVisibility(View.VISIBLE);
                     editMode = true;
@@ -181,7 +176,7 @@ public class Points extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    public void savePoint() {
+    private void savePoint() {
 
         // Retrieve appropriate date
         DateFormat formatter = new java.text.SimpleDateFormat("MM/dd/yyyy");
@@ -198,22 +193,20 @@ public class Points extends AppCompatActivity {
         point.setId(PrimaryKeyFactory.getInstance().nextKey(Point.class));
         point.setPointNum(pointName.getText().toString());
         point.setDate(finalDate);
-        point.setSoilType(passedProject.getSoilType()); // TODO: passedProject is null?
+        point.setSoilType(passedProjectSoilType); // TODO: Passed Project is null???
         point.setCbr(0.0);
         point.setProject(passedProject);
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
                 realm.copyToRealmOrUpdate(point);
-                RealmList<Point> pointsList = passedProject.getPoints();
-                pointsList.add(point);
-                passedProject.setPoints(pointsList);
-                realm.copyToRealmOrUpdate(passedProject);
+                passedProject.getPoints().add(point);
+//                realm.copyToRealmOrUpdate(passedProject); // TODO: do I need to save this here or is it implicit in the change?
             }
         });
     }
 
-    public void updatePoint() {
+    private void updatePoint() {
         // Retrieve appropriate date
         DateFormat formatter = new java.text.SimpleDateFormat("MM/dd/yyyy");
         Date dateObject = null;

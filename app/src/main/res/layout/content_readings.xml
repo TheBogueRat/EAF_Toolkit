@@ -5,10 +5,6 @@
     android:id="@+id/content_readings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.bogueratcreations.eaftoolkit.DCP.Readings"
     tools:showIn="@layout/activity_readings">
@@ -16,123 +12,252 @@
     <ScrollView
         android:id="@+id/scrollViewReadings"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
         <TableLayout
             android:id="@+id/tableLayoutReadings"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="*">
+            android:layout_height="wrap_content">
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
                 <TextView
                     android:id="@+id/tvPointInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Point: "
-                    android:textSize="20sp" />
+                    android:textSize="24sp" />
             </TableRow>
 
+            <!--<TableRow-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginTop="16dp">-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/textView19"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Hammer Type:"-->
+            <!--android:textSize="20sp" />-->
+
+            <!--<info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"-->
+            <!--android:id="@+id/segmentHammer"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:checkedButton="@+id/btn12"-->
+            <!--android:orientation="horizontal"-->
+            <!--segmentedgroup:sc_border_width="2dp"-->
+            <!--segmentedgroup:sc_checked_text_color="#FFFFFF"-->
+            <!--segmentedgroup:sc_corner_radius="5dp"-->
+            <!--segmentedgroup:sc_tint_color="@color/BRCgreen">-->
+
+            <!--<RadioButton-->
+            <!--android:id="@+id/btn12"-->
+            <!--style="@style/RadioButton"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="17.3 lb" />-->
+
+            <!--<RadioButton-->
+            <!--android:id="@+id/btn6"-->
+            <!--style="@style/RadioButton"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="13.1 lb" />-->
+            <!--</info.hoang8f.android.segmented.SegmentedGroup>-->
+
+            <!--</TableRow>-->
+
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1">
 
                 <TextView
-                    android:text="Hammer Type:"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView19"
-                    android:textSize="20sp" />
-
-                <info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/segmentHammer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkedButton="@+id/btn12"
-                    android:orientation="horizontal"
-                    segmentedgroup:sc_border_width="2dp"
-                    segmentedgroup:sc_checked_text_color="#FFFFFF"
-                    segmentedgroup:sc_corner_radius="5dp"
-                    segmentedgroup:sc_tint_color="@color/BRCgreen">
-
-                    <RadioButton
-                        android:id="@+id/btn12"
-                        style="@style/RadioButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="17.3 lb" />
-
-                    <RadioButton
-                        android:id="@+id/btn6"
-                        style="@style/RadioButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="13.1 lb" />
-                </info.hoang8f.android.segmented.SegmentedGroup>
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:text="Depth:"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv5"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Hammer"
                     android:textSize="20sp"
-                    android:id="@+id/textView21" />
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:text="Blows:"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv4"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView20"
                     android:layout_column="1"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Blows"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
                     android:layout_gravity="center"
-                    android:textSize="20sp" />
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Depth"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
 
                 <NumberPicker
-                    android:layout_width="wrap_content"
+                    android:id="@+id/pickHammer"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/pickBlows"
                     android:layout_column="0"
                     android:layout_gravity="center"
-                    android:minWidth="100dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_weight="1"
+                    android:descendantFocusability="blocksDescendants"
+                    android:minWidth="50dp"
                     android:theme="@android:style/Theme.Dialog" />
 
                 <NumberPicker
-                    android:layout_width="wrap_content"
+                    android:id="@+id/pickBlows"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/pickDepth"
                     android:layout_column="1"
                     android:layout_gravity="center"
-                    android:minWidth="100dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_weight="1"
+                    android:descendantFocusability="blocksDescendants"
+                    android:minWidth="50dp"
                     android:theme="@android:style/Theme.Dialog" />
-                </TableRow>
+
+                <NumberPicker
+                    android:id="@+id/pickDepth"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_weight="1"
+                    android:descendantFocusability="blocksDescendants"
+                    android:maxWidth="50dp"
+                    android:theme="@android:style/Theme.Dialog" />
+            </TableRow>
+            <!--<TableRow-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:layout_weight="1">-->
+                <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent">-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv6"-->
+                        <!--android:layout_width="30dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentLeft="true"-->
+                        <!--android:layout_alignParentStart="true"-->
+                        <!--android:layout_alignParentTop="true"-->
+                        <!--android:layout_margin="4dp"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="#"-->
+                        <!--android:textSize="18sp" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv4"-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentTop="true"-->
+                        <!--android:layout_margin="4dp"-->
+                        <!--android:layout_toEndOf="@+id/ivHammer"-->
+                        <!--android:layout_toRightOf="@+id/ivHammer"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="Blows"-->
+                        <!--android:textSize="18sp" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv3"-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentTop="true"-->
+                        <!--android:layout_margin="4dp"-->
+                        <!--android:layout_toEndOf="@+id/tv4"-->
+                        <!--android:layout_toRightOf="@+id/tv4"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="Depth"-->
+                        <!--android:textSize="18sp" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv2"-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentTop="true"-->
+                        <!--android:layout_margin="4dp"-->
+                        <!--android:layout_toEndOf="@+id/tv3"-->
+                        <!--android:layout_toRightOf="@+id/tv3"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="CBR"-->
+                        <!--android:textSize="18sp" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv1"-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentTop="true"-->
+                        <!--android:layout_margin="4dp"-->
+                        <!--android:layout_toEndOf="@+id/tv2"-->
+                        <!--android:layout_toRightOf="@+id/tv2"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="Total"-->
+                        <!--android:textSize="18sp" />-->
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/ivHammer"-->
+                        <!--android:layout_width="20dp"-->
+                        <!--android:layout_height="20dp"-->
+                        <!--android:layout_marginBottom="4dp"-->
+                        <!--android:layout_marginEnd="4dp"-->
+                        <!--android:layout_marginLeft="8dp"-->
+                        <!--android:layout_marginRight="8dp"-->
+                        <!--android:layout_marginStart="4dp"-->
+                        <!--android:layout_marginTop="4dp"-->
+                        <!--android:layout_toEndOf="@+id/tv6"-->
+                        <!--android:layout_toRightOf="@+id/tv6"-->
+                        <!--app:srcCompat="@drawable/hammer" />-->
+                <!--</RelativeLayout>-->
+            <!--</TableRow>-->
         </TableLayout>
     </ScrollView>
 
     <ListView
+        android:id="@+id/listViewReadings"
+        android:divider="@android:drawable/divider_horizontal_dark"
+        android:headerDividersEnabled="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listViewReadings"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="9dp"
-        android:layout_marginEnd="9dp"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/scrollViewReadings" />
 
 </RelativeLayout>

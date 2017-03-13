@@ -19,16 +19,16 @@
             android:background="@color/BRCgreen"
             app:popupTheme="@style/CustomActionBarTheme.PopupOverlay">
 
-        <Button
-            android:id="@+id/btnGraph"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:background="@android:color/transparent"
-            android:clickable="false"
-            android:onClick="clickHandlerGraphProject"
-            android:text="Graph"
-            android:textColor="@android:color/white" />
+            <Button
+                android:id="@+id/btnGraph"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:background="@android:color/transparent"
+                android:clickable="false"
+                android:onClick="clickHandlerGraphProject"
+                android:text="Notes"
+                android:textColor="@android:color/white" />
 
         </android.support.v7.widget.Toolbar>
 

@@ -21,9 +21,8 @@ import io.realm.RealmBaseAdapter;
 public class PointsListAdapter extends RealmBaseAdapter<Point> implements ListAdapter {
 
     private static class ViewHolder {
-        TextView project;
-        TextView projLoc;
-        TextView projPoints;
+        TextView point;
+        TextView pointCbr;
     }
 
     public PointsListAdapter(Context context, OrderedRealmCollection<Point> realmResults) {
@@ -33,33 +32,18 @@ public class PointsListAdapter extends RealmBaseAdapter<Point> implements ListAd
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.listview_projects, parent, false);
+            convertView = inflater.inflate(R.layout.listview_points, parent, false);
             viewHolder = new ViewHolder();
-            viewHolder.project = (TextView) convertView.findViewById(R.id.tvProject);
-            viewHolder.projLoc = (TextView) convertView.findViewById(R.id.tvProjectLoc);
-            viewHolder.projPoints = (TextView) convertView.findViewById(R.id.tvPoints);
+            viewHolder.point = (TextView) convertView.findViewById(R.id.tvPoint);
+            viewHolder.pointCbr = (TextView) convertView.findViewById(R.id.tvLowestCBR);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         Point item = adapterData.get(position);
-        viewHolder.project.setText(item.getPointNum());
-        String soilType = "";
-        switch (item.getSoilType()) {
-            case 0:
-                soilType = "Low Plasticity Clay";
-                break;
-            case 1:
-                soilType = "High Plasticity Clay";
-                break;
-            case 2:
-                soilType = "All Other Soils";
-                break;
-            default:
-        }
-        viewHolder.projLoc.setText(soilType);
+        viewHolder.point.setText(item.getPointNum());
         Double lowestCBR = item.getCbr(); // This should be the lowest recorded CBR which is set when saving the Readings
-        viewHolder.projPoints.setText(lowestCBR.toString());
+        viewHolder.pointCbr.setText(lowestCBR.toString());
         return convertView;
     }
 }
