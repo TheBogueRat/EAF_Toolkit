@@ -2,6 +2,7 @@ package com.bogueratcreations.eaftoolkit.DCP;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,9 +43,6 @@ public class ReadingsListAdapter extends RealmBaseAdapter<Reading> implements Li
         ViewHolder viewHolder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.listview_reading, parent, false);
-            if (position%2 ==1) {
-                convertView.setBackgroundColor(Color.LTGRAY);
-            }
             viewHolder = new ViewHolder();
             viewHolder.readingNum = (TextView) convertView.findViewById(R.id.tv6);
             viewHolder.hammerType = (TextView) convertView.findViewById(R.id.tv5);
@@ -56,9 +54,18 @@ public class ReadingsListAdapter extends RealmBaseAdapter<Reading> implements Li
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
+        // Alternate row colors for easier identification.
+        if (position % 2 ==1) {
+            convertView.setBackgroundColor(Color.LTGRAY);
+        } else {
+            convertView.setBackgroundColor(Color.WHITE);
+        }
+        if (convertView.isSelected()) {
+            convertView.setBackgroundColor(Color.YELLOW);
+        }
         Reading item = adapterData.get(position);
-        Log.d("Reading number: ", String.valueOf(item.getReadingNum()));
-        viewHolder.readingNum.setText(String.valueOf(item.getReadingNum()));  // **** ERROR ****
+//        viewHolder.readingNum.setText(String.valueOf(item.getId()));
+        viewHolder.readingNum.setText(String.valueOf(item.getReadingNum()));
         viewHolder.hammerType.setText(String.valueOf(item.getHammer()));
         viewHolder.blows.setText(String.valueOf(item.getBlows()));
         viewHolder.depth.setText(String.valueOf(item.getDepth()));

@@ -1,6 +1,8 @@
 package com.bogueratcreations.eaftoolkit.DCP;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -32,6 +35,10 @@ public class Readings extends AppCompatActivity {
     NumberPicker npHammer;
     NumberPicker npBlows;
     NumberPicker npDepth;
+
+    long selectedReading = -1;
+
+    Button btnAppend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,21 +85,45 @@ public class Readings extends AppCompatActivity {
                 .findFirst();
         tvPointInfo.setText("Point: " + passedPoint.getPointNum());
 
-        RealmResults<Reading> readings = realm.where(Reading.class)
+        btnAppend = (Button) findViewById(R.id.btnReading);
+        btnAppend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Reading newReading = new Reading();
+                newReading.setId(PrimaryKeyFactory.getInstance().nextKey(Reading.class));
+                newReading.setReadingNum(passedPoint.getReadings().size()); // size is next number in zero-based array.
+                newReading.setHammer(npHammer.getValue());
+                newReading.setBlows(npBlows.getValue());
+                newReading.setDepth(npDepth.getValue());
+                newReading.setPoint(passedPoint);
+                newReading.setCbr(Math.random()*100);
+
+                realm.beginTransaction();
+                realm.copyToRealmOrUpdate(newReading);
+                passedPoint.getReadings().add(newReading);
+                realm.commitTransaction();
+            }
+        });
+
+        final RealmResults<Reading> readings = realm.where(Reading.class)
                 .equalTo("point.id", passedPointID)
-                .findAll();
+                .findAll()
+                .sort("readingNum");
 
         final ReadingsListAdapter adapter = new ReadingsListAdapter(this, readings);
         ListView listView = (ListView) findViewById(R.id.listViewReadings);
         LayoutInflater inflater = getLayoutInflater();
-        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.listview_readings_header,listView,false);
-        listView.addHeaderView(header, null, false);
+//        // Was adding a header but it scrolls up with the layout.
+//        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.listview_readings_header,listView,false);
+//        listView.addHeaderView(header, null, false);
         listView.setAdapter(adapter);
 
+//        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                final long readingId = adapter.getItem(i).getId();
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+                view.setBackgroundColor(Color.RED);  // causes a quick flash of red to acknowledge the delete.
+                final long readingId = adapter.getItem(position).getId(); // minus header row!!!!
                 realm.executeTransactionAsync(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
@@ -100,6 +131,12 @@ public class Readings extends AppCompatActivity {
                                 .equalTo("id",readingId)
                                 .findAll()
                                 .deleteAllFromRealm();
+                        int i = 0;
+                        RealmResults<Reading> readingResults = realm.where(Reading.class).equalTo("point.id",passedPointID).findAll().sort("readingNum");
+                        for (Reading r : readingResults) {
+                            r.setReadingNum(i);
+                            i++;
+                        }
                     }
                 });
                 return true;
@@ -109,7 +146,9 @@ public class Readings extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView adapterView, View view, int position, long id) {
-
+                view.setSelected(true);
+                adapterView.setSelected(true);
+                selectedReading = position;
             }
         });
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -125,23 +164,33 @@ public class Readings extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+
     }
 
     void clickHandlerReading(View view) {
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) { // Need be done on same thread NOTES ....
-                Reading newReading = new Reading();
-                newReading.setId(PrimaryKeyFactory.getInstance().nextKey(Reading.class));
-                newReading.setReadingNum(passedPoint.getReadings().size()); // size is next number in zero-based array.
-                newReading.setHammer(npHammer.getValue());
-                newReading.setBlows(npBlows.getValue());
-                newReading.setDepth(npDepth.getValue());
-                newReading.setPoint(passedPoint);
-                newReading.setCbr(Math.random()*100);
-                passedPoint.getReadings().add(newReading);
-            }
-        });
+//        final Reading newReading = new Reading();
+//        newReading.setId(PrimaryKeyFactory.getInstance().nextKey(Reading.class));
+//        newReading.setReadingNum(passedPoint.getReadings().size()); // size is next number in zero-based array.
+//        newReading.setHammer(npHammer.getValue());
+//        newReading.setBlows(npBlows.getValue());
+//        newReading.setDepth(npDepth.getValue());
+//        newReading.setPoint(passedPoint);
+//        newReading.setCbr(Math.random()*100);
+//
+//        realm.beginTransaction();
+//        realm.copyToRealmOrUpdate(newReading);
+//        passedPoint.getReadings().add(newReading);
+//        realm.commitTransaction();
+//
+        // Async didn't work since we are updating an existing object.
+//        realm.executeTransactionAsync(new Realm.Transaction() {
+//            @Override
+//            public void execute(Realm realm) { // Need be done on same thread NOTES ....
+//                realm.copyToRealmOrUpdate(newReading);
+//                passedPoint.getReadings().add(newReading);
+//            }
+//        });
     }
 
     @Override
