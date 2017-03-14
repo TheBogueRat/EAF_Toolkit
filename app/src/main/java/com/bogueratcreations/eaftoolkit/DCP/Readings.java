@@ -25,7 +25,7 @@ import io.realm.RealmResults;
 public class Readings extends AppCompatActivity {
 
     long passedPointID;
-
+    Point passedPoint;
     private Realm realm;
 
     TextView tvPointInfo;
@@ -73,7 +73,7 @@ public class Readings extends AppCompatActivity {
         npDepth.setMaxValue(depths.length - 1);
         npDepth.setWrapSelectorWheel(true);
 
-        Point passedPoint = realm.where(Point.class)
+        passedPoint = realm.where(Point.class)
                 .equalTo("id", passedPointID)
                 .findFirst();
         tvPointInfo.setText("Point: " + passedPoint.getPointNum());
@@ -124,6 +124,24 @@ public class Readings extends AppCompatActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    void clickHandlerReading(View view) {
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) { // Need be done on same thread NOTES ....
+                Reading newReading = new Reading();
+                newReading.setId(PrimaryKeyFactory.getInstance().nextKey(Reading.class));
+                newReading.setReadingNum(passedPoint.getReadings().size()); // size is next number in zero-based array.
+                newReading.setHammer(npHammer.getValue());
+                newReading.setBlows(npBlows.getValue());
+                newReading.setDepth(npDepth.getValue());
+                newReading.setPoint(passedPoint);
+                newReading.setCbr(Math.random()*100);
+                passedPoint.getReadings().add(newReading);
+            }
+        });
     }
 
     @Override

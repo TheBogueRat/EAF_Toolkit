@@ -1,6 +1,7 @@
 package com.bogueratcreations.eaftoolkit.DCP;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,9 @@ public class ReadingsListAdapter extends RealmBaseAdapter<Reading> implements Li
         ViewHolder viewHolder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.listview_reading, parent, false);
+            if (position%2 ==1) {
+                convertView.setBackgroundColor(Color.LTGRAY);
+            }
             viewHolder = new ViewHolder();
             viewHolder.readingNum = (TextView) convertView.findViewById(R.id.tv6);
             viewHolder.hammerType = (TextView) convertView.findViewById(R.id.tv5);

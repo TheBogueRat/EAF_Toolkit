@@ -31,6 +31,8 @@
                     android:id="@+id/tvPointInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
                     android:text="Point: "
                     android:textSize="24sp" />
             </TableRow>
@@ -252,12 +254,13 @@
 
     <ListView
         android:id="@+id/listViewReadings"
-        android:divider="@android:drawable/divider_horizontal_dark"
-        android:headerDividersEnabled="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/scrollViewReadings" />
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentRight="false"
+        android:layout_below="@+id/scrollViewReadings"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:headerDividersEnabled="false" />
 
 </RelativeLayout>

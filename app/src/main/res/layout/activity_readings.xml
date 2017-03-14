@@ -18,7 +18,20 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/BRCgreen"
-            app:popupTheme="@style/CustomActionBarTheme.PopupOverlay" />
+            app:popupTheme="@style/CustomActionBarTheme.PopupOverlay" >
+
+        <Button
+            android:id="@+id/btnReading"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:background="@android:color/transparent"
+            android:clickable="false"
+            android:onClick="clickHandlerReading"
+            android:text="Append"
+            android:textColor="@android:color/white" />
+
+        </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
