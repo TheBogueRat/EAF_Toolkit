@@ -1,5 +1,8 @@
 # Built application files
 /*/build/
+build/
+*.apk
+*.ap_
 
 # Crashlytics configuations
 com_crashlytics_export_strings.xml
@@ -9,6 +12,7 @@ com_crashlytics_export_strings.xml
 
 # Gradle generated files
 .gradle/
+build/
 
 # Signing files
 .signing/
@@ -25,6 +29,8 @@ com_crashlytics_export_strings.xml
 .idea/modules.xml
 .idea/scopes/scope_settings.xml
 .idea/vcs.xml
+.idea/datasources.xml
+.idea/datasources.ids
 *.iml
 
 # OS-specific files
