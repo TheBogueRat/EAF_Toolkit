@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="E:\Users\TheBogueRat\AndroidStudioProjects\EAF_Toolkit3\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="E:\Users\TheBogueRat\AndroidStudioProjects\EAF_Toolkit3\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_a5f9bb0fcdf3c7152a59088a2f82b649b3b71943\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\Users\TheBogueRat\AndroidStudioProjects\EAF_Toolkit3\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="168d44ad43a4451b4a56d26c1c03294824f5f01a">
+        <dex dex="E:\Users\TheBogueRat\AndroidStudioProjects\EAF_Toolkit3\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_b96735d289b5a927f8056191aa8f467b884e437b\classes.dex" />
+    </item>
+
+</items>
