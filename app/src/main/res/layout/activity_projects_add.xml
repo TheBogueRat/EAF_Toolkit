@@ -1,183 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_projects_add"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:fitsSystemWindows="true"
     tools:context="com.bogueratcreations.eaftoolkit.DCP.ProjectsAdd">
 
-    <Button
-        android:id="@+id/btnProjCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cancel"
-        android:layout_alignBaseline="@+id/btnSaveProject"
-        android:layout_alignBottom="@+id/btnSaveProject"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <ScrollView
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:theme="@style/CustomActionBarTheme.AppBarOverlay">
 
-        <LinearLayout
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:weightSum="1">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/BRCgreen"
+            app:popupTheme="@style/CustomActionBarTheme.PopupOverlay" >
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/input_layout_projectName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/etProjName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Project Name"
-                    android:inputType="textPersonName" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/input_layout_projectLoc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/etProjLoc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:ems="10"
-                    android:hint="Project Location"
-                    android:inputType="textPersonName" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <TextView
-                android:text="Date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvDateLabel"
-                android:textSize="12sp"
-                android:textColor="@color/BRCsubtext"
-                android:layout_marginLeft="4dp"
-                android:labelFor="@+id/etProjDate" />
-
-            <EditText
-                    android:id="@+id/etProjDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                android:ems="10"
-                    android:focusable="false"
-                    android:inputType="text"
-                android:layout_marginTop="-4dp" />
-
-            <TextView
-                android:text="Soil Type"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvSoilTypeLabel"
-                android:textSize="12sp"
-                android:textColor="@color/BRCsubtext"
-                android:layout_marginLeft="6dp"
-                android:layout_marginBottom="6dp" />
-
-            <info.hoang8f.android.segmented.SegmentedGroup
-                android:id="@+id/segmentSoil"
+            <Button
+                android:id="@+id/btnSaveProject"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checkedButton="@+id/btnAllSoils"
-                android:orientation="horizontal"
-                segmentedgroup:sc_border_width="2dp"
-                segmentedgroup:sc_checked_text_color="#FFFFFF"
-                segmentedgroup:sc_corner_radius="5dp"
-                segmentedgroup:sc_tint_color="@color/BRCgreen"
-                android:layout_marginBottom="8dp">
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:background="@android:color/transparent"
+                android:onClick="clickHandlerProjects"
+                android:text="Save"
+                android:textColor="@android:color/white" />
+        </android.support.v7.widget.Toolbar>
 
-                <RadioButton
-                    android:id="@+id/btnLowClay"
-                    style="@style/RadioButton"
-                    android:layout_width="110dp"
-                    android:layout_height="40dp"
-                    android:text="Low Plasticity Clay" />
+    </android.support.design.widget.AppBarLayout>
 
-                <RadioButton
-                    android:id="@+id/btnHighClay"
-                    style="@style/RadioButton"
-                    android:layout_width="110dp"
-                    android:layout_height="40dp"
-                    android:text="High Plasticity Clay" />
+    <include layout="@layout/content_projects_add" />
 
-                <RadioButton
-                    android:id="@+id/btnAllSoils"
-                    style="@style/RadioButton"
-                    android:layout_width="110dp"
-                    android:layout_height="40dp"
-                    android:text="All Other         Soils" />
-
-            </info.hoang8f.android.segmented.SegmentedGroup>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/input_layout_soilInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/etSoilInfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:ems="10"
-                android:hint="Soil Description"
-                android:inputType="textPersonName" />
-
-
-        </android.support.design.widget.TextInputLayout>
-
-            <TextView
-                android:text="Project Info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvProjInfoLabel"
-                android:textSize="12sp"
-                android:textColor="@color/BRCsubtext"
-                android:layout_marginLeft="4dp"
-                android:labelFor="@+id/etProjInfo" />
-
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"
-                    android:ems="10"
-                    android:id="@+id/etProjInfo"
-                    android:layout_weight="1"
-                    android:layout_marginTop="-4dp" />
-
-        </LinearLayout>
-
-    </ScrollView>
-
-    <Button
-        android:text="Save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="140dp"
-        android:onClick="clickHandler"
-        android:id="@+id/btnSaveProject"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

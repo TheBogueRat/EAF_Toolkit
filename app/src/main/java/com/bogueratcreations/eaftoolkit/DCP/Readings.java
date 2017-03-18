@@ -1,29 +1,42 @@
 package com.bogueratcreations.eaftoolkit.DCP;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.NumberPicker;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bogueratcreations.eaftoolkit.DCP.model.Point;
 import com.bogueratcreations.eaftoolkit.DCP.model.Reading;
 import com.bogueratcreations.eaftoolkit.R;
 
+import java.util.Locale;
+
+import co.moonmonkeylabs.realmrecyclerview.RealmRecyclerView;
 import io.realm.Realm;
+import io.realm.RealmBasedRecyclerViewAdapter;
 import io.realm.RealmList;
 import io.realm.RealmResults;
+import io.realm.RealmViewHolder;
 
 public class Readings extends AppCompatActivity {
 
@@ -36,9 +49,10 @@ public class Readings extends AppCompatActivity {
     NumberPicker npBlows;
     NumberPicker npDepth;
 
-    long selectedReading = -1;
-
     Button btnAppend;
+
+    int clickedPos = -1;      // Row to insert above
+    int longClickedPos = -1;  // Row to be replaced
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +63,6 @@ public class Readings extends AppCompatActivity {
 
         // Get the point name (ID) for use in finding associated points and for use in creating new points.
         passedPointID = getIntent().getLongExtra("pointId",-1);
-        Log.d("Point id passed: ",String.valueOf(passedPointID));
         // TODO: If receiving -1, I wasn't passed a valid point...
 
         tvPointInfo = (TextView) findViewById(R.id.tvPointInfo);
@@ -62,19 +75,14 @@ public class Readings extends AppCompatActivity {
         npHammer.setMinValue(0);
         npHammer.setMaxValue(hammers.length - 1);
         npHammer.setWrapSelectorWheel(true);
-//        npHammer.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-//            @Override
-//            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-//                // Don't need this because I;ll grab the info when saved.
-//            }
-//        });
+
         final String[] blows = {"1","2","3","4","5","10","15","20","25","30","35","40","45","50"};
         npBlows.setDisplayedValues(blows);
         npBlows.setMinValue(0);
         npBlows.setMaxValue(blows.length - 1);
         npBlows.setWrapSelectorWheel(true);
 
-        final String[] depths = {"25","30","35","40","45","50","55","60","65","70","75","80","85","90","95","100"};
+        final String[] depths = {"25","30","35","40","45","50","55","60","65","70","75","80","85","90","95","100","125","150","175","200","225","250","275","300"};
         npDepth.setDisplayedValues(depths);
         npDepth.setMinValue(0);
         npDepth.setMaxValue(depths.length - 1);
@@ -85,112 +93,285 @@ public class Readings extends AppCompatActivity {
                 .findFirst();
         tvPointInfo.setText("Point: " + passedPoint.getPointNum());
 
-        btnAppend = (Button) findViewById(R.id.btnReading);
-        btnAppend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final Reading newReading = new Reading();
-                newReading.setId(PrimaryKeyFactory.getInstance().nextKey(Reading.class));
-                newReading.setReadingNum(passedPoint.getReadings().size()); // size is next number in zero-based array.
-                newReading.setHammer(npHammer.getValue());
-                newReading.setBlows(npBlows.getValue());
-                newReading.setDepth(npDepth.getValue());
-                newReading.setPoint(passedPoint);
-                newReading.setCbr(Math.random()*100);
-
-                realm.beginTransaction();
-                realm.copyToRealmOrUpdate(newReading);
-                passedPoint.getReadings().add(newReading);
-                realm.commitTransaction();
-            }
-        });
 
         final RealmResults<Reading> readings = realm.where(Reading.class)
                 .equalTo("point.id", passedPointID)
                 .findAll()
                 .sort("readingNum");
-
-        final ReadingsListAdapter adapter = new ReadingsListAdapter(this, readings);
-        ListView listView = (ListView) findViewById(R.id.listViewReadings);
-        LayoutInflater inflater = getLayoutInflater();
-//        // Was adding a header but it scrolls up with the layout.
-//        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.listview_readings_header,listView,false);
-//        listView.addHeaderView(header, null, false);
-        listView.setAdapter(adapter);
-
-//        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        final ReadingsRealmAdapter readingsRealmAdapter = new ReadingsRealmAdapter(this, readings, true, true);
+        final RealmRecyclerView realmRecyclerView = (RealmRecyclerView) findViewById(R.id.listViewReadings);
+        realmRecyclerView.setAdapter(readingsRealmAdapter);
+        realmRecyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                view.setBackgroundColor(Color.RED);  // causes a quick flash of red to acknowledge the delete.
-                final long readingId = adapter.getItem(position).getId(); // minus header row!!!!
-                realm.executeTransactionAsync(new Realm.Transaction() {
-                    @Override
-                    public void execute(Realm realm) {
-                        realm.where(Reading.class)
-                                .equalTo("id",readingId)
-                                .findAll()
-                                .deleteAllFromRealm();
-                        int i = 0;
-                        RealmResults<Reading> readingResults = realm.where(Reading.class).equalTo("point.id",passedPointID).findAll().sort("readingNum");
-                        for (Reading r : readingResults) {
-                            r.setReadingNum(i);
-                            i++;
+            public void onClick(View view) {
+                if (view.isPressed()) {
+                    view.setPressed(false);
+                } else {
+                    view.setPressed(true);
+                }
+            }
+        });
+
+        btnAppend = (Button) findViewById(R.id.btnReading);
+        btnAppend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO: Add code to handle insert/replace/append conditions...
+                final Reading newReading = new Reading();
+                newReading.setId(PrimaryKeyFactory.getInstance().nextKey(Reading.class));
+                newReading.setReadingNum(passedPoint.getReadings().size()); // size is next number in zero-based array.
+                newReading.setHammer(npHammer.getValue() + 1);
+                newReading.setBlows(Integer.parseInt(blows[npBlows.getValue()]));
+                newReading.setDepth(Integer.parseInt(depths[npDepth.getValue()]));
+                newReading.setPoint(passedPoint);
+                newReading.calcCbr();
+                newReading.setTotalDepth(passedPoint.getReadings().sum("depth").intValue() + newReading.getDepth());
+
+                if (clickedPos > -1) {
+                    // Reorder readings to insert the new one and set the newReading.Num
+                    int index = 0;
+                    for (Reading r : readings) {
+                        if (index == clickedPos) {
+                            // TODO: Insert a reading as this one and reorder this and all following readings.
+                            readings.get(index).setReadingNum(index + 1);
                         }
+                        index++;
                     }
-                });
-                return true;
-            }
-        });
+                    newReading.setReadingNum(clickedPos);
+                }
+                if (longClickedPos > -1) {
+                    // Reorder readings to insert the new one and set the newReading.Num
+                    int index = 0;
+                    for (Reading r : readings) {
+                        if (index == longClickedPos) {
+                            // Update this reading by assigning it the same ID for the copytorealmorupdate...
+                            newReading.setId(r.getId());
+                            break;
+                        }
+                        index++;
+                    }
+                    // Set new readingNum to location of insert.
+                    newReading.setReadingNum(longClickedPos);
+                }
+                realm.beginTransaction();
+                realm.copyToRealmOrUpdate(newReading);
+                passedPoint.getReadings().add(newReading);
+                realm.commitTransaction();
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView adapterView, View view, int position, long id) {
-                view.setSelected(true);
-                adapterView.setSelected(true);
-                selectedReading = position;
+                realmRecyclerView.smoothScrollToPosition(readingsRealmAdapter.getItemCount());
+                if (newReading.getTotalDepth() > 1020) {
+                    btnAppend.setTextColor(Color.RED);
+                    Toast.makeText(getBaseContext(), "Total depth exceeds standard rod length...", Toast.LENGTH_LONG).show();
+                }
             }
         });
+//        final ReadingsListAdapter adapter = new ReadingsListAdapter(this, readings);
+//        ListView listView = (ListView) findViewById(R.id.listViewReadings);
+//        LayoutInflater inflater = getLayoutInflater();
+////        // Was adding a header but it scrolls up with the layout.
+////        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.listview_readings_header,listView,false);
+////        listView.addHeaderView(header, null, false);
+//        listView.setAdapter(adapter);
+//
+////        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+//        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+//                //view.setBackgroundColor(Color.RED);  // causes a quick flash of red to acknowledge the delete.
+//                final long readingId = adapter.getItem(position).getId(); // minus header row!!!!
+//                realm.executeTransactionAsync(new Realm.Transaction() {
+//                    @Override
+//                    public void execute(Realm realm) {
+//                        realm.where(Reading.class)
+//                                .equalTo("id",readingId)
+//                                .findAll()
+//                                .deleteAllFromRealm();
+//                        int i = 0;
+//                        RealmResults<Reading> readingResults = realm.where(Reading.class).equalTo("point.id",passedPointID).findAll().sort("readingNum");
+//                        for (Reading r : readingResults) {
+//                            r.setReadingNum(i);
+//                            i++;
+//                        }
+//                    }
+//                });
+//                return true;
+//            }
+//        });
+
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView adapterView, View view, int position, long id) {
+//                if (!view.isSelected()) {
+//                    view.setSelected(true);
+//                    adapterView.setSelected(true);
+//                    selectedReading = position;
+//                } else {
+//                    view.setSelected(false);
+//                    adapterView.setSelected(false);
+//                    selectedReading = -1;
+//                }
+//            }
+//        });
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Create a new Reading...", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Create a new Reading...", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
+        // Disabled back button in action bar because data was not being passed back
+        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
-    void clickHandlerReading(View view) {
-//        final Reading newReading = new Reading();
-//        newReading.setId(PrimaryKeyFactory.getInstance().nextKey(Reading.class));
-//        newReading.setReadingNum(passedPoint.getReadings().size()); // size is next number in zero-based array.
-//        newReading.setHammer(npHammer.getValue());
-//        newReading.setBlows(npBlows.getValue());
-//        newReading.setDepth(npDepth.getValue());
-//        newReading.setPoint(passedPoint);
-//        newReading.setCbr(Math.random()*100);
-//
-//        realm.beginTransaction();
-//        realm.copyToRealmOrUpdate(newReading);
-//        passedPoint.getReadings().add(newReading);
-//        realm.commitTransaction();
-//
-        // Async didn't work since we are updating an existing object.
-//        realm.executeTransactionAsync(new Realm.Transaction() {
-//            @Override
-//            public void execute(Realm realm) { // Need be done on same thread NOTES ....
-//                realm.copyToRealmOrUpdate(newReading);
-//                passedPoint.getReadings().add(newReading);
-//            }
-//        });
+    public class ReadingsRealmAdapter extends RealmBasedRecyclerViewAdapter<Reading, ReadingsRealmAdapter.ViewHolder> {
+
+        public class ViewHolder extends RealmViewHolder {
+
+            public TextView readingsTextView;
+            public TextView hammerTextView;
+            public TextView blowsTextView;
+            public TextView depthTextView;
+            public TextView cbrTextView;
+            public TextView totalTextView;
+            private RelativeLayout rowLayout;
+
+            public ViewHolder(RelativeLayout container) {
+                super(container);
+                this.readingsTextView = (TextView) container.findViewById(R.id.tvReadingNum);
+                this.hammerTextView = (TextView) container.findViewById(R.id.tvHammerType);
+                this.blowsTextView = (TextView) container.findViewById(R.id.tvBlows);
+                this.depthTextView = (TextView) container.findViewById(R.id.tvDepth);
+                this.cbrTextView = (TextView) container.findViewById(R.id.tvCbr);
+                this.totalTextView = (TextView) container.findViewById(R.id.tvTotal);
+                this.rowLayout = (RelativeLayout) container.findViewById(R.id.rlReading);
+            }
+        }
+
+        public ReadingsRealmAdapter(
+                Context context,
+                RealmResults<Reading> realmResults,
+                boolean automaticUpdate,
+                boolean animateResults) {
+            super(context,realmResults,automaticUpdate,animateResults);
+        }
+
+        @Override
+        public ViewHolder onCreateRealmViewHolder(ViewGroup viewGroup, int viewType) {
+            View v = inflater.inflate(R.layout.listview_reading, viewGroup, false);
+            ViewHolder vh = new ViewHolder((RelativeLayout)v);
+            // TODO: setClickable was an attempt to highlight the row, not working...
+            v.setClickable(true);
+            return vh;
+        }
+        @Override
+        public void onBindRealmViewHolder(final ViewHolder viewHolder, final int position) {
+            final Reading reading = realmResults.get(position);
+            if (position == clickedPos) {
+                viewHolder.rowLayout.setBackgroundColor(Color.YELLOW);
+            } else if (position == longClickedPos) {
+                viewHolder.rowLayout.setBackgroundColor(Color.RED);
+            } else {
+                viewHolder.rowLayout.setBackgroundColor(Color.TRANSPARENT);
+            }
+            viewHolder.readingsTextView.setText(String.valueOf(reading.getReadingNum()));
+            viewHolder.hammerTextView.setText(String.valueOf(reading.getHammer()));
+            viewHolder.blowsTextView.setText(String.valueOf(reading.getBlows()));
+            viewHolder.depthTextView.setText(String.valueOf(reading.getDepth()));
+            viewHolder.cbrTextView.setText(String.format(Locale.US,"%.1f",reading.getCbr()));
+            viewHolder.totalTextView.setText(String.valueOf(reading.getTotalDepth()));
+            viewHolder.rowLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+//                    Toast.makeText(getBaseContext(), "You clicked a row: " + position, Toast.LENGTH_SHORT).show();
+//                    Log.d("You Clicked row: ", String.valueOf(position));
+                    if ((clickedPos == position) || (longClickedPos == position)) {
+                        clickedPos = -1;
+                        longClickedPos = -1;
+                        view.setBackgroundColor(Color.TRANSPARENT);
+                        btnAppend.setBackgroundColor(Color.TRANSPARENT);
+                        btnAppend.setText("Append");
+                    } else {
+                        clickedPos = position;
+                        longClickedPos = -1;
+                        view.setBackgroundColor(Color.YELLOW);
+                        btnAppend.setBackgroundColor(Color.YELLOW);
+                        btnAppend.setText("Add\nAbove");
+                    }
+                    notifyDataSetChanged();
+                }
+            });
+            viewHolder.rowLayout.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+//                    Toast.makeText(getBaseContext(), "You long clicked row: " + String.valueOf(position), Toast.LENGTH_SHORT).show();
+//                    Log.d("You Long Clicked row: ", String.valueOf(position));
+                    if (longClickedPos == position) {
+                        longClickedPos = -1;
+                        btnAppend.setBackgroundColor(Color.TRANSPARENT);
+                        view.setBackgroundColor(Color.TRANSPARENT);
+                        btnAppend.setText("Append");
+                    } else {
+                        clickedPos = -1;
+                        longClickedPos = position;
+                        view.setBackgroundColor(Color.RED);
+                        btnAppend.setBackgroundColor(Color.RED);
+                        btnAppend.setText("Replace\nSelected");
+                    }
+                    notifyDataSetChanged();
+                    return true;
+                }
+            });
+        }
+        @Override
+        public void onItemSwipedDismiss(int position) {
+            // Overridden to renumber the list items and refresh the list.
+            realm.beginTransaction();
+            realmResults.deleteFromRealm(position);
+            int i = 0;
+            int depth = 0;
+            double lowestCBR = 100; // The lowest CBR recorded that is not 0
+            for (Reading r : realmResults) {
+                // Update Reading number
+                r.setReadingNum(i);
+                // Update Depth
+                depth = depth + r.getDepth();
+                r.setTotalDepth(depth);
+                // Update lowest CBR as needed
+                double rCbr = r.getCbr();
+                if ((rCbr < lowestCBR) && (rCbr > 0.0)) {
+                    lowestCBR = rCbr;
+                }
+                // TODO: Do I need to add all these readings back into the Point?
+                i++;
+            }
+            // Update Point.lowest
+            if (passedPoint.getCbr() != lowestCBR) {
+                passedPoint.setCbr(lowestCBR);
+            }
+            realm.commitTransaction();
+            // Remove selections
+            clickedPos = -1;
+            longClickedPos = -1;
+            btnAppend.setBackgroundColor(Color.TRANSPARENT);
+            btnAppend.setText("Append");
+            notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        // TODO: Update the lowestCBR for Point here or in onItemSwipedDismiss
+        long projectId = passedPoint.getProject().getId();
+        Intent intent = new Intent();
+        intent.putExtra("passedProjectID", projectId);
+        Log.d("ProjectID: ","From onBackPressed: " + String.valueOf(projectId));
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     @Override

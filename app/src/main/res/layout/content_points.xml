@@ -32,14 +32,49 @@
         android:id="@+id/viewPoints"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
         android:layout_below="@+id/ivSky"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_toEndOf="@+id/viewAddPoint"
+        android:layout_toRightOf="@+id/viewAddPoint"
         android:orientation="vertical"
         android:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvPointLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginLeft="8dp"
+                android:gravity="bottom"
+                android:text="Points in this Project"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCbrLabel"
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="4dp"
+                android:gravity="bottom|center_horizontal"
+                android:text="Lowest CBR"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
 
         <ListView
             android:id="@+id/listViewPoints"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:paddingBottom="24dp"
             android:visibility="visible" />
 
     </LinearLayout>
@@ -113,6 +148,5 @@
             android:text="Soil Type passed in from Project" />
 
     </LinearLayout>
-
 
 </RelativeLayout>

@@ -73,9 +73,9 @@ public class Projects extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), ProjectsAdd.class);
-//                intent.putExtra("projectId",-1);
+                intent.putExtra("projectId",-1);
                 startActivity(intent);
-                startActivity(new Intent(Projects.this, ProjectsAdd.class));
+//                startActivity(new Intent(Projects.this, ProjectsAdd.class));
 
             }
         });

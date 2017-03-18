@@ -18,14 +18,27 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/BRCgreen"
-            app:popupTheme="@style/CustomActionBarTheme.PopupOverlay" />
+            app:popupTheme="@style/CustomActionBarTheme.PopupOverlay">
+
+            <Button
+                android:id="@+id/btnNew_Save"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:background="@android:color/holo_red_dark"
+                android:clickable="false"
+                android:onClick="clickHandlerNew_Save"
+                android:text="DELETE"
+                android:textColor="@android:color/white" />
+
+        </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_points" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fabPoints"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

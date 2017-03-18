@@ -75,6 +75,7 @@ public class ProjectsAdd extends AppCompatActivity {
         // Check for add/edit
         passedProjectId = getIntent().getLongExtra("projectId", -1);
         if (passedProjectId == -1) {
+            // Adding a new Project
             String currentDateTimeString = DateFormat.getDateInstance(DateFormat.SHORT).format(new Date());
             // textView is the TextView view that should display it
             projectDate.setText(currentDateTimeString);
@@ -106,7 +107,7 @@ public class ProjectsAdd extends AppCompatActivity {
         }
     }
 
-    public void clickHandler(View view) {
+    public void clickHandlerProjects(View view) {
         if (view.getId()== R.id.btnSaveProject) {
 
             // Retrieve appropriate date

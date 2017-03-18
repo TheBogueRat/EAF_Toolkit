@@ -140,6 +140,7 @@ class seedRealmDb implements Realm.Transaction {
         realmPoint1.setId(0);
         realmPoint1.setPointNum("Test Back Leg 1");
         realmPoint1.setSoilType(2);
+        realmPoint1.setCbr(2.1384);
         realmPoint1.setProject(realmProject);
         realmPoint1.setReadings(readings1);
         realmPoint1.setDate(new Date());
@@ -147,12 +148,14 @@ class seedRealmDb implements Realm.Transaction {
         realmPoint2.setPointNum("Test Back Leg 2");
         realmPoint2.setSoilType(2);
         realmPoint2.setDate(new Date());
+        realmPoint2.setCbr(28.874);
         realmPoint2.setProject(realmProject);
         realmPoint2.setReadings(readings2);
         realmPoint3.setId(2);
         realmPoint3.setPointNum("Test Front Leg 3");
         realmPoint3.setSoilType(2);
         realmPoint3.setDate(new Date());
+        realmPoint3.setCbr(15.233);
         realmPoint3.setProject(realmProject);
         realmPoint3.setReadings(readings3);
 

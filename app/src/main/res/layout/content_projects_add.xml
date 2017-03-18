@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_projects_add"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.bogueratcreations.eaftoolkit.DCP.ProjectsAdd"
+    tools:showIn="@layout/activity_projects_add">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_projectName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etProjName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Project Name"
+                    android:inputType="textPersonName" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_projectLoc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etProjLoc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:hint="Project Location"
+                    android:inputType="textPersonName" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvDateLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:labelFor="@+id/etProjDate"
+                android:text="Date"
+                android:textColor="@color/BRCsubtext"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/etProjDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-4dp"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/tvSoilTypeLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:layout_marginLeft="6dp"
+                android:text="Soil Type"
+                android:textColor="@color/BRCsubtext"
+                android:textSize="12sp" />
+
+            <info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/segmentSoil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:checkedButton="@+id/btnAllSoils"
+                android:orientation="horizontal"
+                segmentedgroup:sc_border_width="2dp"
+                segmentedgroup:sc_checked_text_color="#FFFFFF"
+                segmentedgroup:sc_corner_radius="5dp"
+                segmentedgroup:sc_tint_color="@color/BRCgreen">
+
+                <RadioButton
+                    android:id="@+id/btnLowClay"
+                    style="@style/RadioButton"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:text="Low Plasticity Clay" />
+
+                <RadioButton
+                    android:id="@+id/btnHighClay"
+                    style="@style/RadioButton"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:text="High Plasticity Clay" />
+
+                <RadioButton
+                    android:id="@+id/btnAllSoils"
+                    style="@style/RadioButton"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:text="All Other         Soils" />
+
+            </info.hoang8f.android.segmented.SegmentedGroup>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_soilInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etSoilInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:ems="10"
+                    android:hint="Soil Description"
+                    android:inputType="textPersonName" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvProjInfoLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:labelFor="@+id/etProjInfo"
+                android:text="Project Info"
+                android:textColor="@color/BRCsubtext"
+                android:textSize="12sp" />
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/etProjInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-4dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textMultiLine" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

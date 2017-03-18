@@ -1,6 +1,7 @@
 package com.bogueratcreations.eaftoolkit.DCP;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
@@ -8,6 +9,8 @@ import android.widget.TextView;
 
 import com.bogueratcreations.eaftoolkit.DCP.model.Point;
 import com.bogueratcreations.eaftoolkit.R;
+
+import java.util.Locale;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmBaseAdapter;
@@ -41,9 +44,9 @@ public class PointsListAdapter extends RealmBaseAdapter<Point> implements ListAd
             viewHolder = (ViewHolder) convertView.getTag();
         }
         Point item = adapterData.get(position);
-        viewHolder.point.setText(item.getPointNum());
-        Double lowestCBR = item.getCbr(); // This should be the lowest recorded CBR which is set when saving the Readings
-        viewHolder.pointCbr.setText(lowestCBR.toString());
+        viewHolder.point.setText(item.getPointNum()); // This should be the lowest recorded CBR which is set when saving the Readings
+        String roundedCBR = String.format(Locale.US,"%.1f",item.getCbr());
+        viewHolder.pointCbr.setText(roundedCBR);
         return convertView;
     }
 }

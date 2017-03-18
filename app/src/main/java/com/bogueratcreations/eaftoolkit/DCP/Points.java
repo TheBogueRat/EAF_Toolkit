@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -43,7 +44,7 @@ public class Points extends AppCompatActivity {
     Point selectedPoint;
 
     boolean editMode = false; // Used to control the resulting FAB action
-    boolean newPoint = false; // Edit mode just means we are editing or adding a point this indicates a newPoint
+    boolean newPoint = false; // Edit mode just means we are editing or adding a point, this indicates editing a newPoint
     static Boolean hasChanged = false;
 
     private Realm realm;
@@ -55,6 +56,7 @@ public class Points extends AppCompatActivity {
     EditText pointName;
     static EditText pointDate;
     TextView tvSoilType;
+    Button btnSaveEdit;
 
     // TODO: Capture back button in edit mode and ask about saving....
     @Override
@@ -66,6 +68,7 @@ public class Points extends AppCompatActivity {
 
         // Get the project name (ID) for use in finding associated points and for use in creating new points.
         passedProjectID = getIntent().getLongExtra("projId",-1);
+        Log.d("passedProjID in Pts: ", String.valueOf(passedProjectID));
         // TODO: If receiving -1, I wasn't passed a valid project...
         passedProject = realm.where(Project.class)
                 .equalTo("id",passedProjectID)
@@ -81,6 +84,17 @@ public class Points extends AppCompatActivity {
             pointDate = (EditText) findViewById(R.id.etPointDate);
             tvSoilType = (TextView) findViewById(R.id.tvPointSoilType);
         tvProjName.setText(passedProject.getProjName());
+        switch(passedProjectSoilType) {
+            case 0:
+                tvSoilType.setText("Low Plasticity Clay");
+                break;
+            case 1:
+                tvSoilType.setText("High Plasticity Clay");
+                break;
+            case 2:
+                tvSoilType.setText("All Other Soils");
+                break;
+        }
         pointDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,6 +115,7 @@ public class Points extends AppCompatActivity {
                 selectedPointID = adapter.getItem(i).getId(); // TODO: verifiy this is getting the Point id not just an arbitrary id from the list.
                 defaultView.setVisibility(View.GONE);
                 editView.setVisibility(View.VISIBLE);
+                btnSaveEdit.setText("Save");
                 editMode = true;
                 // TODO: Change FAB to save button
 
@@ -109,6 +124,7 @@ public class Points extends AppCompatActivity {
                         .equalTo("id", selectedPointID)
                         .findFirst();
                 pointName.setText(selectedPoint.getPointNum());
+
                 String dateTimeString = DateFormat.getDateInstance(DateFormat.SHORT).format(selectedPoint.getDate());
                 pointDate.setText(dateTimeString);
                 // TODO: The soil type is based on the project, displaying this to remind user.
@@ -131,19 +147,18 @@ public class Points extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView adapterView, View view, int position, long id) {
                 // Pass the selected Point and navigate to Reading.class
-                final long pointId = adapter.getItemId(position);
+                final long pointId = adapter.getItem(position).getId();
                 Intent intent = new Intent(view.getContext(), Readings.class);
                 intent.putExtra("pointId", pointId);
-                Log.d("Passing pointId: ", String.valueOf(pointId));
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        btnSaveEdit = (Button) findViewById(R.id.btnNew_Save);
+        btnSaveEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (editMode) {
@@ -158,14 +173,23 @@ public class Points extends AppCompatActivity {
                     } else {
                         updatePoint();
                     }
+                    btnSaveEdit.setText("New");
                 } else {
                     defaultView.setVisibility(View.GONE);
                     editView.setVisibility(View.VISIBLE);
                     editMode = true;
                     newPoint = true;
                     // Change FAB to save button
+                    btnSaveEdit.setText("Save");
                 }
-
+                String dateTimeString = DateFormat.getDateInstance(DateFormat.SHORT).format(new Date());
+                pointDate.setText(dateTimeString);
+            }
+        });
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabPoints);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 //fab.setImageResource(R.drawable.icon_save);
 //                Intent intent = new Intent(view.getContext(), PointsAdd.class);
 ////                intent.putExtra("pointId", pointId);
@@ -173,7 +197,8 @@ public class Points extends AppCompatActivity {
 //                startActivity(intent);
             }
         });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // Not using acctionBar back button any longer
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void savePoint() {
@@ -277,6 +302,21 @@ public class Points extends AppCompatActivity {
             pointDate.setText(String.format("%02d", (month + 1)) + "/" + String.format("%02d", day) + "/" + year);
             hasChanged = true;
         }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+//                passedProjectID = data.getLongExtra("passedProjectID", -1);  // TODO: Don't think I need this here since I use the same key to receive this from Projects.class
+            }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Capture back pressed if in edit mode and save the data as requested.
     }
 
     @Override
