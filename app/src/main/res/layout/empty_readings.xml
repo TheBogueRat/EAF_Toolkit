@@ -6,7 +6,7 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter settings and select APPEND button to add a Reading.\n Swipe to Delete.\n Tap to select and insert below.\n Long press to replace.\n The first reading will initialize the depth and not record the blows."
+        android:text="Enter settings, tap APPEND.\n\nSwipe to delete.\n\nTap row for insert.\n\nLong press row for replace."
         android:gravity="center_horizontal"
         android:layout_gravity="center"
         android:textSize="20sp"/>

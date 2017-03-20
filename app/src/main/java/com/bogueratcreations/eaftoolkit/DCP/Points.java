@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -115,7 +116,7 @@ public class Points extends AppCompatActivity {
                 selectedPointID = adapter.getItem(i).getId(); // TODO: verifiy this is getting the Point id not just an arbitrary id from the list.
                 defaultView.setVisibility(View.GONE);
                 editView.setVisibility(View.VISIBLE);
-                btnSaveEdit.setText("Save");
+                btnSaveEdit.setText("Graph");
                 editMode = true;
                 // TODO: Change FAB to save button
 
@@ -186,11 +187,16 @@ public class Points extends AppCompatActivity {
                 pointDate.setText(dateTimeString);
             }
         });
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabPoints);
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabPoints);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //fab.setImageResource(R.drawable.icon_save);
+                if (editMode) {
+                    fab.setImageResource(R.drawable.icon_save);
+                    // Display edit view
+                } else {
+                    fab.setImageResource(R.drawable.);
+                }
 //                Intent intent = new Intent(view.getContext(), PointsAdd.class);
 ////                intent.putExtra("pointId", pointId);
 //                intent.putExtra("projectId", passedProjectID);
@@ -314,14 +320,17 @@ public class Points extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        // Capture back pressed if in edit mode and save the data as requested.
-    }
+//    @Override
+//    public void onBackPressed() {
+//        // Capture back pressed if in edit mode and save the data as requested.
+//    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        realm.close();
+        if(realm != null) {
+            realm.close();
+            realm = null;
+        }
     }
 }

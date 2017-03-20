@@ -24,7 +24,9 @@ public class EAFToolkitApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.d("EAFToolkit", "Preparing to initialize Realm...");
         Realm.init(this);
+        Log.d("EAFToolkit", "Realm initialized, initializing configuration...");
         RealmConfiguration realmConfig = new RealmConfiguration.Builder()
                 .name("EAFToolkit.realm")
                 .schemaVersion(0)
@@ -33,18 +35,21 @@ public class EAFToolkitApp extends Application {
                 .build();
 
         //Realm.deleteRealm(realmConfig); // Delete Realm between app restarts.
+        Log.d("EAFToolkit", "settingDefaultConfiguration...");
         Realm.setDefaultConfiguration(realmConfig);
 
         // Get the max id numbers for each model.class
+        Log.d("EAFToolkit", "Getting defaultInstance for Realm...");
         Realm realm = Realm.getDefaultInstance();
-        Log.d("EAFToolkit_Debug", "Just got realm default instance and now trying to initialize PrimaryKeyFactory");
-        PrimaryKeyFactory.getInstance().initialize(realm);
-
-//        realm = Realm.getInstance(config);
-        // seedRealmDb(realm);
-
         // Get location of Realm Db
         Log.d("", "path: " + realm.getPath());
+        Log.d("EAFToolkit_Debug", "Just got realm default instance and now trying to initialize PrimaryKeyFactory");
+        PrimaryKeyFactory.getInstance().initialize(realm);
+        if(realm != null) {
+            realm.close();
+            realm = null;
+        }
+
 // NOTES: To pull the Db use Terminal in Android Studio with the following commands..
 // Start this process in the target directory on the local drive.
 // $ adb shell
@@ -60,6 +65,7 @@ class seedRealmDb implements Realm.Transaction {
 
     @Override
     public void execute(Realm realm) {
+        Log.d("EAFToolkit", "Beginning seedRealmDb transaction...");
         // For one-to-many relationship, need to assign objects to each other in both models!!!
         final Project realmProject = new Project();
         final Point realmPoint1 = new Point();
@@ -79,7 +85,7 @@ class seedRealmDb implements Realm.Transaction {
         realmProject.setDateCreated(new Date());
         realmReading1.setId(0);
         realmReading1.setBlows(99);
-        realmReading1.setReadingNum(1);
+        realmReading1.setReadingNum(0);
         realmReading1.setHammer(1);
         realmReading1.setDepth(25);
         realmReading1.setSoilType(2);
@@ -88,7 +94,7 @@ class seedRealmDb implements Realm.Transaction {
 
         realmReading2.setId(1);
         realmReading2.setBlows(99);
-        realmReading2.setReadingNum(2);
+        realmReading2.setReadingNum(1);
         realmReading2.setHammer(1);
         realmReading2.setDepth(25);
         realmReading2.setSoilType(2);
@@ -99,7 +105,7 @@ class seedRealmDb implements Realm.Transaction {
 
         realmReading3.setId(2);
         realmReading3.setBlows(15);
-        realmReading3.setReadingNum(1);
+        realmReading3.setReadingNum(0);
         realmReading3.setHammer(1);
         realmReading3.setDepth(25);
         realmReading3.setSoilType(2);
@@ -108,7 +114,7 @@ class seedRealmDb implements Realm.Transaction {
 
         realmReading4.setId(3);
         realmReading4.setBlows(15);
-        realmReading4.setReadingNum(2);
+        realmReading4.setReadingNum(1);
         realmReading4.setHammer(1);
         realmReading4.setDepth(25);
         realmReading4.setSoilType(2);
@@ -119,7 +125,7 @@ class seedRealmDb implements Realm.Transaction {
 
         realmReading5.setId(4);
         realmReading5.setBlows(5);
-        realmReading5.setReadingNum(1);
+        realmReading5.setReadingNum(0);
         realmReading5.setHammer(1);
         realmReading5.setDepth(25);
         realmReading5.setSoilType(2);
@@ -128,7 +134,7 @@ class seedRealmDb implements Realm.Transaction {
 
         realmReading6.setId(5);
         realmReading6.setBlows(5);
-        realmReading6.setReadingNum(2);
+        realmReading6.setReadingNum(1);
         realmReading6.setHammer(1);
         realmReading6.setDepth(25);
         realmReading6.setSoilType(2);
@@ -172,6 +178,7 @@ class seedRealmDb implements Realm.Transaction {
         realm.copyToRealmOrUpdate(realmReading4);
         realm.copyToRealmOrUpdate(realmReading5);
         realm.copyToRealmOrUpdate(realmReading6);
+        Log.d("EAFToolkit", "Completed seedRealmDb transaction.");
     }
 
     @Override

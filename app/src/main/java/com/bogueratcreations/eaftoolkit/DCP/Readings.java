@@ -96,8 +96,7 @@ public class Readings extends AppCompatActivity {
 
         final RealmResults<Reading> readings = realm.where(Reading.class)
                 .equalTo("point.id", passedPointID)
-                .findAll()
-                .sort("readingNum");
+                .findAllSorted("readingNum");
         final ReadingsRealmAdapter readingsRealmAdapter = new ReadingsRealmAdapter(this, readings, true, true);
         final RealmRecyclerView realmRecyclerView = (RealmRecyclerView) findViewById(R.id.listViewReadings);
         realmRecyclerView.setAdapter(readingsRealmAdapter);
@@ -116,102 +115,96 @@ public class Readings extends AppCompatActivity {
         btnAppend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: Add code to handle insert/replace/append conditions...
+
                 final Reading newReading = new Reading();
                 newReading.setId(PrimaryKeyFactory.getInstance().nextKey(Reading.class));
-                newReading.setReadingNum(passedPoint.getReadings().size()); // size is next number in zero-based array.
                 newReading.setHammer(npHammer.getValue() + 1);
                 newReading.setBlows(Integer.parseInt(blows[npBlows.getValue()]));
                 newReading.setDepth(Integer.parseInt(depths[npDepth.getValue()]));
                 newReading.setPoint(passedPoint);
                 newReading.calcCbr();
-                newReading.setTotalDepth(passedPoint.getReadings().sum("depth").intValue() + newReading.getDepth());
-
-                if (clickedPos > -1) {
-                    // Reorder readings to insert the new one and set the newReading.Num
-                    int index = 0;
-                    for (Reading r : readings) {
-                        if (index == clickedPos) {
-                            // TODO: Insert a reading as this one and reorder this and all following readings.
-                            readings.get(index).setReadingNum(index + 1);
-                        }
-                        index++;
+                if (longClickedPos == -1) {
+                    if (clickedPos > -1) {
+                        // New reading will be this index, later we'll reindex the others before adding to realm in the transaction
+                        newReading.setReadingNum(clickedPos);  // Need to increment in transaction...
+                    } else {
+                        // Appending item to bottom of the list.
+                        newReading.setReadingNum(passedPoint.getReadings().size()); // size is next number in zero-based array.
                     }
-                    newReading.setReadingNum(clickedPos);
-                }
-                if (longClickedPos > -1) {
+                } else {
                     // Reorder readings to insert the new one and set the newReading.Num
                     int index = 0;
                     for (Reading r : readings) {
                         if (index == longClickedPos) {
                             // Update this reading by assigning it the same ID for the copytorealmorupdate...
                             newReading.setId(r.getId());
-                            break;
                         }
                         index++;
                     }
                     // Set new readingNum to location of insert.
                     newReading.setReadingNum(longClickedPos);
                 }
-                realm.beginTransaction();
-                realm.copyToRealmOrUpdate(newReading);
-                passedPoint.getReadings().add(newReading);
-                realm.commitTransaction();
 
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        //realm.beginTransaction();
+                        if (clickedPos > -1) {
+                            // Reorder readings to insert the new one and set the newReading.Num
+                            int index = 0;
+                            for (Reading r : readings) {
+                                if (index >= clickedPos) {
+                                    readings.get(index).setReadingNum(index + 1);
+                                }
+                                index++;
+                            }
+                        }
+                        realm.copyToRealmOrUpdate(newReading);
+
+                        // recalculate total depths and get lowest CBR
+                        if (longClickedPos == -1) {
+                            // Not replacing an existing reading
+                            passedPoint.getReadings().add(newReading);
+                        }
+                        // Recalculate the total depths and update the lowestCBR.
+                        int i = 0;
+                        int depth = 0;
+                        double lowestCBR = 100; // The lowest CBR recorded that is not 0
+                        for (Reading r : passedPoint.getReadings().sort("readingNum")) {
+                            // Update Depth
+                            depth = depth + r.getDepth();
+                            r.setTotalDepth(depth);
+                            // Update lowest CBR as needed
+                            double rCbr = r.getCbr();
+                            if ((rCbr < lowestCBR) && (rCbr > 0.0)) {
+                                lowestCBR = rCbr;
+                            }
+                            i++;
+                        }
+                        // Update Point.lowest
+                        if (passedPoint.getCbr() != lowestCBR) {
+                            passedPoint.setCbr(lowestCBR);
+                        }
+                    }
+                });
                 realmRecyclerView.smoothScrollToPosition(readingsRealmAdapter.getItemCount());
+
                 if (newReading.getTotalDepth() > 1020) {
                     btnAppend.setTextColor(Color.RED);
                     Toast.makeText(getBaseContext(), "Total depth exceeds standard rod length...", Toast.LENGTH_LONG).show();
+                } else {
+                    btnAppend.setTextColor(Color.WHITE);
                 }
+                //finish up by clearing selected points.
+                clickedPos = -1;
+                longClickedPos = -1;
+                btnAppend.setBackgroundColor(Color.TRANSPARENT);
+                btnAppend.setText("Append");
+                readingsRealmAdapter.notifyDataSetChanged();
+                Log.d("EAFToolkit_Debug", "Number of entries Last: " + String.valueOf(readings.size()));
             }
         });
-//        final ReadingsListAdapter adapter = new ReadingsListAdapter(this, readings);
-//        ListView listView = (ListView) findViewById(R.id.listViewReadings);
-//        LayoutInflater inflater = getLayoutInflater();
-////        // Was adding a header but it scrolls up with the layout.
-////        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.listview_readings_header,listView,false);
-////        listView.addHeaderView(header, null, false);
-//        listView.setAdapter(adapter);
-//
-////        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-//        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-//                //view.setBackgroundColor(Color.RED);  // causes a quick flash of red to acknowledge the delete.
-//                final long readingId = adapter.getItem(position).getId(); // minus header row!!!!
-//                realm.executeTransactionAsync(new Realm.Transaction() {
-//                    @Override
-//                    public void execute(Realm realm) {
-//                        realm.where(Reading.class)
-//                                .equalTo("id",readingId)
-//                                .findAll()
-//                                .deleteAllFromRealm();
-//                        int i = 0;
-//                        RealmResults<Reading> readingResults = realm.where(Reading.class).equalTo("point.id",passedPointID).findAll().sort("readingNum");
-//                        for (Reading r : readingResults) {
-//                            r.setReadingNum(i);
-//                            i++;
-//                        }
-//                    }
-//                });
-//                return true;
-//            }
-//        });
 
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView adapterView, View view, int position, long id) {
-//                if (!view.isSelected()) {
-//                    view.setSelected(true);
-//                    adapterView.setSelected(true);
-//                    selectedReading = position;
-//                } else {
-//                    view.setSelected(false);
-//                    adapterView.setSelected(false);
-//                    selectedReading = -1;
-//                }
-//            }
-//        });
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -295,6 +288,7 @@ public class Readings extends AppCompatActivity {
                         view.setBackgroundColor(Color.TRANSPARENT);
                         btnAppend.setBackgroundColor(Color.TRANSPARENT);
                         btnAppend.setText("Append");
+
                     } else {
                         clickedPos = position;
                         longClickedPos = -1;
@@ -331,6 +325,7 @@ public class Readings extends AppCompatActivity {
         public void onItemSwipedDismiss(int position) {
             // Overridden to renumber the list items and refresh the list.
             realm.beginTransaction();
+            //passedPoint.getReadings().remove(position);  // Thinking this will remove the point from the list....(might be causing bigger problems)
             realmResults.deleteFromRealm(position);
             int i = 0;
             int depth = 0;
@@ -377,6 +372,9 @@ public class Readings extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        realm.close();
+        if(realm != null) {
+            realm.close();
+            realm = null;
+        }
     }
 }
