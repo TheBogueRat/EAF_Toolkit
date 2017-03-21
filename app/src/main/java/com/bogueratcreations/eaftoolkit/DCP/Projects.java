@@ -82,7 +82,7 @@ public class Projects extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    void clickHandlerGraphProject(View view) {
+    public void clickHandlerGraphProject(View view) {
 
         Snackbar.make(view, "Will use this button to graph a project...", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();

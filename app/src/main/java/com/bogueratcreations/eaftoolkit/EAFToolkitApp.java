@@ -45,10 +45,8 @@ public class EAFToolkitApp extends Application {
         Log.d("", "path: " + realm.getPath());
         Log.d("EAFToolkit_Debug", "Just got realm default instance and now trying to initialize PrimaryKeyFactory");
         PrimaryKeyFactory.getInstance().initialize(realm);
-        if(realm != null) {
-            realm.close();
-            realm = null;
-        }
+        realm.close();
+    }
 
 // NOTES: To pull the Db use Terminal in Android Studio with the following commands..
 // Start this process in the target directory on the local drive.
@@ -58,7 +56,6 @@ public class EAFToolkitApp extends Application {
 // $ exit
 // $ exit
 // $ adb pull /sdcard/EAFToolkit.realm
-    }
 }
 
 class seedRealmDb implements Realm.Transaction {

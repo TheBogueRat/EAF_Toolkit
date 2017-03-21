@@ -27,7 +27,6 @@
             android:layout_gravity="end"
             android:background="@android:color/transparent"
             android:clickable="false"
-            android:onClick="clickHandlerReading"
             android:text="Append"
             android:textColor="@android:color/white" />
 

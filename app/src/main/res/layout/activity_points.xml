@@ -25,10 +25,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
-                android:background="@android:color/holo_red_dark"
+                android:backgroundTint="@color/BRCgreen"
                 android:clickable="false"
-                android:onClick="clickHandlerNew_Save"
-                android:text="DELETE"
+                android:text="Graph"
                 android:textColor="@android:color/white" />
 
         </android.support.v7.widget.Toolbar>
@@ -43,6 +42,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@drawable/ic_action_add" />
 
 </android.support.design.widget.CoordinatorLayout>

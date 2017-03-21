@@ -2,8 +2,10 @@ package com.bogueratcreations.eaftoolkit.DCP;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,8 +14,11 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -41,12 +46,13 @@ public class Points extends AppCompatActivity {
     long passedProjectID;
     Project passedProject;
     int passedProjectSoilType;
+    String projectSoilType;
     long selectedPointID;
     Point selectedPoint;
 
     boolean editMode = false; // Used to control the resulting FAB action
     boolean newPoint = false; // Edit mode just means we are editing or adding a point, this indicates editing a newPoint
-    static Boolean hasChanged = false;
+    static Boolean hasChanged = false; // Whether changes have been made to the Point.
 
     private Realm realm;
 
@@ -57,7 +63,7 @@ public class Points extends AppCompatActivity {
     EditText pointName;
     static EditText pointDate;
     TextView tvSoilType;
-    Button btnSaveEdit;
+    Button btnSaveEdit;  // This is now the Graph button...
 
     // TODO: Capture back button in edit mode and ask about saving....
     @Override
@@ -87,18 +93,25 @@ public class Points extends AppCompatActivity {
         tvProjName.setText(passedProject.getProjName());
         switch(passedProjectSoilType) {
             case 0:
-                tvSoilType.setText("Low Plasticity Clay");
+                projectSoilType = "Low Plasticity Clay";
                 break;
             case 1:
-                tvSoilType.setText("High Plasticity Clay");
+                projectSoilType = "High Plasticity Clay";
                 break;
             case 2:
-                tvSoilType.setText("All Other Soils");
+                projectSoilType = "All Other Soils";
                 break;
         }
+        tvSoilType.setText(projectSoilType);
         pointDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // Force close the soft keyboard if open.
+                InputMethodManager inputManager = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
                 showDatePickerDialog(v);
             }
         });
@@ -116,9 +129,11 @@ public class Points extends AppCompatActivity {
                 selectedPointID = adapter.getItem(i).getId(); // TODO: verifiy this is getting the Point id not just an arbitrary id from the list.
                 defaultView.setVisibility(View.GONE);
                 editView.setVisibility(View.VISIBLE);
-                btnSaveEdit.setText("Graph");
+                //btnSaveEdit.setText("Graph");
                 editMode = true;
                 // TODO: Change FAB to save button
+                FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabPoints);
+                fab.setImageResource(R.drawable.ic_action_save);
 
                 // Populate the edit form
                 selectedPoint = realm.where(Point.class)
@@ -129,18 +144,24 @@ public class Points extends AppCompatActivity {
                 String dateTimeString = DateFormat.getDateInstance(DateFormat.SHORT).format(selectedPoint.getDate());
                 pointDate.setText(dateTimeString);
                 // TODO: The soil type is based on the project, displaying this to remind user.
-                switch(passedProjectSoilType) {
-                    case 0:
-                        tvSoilType.setText("Low Plasticity Clay");
-                        break;
-                    case 1:
-                        tvSoilType.setText("High Plasticity Clay");
-                        break;
-                    case 2:
-                        tvSoilType.setText("All Other Soils");
-                        break;
-                }
+                tvSoilType.setText(projectSoilType);
+                // Returns true to prevent onItemClickListener from firing
+                hasChanged = false;
+                toggleButton();
                 return true;
+            }
+        });
+
+        pointName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                hasChanged = true;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
             }
         });
 
@@ -162,29 +183,9 @@ public class Points extends AppCompatActivity {
         btnSaveEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (editMode) {
-                    defaultView.setVisibility(View.VISIBLE);
-                    editView.setVisibility(View.GONE);
-                    editMode = false;
-                    // Change FAB to New button
-                    // Was editing a Point so need to save the changes
-                    if(newPoint) {
-                        newPoint = false;
-                        savePoint();
-                    } else {
-                        updatePoint();
-                    }
-                    btnSaveEdit.setText("New");
-                } else {
-                    defaultView.setVisibility(View.GONE);
-                    editView.setVisibility(View.VISIBLE);
-                    editMode = true;
-                    newPoint = true;
-                    // Change FAB to save button
-                    btnSaveEdit.setText("Save");
-                }
-                String dateTimeString = DateFormat.getDateInstance(DateFormat.SHORT).format(new Date());
-                pointDate.setText(dateTimeString);
+                // TODO: Future implementation of GRAPH function
+                Snackbar.make(view, "Graphing this set of points will be implemented once all other functionality is implemented.", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabPoints);
@@ -192,17 +193,40 @@ public class Points extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (editMode) {
-                    fab.setImageResource(R.drawable.icon_save);
-                    // Display edit view
+                    // Force close the soft keyboard if open.
+                    InputMethodManager inputManager = (InputMethodManager)
+                            getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                            InputMethodManager.HIDE_NOT_ALWAYS);
+                    // Change FAB to New button, toggle views, and save info
+                    fab.setImageResource(R.drawable.ic_action_add);
+                    defaultView.setVisibility(View.VISIBLE);
+                    editView.setVisibility(View.GONE);
+                    editMode = false;
+                    // Was editing a Point so need to save the changes
+                    if(newPoint) {
+                        newPoint = false;
+                        savePoint();
+                    } else {
+                        updatePoint();
+                    }
+                    hasChanged = false;
                 } else {
-                    fab.setImageResource(R.drawable.);
+                    // Creating a new point...Change FAB to save button and toggle views.
+                    fab.setImageResource(R.drawable.ic_action_save);
+                    defaultView.setVisibility(View.GONE);
+                    editView.setVisibility(View.VISIBLE);
+                    editMode = true;
+                    newPoint = true;
+                    String dateTimeString = DateFormat.getDateInstance(DateFormat.SHORT).format(new Date());
+                    pointDate.setText(dateTimeString);
+                    pointName.setText("Point ");
+                    hasChanged = false;
                 }
-//                Intent intent = new Intent(view.getContext(), PointsAdd.class);
-////                intent.putExtra("pointId", pointId);
-//                intent.putExtra("projectId", passedProjectID);
-//                startActivity(intent);
+                toggleButton();
             }
         });
+
         // Not using acctionBar back button any longer
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -267,18 +291,17 @@ public class Points extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 // Save Data
-                if(editMode) {
-                    updatePoint();
-                } else {
+                if(newPoint) {
                     savePoint();
+                } else {
+                    updatePoint();
                 }
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                // Just quit
-                finish();
+                // Just return to Point view.
             }
         });
         AlertDialog alertDialog = builder.create();
@@ -320,10 +343,49 @@ public class Points extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        // Capture back pressed if in edit mode and save the data as requested.
-//    }
+    public void revertView() {
+        // Change FAB to New button and toggle views
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabPoints);
+        fab.setImageResource(R.drawable.ic_action_add);
+        defaultView.setVisibility(View.VISIBLE);
+        editView.setVisibility(View.GONE);
+        hasChanged = false;
+        editMode = false;
+        newPoint = false;
+        // After updating variables, change the button view.
+        toggleButton();
+    }
+
+    public void toggleButton() {
+        if ((editMode) && (!newPoint)) {
+            btnSaveEdit.setText("Delete");
+            btnSaveEdit.setTextColor(Color.RED);
+            btnSaveEdit.setBackgroundColor(Color.RED);
+            btnSaveEdit.setEnabled(true);
+        } else if (editMode) {
+            btnSaveEdit.setText("");
+            btnSaveEdit.setBackgroundColor(getResources().getColor(R.color.BRCgreen));
+            btnSaveEdit.setEnabled(false);
+        } else {
+            btnSaveEdit.setText("Graph");
+            btnSaveEdit.setTextColor(Color.WHITE);
+            btnSaveEdit.setBackgroundColor(getResources().getColor(R.color.BRCgreen));
+            btnSaveEdit.setEnabled(true);
+        }
+    }
+    @Override
+    public void onBackPressed() {
+        // Capture back pressed if in edit mode and save the data as requested.
+        if ((editMode) && (hasChanged)) {
+            saveDialog();
+            revertView();
+        } else if (editMode) {
+            revertView();
+        } else {
+            // Go ahead and move back to the Projects page.
+            finish();
+        }
+    }
 
     @Override
     protected void onDestroy() {

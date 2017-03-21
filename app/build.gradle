@@ -46,21 +46,21 @@ dependencies {
     //compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
     // Not sure I need the pallete support but was in Glide example
     // compile 'com.android.support:palette-v7:23.1.1'
-    // Adding Glide dependency to test a new Image Gallery
     compile('com.crashlytics.sdk.android:crashlytics:2.6.6@aar') {
         transitive = true;
     }
-    // Required for segmented control
-    // Adding Charting for DCP
-    // Adding support for Realm listview and gridview adapters
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support:support-v4:25.2.0'
-    compile 'com.android.support:design:25.2.0'
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support:support-v4:25.3.0'
+    compile 'com.android.support:design:25.3.0'
+    // Adding Glide dependency to test a new Image Gallery
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    // Required for segmented control
     compile 'info.hoang8f:android-segmented:1.0.6'
+    // Adding Charting for DCP
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.0'
+    // Adding support for Realm listview and gridview adapters
     compile 'io.realm:android-adapters:1.3.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.github.thorbenprimke:realm-recyclerview:0.9.25'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 //    compile 'eu.davidea:flexible-adapter:5.0.0-rc1'
 }
