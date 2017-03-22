@@ -22,18 +22,26 @@
             app:popupTheme="@style/CustomActionBarTheme.PopupOverlay" >
 
             <Button
-                android:id="@+id/btnSaveProject"
+                android:id="@+id/btnDeleteProject"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
-                android:background="@android:color/transparent"
-                android:onClick="clickHandlerProjects"
-                android:text="Save"
+                android:background="@android:color/holo_red_dark"
+                android:onClick="fa"
+                android:text="Delete"
                 android:textColor="@android:color/white" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_projects_add" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabSaveProject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@drawable/ic_action_save" />
 
 </android.support.design.widget.CoordinatorLayout>

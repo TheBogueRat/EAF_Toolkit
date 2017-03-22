@@ -15,7 +15,7 @@ apply plugin: 'io.fabric'
 apply plugin: 'realm-android'
 repositories {
     maven { url 'https://maven.fabric.io/public' }
-    maven { url "https://jitpack.io" }
+    maven { url 'https://jitpack.io' }
 }
 
 

@@ -48,7 +48,7 @@ public class EAFToolkitApp extends Application {
         realm.close();
     }
 
-// NOTES: To pull the Db use Terminal in Android Studio with the following commands..
+// NOTES: To pull the Db from simulator, use Terminal in Android Studio with the following commands..
 // Start this process in the target directory on the local drive.
 // $ adb shell
 // $ su
@@ -56,6 +56,12 @@ public class EAFToolkitApp extends Application {
 // $ exit
 // $ exit
 // $ adb pull /sdcard/EAFToolkit.realm
+
+    // OR THIS SCRIPT
+
+    // pullRealm.sh located in the user root.
+
+    // To view the DB on an actual device, try Stetho-Realm - not working with 2.4...
 }
 
 class seedRealmDb implements Realm.Transaction {

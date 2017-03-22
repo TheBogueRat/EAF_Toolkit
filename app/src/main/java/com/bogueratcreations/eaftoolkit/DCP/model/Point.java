@@ -24,12 +24,12 @@ public class Point extends RealmObject {
     // The Readings for this point...
     private RealmList<Reading> readings;
 
-    void cascadeDeletePoint() {
+    public void cascadeDeletePoint() {
         readings.deleteAllFromRealm(); // The cascade part
         deleteFromRealm(); // delete this object
     }
 
-    void cascadeDeleteReadings() {
+    public void cascadeDeleteReadings() {
         readings.deleteAllFromRealm(); // The cascade part
     }
 

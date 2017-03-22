@@ -18,6 +18,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -106,12 +107,10 @@ public class Points extends AppCompatActivity {
         pointDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 // Force close the soft keyboard if open.
                 InputMethodManager inputManager = (InputMethodManager)
                         getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                        InputMethodManager.HIDE_NOT_ALWAYS);
+                inputManager.hideSoftInputFromWindow(pointName.getWindowToken(), 0);
                 showDatePickerDialog(v);
             }
         });
@@ -129,8 +128,9 @@ public class Points extends AppCompatActivity {
                 selectedPointID = adapter.getItem(i).getId(); // TODO: verifiy this is getting the Point id not just an arbitrary id from the list.
                 defaultView.setVisibility(View.GONE);
                 editView.setVisibility(View.VISIBLE);
-                //btnSaveEdit.setText("Graph");
                 editMode = true;
+                hasChanged = false;
+                toggleButton();
                 // TODO: Change FAB to save button
                 FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabPoints);
                 fab.setImageResource(R.drawable.ic_action_save);
@@ -146,12 +146,10 @@ public class Points extends AppCompatActivity {
                 // TODO: The soil type is based on the project, displaying this to remind user.
                 tvSoilType.setText(projectSoilType);
                 // Returns true to prevent onItemClickListener from firing
-                hasChanged = false;
-                toggleButton();
                 return true;
             }
         });
-
+//
         pointName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -183,9 +181,20 @@ public class Points extends AppCompatActivity {
         btnSaveEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: Future implementation of GRAPH function
-                Snackbar.make(view, "Graphing this set of points will be implemented once all other functionality is implemented.", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if (editMode) {
+                    // Button only appears in edit mode if editing an existing Point, not if adding a new one.
+                    realm.beginTransaction();
+                        // Removed reference to that point from the passed project.
+                        passedProject.getPoints().remove(selectedPoint);
+                        // Remove all readings for this point and remove point
+                        selectedPoint.cascadeDeletePoint();
+                    realm.commitTransaction();
+                    revertView();
+                } else {
+                    // TODO: Future implementation of GRAPH function
+                    Snackbar.make(view, "Graphing this set of points will be implemented once all other functionality is implemented.", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
             }
         });
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabPoints);
@@ -196,8 +205,7 @@ public class Points extends AppCompatActivity {
                     // Force close the soft keyboard if open.
                     InputMethodManager inputManager = (InputMethodManager)
                             getSystemService(Context.INPUT_METHOD_SERVICE);
-                    inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                            InputMethodManager.HIDE_NOT_ALWAYS);
+                    inputManager.hideSoftInputFromWindow(pointName.getWindowToken(), 0);
                     // Change FAB to New button, toggle views, and save info
                     fab.setImageResource(R.drawable.ic_action_add);
                     defaultView.setVisibility(View.VISIBLE);
