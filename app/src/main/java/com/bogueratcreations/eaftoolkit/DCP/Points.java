@@ -8,9 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,7 +16,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -26,7 +23,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bogueratcreations.eaftoolkit.DCP.model.Point;
@@ -39,7 +35,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 import io.realm.Realm;
-import io.realm.RealmList;
 import io.realm.RealmResults;
 
 public class Points extends AppCompatActivity {
@@ -191,9 +186,10 @@ public class Points extends AppCompatActivity {
                     realm.commitTransaction();
                     revertView();
                 } else {
-                    // TODO: Future implementation of GRAPH function
-                    Snackbar.make(view, "Graphing this set of points will be implemented once all other functionality is implemented.", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    // Pass the selected Point and navigate to Reading.class
+                    Intent intent = new Intent(view.getContext(), PointsChart.class);
+                    intent.putExtra("projId", passedProjectID);
+                    startActivityForResult(intent, 1);
                 }
             }
         });

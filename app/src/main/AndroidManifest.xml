@@ -202,8 +202,8 @@
             android:label="@string/title_activity_points"
             android:parentActivityName=".DCP.Projects"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/CustomActionBarTheme.NoActionBar">
+            android:theme="@style/CustomActionBarTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bogueratcreations.eaftoolkit.DCP.Projects" />
@@ -211,6 +211,16 @@
         <activity
             android:name=".DCP.Readings"
             android:label="@string/title_activity_readings"
+            android:parentActivityName=".DCP.Points"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomActionBarTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bogueratcreations.eaftoolkit.DCP.Points" />
+        </activity>
+        <activity
+            android:name=".DCP.PointsChart"
+            android:label="@string/title_activity_points_chart"
             android:parentActivityName=".DCP.Points"
             android:screenOrientation="portrait"
             android:theme="@style/CustomActionBarTheme.NoActionBar">
