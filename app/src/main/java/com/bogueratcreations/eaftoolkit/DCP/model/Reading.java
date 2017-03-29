@@ -112,25 +112,27 @@ public class Reading extends RealmObject{
         }
         // Calculates the CBR from other parameters already in this object
         Double theCBR = 0.0;
-        Double perBlow = (double) (depth / blows * hammer);
+        Double perBlow = ((double)depth / (double)blows * (double)hammer);
         // Calculates CBR rounded to tenths and returns 100.0 or less.
         switch (soilType) {
+
             case 0:
                 // Low Plasticity Clay
-                theCBR = (Math.round(1 / (Math.pow(0.017019 * perBlow, 2)) * 10.0) / 10.0);
+                theCBR = (Math.round(1.0 / (Math.pow(0.017019 * perBlow, 2.0)) * 10.0) / 10.0);
                 break;
             case 1:
                 // High Plasticity Clay
-                theCBR =(Math.round((1 / (0.002871 * perBlow)) * 10.0) / 10.0);
+                theCBR =(Math.round((1.0 / (0.002871 * perBlow)) * 10.0) / 10.0);
                 break;
             case 2:
                 // All Other Soils
-                theCBR = (Math.round((292 / Math.pow(perBlow, 1.12)) * 10.0) / 10.0);
+                theCBR = (Math.round((292.0 / Math.pow(perBlow, 1.12)) * 10.0) / 10.0);
+
                 break;
             default:
                 break;
         }
-        Log.d("Calculated CBR: ", String.valueOf(theCBR));
+        Log.d("EAFToolkit", "perBlow: " + String.valueOf(perBlow) + "  Calculated CBR: " + String.valueOf(theCBR));
         if (theCBR > 100.0) {theCBR = 100.0;}
         this.cbr =  theCBR;
     }

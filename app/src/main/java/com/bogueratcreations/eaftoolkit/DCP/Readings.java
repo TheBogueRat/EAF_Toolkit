@@ -76,7 +76,7 @@ public class Readings extends AppCompatActivity {
         npHammer.setMaxValue(hammers.length - 1);
         npHammer.setWrapSelectorWheel(true);
 
-        final String[] blows = {"1","2","3","4","5","10","15","20","25","30","35","40","45","50"};
+        final String[] blows = {"1","2","3","4","5","6","10","15","20","25","30","35","40","45","50"};
         npBlows.setDisplayedValues(blows);
         npBlows.setMinValue(0);
         npBlows.setMaxValue(blows.length - 1);
@@ -122,7 +122,9 @@ public class Readings extends AppCompatActivity {
                 newReading.setBlows(Integer.parseInt(blows[npBlows.getValue()]));
                 newReading.setDepth(Integer.parseInt(depths[npDepth.getValue()]));
                 newReading.setPoint(passedPoint);
+                newReading.setSoilType(passedPoint.getSoilType());
                 newReading.calcCbr();
+
                 if (longClickedPos == -1) {
                     if (clickedPos > -1) {
                         // New reading will be this index, later we'll reindex the others before adding to realm in the transaction
@@ -201,7 +203,6 @@ public class Readings extends AppCompatActivity {
                 btnAppend.setBackgroundColor(Color.TRANSPARENT);
                 btnAppend.setText("Append");
                 readingsRealmAdapter.notifyDataSetChanged();
-                Log.d("EAFToolkit_Debug", "Number of entries Last: " + String.valueOf(readings.size()));
             }
         });
 
