@@ -76,18 +76,24 @@ public class Readings extends AppCompatActivity {
         npHammer.setMaxValue(hammers.length - 1);
         npHammer.setWrapSelectorWheel(true);
 
-        final String[] blows = {"1","2","3","4","5","6","10","15","20","25","30","35","40","45","50"};
-        npBlows.setDisplayedValues(blows);
-        npBlows.setMinValue(0);
-        npBlows.setMaxValue(blows.length - 1);
-        npBlows.setWrapSelectorWheel(true);
+        //final String[] blows = {"1","2","3","4","5","6","10","15","20","25","30","35","40","45","50"};
+       // npBlows.setDisplayedValues(blows);
+        npBlows.setMinValue(1);
+        npBlows.setMaxValue(50);
+        //npBlows.setWrapSelectorWheel(true);
 
-        final String[] depths = {"25","30","35","40","45","50","55","60","65","70","75","80","85","90","95","100","125","150","175","200","225","250","275","300"};
-        npDepth.setDisplayedValues(depths);
-        npDepth.setMinValue(0);
-        npDepth.setMaxValue(depths.length - 1);
-        npDepth.setWrapSelectorWheel(true);
-
+        //final String[] depths = {"25","30","35","40","45","50","55","60","65","70","75","80","85","90","95","100","125","150","175","200","225","250","275","300"};
+        //npDepth.setDisplayedValues(depths);
+        npDepth.setMinValue(5);
+        npDepth.setMaxValue(500);
+        //npDepth.setWrapSelectorWheel(true);
+        npDepth.setFormatter(new NumberPicker.Formatter() {
+            @Override
+            public String format(int value) {
+                int temp = value * 5;
+                return "" + temp;
+            }
+        });
         passedPoint = realm.where(Point.class)
                 .equalTo("id", passedPointID)
                 .findFirst();
@@ -119,8 +125,10 @@ public class Readings extends AppCompatActivity {
                 final Reading newReading = new Reading();
                 newReading.setId(PrimaryKeyFactory.getInstance().nextKey(Reading.class));
                 newReading.setHammer(npHammer.getValue() + 1);
-                newReading.setBlows(Integer.parseInt(blows[npBlows.getValue()]));
-                newReading.setDepth(Integer.parseInt(depths[npDepth.getValue()]));
+//                newReading.setBlows(Integer.parseInt(blows[npBlows.getValue()]));
+//                newReading.setDepth(Integer.parseInt(depths[npDepth.getValue()]));
+                newReading.setBlows(npBlows.getValue());
+                newReading.setDepth(npDepth.getValue() * 5);
                 newReading.setPoint(passedPoint);
                 newReading.setSoilType(passedPoint.getSoilType());
                 newReading.calcCbr();

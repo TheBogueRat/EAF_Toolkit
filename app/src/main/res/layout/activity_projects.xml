@@ -27,7 +27,7 @@
                 android:background="@android:color/transparent"
                 android:clickable="false"
                 android:onClick="clickHandlerGraphProject"
-                android:text="Notes"
+                android:text="email"
                 android:textColor="@android:color/white" />
 
         </android.support.v7.widget.Toolbar>
