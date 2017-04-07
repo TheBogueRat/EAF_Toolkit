@@ -32,7 +32,7 @@ public class Main extends AppCompatActivity {
             R.drawable.slope,
             R.drawable.calendar,
             R.drawable.flols,
-            R.drawable.cone_120x,
+            R.drawable.cone_160,
             R.drawable.inspect,
             R.drawable.br,
             R.drawable.pencil3,

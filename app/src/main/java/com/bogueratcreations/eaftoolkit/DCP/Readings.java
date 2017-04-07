@@ -40,6 +40,9 @@ import io.realm.RealmViewHolder;
 
 public class Readings extends AppCompatActivity {
 
+    // TODO: Toggle graph plot style
+    // TODO: Add graphing for current
+    // TODO: 1st point should only be a zeroing point, force display of n/a for CBR, Blows, & Hammer
     long passedPointID;
     Point passedPoint;
     private Realm realm;
@@ -78,27 +81,28 @@ public class Readings extends AppCompatActivity {
 
         //final String[] blows = {"1","2","3","4","5","6","10","15","20","25","30","35","40","45","50"};
        // npBlows.setDisplayedValues(blows);
-        npBlows.setMinValue(1);
+        npBlows.setMinValue(0);
         npBlows.setMaxValue(50);
         //npBlows.setWrapSelectorWheel(true);
 
         //final String[] depths = {"25","30","35","40","45","50","55","60","65","70","75","80","85","90","95","100","125","150","175","200","225","250","275","300"};
         //npDepth.setDisplayedValues(depths);
-        npDepth.setMinValue(5);
-        npDepth.setMaxValue(500);
+        npDepth.setMinValue(0);
+        npDepth.setMaxValue(150);
         //npDepth.setWrapSelectorWheel(true);
         npDepth.setFormatter(new NumberPicker.Formatter() {
             @Override
             public String format(int value) {
+                Log.d("EAFToolkit", "Depth Picker index value: " + value);
                 int temp = value * 5;
                 return "" + temp;
             }
         });
+
         passedPoint = realm.where(Point.class)
                 .equalTo("id", passedPointID)
                 .findFirst();
         tvPointInfo.setText("Point: " + passedPoint.getPointNum());
-
 
         final RealmResults<Reading> readings = realm.where(Reading.class)
                 .equalTo("point.id", passedPointID)
@@ -117,17 +121,37 @@ public class Readings extends AppCompatActivity {
             }
         });
 
+        if (readings.size() > 0) {
+            // Promote selection of minimum depth
+            npDepth.setValue(5);
+            npBlows.setValue(1);
+        }
+
         btnAppend = (Button) findViewById(R.id.btnReading);
         btnAppend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                int readingsSize = passedPoint.getReadings().size();
+                if ((npDepth.getValue() < 5) && (readingsSize > 0)){
+                    if ((longClickedPos != 0) && (clickedPos != 0)) {
+                        // Only valid for the first reading if not editing the first one.
+                        Toast.makeText(Readings.this, "After the first reading, depth must be 25 or more.", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                }
+                if ((readingsSize > 0) && (npBlows.getValue() == 0) && (longClickedPos != 0)){
+                    // Prevent zero blows from being entered unless on the initial reading
+                    Toast.makeText(Readings.this, "After the first reading, blows must be 1 or more.", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 final Reading newReading = new Reading();
                 newReading.setId(PrimaryKeyFactory.getInstance().nextKey(Reading.class));
                 newReading.setHammer(npHammer.getValue() + 1);
-//                newReading.setBlows(Integer.parseInt(blows[npBlows.getValue()]));
-//                newReading.setDepth(Integer.parseInt(depths[npDepth.getValue()]));
-                newReading.setBlows(npBlows.getValue());
+                if (readingsSize > 0) {
+                    newReading.setBlows(npBlows.getValue());
+                } else {
+                    newReading.setBlows(0);
+                }
                 newReading.setDepth(npDepth.getValue() * 5);
                 newReading.setPoint(passedPoint);
                 newReading.setSoilType(passedPoint.getSoilType());
@@ -139,7 +163,7 @@ public class Readings extends AppCompatActivity {
                         newReading.setReadingNum(clickedPos);  // Need to increment in transaction...
                     } else {
                         // Appending item to bottom of the list.
-                        newReading.setReadingNum(passedPoint.getReadings().size()); // size is next number in zero-based array.
+                        newReading.setReadingNum(readingsSize); // size is next number in zero-based array.
                     }
                 } else {
                     // Reorder readings to insert the new one and set the newReading.Num
@@ -280,11 +304,18 @@ public class Readings extends AppCompatActivity {
             } else {
                 viewHolder.rowLayout.setBackgroundColor(Color.TRANSPARENT);
             }
-            viewHolder.readingsTextView.setText(String.valueOf(reading.getReadingNum()));
-            viewHolder.hammerTextView.setText(String.valueOf(reading.getHammer()));
-            viewHolder.blowsTextView.setText(String.valueOf(reading.getBlows()));
+            if (position == 0) {
+                // Display zeroing reading
+                viewHolder.blowsTextView.setText("");
+                viewHolder.cbrTextView.setText("n/a");
+            } else {
+                // Display normal data
+                viewHolder.blowsTextView.setText(String.valueOf(reading.getBlows()));
+                viewHolder.cbrTextView.setText(String.format(Locale.US,"%.1f",reading.getCbr()));
+            }
             viewHolder.depthTextView.setText(String.valueOf(reading.getDepth()));
-            viewHolder.cbrTextView.setText(String.format(Locale.US,"%.1f",reading.getCbr()));
+            viewHolder.hammerTextView.setText(String.valueOf(reading.getHammer()));
+            viewHolder.readingsTextView.setText(String.valueOf(reading.getReadingNum()));
             viewHolder.totalTextView.setText(String.valueOf(reading.getTotalDepth()));
             viewHolder.rowLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -299,11 +330,14 @@ public class Readings extends AppCompatActivity {
                         btnAppend.setText("Append");
 
                     } else {
-                        clickedPos = position;
-                        longClickedPos = -1;
-                        view.setBackgroundColor(Color.YELLOW);
-                        btnAppend.setBackgroundColor(Color.YELLOW);
-                        btnAppend.setText("Add\nAbove");
+                        if (position != 0) {
+                            // Only add above if not the first row which is the zeroing mark.
+                            clickedPos = position;
+                            longClickedPos = -1;
+                            view.setBackgroundColor(Color.YELLOW);
+                            btnAppend.setBackgroundColor(Color.YELLOW);
+                            btnAppend.setText("Add\nAbove");
+                        }
                     }
                     notifyDataSetChanged();
                 }
@@ -339,6 +373,7 @@ public class Readings extends AppCompatActivity {
             int i = 0;
             int depth = 0;
             double lowestCBR = 100; // The lowest CBR recorded that is not 0
+
             for (Reading r : realmResults) {
                 // Update Reading number
                 r.setReadingNum(i);
@@ -353,8 +388,8 @@ public class Readings extends AppCompatActivity {
                 // TODO: Do I need to add all these readings back into the Point?
                 i++;
             }
-            // Update Point.lowest
-            if (passedPoint.getCbr() != lowestCBR) {
+            // Update Point.lowest if we have readings
+            if ((realmResults.size() > 0) && (passedPoint.getCbr() != lowestCBR)) {
                 passedPoint.setCbr(lowestCBR);
             }
             realm.commitTransaction();

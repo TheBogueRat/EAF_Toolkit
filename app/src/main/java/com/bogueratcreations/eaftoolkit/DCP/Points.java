@@ -187,7 +187,7 @@ public class Points extends AppCompatActivity {
                     revertView();
                 } else {
                     // Pass the selected Point and navigate to Reading.class
-                    Intent intent = new Intent(view.getContext(), PointsChart.class);
+                    Intent intent = new Intent(view.getContext(), PointsPlot.class);
                     intent.putExtra("projId", passedProjectID);
                     startActivityForResult(intent, 1);
                 }

@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
  **** Use Prefs to Read value using: -****
  Prefs.readString(getApplicationContext(), Prefs.NAME, "");
  */
+
 public class Prefs {
 
     public static final String PREF_NAME = "BRCprefs";

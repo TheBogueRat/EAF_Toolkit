@@ -6,7 +6,7 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter settings, tap APPEND.\n\nSwipe to delete.\n\nTap row for insert.\n\nLong press row for replace."
+        android:text="First reading zeroes the graph.\n\nEnter settings, tap APPEND.\n\nSwipe to delete.\n\nTap row for insert.\n\nLong press row for replace."
         android:gravity="center_horizontal"
         android:layout_gravity="center"
         android:textSize="20sp"/>

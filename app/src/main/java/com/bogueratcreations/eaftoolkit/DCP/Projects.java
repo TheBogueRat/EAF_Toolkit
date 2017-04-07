@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
@@ -15,36 +16,51 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.bogueratcreations.eaftoolkit.DCP.model.Point;
 import com.bogueratcreations.eaftoolkit.DCP.model.Project;
+import com.bogueratcreations.eaftoolkit.DCP.model.Reading;
 import com.bogueratcreations.eaftoolkit.R;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
 
 public class Projects extends AppCompatActivity {
 
+    // TODO: Display soil type in projects list.
+
     // Email variables
     private static final String FILENAME = "EAF_Toolkit_CBRs.csv";
-    //private Button btnSend;
-    //private EditText editText;
     private FileWriter writer;
-    private String emailBody = "No content passed...";
+    private String[] emailBody = {"No content passed.1.","No content passed.2."};
 
     // Database variables
     private Realm realm;
     RealmResults<Project> projects;
 
+    static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 25;
+    boolean hasPermissions = false;
+    Button btnExport;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_projects);
-
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (ContextCompat.checkSelfPermission(Projects.this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                hasPermissions = true;
+            }
+        }
         realm = Realm.getDefaultInstance();
 
         projects = realm.where(Project.class).findAll();
@@ -83,6 +99,8 @@ public class Projects extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        btnExport = (Button) findViewById(R.id.btnEmail);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,12 +115,19 @@ public class Projects extends AppCompatActivity {
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    public void clickHandlerGraphProject(View view) {
-        // Exporting data and attaching to an email.
-        emailBody = "This is my email body that should also be the attachemnt";
-
-        File fileToSend = createFileWithContent(emailBody);
-        sendIntentToGmailApp(fileToSend);
+    public void clickHandlerEmailProjects(View view) {
+        checkWritePermissions();
+        if (projects.size() > 0) {
+            if (hasPermissions) {
+                File[] filesToSend = createFilesFromProject();
+                sendIntentToEmailApp(filesToSend);
+            } else {
+                Toast.makeText(getBaseContext(), "Please give permission to create the attachment.", Toast.LENGTH_SHORT).show();
+                checkWritePermissions();
+            }
+        } else {
+            Toast.makeText(getBaseContext(), "No projects to export!", Toast.LENGTH_SHORT).show();
+        }
     }
     @Override
     protected void onDestroy() {
@@ -113,59 +138,15 @@ public class Projects extends AppCompatActivity {
         }
     }
 
-    private void sendIntentToGmailApp(File fileToSend) {
-        if(fileToSend != null){
-            if ((!fileToSend.canRead()) || (!fileToSend.exists())) {
-                Log.e("EAFToolkit", "File cant read or not exists (email get att): " + fileToSend.getPath());
-            } else {
-                Log.e("EAFToolkit", "File can read and exists (email get att): " + fileToSend.getPath());
-            }
-            fileToSend.setReadable(true);
-            Intent email = new Intent(Intent.ACTION_SEND);
-            email.putExtra(Intent.EXTRA_SUBJECT, "Send Text File As Attachment Example");
-            email.putExtra(Intent.EXTRA_TEXT, emailBody);
-            email.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + fileToSend.getPath()));
-            email.setType("message/rfc822");
-            startActivity(Intent.createChooser(email , "Send Text File"));
-        }
-
-    }
-
+    // Create the file with
     private File createFileWithContent(String content) {
 
         if(TextUtils.isEmpty(content)){
-            content = emailBody;
+            //content = emailBody;
         }
         File file = null;
-        // Here, thisActivity is the current activity
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
 
-            // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
-
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 55);
-
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
-
-            } else {
-
-                // No explanation needed, we can request the permission.
-
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 55);
-
-                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
-            }
-        }
-
+        // Write file string file.
         try{
             Context thisContext = getApplicationContext();
             //file = new File(Environment.getExternalStorageDirectory(), FILENAME);
@@ -184,5 +165,120 @@ public class Projects extends AppCompatActivity {
             e.printStackTrace();
         }
         return file;
+    }
+
+    private void checkWritePermissions() {
+        // Checks for write permissions to external cache directory.
+        // Need to check version because of changes in permissions handling.
+        if (Build.VERSION.SDK_INT >= 23){
+            if (ContextCompat.checkSelfPermission(Projects.this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                // Should we show an explanation?
+                if (ActivityCompat.shouldShowRequestPermissionRationale(Projects.this,
+                        Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                    // Try to request permissions again without a message.
+                    ActivityCompat.requestPermissions(Projects.this,
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+                } else {
+                    // No explanation needed, we can request the permission.
+                    ActivityCompat.requestPermissions(Projects.this,
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+                }
+            }else{
+                // Have permission.
+                hasPermissions = true;
+                return;
+            }
+        }else {
+            hasPermissions = true;
+            return;
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    hasPermissions = true;
+                    return;
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Toast.makeText(getApplicationContext(),"Oops! Project cannot be exported without the appropriate permissions.", Toast.LENGTH_SHORT).show();
+                    //btnExport.setVisibility(View.GONE);
+                }
+                break;
+            }
+        }
+    }
+
+    // Should only be called if one or more projects exist!
+    private File[] createFilesFromProject() {
+        File[] fileArray = new File[projects.size()];
+        int index = 0;
+
+        for (Project project : projects) {
+            String data = "If this file was converted to 'plain text', save it to your computer with the .csv extension to easily open it with Excel\n\n";
+            File file;
+            Context context = getApplicationContext();
+            file = new File(context.getExternalCacheDir(), project.getProjName());
+
+            data = data + "Project:," + project.getProjName() + "\n";
+            data = data + "Date Created:," +project.getDateCreated() + "\n";
+            data = data + "Location:," + project.getProjLoc() + "\n";
+            data = data + "GPS:,Lat:," + project.getLatitude() + ",Long:," + project.getLongitude() + "\n";
+            data = data + "Add'l Info:," + project.getProjInfo() + "\n";
+            data = data + "Soil Type:," + project.getSoilType() + "\n";
+            data = data + "Soil Info:," +project.getSoilInfo() + "\n";
+            data = data + "\n";
+            data = data + ",Number of Points:," + project.getPoints().size() + "\n";
+            for (Point point : project.getPoints()) {
+                data = data + ",Point:," + point.getPointNum() + "\n\n";
+                data = data + ",,#,Blows,Depth,Hammer,CBR,Depth(in)\n";
+                for (Reading reading : point.getReadings()) {
+                    data = data + ",," +
+                            reading.getReadingNum() + "," +
+                            reading.getBlows() + "," +
+                            reading.getTotalDepth() + "," +
+                            reading.getHammer() + "," +
+                            reading.getCbr() + "," +
+                            reading.getTotalDepth()/254 /10 +
+                            "\n";
+                }
+            }
+            try {
+                writer = new FileWriter(file);
+                writer.write(data);
+                writer.close();
+            } catch (IOException e) {
+                Log.d("EAFToolkit", "Unable create file. Check logcat for stackTrace: " + file.getPath());
+                e.printStackTrace();
+            }
+            file.setReadable(true);
+            fileArray[index] = file;
+            index++;
+        }
+        return fileArray;
+    }
+
+    private void sendIntentToEmailApp(File[] filesToSend) {
+        String body = "If this file was converted to 'plain text', save it to your computer with the .csv extension to easily open it with Excel\n\n";
+        Intent email = new Intent(Intent.ACTION_SEND_MULTIPLE);
+        email.putExtra(Intent.EXTRA_SUBJECT, "EAF Toolkit DCP Project Summary");
+        email.putExtra(Intent.EXTRA_TEXT, body);
+        // TODO  Add supporting graphs?
+        ArrayList<Uri> uris = new ArrayList<>();
+        for (File file : filesToSend) {
+            uris.add(Uri.fromFile(file));
+        }
+        email.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+
+        email.setType("message/rfc822");
+        startActivity(Intent.createChooser(email , "Send CSV File(s)"));
     }
 }

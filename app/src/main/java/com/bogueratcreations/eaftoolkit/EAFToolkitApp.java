@@ -70,118 +70,84 @@ class seedRealmDb implements Realm.Transaction {
     public void execute(Realm realm) {
         Log.d("EAFToolkit", "Beginning seedRealmDb transaction...");
         // For one-to-many relationship, need to assign objects to each other in both models!!!
-        final Project realmProject = new Project();
-        final Point realmPoint1 = new Point();
-        final Point realmPoint2 = new Point();
-        final Point realmPoint3 = new Point();
-        final Reading realmReading1 = new Reading();
-        final Reading realmReading2 = new Reading();
-        final Reading realmReading3 = new Reading();
-        final Reading realmReading4 = new Reading();
-        final Reading realmReading5 = new Reading();
-        final Reading realmReading6 = new Reading();
+        Project project = realm.createObject(Project.class,0);
+        project.setProjName("EAF Museum Sample");
+        project.setProjLoc("Pensacola, FL");
+        project.setSoilType(2);
+        project.setSoilInfo("Loose, sandy soil");
+        project.setProjInfo("Randomly generated data for fictional project location.");
+        project.setDateCreated(new Date());
 
-        realmProject.setId(0);
-        realmProject.setProjName("Test Project 1" + (int)(Math.random()*50+1));
-        realmProject.setProjLoc("Test data for testing purposes.");
-        realmProject.setProjInfo("Test data for EAF Toolkit.");
-        realmProject.setDateCreated(new Date());
-        realmReading1.setId(0);
-        realmReading1.setBlows(99);
-        realmReading1.setReadingNum(0);
-        realmReading1.setHammer(1);
-        realmReading1.setDepth(25);
-        realmReading1.setSoilType(2);
-        realmReading1.setCbr(2.1384);
-        realmReading1.setPoint(realmPoint1);
+        Point point1 = realm.createObject(Point.class,0);
+        RealmList<Reading> readingList1 = new RealmList<>();
+        for (int i = 0; i < 20; i++) {
+            Reading reading = realm.createObject(Reading.class, i);
+            reading.setBlows((int)(Math.random() * 10 + 1));
+            reading.setReadingNum(i);
+            reading.setHammer(1);
+            reading.setDepth(50);
+            reading.setSoilType(2);
+            reading.calcCbr();
+            reading.setTotalDepth((i+1) * 50);
+            reading.setPoint(point1);
+            readingList1.add(reading);
+        }
+//        point1.setId(0);  // Already set Id.
+        point1.setPointNum("Back Wall");
+        point1.setSoilType(2);
+        point1.setCbr(12.84);
+        point1.setProject(project);
+        point1.setDate(new Date());
+        point1.setReadings(readingList1);
 
-        realmReading2.setId(1);
-        realmReading2.setBlows(99);
-        realmReading2.setReadingNum(1);
-        realmReading2.setHammer(1);
-        realmReading2.setDepth(25);
-        realmReading2.setSoilType(2);
-        realmReading2.setCbr(5.834);
-        realmReading2.setPoint(realmPoint1);
+        RealmList<Point> pointList = new RealmList<>();
+        pointList.add(point1);
 
-        RealmList<Reading> readings1 = new RealmList<>(realmReading1,realmReading2);
+        Point point2 = realm.createObject(Point.class,1);
+        RealmList<Reading> readingList2 = new RealmList<>();
+        for (int i = 0; i < 20; i++) {
+            Reading reading = realm.createObject(Reading.class, i+30);
+            reading.setBlows((int)(Math.random() * 10 + 1));
+            reading.setReadingNum(i);
+            reading.setHammer(1);
+            reading.setDepth(50);
+            reading.setSoilType(2);
+            reading.calcCbr();
+            reading.setTotalDepth((i+1) * 50);
+            reading.setPoint(point2);
+            readingList2.add(reading);
+        }
+        point2.setPointNum("Center of site");
+        point2.setSoilType(2);
+        point2.setCbr(17.82);
+        point2.setProject(project);
+        point2.setDate(new Date());
+        point2.setReadings(readingList2);
+        pointList.add(point2);
 
-        realmReading3.setId(2);
-        realmReading3.setBlows(15);
-        realmReading3.setReadingNum(0);
-        realmReading3.setHammer(1);
-        realmReading3.setDepth(25);
-        realmReading3.setSoilType(2);
-        realmReading3.setCbr(28.874);
-        realmReading3.setPoint(realmPoint2);
+        Point point3 = realm.createObject(Point.class,2);
+        RealmList<Reading> readingList3 = new RealmList<>();
+        for (int i = 0; i < 20; i++) {
+            Reading reading = realm.createObject(Reading.class, i+60);
+            reading.setBlows((int)(Math.random() * 10 + 1));
+            reading.setReadingNum(i);
+            reading.setHammer(1);
+            reading.setDepth(50);
+            reading.setSoilType(2);
+            reading.calcCbr();
+            reading.setTotalDepth((i+1) * 50);
+            reading.setPoint(point3);
+            readingList3.add(reading);
+        }
+        point3.setPointNum("Front Left");
+        point3.setSoilType(2);
+        point3.setCbr(32.12);
+        point3.setProject(project);
+        point3.setDate(new Date());
+        point3.setReadings(readingList3);
+        pointList.add(point3);
 
-        realmReading4.setId(3);
-        realmReading4.setBlows(15);
-        realmReading4.setReadingNum(1);
-        realmReading4.setHammer(1);
-        realmReading4.setDepth(25);
-        realmReading4.setSoilType(2);
-        realmReading4.setCbr(39.23);
-        realmReading4.setPoint(realmPoint2);
-
-        RealmList<Reading> readings2 = new RealmList<>(realmReading3,realmReading4);
-
-        realmReading5.setId(4);
-        realmReading5.setBlows(5);
-        realmReading5.setReadingNum(0);
-        realmReading5.setHammer(1);
-        realmReading5.setDepth(25);
-        realmReading5.setSoilType(2);
-        realmReading5.setCbr(18.343);
-        realmReading5.setPoint(realmPoint3);
-
-        realmReading6.setId(5);
-        realmReading6.setBlows(5);
-        realmReading6.setReadingNum(1);
-        realmReading6.setHammer(1);
-        realmReading6.setDepth(25);
-        realmReading6.setSoilType(2);
-        realmReading6.setCbr(15.233);
-        realmReading6.setPoint(realmPoint3);
-
-        RealmList<Reading> readings3 = new RealmList<>(realmReading5,realmReading6);
-
-        realmPoint1.setId(0);
-        realmPoint1.setPointNum("Test Back Leg 1");
-        realmPoint1.setSoilType(2);
-        realmPoint1.setCbr(2.1384);
-        realmPoint1.setProject(realmProject);
-        realmPoint1.setReadings(readings1);
-        realmPoint1.setDate(new Date());
-        realmPoint2.setId(1);
-        realmPoint2.setPointNum("Test Back Leg 2");
-        realmPoint2.setSoilType(2);
-        realmPoint2.setDate(new Date());
-        realmPoint2.setCbr(28.874);
-        realmPoint2.setProject(realmProject);
-        realmPoint2.setReadings(readings2);
-        realmPoint3.setId(2);
-        realmPoint3.setPointNum("Test Front Leg 3");
-        realmPoint3.setSoilType(2);
-        realmPoint3.setDate(new Date());
-        realmPoint3.setCbr(15.233);
-        realmPoint3.setProject(realmProject);
-        realmPoint3.setReadings(readings3);
-
-        RealmList<Point> points = new RealmList<>(realmPoint1,realmPoint2,realmPoint3);
-        realmProject.setPoints(points);
-
-        realm.copyToRealmOrUpdate(realmProject);
-        realm.copyToRealmOrUpdate(realmPoint1);
-        realm.copyToRealmOrUpdate(realmPoint2);
-        realm.copyToRealmOrUpdate(realmPoint3);
-        realm.copyToRealmOrUpdate(realmReading1);
-        realm.copyToRealmOrUpdate(realmReading2);
-        realm.copyToRealmOrUpdate(realmReading3);
-        realm.copyToRealmOrUpdate(realmReading4);
-        realm.copyToRealmOrUpdate(realmReading5);
-        realm.copyToRealmOrUpdate(realmReading6);
-        Log.d("EAFToolkit", "Completed seedRealmDb transaction.");
+        project.setPoints(pointList);
     }
 
     @Override

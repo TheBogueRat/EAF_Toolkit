@@ -54,4 +54,5 @@
     <string name="title_activity_points_add">PointsAdd</string>
     <string name="select_create_project">Select / Create Project</string>
     <string name="title_activity_points_chart">Project CBRs Graph</string>
+    <string name="title_activity_points_plot">PointsPlot</string>
 </resources>
