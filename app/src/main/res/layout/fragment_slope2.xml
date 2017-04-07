@@ -24,7 +24,7 @@
         android:layout_marginTop="10dp"
         android:layout_below="@+id/tvHead2"
         android:layout_centerHorizontal="true"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <EditText
         android:layout_width="100dp"
@@ -35,7 +35,7 @@
         android:id="@+id/etSlope2Elev1"
         android:layout_below="@+id/tv2Elev1"
         android:layout_centerHorizontal="true"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,7 +46,7 @@
         android:layout_marginTop="10dp"
         android:layout_below="@+id/etSlope2Elev2"
         android:layout_centerHorizontal="true"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <EditText
         android:layout_width="100dp"
@@ -57,7 +57,7 @@
         android:id="@+id/etSlope2Dist"
         android:layout_below="@+id/tv2Dist"
         android:layout_centerHorizontal="true"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -98,7 +98,7 @@
         android:layout_marginTop="10dp"
         android:layout_below="@+id/etSlope2Elev1"
         android:layout_centerHorizontal="true"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <EditText
         android:layout_width="100dp"
@@ -109,6 +109,6 @@
         android:id="@+id/etSlope2Elev2"
         android:layout_below="@+id/tv2Elev2"
         android:layout_centerHorizontal="true"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
 </RelativeLayout>

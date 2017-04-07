@@ -27,7 +27,6 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
                 android:background="@android:color/holo_red_dark"
-                android:onClick="fa"
                 android:text="Delete"
                 android:textColor="@android:color/white" />
         </android.support.v7.widget.Toolbar>

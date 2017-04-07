@@ -1,6 +1,7 @@
 package com.bogueratcreations.eaftoolkit;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,9 @@ public class ListViewItemAdapter extends ArrayAdapter<ListViewItem> {
         super(context, R.layout.listview_main, items);
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         ViewHolder viewHolder;
 
         if(convertView == null) {

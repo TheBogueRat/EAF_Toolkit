@@ -4,22 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -34,7 +24,6 @@ import java.util.Locale;
 import co.moonmonkeylabs.realmrecyclerview.RealmRecyclerView;
 import io.realm.Realm;
 import io.realm.RealmBasedRecyclerViewAdapter;
-import io.realm.RealmList;
 import io.realm.RealmResults;
 import io.realm.RealmViewHolder;
 
@@ -42,7 +31,8 @@ public class Readings extends AppCompatActivity {
 
     // TODO: Toggle graph plot style
     // TODO: Add graphing for current
-    // TODO: 1st point should only be a zeroing point, force display of n/a for CBR, Blows, & Hammer
+    // TODO: Add total depth helper to show the total when selecting a new depth.
+
     long passedPointID;
     Point passedPoint;
     private Realm realm;

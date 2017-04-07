@@ -1,11 +1,7 @@
 package com.bogueratcreations.eaftoolkit.DCP.model;
 
 import android.util.Log;
-import android.widget.Switch;
 
-import java.util.UUID;
-
-import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 

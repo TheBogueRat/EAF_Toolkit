@@ -2,19 +2,17 @@ package com.bogueratcreations.eaftoolkit.DCP;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
-import com.bogueratcreations.eaftoolkit.DCP.model.Point;
 import com.bogueratcreations.eaftoolkit.DCP.model.Project;
 import com.bogueratcreations.eaftoolkit.R;
 
@@ -22,12 +20,9 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 import info.hoang8f.android.segmented.SegmentedGroup;
 import io.realm.Realm;
-import io.realm.RealmList;
-import io.realm.RealmResults;
 
 public class ProjectsAdd extends AppCompatActivity {
 
@@ -187,6 +182,7 @@ public class ProjectsAdd extends AppCompatActivity {
     public static class DatePickerFragment extends DialogFragment implements
             DatePickerDialog.OnDateSetListener {
 
+        @NonNull
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             // Use the current date as the default date in the picker

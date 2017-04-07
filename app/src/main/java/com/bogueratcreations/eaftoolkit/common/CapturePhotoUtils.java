@@ -26,10 +26,10 @@ public class CapturePhotoUtils {
      * that is inserted manually gets saved at the end of the gallery (because date is not populated).
      * @see android.provider.MediaStore.Images.Media#insertImage(ContentResolver, Bitmap, String, String)
      */
-    public static final String insertImage(ContentResolver cr,
-                                           Bitmap source,
-                                           String title,
-                                           String description) {
+    public static String insertImage(ContentResolver cr,
+                                     Bitmap source,
+                                     String title,
+                                     String description) {
 
         ContentValues values = new ContentValues();
         values.put(Images.Media.TITLE, title);
@@ -83,7 +83,7 @@ public class CapturePhotoUtils {
      * meta data. The StoreThumbnail method is private so it must be duplicated here.
      * @see android.provider.MediaStore.Images.Media (StoreThumbnail private method)
      */
-    private static final Bitmap storeThumbnail(
+    private static Bitmap storeThumbnail(
             ContentResolver cr,
             Bitmap source,
             long id,

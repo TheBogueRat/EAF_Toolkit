@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bogueratcreations.eaftoolkit.DCP.model.Project;
@@ -12,7 +11,6 @@ import com.bogueratcreations.eaftoolkit.R;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmBaseAdapter;
-import io.realm.RealmList;
 
 /**
  * Created by jodyroth on 10/24/16.

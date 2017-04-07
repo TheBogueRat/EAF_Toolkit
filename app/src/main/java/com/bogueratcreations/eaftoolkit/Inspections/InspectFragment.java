@@ -24,7 +24,7 @@ public class InspectFragment extends ListFragment {
         super.onCreate(savedInstanceState);
 
         // initialize the itmes list
-        List<ListViewItem> mItems = new ArrayList<ListViewItem>();
+        List<ListViewItem> mItems = new ArrayList<>();
         Resources resources = getResources();
 
         mItems.add(new ListViewItem(ResourcesCompat.getDrawable(resources, R.drawable.inspectcsec, null), "NAMP - CSEC", "Computerized Self-Evaluation Checklist"));

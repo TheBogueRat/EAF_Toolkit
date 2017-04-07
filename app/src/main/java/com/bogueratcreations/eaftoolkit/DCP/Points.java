@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
@@ -319,6 +320,7 @@ public class Points extends AppCompatActivity {
     public static class pointDatePickerFragment extends DialogFragment implements
             DatePickerDialog.OnDateSetListener {
 
+        @NonNull
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             // Use the current date as the default date in the picker
@@ -340,11 +342,11 @@ public class Points extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            if (resultCode == RESULT_OK) {
-//                passedProjectID = data.getLongExtra("passedProjectID", -1);  // TODO: Don't think I need this here since I use the same key to receive this from Projects.class
-            }
-        }
+//        if (requestCode == 1) {
+//            if (resultCode == RESULT_OK) {
+////                passedProjectID = data.getLongExtra("passedProjectID", -1);  // TODO: Don't think I need this here since I use the same key to receive this from Projects.class
+//            }
+//        }
     }
 
     public void revertView() {

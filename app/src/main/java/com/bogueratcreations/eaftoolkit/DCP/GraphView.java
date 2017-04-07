@@ -1,6 +1,6 @@
 package com.bogueratcreations.eaftoolkit.DCP;
 
-/**
+/*
  * Created by jodyroth on 4/4/17.
  */
 
@@ -9,7 +9,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
-import android.util.Log;
 import android.view.View;
 
 import com.bogueratcreations.eaftoolkit.DCP.model.PlotDataset;
@@ -28,7 +27,6 @@ public class GraphView extends View {
 
     private PlotDataset mPlotDataset;
     private String[] horlabels;
-    private String[] verlabels;
     private float lMargin = 100;
     private float rMargin = 100;
     private float tMargin = 75;
@@ -42,7 +40,7 @@ public class GraphView extends View {
             Color.rgb(106, 150, 31), Color.rgb(179, 100, 53)
     };
 
-    public GraphView(Context context, PlotDataset plotDataSet, String[] horlabels, String[] verlabels) {
+    public GraphView(Context context, PlotDataset plotDataSet, String[] horlabels) {
         super(context);
         if (plotDataSet == null)
             return;
@@ -52,10 +50,6 @@ public class GraphView extends View {
             this.horlabels = new String[0];
         else
             this.horlabels = horlabels;
-        if (verlabels == null)
-            this.verlabels = new String[0];
-        else
-            this.verlabels = verlabels;
         paint = new Paint();
         paintBg = new Paint();
         paintBg.setColor(Color.WHITE);
@@ -79,15 +73,10 @@ public class GraphView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        float border = 50; // left & top are working
-        float horstart = lMargin;  // Removed * 2
         float height = getHeight();
         float width = getWidth() - 1;
         float xScale = 100; // Width of chart
         float yScale = 1020; // Height of chart
-        float max = 100; // getMax();  // Max height of chart
-        float min = 0; // getMin();  // Min height of chart
-        float diff = max - min;
         float graphHeight = height - tMargin - bMargin - legendHeight; // Minus size of legend...
         float graphWidth = width - lMargin - rMargin;
 

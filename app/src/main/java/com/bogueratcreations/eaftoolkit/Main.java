@@ -22,8 +22,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import io.realm.Realm;
-
 public class Main extends AppCompatActivity {
 
     // Array of integers points to images stored in /res/drawable-ldpi/

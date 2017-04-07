@@ -67,7 +67,6 @@ public class ProgramsFragment extends Fragment {
         if ((message.equals("CSEC")) || (message.equals("EAF")) || (message.equals("ARFF"))) {
             tableName = message;
         }
-        else { }  // TODO: Handle issue with not receiving a valid option
         Log.i("EAF Toolkit", "Using table '" + tableName + "'  " + "Message value is: " + message);
         handler.setTableName(tableName);
 

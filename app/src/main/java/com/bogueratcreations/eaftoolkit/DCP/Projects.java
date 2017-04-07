@@ -7,12 +7,12 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,9 +38,7 @@ public class Projects extends AppCompatActivity {
     // TODO: Display soil type in projects list.
 
     // Email variables
-    private static final String FILENAME = "EAF_Toolkit_CBRs.csv";
     private FileWriter writer;
-    private String[] emailBody = {"No content passed.1.","No content passed.2."};
 
     // Database variables
     private Realm realm;
@@ -138,34 +136,31 @@ public class Projects extends AppCompatActivity {
         }
     }
 
-    // Create the file with
-    private File createFileWithContent(String content) {
-
-        if(TextUtils.isEmpty(content)){
-            //content = emailBody;
-        }
-        File file = null;
-
-        // Write file string file.
-        try{
-            Context thisContext = getApplicationContext();
-            //file = new File(Environment.getExternalStorageDirectory(), FILENAME);
-            file = new File(thisContext.getExternalCacheDir(), FILENAME);
-
-            if ((!file.canRead()) || (!file.exists())) {
-                Log.e("EAFToolkit", "File cant read or not exists 2: " + file.getPath());
-            } else {
-                Log.e("EAFToolkit", "File can read and exists 2: " + file.getPath());
-            }
-            writer = new FileWriter(file);
-            writer.write("Here's my test content.");
-            writer.close();
-        } catch (IOException e) {
-            Log.d("EAFToolkit", "Unable create temp file. Check logcat for stackTrace: " + file.getPath());
-            e.printStackTrace();
-        }
-        return file;
-    }
+//    // Create the file with
+//    private File createFileWithContent() {
+//
+//        File file = null;
+//
+//        // Write file string file.
+//        try{
+//            Context thisContext = getApplicationContext();
+//            //file = new File(Environment.getExternalStorageDirectory(), FILENAME);
+//            file = new File(thisContext.getExternalCacheDir(), FILENAME);
+//
+//            if ((!file.canRead()) || (!file.exists())) {
+//                Log.e("EAFToolkit", "File cant read or not exists 2: " + file.getPath());
+//            } else {
+//                Log.e("EAFToolkit", "File can read and exists 2: " + file.getPath());
+//            }
+//            writer = new FileWriter(file);
+//            writer.write("Here's my test content.");
+//            writer.close();
+//        } catch (IOException e) {
+//            Log.d("EAFToolkit", "Unable create temp file. Check logcat for stackTrace: " + file.getPath());
+//            e.printStackTrace();
+//        }
+//        return file;
+//    }
 
     private void checkWritePermissions() {
         // Checks for write permissions to external cache directory.
@@ -191,15 +186,14 @@ public class Projects extends AppCompatActivity {
             }else{
                 // Have permission.
                 hasPermissions = true;
-                return;
             }
         }else {
             hasPermissions = true;
-            return;
         }
     }
+
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE: {
                 // If request is cancelled, the result arrays are empty.

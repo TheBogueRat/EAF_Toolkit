@@ -1,6 +1,5 @@
 package com.bogueratcreations.eaftoolkit.Draw;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -21,6 +20,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
@@ -33,12 +33,10 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bogueratcreations.eaftoolkit.Main;
 import com.bogueratcreations.eaftoolkit.R;
 import com.bogueratcreations.eaftoolkit.common.CapturePhotoUtils;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.UUID;
@@ -151,9 +149,7 @@ public class Draw extends AppCompatActivity implements OnClickListener {
                 fos = openFileOutput("drawingInProgress", Context.MODE_PRIVATE);
                 image.compress(Bitmap.CompressFormat.PNG, 100, fos);
                 fos.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return null;
@@ -455,7 +451,7 @@ public class Draw extends AppCompatActivity implements OnClickListener {
     }
     @Override
     public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
+                                           @NonNull String permissions[], @NonNull int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_SAVE_TO_EXTERNAL_STORAGE: {
                 // If request is cancelled, the result arrays are empty.

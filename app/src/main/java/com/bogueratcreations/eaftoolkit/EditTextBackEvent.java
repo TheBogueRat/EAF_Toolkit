@@ -3,12 +3,11 @@ package com.bogueratcreations.eaftoolkit;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
-import android.widget.EditText;
 
 /**
  * Created by jodyroth on 7/7/16.
  */
-public class EditTextBackEvent extends EditText {
+public class EditTextBackEvent extends android.support.v7.widget.AppCompatEditText {
 
     private EditTextImeBackListener mOnImeBack;
 

@@ -1,6 +1,5 @@
 package com.bogueratcreations.eaftoolkit.gallery;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,9 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bogueratcreations.eaftoolkit.R;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 
 import java.util.ArrayList;
 

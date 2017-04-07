@@ -10,6 +10,7 @@
     tools:showIn="@layout/activity_points">
 
     <ImageView
+        android:contentDescription="Image of rolling hills and blue sky."
         android:id="@+id/ivSky"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

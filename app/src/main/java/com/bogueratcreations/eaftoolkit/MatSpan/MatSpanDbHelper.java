@@ -71,7 +71,7 @@ public class MatSpanDbHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
 
         //code to keep table data
-        List<MatSpanModel> objList = new ArrayList<MatSpanModel>();
+        List<MatSpanModel> objList = new ArrayList<>();
 
         String selectQuery = "SELECT " + SELECT_DATA + " FROM " + TABLE_NAME;
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -134,22 +134,21 @@ public class MatSpanDbHelper extends SQLiteOpenHelper {
     }
 
     // TODO: Remove for production - This is for the Android Database Manager
-    public ArrayList<Cursor> getData(String Query){
+    public ArrayList<Cursor> getData(String query){
         //get writable database
         SQLiteDatabase sqlDB = this.getWritableDatabase();
         String[] columns = new String[] { "mesage" };
         //an array list of cursor to save two cursors one has results from the query
         //other cursor stores error message if any errors are triggered
-        ArrayList<Cursor> alc = new ArrayList<Cursor>(2);
+        ArrayList<Cursor> alc = new ArrayList<>(2);
         MatrixCursor Cursor2= new MatrixCursor(columns);
         alc.add(null);
         alc.add(null);
 
 
         try{
-            String maxQuery = Query ;
             //execute the query results will be save in Cursor c
-            Cursor c = sqlDB.rawQuery(maxQuery, null);
+            Cursor c = sqlDB.rawQuery(query, null);
 
 
             //add value to cursor2

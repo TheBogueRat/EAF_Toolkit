@@ -57,7 +57,7 @@ public class MatSpanSummary extends AppCompatActivity {
         try {
             startActivity(sendIntent);
         }  catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
 }

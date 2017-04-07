@@ -60,22 +60,19 @@ public class MatSpanDbAdapter {
     public Cursor queryAll() {
         String[] cols = {MatSpanDbHelper.KEY_ID, MatSpanDbHelper.KEY_NAME, MatSpanDbHelper.KEY_WIDTH, MatSpanDbHelper.KEY_LENGTH, MatSpanDbHelper.KEY_SPANS, MatSpanDbHelper.KEY_lAYPAT, MatSpanDbHelper.KEY_START, MatSpanDbHelper.KEY_SELECTED};
         openToWrite();
-        Cursor c = db.query(MatSpanDbHelper.TABLE_NAME, cols, null, null, null, null, MatSpanDbHelper.KEY_NAME);
-        return c;
+        return db.query(MatSpanDbHelper.TABLE_NAME, cols, null, null, null, null, MatSpanDbHelper.KEY_NAME);
     }
 
     public Cursor querySpan(int spanId) {
         String[] cols = {MatSpanDbHelper.KEY_ID, MatSpanDbHelper.KEY_NAME, MatSpanDbHelper.KEY_WIDTH, MatSpanDbHelper.KEY_LENGTH, MatSpanDbHelper.KEY_SPANS, MatSpanDbHelper.KEY_lAYPAT, MatSpanDbHelper.KEY_START, MatSpanDbHelper.KEY_SELECTED};
         openToWrite();
-        Cursor c = db.query(MatSpanDbHelper.TABLE_NAME, cols, MatSpanDbHelper.KEY_ID + "=" + spanId, null, null, null, null);
-        return c;
+        return db.query(MatSpanDbHelper.TABLE_NAME, cols, MatSpanDbHelper.KEY_ID + "=" + spanId, null, null, null, null);
     }
 // TODO: Verify functionality
     public Cursor querySelected() {
         String[] cols = {MatSpanDbHelper.KEY_ID, MatSpanDbHelper.KEY_NAME, MatSpanDbHelper.KEY_WIDTH, MatSpanDbHelper.KEY_LENGTH, MatSpanDbHelper.KEY_SPANS, MatSpanDbHelper.KEY_lAYPAT, MatSpanDbHelper.KEY_START, MatSpanDbHelper.KEY_SELECTED};
         openToRead();
-        Cursor c = db.query(MatSpanDbHelper.TABLE_NAME, cols, MatSpanDbHelper.KEY_SELECTED + "= 1", null, null, null, MatSpanDbHelper.KEY_NAME);
-        return c;
+        return db.query(MatSpanDbHelper.TABLE_NAME, cols, MatSpanDbHelper.KEY_SELECTED + "= 1", null, null, null, MatSpanDbHelper.KEY_NAME);
     }
 
     public String summarizeSelected() {
@@ -124,7 +121,7 @@ public class MatSpanDbAdapter {
         openToRead(); // sets db and helper variables
         ArrayList<MatSpanModel> matSpanList = null;
         try{
-            matSpanList = new ArrayList<MatSpanModel>();
+            matSpanList = new ArrayList<>();
             Cursor cursor = querySelected();
             if(!cursor.isLast())
             {

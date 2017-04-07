@@ -91,9 +91,8 @@ public class PointsPlot extends AppCompatActivity {
         // Plot data
         ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.plotViewLayout);
 
-        String[] verlabels = new String[] { "0", "510", "1120" };
         String[] horlabels = new String[] { "1", "10", "100" };
-        graphView = new GraphView(this, plotDataset, horlabels, verlabels);
+        graphView = new GraphView(this, plotDataset, horlabels);
         constraintLayout.addView(graphView);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -119,14 +118,7 @@ public class PointsPlot extends AppCompatActivity {
             graphView.setDrawingCacheEnabled(true);
             Bitmap source = graphView.getDrawingCache();
 
-        /**
-         * A copy of the Android internals insertImage method, this method populates the
-         * meta data with DATE_ADDED and DATE_TAKEN. This fixes a common problem where media
-         * that is inserted manually gets saved at the end of the gallery (because date is not populated).
-         */
-
             // Pump it out to the gallery.
-//            long dateString = (long)(new Date());
             long dateTime = System.currentTimeMillis() / 1000;
             ContentValues contentValues = new ContentValues();
             contentValues.put(MediaStore.Images.Media.TITLE, fileName);
@@ -252,11 +244,9 @@ public class PointsPlot extends AppCompatActivity {
             }else{
                 // Have permission.
                 hasPermissions = true;
-                return;
             }
         }else {
             hasPermissions = true;
-            return;
         }
     }
 

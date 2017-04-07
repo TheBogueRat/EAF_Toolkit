@@ -69,6 +69,8 @@ public class Questions extends AppCompatActivity {
         sendIntent.setType("text/html");
         try {
             startActivity(sendIntent);
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
