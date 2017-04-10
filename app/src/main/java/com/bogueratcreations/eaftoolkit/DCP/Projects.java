@@ -28,6 +28,7 @@ import com.bogueratcreations.eaftoolkit.R;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import io.realm.Realm;
@@ -45,6 +46,8 @@ public class Projects extends AppCompatActivity {
     RealmResults<Project> projects;
 
     static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 25;
+    static final int MY_PERMISSIONS_REQUEST_LOCATION = 27;
+
     boolean hasPermissions = false;
     Button btnExport;
 
@@ -136,32 +139,6 @@ public class Projects extends AppCompatActivity {
         }
     }
 
-//    // Create the file with
-//    private File createFileWithContent() {
-//
-//        File file = null;
-//
-//        // Write file string file.
-//        try{
-//            Context thisContext = getApplicationContext();
-//            //file = new File(Environment.getExternalStorageDirectory(), FILENAME);
-//            file = new File(thisContext.getExternalCacheDir(), FILENAME);
-//
-//            if ((!file.canRead()) || (!file.exists())) {
-//                Log.e("EAFToolkit", "File cant read or not exists 2: " + file.getPath());
-//            } else {
-//                Log.e("EAFToolkit", "File can read and exists 2: " + file.getPath());
-//            }
-//            writer = new FileWriter(file);
-//            writer.write("Here's my test content.");
-//            writer.close();
-//        } catch (IOException e) {
-//            Log.d("EAFToolkit", "Unable create temp file. Check logcat for stackTrace: " + file.getPath());
-//            e.printStackTrace();
-//        }
-//        return file;
-//    }
-
     private void checkWritePermissions() {
         // Checks for write permissions to external cache directory.
         // Need to check version because of changes in permissions handling.
@@ -225,25 +202,43 @@ public class Projects extends AppCompatActivity {
             data = data + "Project:," + project.getProjName() + "\n";
             data = data + "Date Created:," +project.getDateCreated() + "\n";
             data = data + "Location:," + project.getProjLoc() + "\n";
-            data = data + "GPS:,Lat:," + project.getLatitude() + ",Long:," + project.getLongitude() + "\n";
+            data = data + "GPS (not implemented):,Lat:," + project.getLatitude() + ",Long:," + project.getLongitude() + "\n";
             data = data + "Add'l Info:," + project.getProjInfo() + "\n";
-            data = data + "Soil Type:," + project.getSoilType() + "\n";
+            // Display Soil Type.
+            switch (project.getSoilType()) {
+                case 0:
+                    data = data + "Soil Type:,Low Plasticity Clay (under 10 CBR)\n";
+                    break;
+                case 1:
+                    data = data + "Soil Type:,High Plasticity Clay\n";
+                    break;
+                case 2:
+                    data = data + "Soil Type:,All Other Soils\n";
+                    break;
+
+            }
             data = data + "Soil Info:," +project.getSoilInfo() + "\n";
             data = data + "\n";
             data = data + ",Number of Points:," + project.getPoints().size() + "\n";
             for (Point point : project.getPoints()) {
-                data = data + ",Point:," + point.getPointNum() + "\n\n";
-                data = data + ",,#,Blows,Depth,Hammer,CBR,Depth(in)\n";
-                for (Reading reading : point.getReadings()) {
+                data = data + ",Point:," + point.getPointNum() + "\n";
+                data = data + ",,#,Blows,Depth(mm),Hammer,CBR,Depth(in)\n";
+                for (Reading reading : point.getReadings().sort("readingNum")) {
+                    int totalDepth = reading.getTotalDepth();
+                    DecimalFormat formatter = new DecimalFormat("###.#");
+                    String totalDepthStr = formatter.format(totalDepth / 25.4);
+                    Log.d("EAFToolkit", "Total Depth in Inches: " + totalDepthStr + "  Total Depth: " + totalDepth);
                     data = data + ",," +
                             reading.getReadingNum() + "," +
                             reading.getBlows() + "," +
-                            reading.getTotalDepth() + "," +
+                            totalDepth + "," +
                             reading.getHammer() + "," +
                             reading.getCbr() + "," +
-                            reading.getTotalDepth()/254 /10 +
+                            totalDepthStr +
                             "\n";
                 }
+                // Separation between points
+                data = data + "\n\n";
             }
             try {
                 writer = new FileWriter(file);
@@ -261,8 +256,10 @@ public class Projects extends AppCompatActivity {
     }
 
     private void sendIntentToEmailApp(File[] filesToSend) {
-        String body = "If this file was converted to 'plain text', save it to your computer with the .csv extension to easily open it with Excel\n\n";
+        String body = "If this file was converted to 'plain text', save it to your computer with the .csv extension to easily open it with Excel\n";
         Intent email = new Intent(Intent.ACTION_SEND_MULTIPLE);
+        email.setData(Uri.parse("mailto:"));
+        email.setType("message/rfc822");
         email.putExtra(Intent.EXTRA_SUBJECT, "EAF Toolkit DCP Project Summary");
         email.putExtra(Intent.EXTRA_TEXT, body);
         // TODO  Add supporting graphs?
@@ -271,8 +268,8 @@ public class Projects extends AppCompatActivity {
             uris.add(Uri.fromFile(file));
         }
         email.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
-
-        email.setType("message/rfc822");
-        startActivity(Intent.createChooser(email , "Send CSV File(s)"));
+        if (email.resolveActivity(getPackageManager()) != null) {
+            startActivity(Intent.createChooser(email, "Send Project in CSV File(s)"));
+        }
     }
 }

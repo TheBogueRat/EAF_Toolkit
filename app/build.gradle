@@ -26,8 +26,8 @@ android {
         applicationId "com.bogueratcreations.eafToolkit"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 20042
-        versionName '4.2'
+        versionCode 20043
+        versionName '4.3'
     }
     buildTypes {
         release {
@@ -64,7 +64,4 @@ dependencies {
     compile 'io.realm:android-adapters:1.3.0'
     compile 'com.github.thorbenprimke:realm-recyclerview:0.9.25'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-//    compile 'com.androidplot:androidplot-core:1.4.2'
-//    compile 'com.jjoe64:graphview:4.2.1'
-//    compile 'com.diogobernardino:williamchart:2.2'
 }
