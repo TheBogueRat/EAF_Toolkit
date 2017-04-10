@@ -27,6 +27,7 @@ public class GraphView extends View {
 
     private PlotDataset mPlotDataset;
     private String[] horlabels;
+    private boolean chartType = true;
     private float lMargin = 100;
     private float rMargin = 100;
     private float tMargin = 75;
@@ -40,7 +41,7 @@ public class GraphView extends View {
             Color.rgb(106, 150, 31), Color.rgb(179, 100, 53)
     };
 
-    public GraphView(Context context, PlotDataset plotDataSet, String[] horlabels) {
+    public GraphView(Context context, PlotDataset plotDataSet, String[] horlabels, boolean jaggedChart) {
         super(context);
         if (plotDataSet == null)
             return;
@@ -50,6 +51,7 @@ public class GraphView extends View {
             this.horlabels = new String[0];
         else
             this.horlabels = horlabels;
+        this.chartType = jaggedChart;
         paint = new Paint();
         paintBg = new Paint();
         paintBg.setColor(Color.WHITE);
@@ -143,10 +145,10 @@ public class GraphView extends View {
             float lastX = 0 + lMargin;
             float lastY = 0 + tMargin;
             boolean firstPoint = true;
+            boolean secondPoint = true;
             paintLine.setColor(colors[colorIndex]);
             paint.setColor(colors[colorIndex]);
             paintLineSecondary.setColor(colors[colorIndex]);
-
             for(PlotPoint p : s.getPlotPoints()) {
                 float xVal = (float)(Math.log(p.getX()) / Math.log(100)) * 100;
                 float yVal = p.getY();
@@ -158,16 +160,31 @@ public class GraphView extends View {
                 if (firstPoint) {
                     // Skip first plot.
                     firstPoint = false;
+                    // Great, this ignores first point because it just gives us the initial Y for the drawing
                 } else {
-                    // Draw lighter lines direct to point.
-                    canvas.drawLine(lastX,lastY,xPlot,yPlot,paintLineSecondary);
-//                    // Draw stepped lines.
-//                    canvas.drawLine(lastX, lastY, xPlot, lastY, paintLine);
-//                    // Draw vertically for current depth.
-//                    canvas.drawLine(xPlot, lastY, xPlot, yPlot, paintLine);
+                    if (chartType) {
+                        if (secondPoint) {
+                            // Draw from new x down to this point. Because the last one was the zeroing point.
+                            canvas.drawLine(xPlot, lastY, xPlot, yPlot, paintLineSecondary);
+                            secondPoint = false;
+                        } else {
+                            // Draw lighter lines direct to point.
+                            canvas.drawLine(lastX, lastY, xPlot, yPlot, paintLineSecondary);
+                        }
+                    } else {
+                        if (secondPoint) {
+                            // Only draw vertical line...
+                            canvas.drawLine(xPlot, lastY, xPlot, yPlot, paintLine);
+                            secondPoint = false;
+                        } else {
+                            // Draw stepped lines.
+                            canvas.drawLine(lastX, lastY, xPlot, lastY, paintLine);
+                            // Draw vertically for current depth.
+                            canvas.drawLine(xPlot, lastY, xPlot, yPlot, paintLine);
+                        }
+                    }
+                    canvas.drawCircle(xPlot, yPlot, 6f, paintLine);
                 }
-                // Always plot the point.
-                canvas.drawCircle(xPlot, yPlot, 6f, paintLine);
                 lastX = xPlot;
                 lastY = yPlot;
             }

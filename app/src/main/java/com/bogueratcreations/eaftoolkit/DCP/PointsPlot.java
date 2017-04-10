@@ -20,7 +20,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.bogueratcreations.eaftoolkit.DCP.model.PlotDataset;
 import com.bogueratcreations.eaftoolkit.DCP.model.PlotPoint;
@@ -43,10 +45,15 @@ public class PointsPlot extends AppCompatActivity {
     private Realm realm;
     Project passedProject;
 
+    ConstraintLayout constraintLayout;
     GraphView graphView;
+    Button toggleGraph;
+    PlotDataset plotDataset;
+    String[] horlabels;
 
     static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 25;
     boolean hasPermissions = false;
+    boolean jaggedChart = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +61,7 @@ public class PointsPlot extends AppCompatActivity {
         setContentView(R.layout.activity_points_plot);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toggleGraph = (Button) findViewById(R.id.btnStyle);
 
         setTitle("CBR Graph");
 
@@ -65,7 +73,7 @@ public class PointsPlot extends AppCompatActivity {
                 .findFirst();
 
         // Insert data into Plot Data Set.
-        PlotDataset plotDataset = new PlotDataset();
+        plotDataset = new PlotDataset();
         plotDataset.setTitle(passedProject.getProjName());
 
         for (Point p : passedProject.getPoints()) {
@@ -89,11 +97,11 @@ public class PointsPlot extends AppCompatActivity {
         }
 
         // Plot data
-        ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.plotViewLayout);
+        constraintLayout = (ConstraintLayout) findViewById(R.id.plotViewLayout);
 
-        String[] horlabels = new String[] { "1", "10", "100" };
-        graphView = new GraphView(this, plotDataset, horlabels);
-        constraintLayout.addView(graphView);
+        horlabels = new String[] { "1", "10", "100" };
+
+        updateGraph();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +116,13 @@ public class PointsPlot extends AppCompatActivity {
         });
         // Will crash if I do, removing for consistency...
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    private void updateGraph() {
+        Log.d("EAFToolkit", "Updating graph view....");
+        graphView = new GraphView(this.getApplicationContext(), plotDataset, horlabels, jaggedChart);
+        constraintLayout.removeAllViewsInLayout();
+        constraintLayout.addView(graphView);
     }
 
     public void saveToGallery(String fileName, int quality) {
@@ -283,5 +298,10 @@ public class PointsPlot extends AppCompatActivity {
             realm.close();
             realm = null;
         }
+    }
+
+    public void toggleStyle(View view) {
+        jaggedChart = !jaggedChart;
+        updateGraph();
     }
 }

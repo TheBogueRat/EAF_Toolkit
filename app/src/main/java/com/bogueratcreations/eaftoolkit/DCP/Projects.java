@@ -123,7 +123,7 @@ public class Projects extends AppCompatActivity {
                 File[] filesToSend = createFilesFromProject();
                 sendIntentToEmailApp(filesToSend);
             } else {
-                Toast.makeText(getBaseContext(), "Please give permission to create the attachment.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), "Please give permission to create the attachment.", Toast.LENGTH_SHORT).show();
                 checkWritePermissions();
             }
         } else {
@@ -223,19 +223,32 @@ public class Projects extends AppCompatActivity {
             for (Point point : project.getPoints()) {
                 data = data + ",Point:," + point.getPointNum() + "\n";
                 data = data + ",,#,Blows,Depth(mm),Hammer,CBR,Depth(in)\n";
+                boolean firstReading = true;
                 for (Reading reading : point.getReadings().sort("readingNum")) {
                     int totalDepth = reading.getTotalDepth();
                     DecimalFormat formatter = new DecimalFormat("###.#");
                     String totalDepthStr = formatter.format(totalDepth / 25.4);
                     Log.d("EAFToolkit", "Total Depth in Inches: " + totalDepthStr + "  Total Depth: " + totalDepth);
-                    data = data + ",," +
-                            reading.getReadingNum() + "," +
-                            reading.getBlows() + "," +
-                            totalDepth + "," +
-                            reading.getHammer() + "," +
-                            reading.getCbr() + "," +
-                            totalDepthStr +
-                            "\n";
+                    if (firstReading) {
+                        // Skip blows and CBR for first reading (zeroing)
+                        data = data + ",," +
+                                reading.getReadingNum() + "," +
+                                "0," +
+                                totalDepth + "," +
+                                reading.getHammer() + "," +
+                                "n/a," +
+                                totalDepthStr +
+                                "\n";
+                    } else {
+                        data = data + ",," +
+                                reading.getReadingNum() + "," +
+                                reading.getBlows() + "," +
+                                totalDepth + "," +
+                                reading.getHammer() + "," +
+                                reading.getCbr() + "," +
+                                totalDepthStr +
+                                "\n";
+                    }
                 }
                 // Separation between points
                 data = data + "\n\n";

@@ -41,11 +41,14 @@ public class Readings extends AppCompatActivity {
     NumberPicker npHammer;
     NumberPicker npBlows;
     NumberPicker npDepth;
+    TextView tvDepthTotal;
 
     Button btnAppend;
 
     int clickedPos = -1;      // Row to insert above
     int longClickedPos = -1;  // Row to be replaced
+
+    int totalDepth = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +62,12 @@ public class Readings extends AppCompatActivity {
         // TODO: If receiving -1, I wasn't passed a valid point...
 
         tvPointInfo = (TextView) findViewById(R.id.tvPointInfo);
+        tvDepthTotal = (TextView) findViewById(R.id.tvDepthPicker);
+
         npHammer = (NumberPicker) findViewById(R.id.pickHammer);
         npBlows = (NumberPicker) findViewById(R.id.pickBlows);
         npDepth = (NumberPicker) findViewById(R.id.pickDepth);
+
 
         final String[] hammers = {"17.6", "10.1"};
         npHammer.setDisplayedValues(hammers);
@@ -69,23 +75,29 @@ public class Readings extends AppCompatActivity {
         npHammer.setMaxValue(hammers.length - 1);
         npHammer.setWrapSelectorWheel(true);
 
-        //final String[] blows = {"1","2","3","4","5","6","10","15","20","25","30","35","40","45","50"};
-       // npBlows.setDisplayedValues(blows);
         npBlows.setMinValue(0);
         npBlows.setMaxValue(50);
-        //npBlows.setWrapSelectorWheel(true);
 
-        //final String[] depths = {"25","30","35","40","45","50","55","60","65","70","75","80","85","90","95","100","125","150","175","200","225","250","275","300"};
-        //npDepth.setDisplayedValues(depths);
         npDepth.setMinValue(0);
-        npDepth.setMaxValue(150);
-        //npDepth.setWrapSelectorWheel(true);
-        npDepth.setFormatter(new NumberPicker.Formatter() {
+        npDepth.setMaxValue(30);
+        String[] depthValues = new String[31];
+        for (int i = 0; i < depthValues.length; i++) {
+            String number = Integer.toString(i*5);
+            depthValues[i] = number;
+        }
+        npDepth.setDisplayedValues(depthValues);
+//        npDepth.setFormatter(new NumberPicker.Formatter() {
+//            @Override
+//            public String format(int value) {
+//                Log.d("EAFToolkit", "Depth Picker index value: " + value);
+//                int temp = value * 5;
+//                return "" + temp;
+//            }
+//        });
+        npDepth.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
-            public String format(int value) {
-                Log.d("EAFToolkit", "Depth Picker index value: " + value);
-                int temp = value * 5;
-                return "" + temp;
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                tvDepthTotal.setText("Depth: " + (totalDepth + (newVal * 5)));
             }
         });
 
@@ -115,7 +127,11 @@ public class Readings extends AppCompatActivity {
             // Promote selection of minimum depth
             npDepth.setValue(5);
             npBlows.setValue(1);
+            // set totalDepth to existing set
+            totalDepth = readings.get(readings.size() - 1).getTotalDepth();
         }
+        // Set total depth helper value on screen.
+        tvDepthTotal.setText("Depth: " + (totalDepth + (npDepth.getValue() * 5)));
 
         btnAppend = (Button) findViewById(R.id.btnReading);
         btnAppend.setOnClickListener(new View.OnClickListener() {
@@ -205,6 +221,7 @@ public class Readings extends AppCompatActivity {
                             }
                             i++;
                         }
+                        totalDepth = depth;
                         // Update Point.lowest
                         if (passedPoint.getCbr() != lowestCBR) {
                             passedPoint.setCbr(lowestCBR);
@@ -225,23 +242,14 @@ public class Readings extends AppCompatActivity {
                 btnAppend.setBackgroundColor(Color.TRANSPARENT);
                 btnAppend.setText("Append");
                 readingsRealmAdapter.notifyDataSetChanged();
+
+                // Set total depth helper value on screen.
+                tvDepthTotal.setText("Depth: " + (totalDepth + (npDepth.getValue() * 5)));
             }
         });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Create a new Reading...", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-        // Disabled back button in action bar because data was not being passed back
-        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
     }
 
     public class ReadingsRealmAdapter extends RealmBasedRecyclerViewAdapter<Reading, ReadingsRealmAdapter.ViewHolder> {
@@ -356,6 +364,12 @@ public class Readings extends AppCompatActivity {
         }
         @Override
         public void onItemSwipedDismiss(int position) {
+            // Don't allow delete of first item
+            if (position == 0) { 
+                notifyDataSetChanged();
+                Toast.makeText(Readings.this, "Unable to delete zeroing entry.\nPlease modify with long press.", Toast.LENGTH_SHORT).show();
+                return;
+            }
             // Overridden to renumber the list items and refresh the list.
             realm.beginTransaction();
             //passedPoint.getReadings().remove(position);  // Thinking this will remove the point from the list....(might be causing bigger problems)
@@ -378,6 +392,7 @@ public class Readings extends AppCompatActivity {
                 // TODO: Do I need to add all these readings back into the Point?
                 i++;
             }
+            totalDepth = depth;
             // Update Point.lowest if we have readings
             if ((realmResults.size() > 0) && (passedPoint.getCbr() != lowestCBR)) {
                 passedPoint.setCbr(lowestCBR);
@@ -389,6 +404,9 @@ public class Readings extends AppCompatActivity {
             btnAppend.setBackgroundColor(Color.TRANSPARENT);
             btnAppend.setText("Append");
             notifyDataSetChanged();
+
+            // Set total depth helper value on screen.
+            tvDepthTotal.setText("Depth: " + (totalDepth + (npDepth.getValue() * 5)));
         }
     }
 
