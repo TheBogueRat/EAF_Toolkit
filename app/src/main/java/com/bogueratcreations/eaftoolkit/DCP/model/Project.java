@@ -23,8 +23,8 @@ public class Project extends RealmObject {
     private Date dateCreated;
     private int soilType;
     private String soilInfo;
-    private float latitude;
-    private float longitude;
+    private double latitude;
+    private double longitude;
     private RealmList<Point> points;
 
     public void cascadeDeleteProject() {
@@ -91,19 +91,19 @@ public class Project extends RealmObject {
         this.soilInfo = soilInfo;
     }
 
-    public float getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(float latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(float longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 

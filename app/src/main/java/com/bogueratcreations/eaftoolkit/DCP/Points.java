@@ -60,7 +60,7 @@ public class Points extends AppCompatActivity {
     EditText pointName;
     static EditText pointDate;
     TextView tvSoilType;
-    Button btnSaveEdit;  // This is now the Graph button...
+    Button btnSaveDelete;  // This is now the Graph button...
 
     // TODO: Capture back button in edit mode and ask about saving....
     @Override
@@ -121,13 +121,11 @@ public class Points extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                selectedPointID = adapter.getItem(i).getId(); // TODO: verifiy this is getting the Point id not just an arbitrary id from the list.
+                selectedPointID = adapter.getItem(i).getId();
                 defaultView.setVisibility(View.GONE);
                 editView.setVisibility(View.VISIBLE);
                 editMode = true;
-                hasChanged = false;
                 toggleButton();
-                // TODO: Change FAB to save button
                 FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabPoints);
                 fab.setImageResource(R.drawable.ic_action_save);
 
@@ -139,13 +137,13 @@ public class Points extends AppCompatActivity {
 
                 String dateTimeString = DateFormat.getDateInstance(DateFormat.SHORT).format(selectedPoint.getDate());
                 pointDate.setText(dateTimeString);
-                // TODO: The soil type is based on the project, displaying this to remind user.
                 tvSoilType.setText(projectSoilType);
+                hasChanged = false;
                 // Returns true to prevent onItemClickListener from firing
                 return true;
             }
         });
-//
+
         pointName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -173,19 +171,12 @@ public class Points extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        btnSaveEdit = (Button) findViewById(R.id.btnNew_Save);
-        btnSaveEdit.setOnClickListener(new View.OnClickListener() {
+        btnSaveDelete = (Button) findViewById(R.id.btnNew_Save);
+        btnSaveDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (editMode) {
-                    // Button only appears in edit mode if editing an existing Point, not if adding a new one.
-                    realm.beginTransaction();
-                        // Removed reference to that point from the passed project.
-                        passedProject.getPoints().remove(selectedPoint);
-                        // Remove all readings for this point and remove point
-                        selectedPoint.cascadeDeletePoint();
-                    realm.commitTransaction();
-                    revertView();
+                    deleteDialog();
                 } else {
                     // Pass the selected Point and navigate to Reading.class
                     Intent intent = new Intent(view.getContext(), PointsPlot.class);
@@ -231,7 +222,8 @@ public class Points extends AppCompatActivity {
                 toggleButton();
             }
         });
-
+        // Prevent false positives....
+        hasChanged = false;
         // Not using acctionBar back button any longer
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -312,6 +304,33 @@ public class Points extends AppCompatActivity {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
+    public void deleteDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Delete this point?");
+        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Delete Point
+                realm.beginTransaction();
+                // Removed reference to that point from the passed project.
+                passedProject.getPoints().remove(selectedPoint);
+                // Remove all readings for this point and remove point
+                selectedPoint.cascadeDeletePoint();
+                realm.commitTransaction();
+                revertView();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Just return to Point view.
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new Points.pointDatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "datePicker");
@@ -364,19 +383,19 @@ public class Points extends AppCompatActivity {
 
     public void toggleButton() {
         if ((editMode) && (!newPoint)) {
-            btnSaveEdit.setText("Delete");
-            btnSaveEdit.setTextColor(Color.RED);
-            btnSaveEdit.setBackgroundColor(Color.RED);
-            btnSaveEdit.setEnabled(true);
+            btnSaveDelete.setText("Delete");
+            btnSaveDelete.setTextColor(Color.RED);
+            btnSaveDelete.setBackgroundColor(Color.RED);
+            btnSaveDelete.setEnabled(true);
         } else if (editMode) {
-            btnSaveEdit.setText("");
-            btnSaveEdit.setBackgroundColor(getResources().getColor(R.color.BRCgreen));
-            btnSaveEdit.setEnabled(false);
+            btnSaveDelete.setText("");
+            btnSaveDelete.setBackgroundColor(getResources().getColor(R.color.BRCgreen));
+            btnSaveDelete.setEnabled(false);
         } else {
-            btnSaveEdit.setText("Graph");
-            btnSaveEdit.setTextColor(Color.WHITE);
-            btnSaveEdit.setBackgroundColor(getResources().getColor(R.color.BRCgreen));
-            btnSaveEdit.setEnabled(true);
+            btnSaveDelete.setText("Graph");
+            btnSaveDelete.setTextColor(Color.WHITE);
+            btnSaveDelete.setBackgroundColor(getResources().getColor(R.color.BRCgreen));
+            btnSaveDelete.setEnabled(true);
         }
     }
     @Override

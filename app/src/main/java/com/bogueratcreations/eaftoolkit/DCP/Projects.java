@@ -55,6 +55,10 @@ public class Projects extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_projects);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         if (Build.VERSION.SDK_INT >= 23) {
             if (ContextCompat.checkSelfPermission(Projects.this,
                     Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -97,8 +101,6 @@ public class Projects extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         btnExport = (Button) findViewById(R.id.btnEmail);
 
@@ -107,7 +109,8 @@ public class Projects extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), ProjectsAdd.class);
-                intent.putExtra("projectId",-1);
+                long newProject = -1;
+                intent.putExtra("projectId", newProject);
                 startActivity(intent);
 //                startActivity(new Intent(Projects.this, ProjectsAdd.class));
 
@@ -239,6 +242,7 @@ public class Projects extends AppCompatActivity {
                                 "n/a," +
                                 totalDepthStr +
                                 "\n";
+                        firstReading = false;
                     } else {
                         data = data + ",," +
                                 reading.getReadingNum() + "," +

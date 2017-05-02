@@ -1,0 +1,10 @@
+<resources>
+
+    <!-- Before you run your application, you need a Google Maps API key.
+             To get one, https://console.developers.google.com/apis/  -->
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyA4XTag_d3YPSdrbdoJAGCifGtbeI6U3MI
+    </string>
+
+</resources>

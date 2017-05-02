@@ -22,7 +22,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.bogueratcreations.eaftoolkit.DCP.model.PlotDataset;
 import com.bogueratcreations.eaftoolkit.DCP.model.PlotPoint;
