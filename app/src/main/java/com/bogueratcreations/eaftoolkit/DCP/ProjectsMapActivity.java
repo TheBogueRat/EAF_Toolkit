@@ -49,7 +49,6 @@ public class ProjectsMapActivity extends AppCompatActivity implements
     private double passedLong;
     private boolean receivedLoc = false;  // True for debugging, forcing the schoolhouse as the passed location
     private boolean hasPermission = false;
-    private final int MY_LOCATION_REQUEST_CODE = 58;
     private MapView mapView;
     private Button btnStore;
 
@@ -79,11 +78,11 @@ public class ProjectsMapActivity extends AppCompatActivity implements
 
         projectId = getIntent().getLongExtra("projectId", -1);
         // Get lat/long and if not -1, put into location(LatLng) object
-        passedLat = getIntent().getDoubleExtra("latitude", -1);
-        passedLong = getIntent().getDoubleExtra("longitude", -1);
-        if ((passedLong != -1) && (passedLat != -1)) {
-            Log.d(DEBUG_STRING, "Received a valid lat/long");
+        passedLat = getIntent().getDoubleExtra("latitude", 0);
+        passedLong = getIntent().getDoubleExtra("longitude", 0);
+        if ((passedLong != 0) && (passedLat != 0)) {
             storedLoc = new LatLng(passedLat, passedLong);
+            oldLoc = storedLoc;  // Used to accept changes before returning new values.
             receivedLoc = true;
             // Use this loc and actual loc to zoom map otherwise center on current loc.
         } else {
@@ -101,8 +100,6 @@ public class ProjectsMapActivity extends AppCompatActivity implements
             public void onClick(View v) {
                 if (receivedLoc) {
                     // Already saved a location, ask user to override.
-                    Log.d("EAFToolkit", "Already have a location, asking for overwrite....");
-
                     AlertDialog.Builder builder = new AlertDialog.Builder(ProjectsMapActivity.this);
                     builder.setMessage("Change location?");
                     builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
@@ -131,11 +128,9 @@ public class ProjectsMapActivity extends AppCompatActivity implements
     }
 
     public void savePos() {
-        Log.d("EAFToolkit", "Starting savePos()");
         // record current location, already verified that we have permissions for myLocation.
-        Log.d("EAFToolkit", "savePos mMap is " + mMap);
         storedLoc = new LatLng(mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude());
-        Log.d("EAFToolkit", "Location from mGoogleMap is: " + storedLoc);
+        // Not using sharedpreferrences but this is how it would be done...
 //        SharedPreferences sharedPreferences = context.getSharedPreferences("com.bogueratcreations.cherrypointairshow.settings", Context.MODE_PRIVATE);
 //        SharedPreferences.Editor editor = sharedPreferences.edit();
 //        editor.putLong("Latitude", Double.doubleToLongBits(storedLoc.latitude));
@@ -178,11 +173,6 @@ public class ProjectsMapActivity extends AppCompatActivity implements
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -195,102 +185,32 @@ public class ProjectsMapActivity extends AppCompatActivity implements
         String bestProvider = locationManager.getBestProvider(criteria, true);
         //mMap.getUiSettings().setZoomGesturesEnabled(true);
         if (receivedLoc) {
-            mMap.addMarker(new MarkerOptions()
-                    .position(storedLoc)
-                    .title("Project Location")
-                    .draggable(true)
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.cone_map_marker_sm)));
+            if (storedLoc.latitude != 0) { // Prevent 0,0 coordinates from appearing when no location is assigned.
+                mMap.addMarker(new MarkerOptions()
+                        .position(storedLoc)
+                        .title("Project Location")
+                        .draggable(true)
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.cone_map_marker_sm)));
+            }
         }
         // retrieve current location
         if (hasPermission) {
             try {
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
+                    // Only here to satisfy debugging to ensure permissions before using location.
                     return;
                 }
                 Location location = locationManager.getLastKnownLocation(bestProvider);
                 if (location != null) {
                     onLocationChanged(location);
                 }
-                //currentLoc = new LatLng(mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude());
-                Log.d("EAFToolkit","Just grabbed current location in onMapReady");
             } catch (Exception e) {
                 Log.d("EAFToolkit", "Caught Exception: " + e.getMessage());
             }
         }
         // Set Listeners for marker events
         mMap.setOnMarkerDragListener(this);
-
-        Log.d("EAFToolkit", "mapReady mMap is " + mMap);
     }
-//
-//    public void tryToSetMyLocationEnabled() {
-//        // Need to check version because of changes in permissions handling.
-//        if (Build.VERSION.SDK_INT >= 23) {
-//            // Here, thisActivity is the current activity
-//            if (ContextCompat.checkSelfPermission(this,
-//                    Manifest.permission.ACCESS_FINE_LOCATION)
-//                    != PackageManager.PERMISSION_GRANTED) {
-//
-//                // Should we show an explanation?
-//                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-//                        Manifest.permission.ACCESS_FINE_LOCATION)) {
-//                    // Ask again without any special message.
-//                    ActivityCompat.requestPermissions(this,
-//                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-//                            MY_LOCATION_REQUEST_CODE);
-//                } else {
-//                    // No explanation needed, we can request the permission.
-//                    ActivityCompat.requestPermissions(this,
-//                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-//                            MY_LOCATION_REQUEST_CODE);
-//                }
-//            } else {
-//                enableService();
-//            }
-//        } else {
-//            enableService();
-//        }
-//    }
-//
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode,
-//                                           String permissions[], int[] grantResults) {
-//        switch (requestCode) {
-//            case MY_LOCATION_REQUEST_CODE: {
-//                // If request is cancelled, the result arrays are empty.
-//                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    // permission was granted, yay! Do the thing.
-//                    enableService();
-//                } else {
-//                    // permission denied, boo! Disable the
-//                    // functionality that depends on this permission.
-//                    Toast unsavedToast = Toast.makeText(this,
-//                            "Oops! Your current location cannot be displayed without permission.  Please grant permission for location services.", Toast.LENGTH_LONG);
-//                    unsavedToast.show();
-//                    // Return to previous screen.
-//                    onBackPressed();
-//                }
-//                break;
-//            }
-//        }
-//    }
-//
-//    public void enableService() {
-//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            // Already checked or I wouldn't be here.  But just in case...
-//            return;
-//        }
-//        mMap.setMyLocationEnabled(true);
-//        hasPermission = true;
-//        btnStore.setVisibility(View.VISIBLE);
-//    }
 
     @Override
     public void onBackPressed() {
@@ -357,7 +277,7 @@ public class ProjectsMapActivity extends AppCompatActivity implements
 
     @Override
     public void onLocationChanged(Location location) {
-        // TODO: Detect stored location and show both points for simple navigation.
+        // Detect passed location and show both points for simple navigation.
         currentLoc = new LatLng(location.getLatitude(), location.getLongitude());
         if (receivedLoc) {
             // zoom so stored location can be displayed in relation to current location.
@@ -399,7 +319,7 @@ public class ProjectsMapActivity extends AppCompatActivity implements
 
     @Override
     public void onMarkerDragEnd(Marker marker) {
-        // TODO: Request confirmation to save?
+        // TODO: Request confirmation to save? Detect if it has changed and then ask for conf on back pressed...
         oldLoc = storedLoc;
         storedLoc = marker.getPosition();
     }

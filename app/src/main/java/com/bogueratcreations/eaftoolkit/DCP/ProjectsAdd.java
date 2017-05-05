@@ -62,8 +62,8 @@ public class ProjectsAdd extends AppCompatActivity {
     long passedSoilType;  // Need to update all Points @ readings if soil type changes.
     private Realm realm;
 
-    double projectLatitude = -1;
-    double projectLongitude = -1;
+    double projectLatitude = 0; // Need a default of zero to manage empty locations...
+    double projectLongitude = 0;
     double oldLat;
     double oldLng;
 
@@ -271,8 +271,8 @@ public class ProjectsAdd extends AppCompatActivity {
         if (requestCode == 23) {
             if (resultCode == RESULT_OK) {
                 // retrieve location data from Projects Map Activity
-                projectLatitude = data.getDoubleExtra("lattitude", -1.0);
-                projectLongitude = data.getDoubleExtra("longitude", -1.0);
+                projectLatitude = data.getDoubleExtra("lattitude", 0);
+                projectLongitude = data.getDoubleExtra("longitude", 0);
                 setLatLongText();
                 if ((oldLat != projectLatitude) || (oldLng != projectLongitude)) {
                     dataChanged = true;
